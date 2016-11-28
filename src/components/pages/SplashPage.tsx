@@ -1,15 +1,22 @@
 import * as React from 'react';
 
+import { Button, Text } from '../ui';
+
 interface SplashPageProps {};
 
 interface SplashPageState {};
 
-class SplashPage extends React.Component<SplashPageProps, SplashPageState> {
+export class SplashPage extends React.Component<SplashPageProps, SplashPageState> {
   public render() {
     return (
       <div>
-        <div>Your Political Action Cheat Sheet</div>
-        <div>Address Picker</div>
+        <Text size={'xl'}>
+          Your Political Action Cheat Sheet
+        </Text>
+        <div>
+          Address Picker
+          <Button text={'Button'} onClick={(event) => console.log(event)} />
+        </div>
       </div>
     );
   }
