@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Button, Text } from '../ui';
+import { Button, Link, Text } from '../ui';
+import './splash-page.scss';
 
 interface SplashPageProps {};
 
@@ -10,12 +11,17 @@ export class SplashPage extends React.Component<SplashPageProps, SplashPageState
   public render() {
     return (
       <div>
-        <Text size={'xl'}>
-          Your Political Action Cheat Sheet
-        </Text>
+        <div className="splash-hero">
+          <Text
+            size={'xl'}
+            type={'header'}
+            color={'inverse'}
+            text={'Your Political Action Cheat Sheet'}
+          />
+        </div>
         <div>
           Address Picker
-          <Button text={'Button'} onClick={(event) => console.log(event)} />
+          <Link text={'Button'} link={'tasks'} />
         </div>
       </div>
     );
