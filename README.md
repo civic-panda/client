@@ -1,8 +1,8 @@
 # Civic Action Site
 
-- [Installation](#Installation)
-- [CSS Guidelines](#CSSGuidelines)
-- [TODO](#TODO)
+- [Installation](#installation)
+- [CSS Guidelines](#css-guidelines)
+- [TODO](#todo)
 
 ## Setup
 
