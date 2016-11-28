@@ -74,7 +74,7 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['.js', '.json', '.jsx', ".ts", ".tsx", ''],
+    extensions: ['.js', '.json', '.jsx', '.ts', '.tsx', '.scss', ''],
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -129,6 +129,11 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json'
+      },
+      // SASS loader
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
       },
       // "file" loader makes sure those assets get served by WebpackDevServer.
       // When you `import` an asset, you get its (virtual) filename.

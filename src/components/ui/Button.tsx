@@ -2,8 +2,6 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router';
 
-import './_button.scss';
-
 type ButtonType = 'primary' | 'secondary';
 type ButtonSize = 'small' | 'large';
 
@@ -21,7 +19,7 @@ interface LinkProps extends ButtonProps {
 }
 
 // Primary Button
-const Button = (props: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
   const { type = 'primary', children, size, text, loading, onClick, ...otherProps } = props;
   const classes = classNames('button', {
     'button--is-loading': !!loading,

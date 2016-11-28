@@ -1,7 +1,4 @@
-import PageWrapper from './components/pages/PageWrapper';
-import SplashPage from './components/pages/SplashPage';
-import TaskListPage from './components/pages/TaskListPage';
-import TaskPage from './components/pages/TaskPage';
+import { PageWrapper, SplashPage, TaskListPage, TaskPage } from './components/pages';
 
 const siteRoutes = {
   path: '/',
@@ -13,6 +10,7 @@ const siteRoutes = {
   ],
 };
 
+// Array as we can add other types later (e.g. admin or logged in routes)
 const routes = [
   siteRoutes,
 ];

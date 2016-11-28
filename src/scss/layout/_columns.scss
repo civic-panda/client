@@ -1,0 +1,3 @@
+$column-sizes: (1, 2, 3, 4, 5, 12);
+
+@include im-columns($column-sizes...); //generates classes for columns

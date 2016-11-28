@@ -1,20 +1,18 @@
 import * as React from 'react';
 
-interface WrapperProps {};
+interface PageWrapperProps {};
 
-interface WrapperState {};
+interface PageWrapperState {};
 
-class Wrapper extends React.Component<WrapperProps, WrapperState> {
+export class PageWrapper extends React.Component<PageWrapperProps, PageWrapperState> {
   public render() {
     return (
       <div>
         <div>Nav</div>
-        <div>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }
 }
 
-export default Wrapper;
+export default PageWrapper;

@@ -1,0 +1,73 @@
+/**
+  We are using a slightly modified 7-1 Sass pattern.
+
+  Typical 7-1 uses the following directories:
+    base/ components/ layout/ pages/
+    themes/ abstracts/ vendors/
+
+  We have moved the components/ and pages/ directories out of the parent scss dir
+  and include the relevant files as siblings to their JSX files.
+
+  Classes roughly follow a BEM naming convention, for example .input--has-error
+
+  Utility classes are prefixed with .u-, for example .u-uppercase
+
+  Try not to nest, try to do mobile first then add larger breakpoints,
+  try to only use class selectors, and try not to use !important.
+
+  When in doubt, consult http://csswizardry.com/ and http://cssguidelin.es/
+**/
+
+/**
+  Vendors
+**/
+@import './vendors/include-media';
+@import './vendors/im-columns';
+
+/**
+  includes variables for $standard-spacing, which is used for most margins and padding
+**/
+@import './abstracts/variables';
+
+/**
+  includes variables for:
+    $primary $accent $secondary $tertiary $quaternary
+    $white $gray $black $warning $error
+
+  to get a color variant, use the function get-color(color, degree) where degree
+  is one of 50, 100, 200, 300, 400, 500, 600, 700, 800, or 900 (default 500)
+**/
+@import './abstracts/colors';
+
+/**
+  Possible column counts are 1, 2, 3, 4, 5, 12
+  .col--{columns}-{total columns}, for example .col--3-4 is 75%
+
+  Breakpoints are sm, md, lg, and xl
+  add @{breakpoint}, @gt-{breakpoint}, or @lt-{breakpoint} to the end of a class
+  For example, .col--1-1 .col--3-4@gt-sm for a full bleed small and 75% otherwise div
+
+  use the .u-hide and .u-show utility classes similarly
+**/
+@import './layout/breakpoints';
+@import './layout/columns';
+@import './layout/show-hide';
+
+/**
+  Reset base browser stylings
+**/
+@import './base/reset-forms';
+@import './base/reset';
+
+/**
+  Also includes classes such as .p, .h1
+**/
+@import './base/typography';
+
+body {
+  color: $black;
+	background: $white;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}

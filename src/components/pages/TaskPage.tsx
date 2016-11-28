@@ -8,7 +8,7 @@ interface TaskPageProps {
 
 interface TaskPageState {};
 
-class TaskPage extends React.Component<TaskPageProps, TaskPageState> {
+export class TaskPage extends React.Component<TaskPageProps, TaskPageState> {
   public render() {
     return (
       <div>

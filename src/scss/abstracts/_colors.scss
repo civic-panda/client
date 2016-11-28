@@ -1,0 +1,61 @@
+$primary: #5533ff;
+$secondary: #3d25ba;
+$tertiary: #fbb03b;
+$quaternary: #08ceff;
+$accent: #24b47e;
+
+$white: #FEFEFF;
+$gray: #f2f2f2;
+$black: #020008;
+$warning: #E6FB23;
+$error: #FA180A;
+
+$degrees: (900: -44%, 800: -33%, 700: -22%, 600: -11%, 500: 0%, 400: 10%, 300: 20%, 200: 30%, 100: 40%, 50: 45%);
+
+@function get-color($color, $degree: 500) {
+  @return adjust-color($color, $lightness: map-get($degrees, $degree))
+};
+
+// $primary-900: adjust-color($primary, $lightness: -44%);
+// $primary-800: adjust-color($primary, $lightness: -33%);
+// $primary-700: adjust-color($primary, $lightness: -22%);
+// $primary-600: adjust-color($primary, $lightness: -11%);
+// $primary-500: $primary;
+// $primary-400: adjust-color($primary, $lightness: 10%);
+// $primary-300: adjust-color($primary, $lightness: 20%);
+// $primary-200: adjust-color($primary, $lightness: 30%);
+// $primary-100: adjust-color($primary, $lightness: 40%);
+// $primary-50:  adjust-color($primary, $lightness: 45%);
+
+// $gray-900: adjust-color($gray, $lightness: -44%);
+// $gray-800: adjust-color($gray, $lightness: -33%);
+// $gray-700: adjust-color($gray, $lightness: -22%);
+// $gray-600: adjust-color($gray, $lightness: -11%);
+// $gray-500: $gray;
+// $gray-400: adjust-color($gray, $lightness: 10%);
+// $gray-300: adjust-color($gray, $lightness: 20%);
+// $gray-200: adjust-color($gray, $lightness: 30%);
+// $gray-100: adjust-color($gray, $lightness: 40%);
+// $gray-50:  adjust-color($gray, $lightness: 45%);
+
+// $secondary-900: adjust-color($secondary, $lightness: -44%);
+// $secondary-800: adjust-color($secondary, $lightness: -33%);
+// $secondary-700: adjust-color($secondary, $lightness: -22%);
+// $secondary-600: adjust-color($secondary, $lightness: -11%);
+// $secondary-500: $secondary;
+// $secondary-400: adjust-color($secondary, $lightness: 10%);
+// $secondary-300: adjust-color($secondary, $lightness: 20%);
+// $secondary-200: adjust-color($secondary, $lightness: 30%);
+// $secondary-100: adjust-color($secondary, $lightness: 40%);
+// $secondary-50:  adjust-color($secondary, $lightness: 45%);
+
+// $accent-900: adjust-color($accent, $lightness: -44%);
+// $accent-800: adjust-color($accent, $lightness: -33%);
+// $accent-700: adjust-color($accent, $lightness: -22%);
+// $accent-600: adjust-color($accent, $lightness: -11%);
+// $accent-500: $accent;
+// $accent-400: adjust-color($accent, $lightness: 10%);
+// $accent-300: adjust-color($accent, $lightness: 20%);
+// $accent-200: adjust-color($accent, $lightness: 30%);
+// $accent-100: adjust-color($accent, $lightness: 40%);
+// $accent-50:  adjust-color($accent, $lightness: 45%);

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/classnames": "^0.0.32",
     "@types/react": "^0.14.50",
     "@types/react-dom": "^0.14.19",
     "@types/react-router": "^2.0.39",
@@ -36,6 +37,7 @@
     "http-proxy-middleware": "0.17.2",
     "jest": "16.0.2",
     "json-loader": "0.5.4",
+    "node-sass": "^3.13.0",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
     "postcss-loader": "1.0.0",
@@ -43,6 +45,7 @@
     "react-dev-utils": "^0.3.0",
     "recursive-readdir": "2.1.0",
     "rimraf": "2.5.4",
+    "sass-loader": "^4.0.2",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
     "ts-loader": "^1.2.2",
@@ -54,7 +57,6 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "@types/classnames": "^0.0.32",
     "classnames": "^2.2.5",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

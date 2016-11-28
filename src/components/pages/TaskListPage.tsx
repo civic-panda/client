@@ -4,7 +4,7 @@ interface TaskListPageProps {};
 
 interface TaskListPageState {};
 
-class TaskListPage extends React.Component<TaskListPageProps, TaskListPageState> {
+export class TaskListPage extends React.Component<TaskListPageProps, TaskListPageState> {
   public render() {
     return (
       <div>
