@@ -54,6 +54,8 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "@types/classnames": "^0.0.32",
+    "classnames": "^2.2.5",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-router": "^3.0.0"
