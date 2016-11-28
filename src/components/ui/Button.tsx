@@ -11,7 +11,7 @@ interface ButtonProps {
   loading?: boolean;
   children?: string;
   text: string;
-  onClick: (event: any) => void;
+  onClick?: (event: any) => void;
 };
 
 interface LinkProps extends ButtonProps {
@@ -20,7 +20,8 @@ interface LinkProps extends ButtonProps {
 
 // Primary Button
 export const Button = (props: ButtonProps) => {
-  const { type = 'primary', children, size, text, loading, onClick, ...otherProps } = props;
+  const nullFn = (): void => null;
+  const { type = 'primary', children, size, text, loading, onClick = nullFn, ...otherProps } = props;
   const classes = classNames('button', {
     'button--is-loading': !!loading,
     [`button--${type}`]: !!type,
