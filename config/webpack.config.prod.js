@@ -102,7 +102,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         include: paths.appSrc,
-        loader: "ts-loader",
+        loader: "ts-loader"
       },
       // // Process JS with Babel.
       // {
@@ -177,9 +177,9 @@ module.exports = {
           '>1%',
           'last 4 versions',
           'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
+          'not ie < 9' // React doesn't support IE8 anyway
         ]
-      }),
+      })
     ];
   },
   plugins: [
