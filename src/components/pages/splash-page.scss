@@ -1,5 +1,13 @@
 @import '../../scss/abstracts/colors';
 
 .splash-hero {
+  display: flex;
+  height: 390px;
   background-color: $primary;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+
 }

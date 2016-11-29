@@ -1,0 +1,26 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+$nav-height: 70px;
+
+.nav {
+  height: $nav-height;
+  background-color: $primary;
+  color: $white;
+}
+
+.links {
+  height: 100%;
+  float: right;
+  line-height: $nav-height
+}
+
+.link {
+  display: inline-block;
+  height: 100%;
+  padding: 0 $standard-spacing * 2;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -13,10 +13,11 @@ export class SplashPage extends React.Component<SplashPageProps, SplashPageState
       <div>
         <div className="splash-hero">
           <Text
-            size={'xl'}
+            className={'hero-text'}
+            size={'lg'}
             type={'header'}
             color={'inverse'}
-            text={'Your Political Action Cheat Sheet'}
+            text={'Your political action cheat sheet.'}
           />
         </div>
         <div>

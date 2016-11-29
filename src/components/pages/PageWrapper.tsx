@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import Nav from '../Nav';
+
 interface PageWrapperProps {};
 
 interface PageWrapperState {};
@@ -8,7 +10,7 @@ export class PageWrapper extends React.Component<PageWrapperProps, PageWrapperSt
   public render() {
     return (
       <div>
-        <div>Nav</div>
+        <Nav />
         {this.props.children}
       </div>
     );

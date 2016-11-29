@@ -6,12 +6,14 @@ import './text.scss';
 type FontSize = 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
 type FontType = 'header' | 'label' | 'body';
 type FontColor = 'primary' | 'accent' | 'inverse' | 'light';
+type FontWeight = 'normal' | 'bold';
 
 interface TextProps {
   size?: FontSize;
   color?: FontColor;
   type?: FontType;
   text?: string;
+  weight?: string;
   children?: string;
   className?: string;
 };
@@ -22,6 +24,7 @@ export const Text = (props: TextProps) => {
     type = 'body',
     text = '',
     color = 'primary',
+    weight = 'normal',
     children = '',
     className = '',
   } = props;
@@ -30,6 +33,7 @@ export const Text = (props: TextProps) => {
     [`${size}`]: true,
     [`${color}`]: true,
     [`${type}`]: true,
+    [`${weight}`]: true,
   });
 
   return (
