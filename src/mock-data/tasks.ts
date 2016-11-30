@@ -3,12 +3,11 @@ import { tasks } from '../modules';
 const data: tasks.Task[] = [{
   id: 1,
   name: 'Call your representatives',
-  type: [
-    'dummy data',
-  ],
-  causes: [
-    'Test the ui',
-  ],
+  activityType: 'phone call',
+  issue: {
+    name: 'Test the ui',
+    requestedAction: 'click a button',
+  },
   tags: [
     'example',
     'test',
@@ -21,22 +20,21 @@ const data: tasks.Task[] = [{
     longitude: 1111,
   },
   notes: 'This is a note on how to complete this task',
-  steps: [{
-    name: 'Call your representative',
-    template: 'call',
-    templateProps: {
-      type: 'house',
+  template: 'CallHouse',
+  templateProps: {
+    scripts: {
+      petition: 'Please do what we ask.',
+      thankYou: 'Thanks for doing what we asked!',
     },
-  }],
+  },
 }, {
   id: 2,
   name: 'Call your senators',
-  type: [
-    'phone call',
-  ],
-  causes: [
-    'Make sure we can handle multiple tasks',
-  ],
+  activityType: 'phone call',
+  issue: {
+    name: 'Make sure we can handle multiple tasks',
+    requestedAction: 'add multiple tasks',
+  },
   tags: [
     'important',
     'test',
@@ -49,13 +47,13 @@ const data: tasks.Task[] = [{
     longitude: 1111,
   },
   notes: 'This is a note on how to complete this task',
-  steps: [{
-    name: 'Call your senator',
-    template: 'call',
-    templateProps: {
-      type: 'senate',
+  template: 'CallSenate',
+  templateProps: {
+    scripts: {
+      petition: 'Please do what we ask.',
+      thankYou: 'Thanks for doing what we asked!',
     },
-  }],
+  },
 }];
 
 export default data;

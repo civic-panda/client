@@ -1,20 +1,23 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-interface TaskPageProps {
+import * as templates from '../task-templates';
+
+interface Props {
   params: {
     taskId: number;
   };
 };
 
-interface TaskPageState {};
+interface State {};
 
-export class TaskPage extends React.Component<TaskPageProps, TaskPageState> {
+export class TaskPage extends React.Component<Props, State> {
   public render() {
+    const Template = templates.CallSenate;
+
     return (
       <div>
-        <div>Task ID: {this.props.params.taskId}</div>
-        <div>Steps</div>
-        <div>Summary</div>
+        <Template taskId={this.props.params.taskId} />
       </div>
     );
   }

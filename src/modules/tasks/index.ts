@@ -3,33 +3,31 @@ import * as reselect from 'reselect';
 import { Action } from '../../redux/action';
 
 type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
-type Cause = string
+type Issue = {
+  name: string;
+  requestedAction: string;
+}
 type Tag = 'open internet' | 'privacy' | string;
-type Template = 'call';
+type Template = 'CallSenate' | 'CallHouse';
 
 type Location = {
   latitude?: number;
   longitude?: number;
 }
 
-type Step = {
-  name: string;
-  template: Template;
-  templateProps: { [index: string]: any }
-}
-
 export interface Task {
   id: number;
   name: string;
-  type: Activity[];
-  causes: Cause[];
+  issue: Issue;
+  activityType: Activity;
   tags: Tag[];
   duration: number;
   startDate: number;
   endDate: number;
   location: Location;
   notes: string;
-  steps: Step[];
+  template: Template;
+  templateProps: any;
 }
 
 export interface State {
