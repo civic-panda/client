@@ -1,0 +1,47 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.task {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  overflow: hidden;
+  padding: $standard-spacing 0;
+  border-bottom: solid 1px $gray;
+}
+
+.task__description{
+  display: flex;
+  min-width: 200px;
+  flex-direction: column;
+  flex: 1;
+  float: left;
+}
+
+.task__details{
+  display: flex;
+  min-width: 200px;
+  flex: 0;
+  float: right;
+  align-items: center;
+  justify-content: center;
+}
+
+.duration {
+  display: inline-block;
+  height: $standard-spacing;
+  width: 100px;
+  line-height: $standard-spacing;
+  text-align: center;
+  background: $secondary;
+
+  &.duration--short { background: $tertiary }
+  &.duration--long { background: $quaternary }
+  &.duration--other { background: $accent }
+}
+
+.distance {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}

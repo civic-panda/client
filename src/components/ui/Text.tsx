@@ -7,8 +7,10 @@ type FontSize = 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' |
 type FontType = 'header' | 'label' | 'body';
 type FontColor = 'primary' | 'accent' | 'inverse' | 'light';
 type FontWeight = 'normal' | 'bold';
+type Alignment = 'left' | 'center' | 'right';
 
 interface TextProps {
+  align?: Alignment;
   size?: FontSize;
   color?: FontColor;
   type?: FontType;
@@ -16,10 +18,12 @@ interface TextProps {
   weight?: string;
   children?: string;
   className?: string;
+  bottomMargin?: boolean;
 };
 
 export const Text = (props: TextProps) => {
   const {
+    align = 'left',
     size = 'p',
     type = 'body',
     text = '',
@@ -27,13 +31,16 @@ export const Text = (props: TextProps) => {
     weight = 'normal',
     children = '',
     className = '',
+    bottomMargin,
   } = props;
 
   const classes = classNames({
+    [`${align}`]: true,
     [`${size}`]: true,
     [`${color}`]: true,
     [`${type}`]: true,
     [`${weight}`]: true,
+    'remove-bottom-margin': !bottomMargin,
   });
 
   return (

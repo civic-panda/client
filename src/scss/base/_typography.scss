@@ -8,13 +8,13 @@ html, body {
   font-family: $base-family;
 }
 
-          .xl { font-weight: 400; font-size: 3 * $base-size;     font-size: 3 * 1rem;     line-height: 1.333; }
-          .lg { font-weight: 400; font-size: 2.5 * $base-size;   font-size: 2.5 * 1rem;   line-height: 1.2;   }
-      h1, .h1 { font-weight: 400; font-size: 2 * $base-size;     font-size: 2 * 1rem;     line-height: 1.5;   }
-      h2, .h2 { font-weight: 400; font-size: 1.5 * $base-size;   font-size: 1.5 * 1rem;   line-height: 1.666; }
-      h3, .h3 { font-weight: 400; font-size: 1.25 * $base-size;  font-size: 1.25 * 1rem;  line-height: 1.2;   }
-      h4, .h4 { font-weight: 400; font-size: 1.125 * $base-size; font-size: 1.125 * 1rem; line-height: 1.333; }
-      h5, .h5 { font-weight: 400; font-size: 1.075 * $base-size; font-size: 1.125 * 1rem; line-height: 2;     }
-        p, .p { font-weight: 400; font-size: 1 * $base-size;     font-size: 1 * 1rem;     line-height: 1.5;   }
-small, .small { font-weight: 400; font-size: 0.9 * $base-size;   font-size: 0.9 * 1rem;   line-height: 1.111; }
-          .xs { font-weight: 400; font-size: 0.75 * $base-size;  font-size: 0.75 * 1rem;  line-height: 1.333; }
+          .xl { font-weight: 400; font-size: 3 * $base-size;     font-size: 3 * 1rem;     line-height: 1.333; margin-bottom: 1.333 * $base-size; margin-bottom: 1.333rem; }
+          .lg { font-weight: 400; font-size: 2.5 * $base-size;   font-size: 2.5 * 1rem;   line-height: 1.2;   margin-bottom: 1.2   * $base-size; margin-bottom: 1.2rem;   }
+      h1, .h1 { font-weight: 400; font-size: 2 * $base-size;     font-size: 2 * 1rem;     line-height: 1.5;   margin-bottom: 1.5   * $base-size; margin-bottom: 1.5rem;   }
+      h2, .h2 { font-weight: 400; font-size: 1.5 * $base-size;   font-size: 1.5 * 1rem;   line-height: 1.666; margin-bottom: 1.666 * $base-size; margin-bottom: 1.666rem; }
+      h3, .h3 { font-weight: 400; font-size: 1.25 * $base-size;  font-size: 1.25 * 1rem;  line-height: 1.2;   margin-bottom: 1.2   * $base-size; margin-bottom: 1.2rem;   }
+      h4, .h4 { font-weight: 400; font-size: 1.125 * $base-size; font-size: 1.125 * 1rem; line-height: 1.333; margin-bottom: 1.333 * $base-size; margin-bottom: 1.333rem; }
+      h5, .h5 { font-weight: 400; font-size: 1.075 * $base-size; font-size: 1.125 * 1rem; line-height: 2;     margin-bottom: 2     * $base-size; margin-bottom: 2rem;     }
+        p, .p { font-weight: 400; font-size: 1 * $base-size;     font-size: 1 * 1rem;     line-height: 1.5;   margin-bottom: 1.5   * $base-size; margin-bottom: 1.5rem;   }
+small, .small { font-weight: 400; font-size: 0.9 * $base-size;   font-size: 0.9 * 1rem;   line-height: 1.111; margin-bottom: 1.111 * $base-size; margin-bottom: 1.111rem; }
+          .xs { font-weight: 400; font-size: 0.75 * $base-size;  font-size: 0.75 * 1rem;  line-height: 1.333; margin-bottom: 1.333 * $base-size; margin-bottom: 1.333rem; }

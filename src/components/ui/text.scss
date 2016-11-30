@@ -1,4 +1,7 @@
 @import '../../scss/abstracts/colors';
+.remove-bottom-margin.remove-bottom-margin {
+  margin-bottom: 0;
+}
 
 .header {
 
@@ -11,6 +14,10 @@
 .body {
 
 }
+
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
 
 .primary {
   color: $black;
@@ -25,7 +32,7 @@
 }
 
 .light {
-  color: $gray;
+  color: get-color($gray, 900);
 }
 
 .normal {

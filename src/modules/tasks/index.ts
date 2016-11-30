@@ -2,9 +2,9 @@ import * as reselect from 'reselect';
 
 import { Action } from '../../redux/action';
 
-type Activities = 'door knocking' | 'phone banking' | 'rally' | string;
-
-type Tags = 'open internet' | 'privacy' | string;
+type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
+type Cause = string
+type Tag = 'open internet' | 'privacy' | string;
 
 type Location = {
   latitude?: number;
@@ -20,8 +20,9 @@ type Step = {
 export interface Task {
   id: number;
   name: string;
-  type: Activities[];
-  tags: Tags[];
+  type: Activity[];
+  causes: Cause[];
+  tags: Tag[];
   duration: number;
   startDate: number;
   endDate: number;
