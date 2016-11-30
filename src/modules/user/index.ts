@@ -1,4 +1,4 @@
-import * as reselect from 'reselect';
+import { createSelector } from 'reselect';
 
 import { Action } from '../../redux/action';
 
@@ -21,11 +21,13 @@ export interface State {
 export const KEY = 'user';
 
 export const actions = {
+  SET: 'civic/user/SET',
   SET_LOCATION: 'civic/user/SET_LOCATION',
 };
 
 export const actionCreators = {
   setLocation: (location: Location) => ({ type: actions.SET_LOCATION, payload: location }),
+  set: (user: State) => ({ type: actions.SET, payload: user }),
 };
 
 const initialState: State = {
@@ -37,6 +39,9 @@ const initialState: State = {
 
 export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {
   switch (action.type) {
+    case actions.SET:
+      return {...state, ...action.payload };
+
     case actions.SET_LOCATION:
       return {...state, location: action.payload };
 
@@ -46,7 +51,9 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
 };
 
 const getState = (state: any): State => state[KEY];
+const getLocation = createSelector(getState, state => state.location);
 
 export const selectors = {
   getState,
+  getLocation,
 };

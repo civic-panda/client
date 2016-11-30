@@ -9,10 +9,10 @@ interface NavState {};
 
 const links = [{
   name: 'FAQ',
-  url: 'faq',
+  url: '/faq',
 }, {
   name: 'About',
-  url: 'about',
+  url: '/about',
 }];
 
 export class Nav extends React.Component<NavProps, NavState> {

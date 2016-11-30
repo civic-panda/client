@@ -1,6 +1,7 @@
 import * as reselect from 'reselect';
 
 import { Action } from '../../redux/action';
+import { selectors as userSelectors } from '../user';
 
 interface CongressPerson {
   id: number;
@@ -69,19 +70,14 @@ const getDistrict = (_state: any, { district }: { district: number }) => distric
 const getUserState = (_state: any, { state }: { state: string }) => state;
 const getSenators = reselect.createSelector(
   getState,
-  getDistrict,
-  getUserState,
-  (congress, district, state) => {
-    return congress.senators.filter(rep => (rep.state !== state));
-  }
+  userSelectors.getLocation,
+  (congress, location) => congress.senators.filter(rep => (rep.state === location.state))
 );
 const getRepresentatives = reselect.createSelector(
   getState,
-  getDistrict,
-  getUserState,
-  (congress, district, state) => {
-    return congress.representatives.filter(rep => (rep.state !== state && rep.district !== district));
-  }
+  userSelectors.getLocation,
+  (congress, location) => congress.representatives
+    .filter(rep => (rep.state === location.state && rep.district === location.district))
 );
 export const selectors = {
   getState,

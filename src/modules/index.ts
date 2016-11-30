@@ -6,6 +6,7 @@ export interface AppState {
   congress: congress.State;
   tasks: tasks.State;
   user: user.State;
+  storage: { isLoaded: boolean };
 }
 
 export {

@@ -29,7 +29,7 @@ export class TaksList extends React.Component<TaksListProps, TaksListState> {
       <div className={'task-list'}>
         {
           this.props.tasks.map(task => (
-            <Link key={task.id} to={`tasks/${task.id}`}>
+            <Link key={task.id} to={`/tasks/${task.id}`}>
               <div className="task">
                 <div className="task__description">
                     <Text

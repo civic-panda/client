@@ -1,4 +1,4 @@
-import * as reselect from 'reselect';
+import { createSelector } from 'reselect';
 
 import { Action } from '../../redux/action';
 
@@ -59,9 +59,9 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
 };
 
 const getState = (state: any): State => state[KEY];
-const getList = reselect.createSelector(getState, state => state.list);
+const getList = createSelector(getState, state => state.list);
 const getTaskId = (_state: any, { taskId }: { taskId: number }) => taskId;
-const getTask = reselect.createSelector(getList, getTaskId, (list, taskId) => list.find(task => task.id === taskId));
+const getTask = createSelector(getList, getTaskId, (list, taskId) => list.find(task => task.id === taskId));
 export const selectors = {
   getState,
   getList,

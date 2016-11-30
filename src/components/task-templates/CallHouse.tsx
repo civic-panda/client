@@ -23,16 +23,15 @@ interface OwnProps {
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const task = tasks.selectors.getTask(state, ownProps);
   const thisUser = user.selectors.getState(state);
-  const senators = congress.selectors.getSenators(state, ownProps);
+  const representatives = congress.selectors.getRepresentatives(state, ownProps);
 
   return {
-    foo: 'bar',
     taskName: task.name,
     requestedAction: task.issue.requestedAction,
-    callList: senators.map(senator => ({ name: senator.commonName, phoneNumbers: senator.phoneNumbers })),
+    callList: representatives.map(senator => ({ name: senator.commonName, phoneNumbers: senator.phoneNumbers })),
     scripts: task.templateProps.scripts,
   };
 };
 
-export const CallSenate = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(Call);
-export default CallSenate;
+export const CallHouse = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(Call);
+export default CallHouse;
