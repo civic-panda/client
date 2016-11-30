@@ -1,11 +1,12 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
+import * as formatters from '../../util/stringFormatters';
 import './text.scss';
 
 type FontSize = 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
 type FontType = 'header' | 'label' | 'body';
-type FontColor = 'primary' | 'accent' | 'inverse' | 'light';
+type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light';
 type FontWeight = 'normal' | 'bold';
 type Alignment = 'left' | 'center' | 'right';
 
@@ -14,6 +15,7 @@ interface TextProps {
   size?: FontSize;
   color?: FontColor;
   type?: FontType;
+  format?: formatters.Format | formatters.Format[];
   text?: string;
   weight?: string;
   children?: string;
@@ -46,8 +48,12 @@ export const Text = (props: TextProps) => {
     'remove-bottom-margin': !bottomMargin,
   });
 
+  const displayText = (!!props.format)
+    ? formatters.format(`${text}${children}`, props.format)
+    : `${text}${children}`;
+
   return (
-    <span className={`${classes} ${className}`}>{`${text}${children}`}</span>
+    <span className={`${classes} ${className}`}>{displayText}</span>
   );
 };
 
