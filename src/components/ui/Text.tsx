@@ -19,6 +19,7 @@ interface TextProps {
   children?: string;
   className?: string;
   bottomMargin?: boolean;
+  displayBlock?: boolean;
 };
 
 export const Text = (props: TextProps) => {
@@ -32,6 +33,7 @@ export const Text = (props: TextProps) => {
     children = '',
     className = '',
     bottomMargin,
+    displayBlock,
   } = props;
 
   const classes = classNames({
@@ -40,11 +42,12 @@ export const Text = (props: TextProps) => {
     [`${color}`]: true,
     [`${type}`]: true,
     [`${weight}`]: true,
+    'display-block': displayBlock,
     'remove-bottom-margin': !bottomMargin,
   });
 
   return (
-    <span className={`${classes} ${className}`}>{text}{children}</span>
+    <span className={`${classes} ${className}`}>{`${text}${children}`}</span>
   );
 };
 
