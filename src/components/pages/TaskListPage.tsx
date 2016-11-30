@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { ListContainer } from '../TaskList';
+import TaskMap from '../TaskMap';
 
 interface TaskListPageProps {};
 
@@ -14,7 +15,7 @@ export class TaskListPage extends React.Component<TaskListPageProps, TaskListPag
           <ListContainer />
         </div>
         <div className="u-hide@lt-md col--4-12@md col--4-12@lg col--5-12@xl col--padded">
-          <div>Map</div>
+          <TaskMap />
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import AddressPicker from '../AddressPicker';
 import { Button, Link, Text } from '../ui';
 import './splash-page.scss';
 
@@ -21,8 +22,7 @@ export class SplashPage extends React.Component<SplashPageProps, SplashPageState
           />
         </div>
         <div>
-          Address Picker
-          <Link text={'Button'} link={'tasks'} />
+          <AddressPicker />
         </div>
       </div>
     );
