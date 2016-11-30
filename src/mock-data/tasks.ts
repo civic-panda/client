@@ -2,7 +2,7 @@ import { tasks } from '../modules';
 
 const data: tasks.Task[] = [{
   id: 1,
-  name: 'Test Task One',
+  name: 'Call your representatives',
   type: [
     'dummy data',
   ],
@@ -22,13 +22,15 @@ const data: tasks.Task[] = [{
   },
   notes: 'This is a note on how to complete this task',
   steps: [{
-    name: 'Do this first',
-    template: 'template string',
-    data: {},
+    name: 'Call your representative',
+    template: 'call',
+    templateProps: {
+      type: 'house',
+    },
   }],
 }, {
   id: 2,
-  name: 'Test Task Numero Dos',
+  name: 'Call your senators',
   type: [
     'phone call',
   ],
@@ -48,9 +50,11 @@ const data: tasks.Task[] = [{
   },
   notes: 'This is a note on how to complete this task',
   steps: [{
-    name: 'Do this first',
-    template: 'template string',
-    data: {},
+    name: 'Call your senator',
+    template: 'call',
+    templateProps: {
+      type: 'senate',
+    },
   }],
 }];
 

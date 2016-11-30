@@ -5,6 +5,7 @@ import { Action } from '../../redux/action';
 type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
 type Cause = string
 type Tag = 'open internet' | 'privacy' | string;
+type Template = 'call';
 
 type Location = {
   latitude?: number;
@@ -13,8 +14,8 @@ type Location = {
 
 type Step = {
   name: string;
-  template: string;
-  data: { [index: string]: any }
+  template: Template;
+  templateProps: { [index: string]: any }
 }
 
 export interface Task {

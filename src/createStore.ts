@@ -5,13 +5,15 @@ import * as logger from './redux/logger';
 import * as persist from './redux/persist';
 
 // Reducers
-import { AppState, tasks } from './modules';
+import { AppState, congress, tasks, user } from './modules';
 
 const middleware = applyMiddleware(logger.middleware);
 
 const setupStore = () => {
   const rootReducer = combineReducers<AppState>({
+    [congress.KEY]: congress.reducer,
     [tasks.KEY]: tasks.reducer,
+    [user.KEY]: user.reducer,
     [persist.KEY]: persist.reducer,
   });
 
