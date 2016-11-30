@@ -9,7 +9,9 @@ interface TaskMapState {};
 export class TaskMap extends React.Component<TaskMapProps, TaskMapState> {
   public render() {
     return (
-      <Text text={'map placeholder'} />
+      <div style={{ background: 'gray', height: '380px' }}>
+        <Text text={'map placeholder'} />
+      </div>
     );
   }
 }

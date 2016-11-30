@@ -65,9 +65,9 @@ $column-sizes: (1, 2, 3, 4, 5, 12);
 
 .row--padded {
   padding: 0 $standard-spacing;
-  .col,
-  [class^="col--"],
-  [class*=" col--"]{
+  >.col,
+  >[class^="col--"],
+  >[class*=" col--"]{
     padding: $standard-spacing;
   }
 }

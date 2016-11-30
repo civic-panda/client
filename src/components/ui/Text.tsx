@@ -22,6 +22,7 @@ interface TextProps {
   className?: string;
   bottomMargin?: boolean;
   displayBlock?: boolean;
+  blockQuote?: boolean;
 };
 
 export const Text = (props: TextProps) => {
@@ -36,6 +37,7 @@ export const Text = (props: TextProps) => {
     className = '',
     bottomMargin,
     displayBlock,
+    blockQuote,
   } = props;
 
   const classes = classNames({
@@ -45,15 +47,16 @@ export const Text = (props: TextProps) => {
     [`${type}`]: true,
     [`${weight}`]: true,
     'display-block': displayBlock,
+    'block-quote': blockQuote,
     'remove-bottom-margin': !bottomMargin,
   });
 
-  const displayText = (!!props.format)
-    ? formatters.format(`${text}${children}`, props.format)
-    : `${text}${children}`;
+  const childrenIsString = typeof children === 'string';
+  const rawText = childrenIsString ? `${text}${children}` : text;
+  const displayText = (props.format) ? formatters.format(rawText, props.format) : rawText;
 
   return (
-    <span className={`${classes} ${className}`}>{displayText}</span>
+    <span className={`text ${classes} ${className}`}>{displayText}{!childrenIsString && children}</span>
   );
 };
 

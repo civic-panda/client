@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { tasks } from '../../modules';
 import { Text } from '../ui';
 import './task-list.scss';
+import TaskDetails from './TaskDetails';
 
 interface TaksListProps {
   tasks: tasks.Task[];
@@ -41,14 +42,7 @@ export class TaksList extends React.Component<TaksListProps, TaksListState> {
                   <Text text={task.name} size={'h2'} bottomMargin />
                   <Text className="u-hide@sm" text={task.tags.join(', ')} size={'small'} />
                 </div>
-                <div className="task__details">
-                  <div className={`duration ${this.getDurationClass(task.duration)}`}>
-                    <Text text={`${task.duration}`} color={'inverse'} align={'center'} />
-                  </div>
-                  <div className="distance">
-                    <Text text={'0 miles away'} align={'center'} />
-                  </div>
-                </div>
+                <TaskDetails task={task} />
               </div>
             </Link>
           ))

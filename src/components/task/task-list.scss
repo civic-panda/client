@@ -1,0 +1,21 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.task-list {
+  .task {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    overflow: hidden;
+    padding: $standard-spacing 0;
+    border-bottom: solid 1px $gray;
+  }
+
+  .task__description{
+    display: flex;
+    min-width: 200px;
+    flex-direction: column;
+    flex: 1;
+    float: left;
+  }
+}

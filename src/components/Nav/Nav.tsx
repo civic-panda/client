@@ -19,12 +19,14 @@ export class Nav extends React.Component<NavProps, NavState> {
   public render() {
     return (
       <div className={'nav'}>
-        <div className="links">
-          {
-            links.map(link => (
-              <Link key={link.name} text={link.name} to={link.url} />
-            ))
-          }
+        <div className="row">
+          <div className="links">
+            {
+              links.map(link => (
+                <Link key={link.name} text={link.name} to={link.url} />
+              ))
+            }
+          </div>
         </div>
       </div>
     );

@@ -1,0 +1,21 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.task-page{
+  .task {
+
+  }
+
+  .task__header {
+    background: $primary;
+  }
+
+  .details-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .task__body {
+
+  }
+}
