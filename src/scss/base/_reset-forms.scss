@@ -46,9 +46,9 @@ A couple of things to watch out for:
 }
 
 @mixin form-reset-input-specific {
-  &:focus {
-    outline: 0;
-  }
+  // &:focus {
+  //   outline: 0;
+  // }
 
   &[type=checkbox],
   &[type=radio] {
@@ -135,17 +135,17 @@ A couple of things to watch out for:
 @mixin form-reset-button-specific {
   background: none;
   border: 0;
-  outline: none;
+  // outline: none;
 
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
   }
-  &:hover,
-  &:active,
-  &:focus {
-    outline: 0;
-  }
+  // &:hover,
+  // &:active,
+  // &:focus {
+  //   outline: 0;
+  // }
 
   /* IE8 and FF freak out if this rule is within another selector */
   @at-root {
