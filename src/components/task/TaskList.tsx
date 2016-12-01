@@ -39,7 +39,7 @@ export class TaksList extends React.Component<TaksListProps, TaksListState> {
                     color={'light'}
                     bottomMargin
                   />
-                  <Text text={task.name} size={'h2'} bottomMargin />
+                  <Text className="task-name" text={task.name} size={'h2'} bottomMargin />
                   <Text className="u-hide@sm" text={task.tags.join(', ')} size={'small'} />
                 </div>
                 <TaskDetails task={task} />

@@ -92,7 +92,7 @@ export class Call extends React.Component<CallProps, CallState> {
                   ))
                 }
               </div>
-              <Text blockQuote displayBlock>
+              <Text bottomMargin blockQuote displayBlock>
                 <Text
                   size={'p'}
                   type={'header'}
