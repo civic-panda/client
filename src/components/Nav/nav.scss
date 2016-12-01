@@ -4,23 +4,32 @@
 $nav-height: 70px;
 
 .nav {
+  position: fixed;
+  top: 0;
   height: $nav-height;
+  width: 100%;
   background-color: $primary;
   color: $white;
-}
 
-.links {
-  height: 100%;
-  float: right;
-  line-height: $nav-height
-}
+  .back-button {
+    height: 100%;
+    float: left;
+    line-height: $nav-height
+  }
 
-.link {
-  display: inline-block;
-  height: 100%;
-  padding: 0 $standard-spacing * 2;
+  .links {
+    height: 100%;
+    float: right;
+    line-height: $nav-height
+  }
 
-  &:hover {
-    text-decoration: underline;
+  .link {
+    display: inline-block;
+    height: 100%;
+    padding: 0 $standard-spacing * 2;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
