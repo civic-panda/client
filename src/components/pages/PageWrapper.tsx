@@ -1,17 +1,23 @@
 import * as React from 'react';
 
 import Nav from '../Nav';
+import './page-wrapper.scss';
 
-interface PageWrapperProps {};
+interface Props {
+  routes: { name: string }[];
+};
 
-interface PageWrapperState {};
+interface State {};
 
-export class PageWrapper extends React.Component<PageWrapperProps, PageWrapperState> {
+export class PageWrapper extends React.Component<Props, State> {
   public render() {
+    const currentRoute = this.props.routes[this.props.routes.length - 1];
     return (
-      <div>
-        <Nav />
-        {this.props.children}
+      <div className="page-container">
+        <Nav currentRoute={currentRoute.name} />
+        <div className="page-content">
+          {this.props.children}
+        </div>
       </div>
     );
   }
