@@ -21,7 +21,7 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
       return (
         <div className="back-button">
           <Link
-            text={props.location ? 'Your tasks' : 'Get started'}
+            text={props.location ? '‹ Your tasks' : '‹ Get started'}
             to={props.location ? '/tasks' : '/'}
           />
         </div>
@@ -31,7 +31,7 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
       return (
         <div className="back-button">
           <Link
-            text={props.location ? 'Your tasks' : 'Get started'}
+            text={props.location ? '‹ Your tasks' : '‹ Get started'}
             to={props.location ? '/tasks' : '/'}
           />
         </div>
@@ -40,14 +40,14 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
     case 'tasks':
       return (
         <div className="back-button">
-          <Link text={props.location.name} to={'/'} />
+          <Link text={`‹ ${props.location.name}`} to={'/'} />
         </div>
       );
 
     case 'task':
       return (
         <div className="back-button">
-          <Link text={'All tasks'} to={'/tasks'} />
+          <Link text={'‹ All tasks'} to={'/tasks'} />
         </div>
       );
 

@@ -1,0 +1,8 @@
+.call-script-transition-appear {
+  opacity: 0;
+}
+
+.call-script-transition-appear.call-script-transition-appear-active {
+  opacity: 1;
+  transition: opacity 280ms ease-in;
+}

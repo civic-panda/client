@@ -1,9 +1,14 @@
 import * as React from 'react';
+import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import './call.scss';
 
 import { Button, Link, Text, Toggle } from '../ui';
 
 interface CallProps {
   taskName: string;
+  taskId: number;
+  completeCall: (id: number) => void;
   callList: { name: string, phoneNumbers: string[] }[];
   requestedAction: string;
   scripts: {
@@ -48,6 +53,62 @@ export class Call extends React.Component<CallProps, CallState> {
     this.setState(newState);
   }
 
+  public renderCallScript = (callee: { name: string, phoneNumbers: string[] }) => (
+    <div>
+      <Text
+        text={`2. Call to ${this.state.calleeStance === 'yea' ? 'thank' : 'petition'} ${callee.name}`}
+        displayBlock
+        bottomMargin
+      />
+      <Text
+        text={`\
+          You can call any of their offices throughout the state,\
+          no matter where you live so if you get a busy signal on one\
+          just go down this list of numbers until you get through:\
+        `}
+        italic
+        displayBlock
+        bottomMargin
+      />
+      <div className="row">
+        {
+          callee.phoneNumbers.map(phoneNumber => (
+            <div key={phoneNumber} className="col--1-4">
+              <Text
+                text={phoneNumber}
+                color={'highlight'}
+                format={'Phone Number'}
+                align={'left'}
+                displayBlock
+                bottomMargin
+              />
+            </div>
+          ))
+        }
+      </div>
+      <Text bottomMargin blockQuote displayBlock>
+        <Text
+          size={'p'}
+          type={'header'}
+          color={'accent'}
+          text={`Sample transcript`}
+          displayBlock
+          bottomMargin
+        />
+        <Text
+          text={this.state.calleeStance === 'yea' ? this.props.scripts.thankYou : this.props.scripts.petition}
+          displayBlock
+        />
+      </Text>
+      {(this.state.currentStep < this.props.callList.length - 1) &&
+        <Button text={'Next'} onClick={this.nextStep} />
+      }
+      {(this.state.currentStep === this.props.callList.length - 1) &&
+        <Link text={'Done'} link={'/tasks'} onClick={() => this.props.completeCall(this.props.taskId)} />
+      }
+    </div>
+  )
+
   public render() {
     const callee = this.props.callList[this.state.currentStep];
 
@@ -75,59 +136,15 @@ export class Call extends React.Component<CallProps, CallState> {
             />
           </Text>
           {this.state.calleeStance !== 'unknown' &&
-            <div>
-              <Text
-                text={`2. Call to ${this.state.calleeStance === 'yea' ? 'thank' : 'petition'} ${callee.name}`}
-                displayBlock
-                bottomMargin
-              />
-              <Text
-                text={`\
-                  You can call any of their offices throughout the state,\
-                  no matter where you live so if you get a busy signal on one\
-                  just go down this list of numbers until you get through:\
-                `}
-                italic
-                displayBlock
-                bottomMargin
-              />
-              <div className="row">
-                {
-                  callee.phoneNumbers.map(phoneNumber => (
-                    <div key={phoneNumber} className="col--1-4">
-                      <Text
-                        text={phoneNumber}
-                        color={'highlight'}
-                        format={'Phone Number'}
-                        align={'left'}
-                        displayBlock
-                        bottomMargin
-                      />
-                    </div>
-                  ))
-                }
-              </div>
-              <Text bottomMargin blockQuote displayBlock>
-                <Text
-                  size={'p'}
-                  type={'header'}
-                  color={'accent'}
-                  text={`Sample transcript`}
-                  displayBlock
-                  bottomMargin
-                />
-                <Text
-                  text={this.state.calleeStance === 'yea' ? this.props.scripts.thankYou : this.props.scripts.petition}
-                  displayBlock
-                />
-              </Text>
-              {(this.state.currentStep < this.props.callList.length - 1) &&
-                <Button text={'Next'} onClick={this.nextStep} />
-              }
-              {(this.state.currentStep === this.props.callList.length - 1) &&
-                <Link text={'Done'} link={'/tasks'} />
-              }
-            </div>
+            <ReactCSSTransitionGroup
+              transitionName="call-script-transition"
+              transitionAppear
+              transitionAppearTimeout={280}
+              transitionEnterTimeout={0}
+              transitionLeaveTimeout={0}
+            >
+              {this.renderCallScript(callee)}
+            </ReactCSSTransitionGroup>
           }
         </div>
         <div className={'task__notes u-hide@lt-lg col--1-3'}>

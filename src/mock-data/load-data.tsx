@@ -24,9 +24,11 @@ interface Props {
 export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
   class LoadData extends React.Component<Props & ActionProps & StateProps, {}> {
     public componentDidMount() {
-      this.props.setTasks(taskData);
-      this.props.setCongress(congressData);
-      this.props.setUser(userData);
+      setTimeout(() => {
+        this.props.setTasks(taskData);
+        this.props.setCongress(congressData);
+        this.props.setUser(userData);
+      }, 2000);
     }
 
     public render() {

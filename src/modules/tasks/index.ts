@@ -8,7 +8,7 @@ type Issue = {
   requestedAction: string;
 }
 type Tag = 'open internet' | 'privacy' | string;
-type Template = 'CallSenate' | 'CallHouse';
+type Template = 'CallSenate' | 'CallHouse' | 'CallCongress';
 
 type Location = {
   latitude?: number;
@@ -17,6 +17,7 @@ type Location = {
 
 export interface Task {
   id: number;
+  completed: boolean;
   name: string;
   issue: Issue;
   activityType: Activity;
@@ -38,10 +39,12 @@ export const KEY = 'tasks';
 
 export const actions = {
   SET_LIST: 'civic/tasks/SET_LIST',
+  COMPLETE_TASK: 'civic/tasks/COMPLETE_TASK',
 };
 
 export const actionCreators = {
   setList: (list: Task[]) => ({ type: actions.SET_LIST, payload: list }),
+  completeTask: (taskId: number) => ({ type: actions.COMPLETE_TASK, payload: taskId }),
 };
 
 const initialState: State = {
@@ -52,6 +55,17 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
   switch (action.type) {
     case actions.SET_LIST:
       return {...state, list: action.payload };
+
+    case actions.COMPLETE_TASK: {
+      const index = state.list.findIndex(task => task.id === action.payload);
+      const updatedTask = { ...state.list[index], completed: true };
+
+      return { ...state, list: [
+        ...state.list.slice(0, index),
+        updatedTask,
+        ...state.list.slice(index + 1),
+      ]};
+    }
 
     default:
       return state;
