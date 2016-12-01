@@ -1,9 +1,12 @@
 import * as React from 'react';
 
-import Link from './Link';
+import BackButton from './BackButton';
 import './nav.scss';
+import Link from './NavLink';
 
-interface NavProps {};
+interface NavProps {
+  currentRoute: string;
+};
 
 interface NavState {};
 
@@ -20,6 +23,7 @@ export class Nav extends React.Component<NavProps, NavState> {
     return (
       <div className={'nav'}>
         <div className="row">
+          <BackButton currentRoute={this.props.currentRoute} />
           <div className="links">
             {
               links.map(link => (

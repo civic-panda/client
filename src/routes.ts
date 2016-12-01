@@ -1,14 +1,16 @@
 import * as pages from './components/pages';
 
+// ALL routes must have a name prop! This is used by the navbar
 const siteRoutes = {
   path: '/',
+  name: 'splash',
   component: pages.PageWrapper,
   indexRoute: { component: pages.SplashPage },
   childRoutes: [
-    { path: 'faq', component: pages.FAQPage },
-    { path: 'about', component: pages.AboutPage },
-    { path: 'tasks', component: pages.TaskListPage },
-    { path: 'tasks/:taskId', component: pages.TaskPage },
+    { name: 'faq', path: 'faq', component: pages.FAQPage },
+    { name: 'about', path: 'about', component: pages.AboutPage },
+    { name: 'tasks', path: 'tasks', component: pages.TaskListPage },
+    { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage },
   ],
 };
 
