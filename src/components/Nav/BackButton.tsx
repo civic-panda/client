@@ -17,6 +17,26 @@ interface OwnProps {
 
 const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) => {
   switch (props.currentRoute) {
+    case 'about':
+      return (
+        <div className="back-button">
+          <Link
+            text={props.location ? 'Your tasks' : 'Get started'}
+            to={props.location ? '/tasks' : '/'}
+          />
+        </div>
+      );
+
+    case 'faq':
+      return (
+        <div className="back-button">
+          <Link
+            text={props.location ? 'Your tasks' : 'Get started'}
+            to={props.location ? '/tasks' : '/'}
+          />
+        </div>
+      );
+
     case 'tasks':
       return (
         <div className="back-button">

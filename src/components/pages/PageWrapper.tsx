@@ -20,10 +20,8 @@ export class PageWrapper extends React.Component<Props, State> {
         <Nav currentRoute={currentRoute.name} />
         <ReactCSSTransitionGroup
           transitionName="page-transition"
-          transitionAppear
-          transitionAppearTimeout={500}
-          transitionEnterTimeout={120}
-          transitionLeaveTimeout={120}
+          transitionEnterTimeout={180}
+          transitionLeaveTimeout={180}
         >
           <div key={this.props.location.pathname} className="page-content">
             {this.props.children}
