@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import './button.scss';
 import Text from './Text';
 
-type ButtonType = 'primary' | 'secondary';
+type ButtonType = 'primary' | 'secondary' | 'highlighted';
 type ButtonSize = 'small' | 'large';
 
 interface ButtonProps {
@@ -40,7 +40,11 @@ export const Button = (props: ButtonProps) => {
       onClick={onClick}
       {...otherProps}
     >
-      <Text text={`${text}${children}`} color={'inverse'} align={'center'} />
+      <Text
+        text={`${text}${children}`}
+        color={type === 'secondary' ? 'highlight' : 'inverse'}
+        align={'center'}
+      />
     </button>
   );
 };

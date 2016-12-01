@@ -20,6 +20,7 @@ interface TextProps {
   weight?: string;
   children?: string;
   className?: string;
+  italic?: boolean;
   bottomMargin?: boolean;
   displayBlock?: boolean;
   blockQuote?: boolean;
@@ -35,6 +36,7 @@ export const Text = (props: TextProps) => {
     weight = 'normal',
     children = '',
     className = '',
+    italic,
     bottomMargin,
     displayBlock,
     blockQuote,
@@ -46,6 +48,7 @@ export const Text = (props: TextProps) => {
     [`${color}`]: true,
     [`${type}`]: true,
     [`${weight}`]: true,
+    italic,
     'display-block': displayBlock,
     'block-quote': blockQuote,
     'remove-bottom-margin': !bottomMargin,

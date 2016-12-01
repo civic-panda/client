@@ -9,17 +9,24 @@
   width: 130px;
   background: $accent;
 
-  &:hover {
-    background: get-color($accent, 600);
-  }
-
-  &:active {
-    background: get-color($accent, 700);
-  }
+  &:hover { background: get-color($accent, 600); }
+  &:active { background: get-color($accent, 700); }
 }
 
 .button--small {
-  height: $standard-spacing;
+  height: 1.25 * $standard-spacing;
   width: auto;
   padding: 0 $standard-spacing;
+}
+
+.button--secondary {
+  background: $gray;
+  &:hover { background: get-color($gray, 600); }
+  &:active { background: get-color($gray, 700); }
+}
+
+.button--highlighted {
+  background: $highlight;
+  &:hover { background: get-color($highlight, 600); }
+  &:active { background: get-color($highlight, 700); }
 }

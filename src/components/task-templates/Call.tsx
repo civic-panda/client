@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Link, Text } from '../ui';
+import { Button, Link, Text, Toggle } from '../ui';
 
 interface CallProps {
   taskName: string;
@@ -12,9 +12,11 @@ interface CallProps {
   };
 };
 
+type Stance = 'unknown' | 'yea' | 'nay';
+
 interface CallState {
   currentStep: number;
-  calleeStance: 'unknown' | 'yea' | 'nay';
+  calleeStance: Stance;
 };
 
 export class Call extends React.Component<CallProps, CallState> {
@@ -65,14 +67,27 @@ export class Call extends React.Component<CallProps, CallState> {
             displayBlock
             bottomMargin
           />
-          <div>
-            <Button text={'YES'} onClick={this.setYea} />
-            <Button text={'NO'} onClick={this.setNay} />
-          </div>
+          <Text bottomMargin displayBlock>
+            <Toggle
+              options={[{ name: 'YES', value: 'yea'}, { name: 'NO', value: 'nay' }]}
+              select={(option: Stance) => this.setState({...this.state, calleeStance: option })}
+              selected={this.state.calleeStance}
+            />
+          </Text>
           {this.state.calleeStance !== 'unknown' &&
             <div>
               <Text
                 text={`2. Call to ${this.state.calleeStance === 'yea' ? 'thank' : 'petition'} ${callee.name}`}
+                displayBlock
+                bottomMargin
+              />
+              <Text
+                text={`\
+                  You can call any of their offices throughout the state,\
+                  no matter where you live so if you get a busy signal on one\
+                  just go down this list of numbers until you get through:\
+                `}
+                italic
                 displayBlock
                 bottomMargin
               />
@@ -106,9 +121,6 @@ export class Call extends React.Component<CallProps, CallState> {
                   displayBlock
                 />
               </Text>
-              {(this.state.currentStep > 0) &&
-                <Button text={'Prev'} onClick={this.prevStep} />
-              }
               {(this.state.currentStep < this.props.callList.length - 1) &&
                 <Button text={'Next'} onClick={this.nextStep} />
               }
