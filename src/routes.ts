@@ -1,12 +1,14 @@
-import { PageWrapper, SplashPage, TaskListPage, TaskPage } from './components/pages';
+import * as pages from './components/pages';
 
 const siteRoutes = {
   path: '/',
-  component: PageWrapper,
-  indexRoute: { component: SplashPage },
+  component: pages.PageWrapper,
+  indexRoute: { component: pages.SplashPage },
   childRoutes: [
-    { path: 'tasks', component: TaskListPage },
-    { path: 'tasks/:taskId', component: TaskPage },
+    { path: 'faq', component: pages.FAQPage },
+    { path: 'about', component: pages.AboutPage },
+    { path: 'tasks', component: pages.TaskListPage },
+    { path: 'tasks/:taskId', component: pages.TaskPage },
   ],
 };
 
