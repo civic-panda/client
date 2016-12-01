@@ -1,0 +1,32 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+@import '../../scss/base/reset-forms';
+
+.button {
+  @include form-reset-button;
+  display: inline-block;
+  height: 1.5 * $standard-spacing;
+  width: 130px;
+  background: $accent;
+
+  &:hover { background: get-color($accent, 600); }
+  &:active { background: get-color($accent, 700); }
+}
+
+.button--small {
+  height: 1.25 * $standard-spacing;
+  width: auto;
+  padding: 0 $standard-spacing;
+}
+
+.button--secondary {
+  background: $gray;
+  &:hover { background: get-color($gray, 600); }
+  &:active { background: get-color($gray, 700); }
+}
+
+.button--highlighted {
+  background: $highlight;
+  &:hover { background: get-color($highlight, 600); }
+  &:active { background: get-color($highlight, 700); }
+}

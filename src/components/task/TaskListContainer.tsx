@@ -16,5 +16,5 @@ const mapStateToProps = (state: AppState) => ({
   tasks: tasks.selectors.getList(state),
 });
 
-export const ListContainer = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskList);
-export default ListContainer;
+export const TaskListContainer = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskList);
+export default TaskListContainer;

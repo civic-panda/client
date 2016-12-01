@@ -21,7 +21,8 @@ $column-sizes: (1, 2, 3, 4, 5, 12);
 .row{
   @extend .u-clearfix;
   width: 100%;
-  margin-bottom: $standard-spacing * 2;
+  max-width: $max-content-width;
+  margin: 0 auto;
 }
 
 .row--centered{
@@ -63,11 +64,16 @@ $column-sizes: (1, 2, 3, 4, 5, 12);
 }
 
 .row--padded {
-  padding: $standard-spacing * 2;
+  padding: 0 $standard-spacing;
+  >.col,
+  >[class^="col--"],
+  >[class*=" col--"]{
+    padding: $standard-spacing;
+  }
 }
 
 .col--padded {
-  padding: 0 $standard-spacing * 2;
+  padding: $standard-spacing $standard-spacing * 2;
 }
 
 .col--padded+.col--padded {

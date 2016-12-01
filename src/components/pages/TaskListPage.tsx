@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { ListContainer } from '../TaskList';
-import TaskMap from '../TaskMap';
+import { TaskListContainer, TaskMap } from '../task';
 
 interface TaskListPageProps {};
 
@@ -10,11 +9,11 @@ interface TaskListPageState {};
 export class TaskListPage extends React.Component<TaskListPageProps, TaskListPageState> {
   public render() {
     return (
-      <div className={'row'}>
-        <div className="col--12-12 col--8-12@md col--8-12@lg col--7-12@xl col--padded">
-          <ListContainer />
+      <div className={'row row--padded'}>
+        <div className="col--1-1 col--2-3@lg">
+          <TaskListContainer />
         </div>
-        <div className="u-hide@lt-md col--4-12@md col--4-12@lg col--5-12@xl col--padded">
+        <div className="u-hide@lt-lg col--1-3">
           <TaskMap />
         </div>
       </div>

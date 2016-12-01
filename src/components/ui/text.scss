@@ -1,44 +1,63 @@
 @import '../../scss/abstracts/colors';
-.remove-bottom-margin.remove-bottom-margin {
+@import '../../scss/abstracts/variables';
+
+.text.display-block {
+  display: block;
+}
+
+.text.remove-bottom-margin {
   margin-bottom: 0;
 }
 
-.header {
+.text.header {
 
 }
 
-.label {
+.text.label {
 
 }
 
-.body {
+.text.body {
 
 }
 
-.left { text-align: left; }
-.center { text-align: center; }
-.right { text-align: right; }
+.text.left { text-align: left; }
+.text.center { text-align: center; }
+.text.right { text-align: right; }
 
-.primary {
+.text.primary {
   color: $black;
 }
 
-.accent {
+.text.highlight {
+  color: $highlight;
+}
+
+.text.accent {
   color: $accent;
 }
 
-.inverse {
+.text.inverse {
   color: $white;
 }
 
-.light {
+.text.light {
   color: get-color($gray, 900);
 }
 
-.normal {
+.text.normal {
 
 }
 
-.bold {
+.text.italic {
+  font-style: italic;
+}
+
+.text.bold {
   font-weight: 700;
+}
+
+.text.block-quote {
+  padding: $standard-spacing;
+  background: get-color($highlight, 50);
 }

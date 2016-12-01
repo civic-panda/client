@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { tasks } from '../../modules';
 import { Text } from '../ui';
 import './task-list.scss';
+import TaskDetails from './TaskDetails';
 
 interface TaksListProps {
   tasks: tasks.Task[];
@@ -29,26 +30,19 @@ export class TaksList extends React.Component<TaksListProps, TaksListState> {
       <div className={'task-list'}>
         {
           this.props.tasks.map(task => (
-            <Link to={`tasks/${task.id}`}>
-              <div key={task.id} className="task">
+            <Link key={task.id} to={`/tasks/${task.id}`}>
+              <div className="task">
                 <div className="task__description">
-                    <Text
-                      text={task.causes.join(', ')}
-                      size={'small'}
-                      color={'light'}
-                      bottomMargin
-                    />
-                    <Text text={task.name} size={'h2'} bottomMargin />
-                    <Text className="u-hide@sm" text={task.tags.join(', ')} size={'small'} />
+                  <Text
+                    text={task.issue.name}
+                    size={'small'}
+                    color={'light'}
+                    bottomMargin
+                  />
+                  <Text className="task-name" text={task.name} size={'h2'} bottomMargin />
+                  <Text className="u-hide@sm" text={task.tags.join(', ')} size={'small'} />
                 </div>
-                <div className="task__details">
-                  <div className={`duration ${this.getDurationClass(task.duration)}`}>
-                    <Text text={`${task.duration}`} color={'inverse'} align={'center'} />
-                  </div>
-                  <div className="distance">
-                    <Text text={'0 miles away'} align={'center'} />
-                  </div>
-                </div>
+                <TaskDetails task={task} />
               </div>
             </Link>
           ))

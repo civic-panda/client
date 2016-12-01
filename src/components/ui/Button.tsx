@@ -2,7 +2,10 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router';
 
-type ButtonType = 'primary' | 'secondary';
+import './button.scss';
+import Text from './Text';
+
+type ButtonType = 'primary' | 'secondary' | 'highlighted';
 type ButtonSize = 'small' | 'large';
 
 interface ButtonProps {
@@ -21,12 +24,15 @@ interface LinkProps extends ButtonProps {
 // Primary Button
 export const Button = (props: ButtonProps) => {
   const nullFn = (): void => null;
-  const { type = 'primary', children, size, text, loading, onClick = nullFn, ...otherProps } = props;
-  const classes = classNames('button', {
-    'button--is-loading': !!loading,
-    [`button--${type}`]: !!type,
-    [`button--${size}`]: !!size,
-  });
+  const { type = 'primary', children = '', size, text = '', loading, onClick = nullFn, ...otherProps } = props;
+  const classes = classNames(
+    'button',
+    {
+      'button--is-loading': !!loading,
+      [`button--${type}`]: !!type,
+      [`button--${size}`]: !!size,
+    }
+  );
 
   return (
     <button
@@ -34,7 +40,11 @@ export const Button = (props: ButtonProps) => {
       onClick={onClick}
       {...otherProps}
     >
-      {text}{children}
+      <Text
+        text={`${text}${children}`}
+        color={type === 'secondary' ? 'highlight' : 'inverse'}
+        align={'center'}
+      />
     </button>
   );
 };

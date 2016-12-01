@@ -31,7 +31,7 @@
 
 /**
   includes variables for:
-    $primary $accent $secondary $tertiary $quaternary
+    $primary $accent $secondary $color-2 $color-1
     $white $gray $black $warning $error
 
   to get a color variant, use the function get-color(color, degree) where degree
@@ -65,6 +65,7 @@
 @import './base/typography';
 
 body {
+  box-sizing: border-box;
   color: $black;
 	background: $white;
   margin: 0;

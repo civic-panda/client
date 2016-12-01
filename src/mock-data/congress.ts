@@ -22,6 +22,28 @@ const senators: congress.Senator[] = [{
   email: 'Scheduling_Schumer@schumer.senate.gov',
   ontheissuesUrl: 'http://www.ontheissues.org/Senate/Charles_Schumer.htm',
   committees: [],
+}, {
+  id: 1,
+  state: 'NY',
+  seniority: 'junior',
+  fullName: 'Kirsten Elizabeth Gillibrand',
+  commonName: 'Kirsten Gillibrand',
+  party: 'D',
+  phoneNumbers: [
+    '5184310120',
+    '7168549725',
+    '6312492825',
+    '3153766118',
+    '5852636250',
+    '3154480470',
+    '2126886262',
+    '2022244451',
+    '8458754585',
+  ],
+  address: 'New York City Office 780 Third Avenue Suite 2601 New York, New York 10017',
+  email: 'invite@gillibrand.senate.gov',
+  ontheissuesUrl: 'http://www.ontheissues.org/NY/Kirsten_Gillibrand.htm',
+  committees: [],
 }];
 
 const representatives: congress.Representative[] = [{
