@@ -14,7 +14,7 @@ export class Link extends React.Component<LinkProps, LinkState> {
   public render() {
     return (
       <RouterLink className={'link'} to={this.props.to}>
-        <Text text={this.props.text} color={'inverse'} />
+        <Text text={this.props.text} color={'inverse'} size={'h4'} />
       </RouterLink>
     );
   }

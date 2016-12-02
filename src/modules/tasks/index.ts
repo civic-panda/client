@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-import { selectors as issueSelectors } from '../issues';
 import { Action } from '../../redux/action';
+import { selectors as issueSelectors } from '../issues';
 
 type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
 type Tag = 'high priority' | string;
@@ -19,7 +19,7 @@ export interface Task {
   issueId: number;
   activityType: Activity;
   tags: Tag[];
-  duration: number;
+  duration: number | string;
   startDate: number;
   endDate: number;
   location: Location;

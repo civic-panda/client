@@ -22,7 +22,8 @@ $column-sizes: (1, 2, 3, 4, 5, 12);
   @extend .u-clearfix;
   width: 100%;
   max-width: $max-content-width;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .row--centered{

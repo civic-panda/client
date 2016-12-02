@@ -62,7 +62,7 @@ const data: tasks.Task[] = [{
     'important',
     'test',
   ],
-  duration: 30,
+  duration: 'All day',
   startDate: 1480394079073,
   endDate: 1480394079073,
   location: {

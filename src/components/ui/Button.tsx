@@ -42,6 +42,7 @@ export const Button = (props: ButtonProps) => {
     >
       <Text
         text={`${text}${children}`}
+        size={size === 'small' ? 'h5' : 'h4'}
         color={type === 'secondary' ? 'highlight' : 'inverse'}
         align={'center'}
       />
