@@ -17,6 +17,7 @@ interface InputProps {
   placeholder?: string;
   value?: string;
   autoFocus?: boolean;
+  customInput?: any;
   onChange(event: any): void;
 };
 
@@ -35,16 +36,19 @@ export const Input = (props: InputProps) => {
         {label}
       </label>
       {error && <span className={'input__error'}>{error}</span>}
-      <input
-        id={name}
-        className={inputClasses}
-        type={type}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        value={value}
-        autoFocus={autoFocus}
-      />
+      {props.customInput
+        ? props.customInput
+        : <input
+          id={name}
+          className={inputClasses}
+          type={type}
+          name={name}
+          onChange={onChange}
+          placeholder={placeholder}
+          value={value}
+          autoFocus={autoFocus}
+        />
+      }
     </div>
   );
 };

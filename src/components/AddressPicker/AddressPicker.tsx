@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { Button, Input, Link, Text } from '../ui';
 import './address-picker.scss';
+import AutocompleteInput from './AutocompleteInput';
 
 interface AddressPickerProps {
   style?: 'light' | 'dark';
@@ -58,6 +59,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             placeholder={'Your address'}
             value={this.state.address}
             onChange={this.setAddress}
+            customInput={<AutocompleteInput />}
           />
           <Input
             label={`and I have`}
@@ -67,7 +69,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             onChange={this.setMinutes}
             size={'short'}
           />
-          <Link text={'Find tasks'} link={'tasks'} onClick={this.geocodeAddress} />
+          <Button text={'Find tasks'} onClick={this.geocodeAddress} />
         </div>
       </div>
     );
