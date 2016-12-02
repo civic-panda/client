@@ -12,7 +12,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     return (
       <div className="address-picker">
         <div className="row row--centered row--padded">
-          <Link text={'Button'} link={'tasks'} />
+          <Link text={'Find tasks'} link={'tasks'} />
         </div>
       </div>
     );
