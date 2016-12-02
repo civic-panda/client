@@ -1,0 +1,22 @@
+{
+    "authors": "Folia A/S <http://www.folia.dk>, Chris Wrench <https://github.com/cgwrench>",
+    "libraryDependencies": [],
+    "moduleDependencies": [],
+    "libraryMajorVersion": 3,
+    "libraryMinorVersion": 25,
+    "libraryName": "Google Maps JavaScript API",
+    "typingsPackageName": "googlemaps",
+    "projectName": "https://developers.google.com/maps/",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "Global",
+    "globals": [
+        "google"
+    ],
+    "declaredModules": [],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "6bbd0c37ba6bc329a9271162bd4939c2a93c7459fe5199bbc32715bfc90a5b0a"
+}
