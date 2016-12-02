@@ -54,6 +54,7 @@ module.exports = {
   devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: [
+    'whatwg-fetch',
     require.resolve('./polyfills'),
     paths.appIndexJs
   ],

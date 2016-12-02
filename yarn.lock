@@ -6,6 +6,10 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-0.0.32.tgz#449abcd9a826807811ef101e58df9f83cfc61713"
 
+"@types/googlemaps@^3.25.37":
+  version "3.25.37"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.25.37.tgz#3f86d28ac3a0c5d0ba3524fd63a6eca8baaaa14d"
+
 "@types/history@*":
   version "2.0.39"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-2.0.39.tgz#f07c1a770dc95f17d439bd22648109fde1bcd9ad"
@@ -66,6 +70,16 @@
 "@types/reselect@^2.0.27":
   version "2.0.27"
   resolved "https://registry.yarnpkg.com/@types/reselect/-/reselect-2.0.27.tgz#78a53338a99bb1bc4b6aea0e1a9315a0e37e7383"
+
+"@types/whatwg-fetch@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@types/whatwg-fetch/-/whatwg-fetch-0.0.32.tgz#ded91dbae1e6ffb826f14b171a67e7f7e508d0c5"
+  dependencies:
+    "@types/whatwg-streams" "*"
+
+"@types/whatwg-streams@*":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@types/whatwg-streams/-/whatwg-streams-0.0.1.tgz#b9d8f23d8320939bea12dc7a48e530fdb21009b3"
 
 Base64@~0.2.0:
   version "0.2.1"
@@ -5974,9 +5988,9 @@ whatwg-encoding@^1.0.1:
   dependencies:
     iconv-lite "0.4.13"
 
-whatwg-fetch@1.0.0, whatwg-fetch@>=0.10.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-1.0.0.tgz#01c2ac4df40e236aaa18480e3be74bd5c8eb798e"
+whatwg-fetch@>=0.10.0, whatwg-fetch@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.1.tgz#078b9461bbe91cea73cbce8bb122a05f9e92b772"
 
 whatwg-url@^3.0.0:
   version "3.1.0"

@@ -10,10 +10,12 @@
       "dom",
       "es5",
       "scripthost",
-      "es2015"
+      "es2015",
+      "es2016"
     ]
   },
   "filesGlob": [
+    "node_modules/@types/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx"
   ]

@@ -1,22 +1,18 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 @import '../../scss/base/reset-forms';
+@import '../../scss/vendors/include-media';
 
 .button {
   @include form-reset-button;
-  display: inline-block;
+  display: block;
+  width: 100%;
   height: 1.5 * $standard-spacing;
-  width: 130px;
   background: $accent;
   cursor: pointer;
 
   &:hover { background: get-color($accent, 600); }
   &:active { background: get-color($accent, 700); }
-}
-
-.input-container+.button,
-.input-container+a {
-  margin-left: 0.5rem;
 }
 
 .button--small {
@@ -39,6 +35,35 @@
 
 .button--colorless {
   background: rgba($white, 0.9);
-  &:hover { background: rgba($white, 0.8); }
-  &:active { background: rgba($white, 0.5); }
+  border: solid 1px rgba($gray, 0.8);
+
+  &:hover {
+    background: rgba($gray, 0.8);
+    border: solid 1px transparent;
+  }
+
+  &:active {
+    background: rgba($gray, 0.5);
+    border: solid 1px transparent;
+  }
+
+}
+
+@include media('>small') {
+  .button {
+    width: 130px;
+    margin: 0 auto;
+  }
+
+  .input-container+.button,
+  .input-container+a {
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+}
+
+@include media('>medium') {
+  .button {
+    display: inline-block;
+  }
 }

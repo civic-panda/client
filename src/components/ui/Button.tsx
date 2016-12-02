@@ -25,7 +25,17 @@ interface LinkProps extends ButtonProps {
 // Primary Button
 export const Button = (props: ButtonProps) => {
   const nullFn = (): void => null;
-  const { type = 'primary', children = '', size, text = '', loading, onClick = nullFn, ...otherProps } = props;
+
+  const {
+    type = 'primary',
+    children = '',
+    size,
+    text = '',
+    loading,
+    onClick = nullFn,
+    preventDefault, ...otherProps,
+  } = props;
+
   const classes = classNames(
     'button',
     {
@@ -38,7 +48,7 @@ export const Button = (props: ButtonProps) => {
   const textColor = type === 'secondary' ? 'highlight' : type === 'colorless' ? 'primary' : 'inverse';
 
   const clickHandler = (e: any) => {
-    if (props.preventDefault) {
+    if (preventDefault) {
       e.preventDefault();
       e.stopPropagation();
     }
