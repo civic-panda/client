@@ -6,6 +6,10 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-0.0.32.tgz#449abcd9a826807811ef101e58df9f83cfc61713"
 
+"@types/googlemaps@^3.25.37":
+  version "3.25.37"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.25.37.tgz#3f86d28ac3a0c5d0ba3524fd63a6eca8baaaa14d"
+
 "@types/history@*":
   version "2.0.39"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-2.0.39.tgz#f07c1a770dc95f17d439bd22648109fde1bcd9ad"

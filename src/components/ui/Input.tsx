@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 type HtmlInput = 'color' | 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' |
-  'number' | 'range' | 'search' | 'tel' | 'time' | 'url' | 'week' | 'password'
+  'number' | 'range' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week' | 'password'
 
 type InputSize = 'small' | 'large';
 
@@ -12,12 +12,13 @@ interface InputProps {
   label?: string;
   name?: string;
   error?: string;
+  placeholder?: string;
   value?: string;
   autoFocus?: boolean;
   onChange(event: any): void;
 };
 
-const Input = ({ autoFocus, name, label, value, error, type = 'text', onChange }: InputProps) => {
+export const Input = ({ autoFocus, name, label, placeholder, value, error, type = 'text', onChange }: InputProps) => {
   const containerClasses = classNames('input-container', { 'input-container--has-error': !!error });
   const inputClasses = classNames('input', { 'input--has-error': !!error });
   const labelClasses = classNames('input__label');
@@ -32,6 +33,7 @@ const Input = ({ autoFocus, name, label, value, error, type = 'text', onChange }
         type={type}
         name={name}
         onChange={onChange}
+        placeholder={placeholder}
         value={value}
         autoFocus={autoFocus}
       />
