@@ -6,14 +6,24 @@ import { Text } from '../ui';
 import './task-list.scss';
 import TaskDetails from './TaskDetails';
 
-interface TaksListProps {
+interface Props {
   tasks: tasks.Task[];
+  completedTasks: tasks.Task[];
   issues: issues.Issue[];
 };
 
-interface TaksListState {};
+interface State {
+  showCompleted: boolean;
+};
 
-export class TaksList extends React.Component<TaksListProps, TaksListState> {
+export class TaksList extends React.Component<Props, State> {
+  public constructor (props: Props) {
+    super(props);
+    this.state = {
+      showCompleted: false,
+    };
+  }
+
   public getDurationClass(time: string | number) {
       if (typeof time === 'string') {
         return 'duration--other';
@@ -45,20 +55,25 @@ export class TaksList extends React.Component<TaksListProps, TaksListState> {
   )
 
   public render() {
-    const remainingTasks = this.props.tasks.filter(task => !task.completed);
-    const completedTasks = this.props.tasks.filter(task => task.completed);
-
     return (
       <div className={'task-list'}>
-        {remainingTasks.map(this.renderTask)}
-        <Text
-          text={'Completed'}
-          size={'h2'}
-          color={'accent'}
-          displayBlock
-          bottomMargin
-        />
-        {completedTasks.map(this.renderTask)}
+        {this.props.tasks.map(this.renderTask)}
+        <div className="show-more-link">
+          <Text
+            text={
+              this.state.showCompleted
+                ? `Hide completed tasks (${this.props.completedTasks.length})`
+                : `Show completed tasks (${this.props.completedTasks.length})`
+            }
+            size={'h4'}
+            color={'highlight'}
+            displayBlock
+            onClick={() => this.setState({ showCompleted: !this.state.showCompleted })}
+          />
+        </div>
+        {this.state.showCompleted &&
+          this.props.completedTasks.map(this.renderTask)
+        }
       </div>
     );
   }

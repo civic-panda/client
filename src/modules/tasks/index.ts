@@ -38,6 +38,7 @@ export const KEY = 'tasks';
 export const actions = {
   SET_LIST: 'civic/tasks/SET_LIST',
   COMPLETE_TASK: 'civic/tasks/COMPLETE_TASK',
+  RESTART_TASK: 'civic/tasks/RESTART_TASK',
 };
 
 export const actionCreators = {
@@ -56,7 +57,12 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
       return {...state, list: action.payload };
 
     case actions.COMPLETE_TASK:
-      return {...state, completed: [...state.completed, action.payload] };
+      return (state.completed.indexOf(action.payload) === -1)
+        ? {...state, completed: [...state.completed, action.payload] }
+        : state;
+
+    case actions.RESTART_TASK:
+      return {...state, completed: state.completed.filter(id => id !== action.payload) };
 
     default:
       return state;
@@ -70,10 +76,21 @@ const getSubscribed = createSelector(
   issueSelectors.getSubscribed,
   (tasks, subscribedIssues) => tasks.filter(task => subscribedIssues.indexOf(task.issueId) > -1)
 );
+const getCompleted = createSelector(
+  getState,
+  state => state.list.filter(task => state.completed.indexOf(task.issueId) > -1)
+);
+const getRemaining = createSelector(
+  getState,
+  getSubscribed,
+  (state, subscribed) => subscribed.filter(task => state.completed.indexOf(task.issueId) === -1)
+);
 const getTaskId = (_state: any, { taskId }: { taskId: number }) => taskId;
 const getTask = createSelector(getList, getTaskId, (list, taskId) => list.find(task => task.id === taskId));
 export const selectors = {
   getState,
+  getCompleted,
+  getRemaining,
   getList,
   getTask,
   getSubscribed,

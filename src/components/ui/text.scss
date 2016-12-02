@@ -1,6 +1,11 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 
+.text.clickable:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .text.display-block {
   display: block;
 }
