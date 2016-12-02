@@ -31,7 +31,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
         this.props.setTasks(taskData);
         this.props.setCongress(congressData);
         this.props.setIssues(issueData);
-        this.props.setUser(userData);
+        // this.props.setUser(userData);
         issueData.forEach(issue => this.props.subscribe(issue.id));
       }, 300);
     }

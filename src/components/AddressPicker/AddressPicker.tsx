@@ -42,7 +42,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     const { district, state } = await lookupDistrict(lat, lng);
 
     this.props.setLocation({
-      name: place.formatted_address,
+      name: place.name,
       latitude: lat,
       longitude: lng,
       state,
