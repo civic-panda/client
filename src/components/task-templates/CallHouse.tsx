@@ -30,7 +30,7 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   return {
     taskName: task.name,
     taskId: task.id,
-    requestedAction: task.issue.requestedAction,
+    requestedAction: task.templateProps.requestedAction,
     callList: representatives.map(rep => ({ name: rep.commonName, phoneNumbers: rep.phoneNumbers })),
     scripts: task.templateProps.scripts,
   };

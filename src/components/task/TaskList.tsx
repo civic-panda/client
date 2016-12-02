@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 
-import { tasks } from '../../modules';
+import { issues, tasks } from '../../modules';
 import { Text } from '../ui';
 import './task-list.scss';
 import TaskDetails from './TaskDetails';
 
 interface TaksListProps {
   tasks: tasks.Task[];
+  issues: issues.Issue[];
 };
 
 interface TaksListState {};
@@ -30,7 +31,7 @@ export class TaksList extends React.Component<TaksListProps, TaksListState> {
       <div className="task">
         <div className="task__description">
           <Text
-            text={task.issue.name}
+            text={this.props.issues.find(issue => issue.id === task.issueId).name}
             size={'small'}
             color={'light'}
             bottomMargin

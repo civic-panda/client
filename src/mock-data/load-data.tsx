@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, congress, tasks, user } from '../modules';
+import { AppState, congress, issues, tasks, user } from '../modules';
 import congressData from './congress';
+import issueData from './issues';
 import taskData from './tasks';
 import userData from './user';
 
 interface ActionProps {
   setTasks(tasks: tasks.Task[]): void;
+  setIssues(issues: issues.Issue[]): void;
   setCongress(congress: congress.State): void;
   setUser(user: user.State): void;
 }
@@ -27,6 +29,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
       setTimeout(() => {
         this.props.setTasks(taskData);
         this.props.setCongress(congressData);
+        this.props.setIssues(issueData);
         this.props.setUser(userData);
       }, 2000);
     }
@@ -45,6 +48,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
   const mapActionsToProps = {
     setTasks: tasks.actionCreators.setList,
     setCongress: congress.actionCreators.setCongress,
+    setIssues: issues.actionCreators.setList,
     setUser: user.actionCreators.set,
   };
 

@@ -5,10 +5,7 @@ const data: tasks.Task[] = [{
   completed: false,
   name: 'Call your congress people',
   activityType: 'phone call',
-  issue: {
-    name: 'Test the ui',
-    requestedAction: 'click a button',
-  },
+  issueId: 1,
   tags: [
     'example',
     'test',
@@ -23,6 +20,7 @@ const data: tasks.Task[] = [{
   notes: 'This is a note on how to complete this task',
   template: 'CallCongress',
   templateProps: {
+    requestedAction: 'do a thing',
     scripts: {
       petition: 'Please do what we ask.',
       thankYou: 'Thanks for doing what we asked!',
@@ -33,10 +31,7 @@ const data: tasks.Task[] = [{
   completed: false,
   name: 'Call your senators',
   activityType: 'phone call',
-  issue: {
-    name: 'Make sure we can handle multiple tasks',
-    requestedAction: 'add multiple tasks',
-  },
+  issueId: 2,
   tags: [
     'important',
     'test',
@@ -51,6 +46,7 @@ const data: tasks.Task[] = [{
   notes: 'This is a note on how to complete this task',
   template: 'CallSenate',
   templateProps: {
+    requestedAction: 'do a thing',
     scripts: {
       petition: 'Please do what we ask.',
       thankYou: 'Thanks for doing what we asked!',
@@ -61,10 +57,7 @@ const data: tasks.Task[] = [{
   completed: false,
   name: 'Call your senators again! Bug the fuck out of them.',
   activityType: 'phone call',
-  issue: {
-    name: 'Make sure we can handle multiple tasks',
-    requestedAction: 'add multiple tasks',
-  },
+  issueId: 1,
   tags: [
     'important',
     'test',
@@ -79,6 +72,7 @@ const data: tasks.Task[] = [{
   notes: 'This is a note on how to complete this task',
   template: 'CallSenate',
   templateProps: {
+    requestedAction: 'do a thing',
     scripts: {
       petition: 'Please do what we ask.',
       thankYou: 'Thanks for doing what we asked!',

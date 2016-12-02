@@ -3,11 +3,7 @@ import { createSelector } from 'reselect';
 import { Action } from '../../redux/action';
 
 type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
-type Issue = {
-  name: string;
-  requestedAction: string;
-}
-type Tag = 'open internet' | 'privacy' | string;
+type Tag = 'high priority' | string;
 type Template = 'CallSenate' | 'CallHouse' | 'CallCongress';
 
 type Location = {
@@ -19,7 +15,7 @@ export interface Task {
   id: number;
   completed: boolean;
   name: string;
-  issue: Issue;
+  issueId: number;
   activityType: Activity;
   tags: Tag[];
   duration: number;
@@ -33,6 +29,7 @@ export interface Task {
 
 export interface State {
   list: Task[];
+  completed: number[];
 }
 
 export const KEY = 'tasks';
@@ -49,6 +46,7 @@ export const actionCreators = {
 
 const initialState: State = {
   list: [],
+  completed: [],
 };
 
 export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {
@@ -56,16 +54,8 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
     case actions.SET_LIST:
       return {...state, list: action.payload };
 
-    case actions.COMPLETE_TASK: {
-      const index = state.list.findIndex(task => task.id === action.payload);
-      const updatedTask = { ...state.list[index], completed: true };
-
-      return { ...state, list: [
-        ...state.list.slice(0, index),
-        updatedTask,
-        ...state.list.slice(index + 1),
-      ]};
-    }
+    case actions.COMPLETE_TASK:
+      return {...state, completed: [...state.completed, action.payload] };
 
     default:
       return state;
