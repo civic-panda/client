@@ -1,0 +1,8 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.address-picker {
+  background: $gray;
+  padding: 2 * $standard-spacing 0;
+  margin-bottom: $standard-spacing;
+}

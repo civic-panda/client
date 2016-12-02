@@ -1,9 +1,11 @@
 @import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
 
 .splash-hero {
   display: flex;
   height: 390px;
   background-color: $primary;
+  padding: $standard-spacing;
   align-items: center;
   justify-content: center;
 }

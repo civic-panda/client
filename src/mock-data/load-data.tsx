@@ -12,6 +12,7 @@ interface ActionProps {
   setIssues(issues: issues.Issue[]): void;
   setCongress(congress: congress.State): void;
   setUser(user: user.State): void;
+  subscribe(issueId: number): void;
 }
 
 interface StateProps {
@@ -31,6 +32,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
         this.props.setCongress(congressData);
         this.props.setIssues(issueData);
         this.props.setUser(userData);
+        issueData.forEach(issue => this.props.subscribe(issue.id));
       }, 2000);
     }
 
@@ -50,6 +52,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
     setCongress: congress.actionCreators.setCongress,
     setIssues: issues.actionCreators.setList,
     setUser: user.actionCreators.set,
+    subscribe: issues.actionCreators.subscribe,
   };
 
   return connect<StateProps, ActionProps, Props>(mapStateToProps, mapActionsToProps)(LoadData);
