@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, tasks } from '../../modules';
+import { AppState, issues, tasks } from '../../modules';
 import { TaskDetails } from '../task';
 import * as templates from '../task-templates';
 import { Text } from '../ui';
@@ -14,6 +14,7 @@ interface Props {
 };
 
 interface StateProps {
+  issue: issues.Issue;
   task: tasks.Task;
 }
 
@@ -33,7 +34,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              <Text text={this.props.task.issue.name} color={'inverse'} bottomMargin displayBlock />
+              <Text text={this.props.issue.name} color={'inverse'} bottomMargin displayBlock />
               <Text text={this.props.task.name} color={'inverse'} size={'lg'} displayBlock />
             </div>
             <div className="details-container u-hide@lt-lg col--1-3">
@@ -51,9 +52,15 @@ class TaskPage extends React.Component<Props & StateProps, State> {
   }
 }
 
-const mapStateToProps = (state: AppState, ownProps: Props) => ({
-  task: tasks.selectors.getTask(state, { taskId: parseInt(ownProps.params.taskId, 10) }),
-});
+const mapStateToProps = (state: AppState, ownProps: Props) => {
+  const currentTask = tasks.selectors.getTask(state, { taskId: parseInt(ownProps.params.taskId, 10) });
+  const currentIssue = issues.selectors.getIssue(state, { issueId: currentTask.issueId });
+
+  return {
+    task: currentTask,
+    issue: currentIssue,
+  };
+};
 
 const ConnectedPage = connect<StateProps, {}, Props>(mapStateToProps)(TaskPage);
 

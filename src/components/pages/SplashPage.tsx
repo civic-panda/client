@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import AddressPicker from '../AddressPicker';
+import IssuePicker from '../IssuePicker';
 import { Button, Link, Text } from '../ui';
 import './splash-page.scss';
 
@@ -12,7 +13,7 @@ export class SplashPage extends React.Component<SplashPageProps, SplashPageState
   public render() {
     return (
       <div>
-        <div className="splash-hero">
+        <div className="splash-hero ">
           <Text
             className={'hero-text'}
             size={'lg'}
@@ -23,6 +24,7 @@ export class SplashPage extends React.Component<SplashPageProps, SplashPageState
         </div>
         <div>
           <AddressPicker />
+          <IssuePicker />
         </div>
       </div>
     );

@@ -26,12 +26,17 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const task = tasks.selectors.getTask(state, ownProps);
   const thisUser = user.selectors.getState(state);
   const representatives = congress.selectors.getRepresentatives(state, ownProps);
+  const senators = congress.selectors.getSenators(state, ownProps);
+  const callList = [
+    ...senators.map(senator => ({ name: `Senator ${senator.commonName}`, phoneNumbers: senator.phoneNumbers })),
+    ...representatives.map(rep => ({ name: `Representative ${rep.commonName}`, phoneNumbers: rep.phoneNumbers })),
+  ];
 
   return {
     taskName: task.name,
     taskId: task.id,
     requestedAction: task.templateProps.requestedAction,
-    callList: representatives.map(rep => ({ name: rep.commonName, phoneNumbers: rep.phoneNumbers })),
+    callList,
     scripts: task.templateProps.scripts,
   };
 };
@@ -40,5 +45,5 @@ const mapDispatchToProps = {
   completeCall: tasks.actionCreators.completeTask,
 };
 
-export const CallHouse = connect<StateProps, ActionProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Call);
-export default CallHouse;
+export const CallCongress = connect<StateProps, ActionProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Call);
+export default CallCongress;

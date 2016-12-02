@@ -11,9 +11,6 @@ interface NavProps {
 interface NavState {};
 
 const links = [{
-  name: 'FAQ',
-  url: '/faq',
-}, {
   name: 'About',
   url: '/about',
 }];

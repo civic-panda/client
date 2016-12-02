@@ -1,14 +1,16 @@
-import { PageWrapper, SplashPage, TaskListPage, TaskPage } from './components/pages';
+import * as pages from './components/pages';
 
 // ALL routes must have a name prop! This is used by the navbar
 const siteRoutes = {
   path: '/',
   name: 'splash',
-  component: PageWrapper,
-  indexRoute: { component: SplashPage },
+  component: pages.PageWrapper,
+  indexRoute: { component: pages.SplashPage },
   childRoutes: [
-    { name: 'tasks', path: 'tasks', component: TaskListPage },
-    { name: 'task', path: 'tasks/:taskId', component: TaskPage },
+    { name: 'faq', path: 'faq', component: pages.FAQPage },
+    { name: 'about', path: 'about', component: pages.AboutPage },
+    { name: 'tasks', path: 'tasks', component: pages.TaskListPage },
+    { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage },
   ],
 };
 

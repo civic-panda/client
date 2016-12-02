@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, tasks } from '../../modules';
+import { AppState, issues, tasks } from '../../modules';
 import TaskList from './TaskList';
 
 interface StateProps {
   tasks: tasks.Task[];
+  issues: issues.Issue[];
 }
 
 interface ActionProps {}
@@ -13,7 +14,8 @@ interface ActionProps {}
 interface OwnProps {}
 
 const mapStateToProps = (state: AppState) => ({
-  tasks: tasks.selectors.getList(state),
+  issues: issues.selectors.getList(state),
+  tasks: tasks.selectors.getSubscribed(state),
 });
 
 export const TaskListContainer = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskList);

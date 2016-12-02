@@ -14,7 +14,9 @@ interface StateProps {
   };
 }
 
-interface ActionProps {}
+interface ActionProps {
+  completeCall: (id: number) => void;
+}
 
 interface OwnProps {
   taskId: number;
@@ -26,13 +28,17 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const senators = congress.selectors.getSenators(state, ownProps);
 
   return {
-    foo: 'bar',
     taskName: task.name,
-    requestedAction: task.issue.requestedAction,
+    taskId: task.id,
+    requestedAction: task.templateProps.requestedAction,
     callList: senators.map(senator => ({ name: senator.commonName, phoneNumbers: senator.phoneNumbers })),
     scripts: task.templateProps.scripts,
   };
 };
 
-export const CallSenate = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(Call);
+const mapDispatchToProps = {
+  completeCall: tasks.actionCreators.completeTask,
+};
+
+export const CallSenate = connect<StateProps, ActionProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Call);
 export default CallSenate;

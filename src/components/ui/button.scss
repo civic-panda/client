@@ -8,6 +8,7 @@
   height: 1.5 * $standard-spacing;
   width: 130px;
   background: $accent;
+  cursor: pointer;
 
   &:hover { background: get-color($accent, 600); }
   &:active { background: get-color($accent, 700); }
