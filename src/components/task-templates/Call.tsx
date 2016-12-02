@@ -73,7 +73,7 @@ export class Call extends React.Component<CallProps, CallState> {
       <div className="row">
         {
           callee.phoneNumbers.map(phoneNumber => (
-            <div key={phoneNumber} className="col--1-4">
+            <div key={phoneNumber} className="col--1-2 col--1-4@md">
               <Text
                 text={phoneNumber}
                 color={'highlight'}
