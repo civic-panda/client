@@ -14,7 +14,8 @@
   &:active { background: get-color($accent, 700); }
 }
 
-.input-container+.button {
+.input-container+.button,
+.input-container+a {
   margin-left: 0.5rem;
 }
 
