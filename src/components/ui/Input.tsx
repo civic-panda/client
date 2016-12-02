@@ -1,7 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-type HtmlInput = 'color' | 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' |
+import './input.scss';
+
+type HtmlInput = 'text' | 'color' | 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' |
   'number' | 'range' | 'search' | 'tel' | 'time' | 'url' | 'week' | 'password'
 
 type InputSize = 'small' | 'large';
@@ -10,6 +12,7 @@ interface InputProps {
   type?: HtmlInput;
   size?: InputSize;
   label?: string;
+  placeholder?: string;
   name?: string;
   error?: string;
   value?: string;
@@ -17,7 +20,7 @@ interface InputProps {
   onChange(event: any): void;
 };
 
-const Input = ({ autoFocus, name, label, value, error, type = 'text', onChange }: InputProps) => {
+export const Input = ({ autoFocus, placeholder, name, label, value, error, type = 'text', onChange }: InputProps) => {
   const containerClasses = classNames('input-container', { 'input-container--has-error': !!error });
   const inputClasses = classNames('input', { 'input--has-error': !!error });
   const labelClasses = classNames('input__label');
@@ -28,6 +31,7 @@ const Input = ({ autoFocus, name, label, value, error, type = 'text', onChange }
       {error && <span className={'input__error'}>{error}</span>}
       <input
         id={name}
+        placeholder={placeholder}
         className={inputClasses}
         type={type}
         name={name}

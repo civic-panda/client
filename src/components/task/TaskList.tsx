@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 
 import { issues, tasks } from '../../modules';
-import { Text } from '../ui';
+import { Button, Input, Text } from '../ui';
 import './task-list.scss';
 import TaskDetails from './TaskDetails';
 
@@ -54,10 +54,33 @@ export class TaksList extends React.Component<Props, State> {
     </Link>
   )
 
+  public renderEmpty = () => (
+    <div>
+      <Text
+        text={`Wow you've been busy!`}
+        size={'lg'}
+        displayBlock
+        bottomMargin
+      />
+      <Text
+        text={`Looks like youʼve completed all your tasks for right now.`}
+        displayBlock
+        bottomMargin
+      />
+      <Text
+        text={`Give us your email and weʼll send you an update when we get a fresh batch of tasks.`}
+        displayBlock
+        bottomMargin
+      />
+      <Input type={'text'} onChange={() => null} placeholder={'Your email address'} />
+      <Button text={'Get updates'} />
+    </div>
+  )
+
   public render() {
     return (
       <div className={'task-list'}>
-        {this.props.tasks.map(this.renderTask)}
+        {this.props.tasks.length ? this.props.tasks.map(this.renderTask) : this.renderEmpty()}
         <div className="show-more-link">
           <Text
             text={
