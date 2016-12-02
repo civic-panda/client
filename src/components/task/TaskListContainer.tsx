@@ -15,7 +15,7 @@ interface OwnProps {}
 
 const mapStateToProps = (state: AppState) => ({
   issues: issues.selectors.getList(state),
-  tasks: tasks.selectors.getList(state),
+  tasks: tasks.selectors.getSubscribed(state),
 });
 
 export const TaskListContainer = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskList);

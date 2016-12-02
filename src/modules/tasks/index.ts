@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { selectors as issueSelectors } from '../issues';
 import { Action } from '../../redux/action';
 
 type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
@@ -64,10 +65,16 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
 
 const getState = (state: any): State => state[KEY];
 const getList = createSelector(getState, state => state.list);
+const getSubscribed = createSelector(
+  getList,
+  issueSelectors.getSubscribed,
+  (tasks, subscribedIssues) => tasks.filter(task => subscribedIssues.indexOf(task.issueId) > -1)
+);
 const getTaskId = (_state: any, { taskId }: { taskId: number }) => taskId;
 const getTask = createSelector(getList, getTaskId, (list, taskId) => list.find(task => task.id === taskId));
 export const selectors = {
   getState,
   getList,
   getTask,
+  getSubscribed,
 };
