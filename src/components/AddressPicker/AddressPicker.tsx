@@ -23,15 +23,15 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
       };
   }
 
-  public setAddress(event: any) {
+  public setAddress = (event: any) => {
     this.setState({ address: event.target.value, minutes: this.state.minutes });
   }
 
-  public setMinutes(event: any) {
+  public setMinutes = (event: any) => {
     this.setState({ address: this.state.address, minutes: event.target.value });
   }
 
-  public geocodeAddress(): void {
+  public geocodeAddress = () => {
     const address = this.state.address;
     const geocoder = new google.maps.Geocoder();
 
@@ -52,11 +52,22 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     return (
       <div className={classes}>
         <div className="row row--centered row--padded">
-          <Text type={'label'} text={`I'm in `} />
-          <Input type={'text'} placeholder={'Your address'} value={this.state.address} onChange={this.setAddress.bind(this)} />
-          <Text type={'label'} text={` and I have `} />
-          <Input type={'text'} placeholder={'30 minutes'} value={this.state.minutes} onChange={this.setMinutes.bind(this)} />
-          <Link text={'Find tasks'} link={'tasks'} onClick={this.geocodeAddress.bind(this)} />
+          <Input
+            label={`I'm in`}
+            type={'text'}
+            placeholder={'Your address'}
+            value={this.state.address}
+            onChange={this.setAddress}
+          />
+          <Input
+            label={`and I have`}
+            type={'text'}
+            placeholder={'30 minutes'}
+            value={this.state.minutes}
+            onChange={this.setMinutes}
+            size={'short'}
+          />
+          <Link text={'Find tasks'} link={'tasks'} onClick={this.geocodeAddress} />
         </div>
       </div>
     );

@@ -1,21 +1,59 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 @import '../../scss/base/reset-forms';
+@import '../../scss/vendors/include-media';
 
 .input-container{
   display: inline-block;
+  margin-bottom: $standard-spacing;
+  width: 100%;
 
   .input {
     @include form-reset-input;
     background: $white;
     display: inline-block;
     height: 1.5 * $standard-spacing;
-    width: 350px;
+    width: 100%;
     border: solid 2px rgba($black, 0.1);
     padding: 0 1rem;
   }
 
-  .input--short {
-    width: 150px;
+  .input-label {
+    display: block;
+    margin: 0 0.5rem;
+  }
+
+}
+
+@include media('>=small') {
+  .input-container {
+    display: block;
+
+    .input-label {
+      width: 100px;
+      display: inline-block;
+      text-align: right;
+    }
+
+    .input {
+      width: 350px;
+    }
+  }
+}
+
+@include media('>=medium') {
+  .input-container {
+    width: auto;
+    margin-bottom: 0;
+    display: inline-block;
+
+    .input-label {
+      width: auto;
+      display: inline-block;
+    }
+
+    .input--short {
+      width: 150px;
+    }
   }
 }
