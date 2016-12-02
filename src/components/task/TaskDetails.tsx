@@ -26,14 +26,27 @@ export class TaskDetails extends React.Component<Props, State> {
 
   public render() {
     const task = this.props.task;
+    const durationLabel = typeof task.duration === 'string'
+      ? task.duration
+      : `${task.duration} mins`;
 
     return (
       <div className={`task-details`}>
         <div className={`duration ${this.getDurationClass(task.duration)}`}>
-          <Text text={`${task.duration}`} color={'inverse'} align={'center'} />
+          <Text
+            text={durationLabel}
+            color={'inverse'}
+            align={'center'}
+            type={'label'}
+          />
         </div>
         <div className="distance">
-          <Text text={'0 miles away'} align={'center'} color={this.props.darkBackground ? 'inverse' : 'primary'} />
+          <Text
+            text={'0 miles away'}
+            type={'label'}
+            align={'center'}
+            color={this.props.darkBackground ? 'inverse' : 'primary'}
+          />
         </div>
       </div>
     );

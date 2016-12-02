@@ -4,7 +4,7 @@ import * as React from 'react';
 type HtmlInput = 'color' | 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' |
   'number' | 'range' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week' | 'password'
 
-type InputSize = 'small' | 'large';
+type InputSize = 'short' | 'small' | 'large';
 
 interface InputProps {
   type?: HtmlInput;
@@ -18,9 +18,10 @@ interface InputProps {
   onChange(event: any): void;
 };
 
-export const Input = ({ autoFocus, name, label, placeholder, value, error, type = 'text', onChange }: InputProps) => {
+export const Input = (props: InputProps) => {
+  const { autoFocus, placeholder, size, name, label, value, error, type = 'text', onChange } = props;
   const containerClasses = classNames('input-container', { 'input-container--has-error': !!error });
-  const inputClasses = classNames('input', { 'input--has-error': !!error });
+  const inputClasses = classNames('input', { 'input--has-error': !!error, [`input--${size}`]: !!size });
   const labelClasses = classNames('input__label');
 
   return (

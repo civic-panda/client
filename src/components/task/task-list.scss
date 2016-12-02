@@ -29,4 +29,9 @@
     flex: 1;
     float: left;
   }
+
+  .show-more-link {
+    padding: $standard-spacing 0;
+    border-bottom: solid 1px $gray;
+  }
 }

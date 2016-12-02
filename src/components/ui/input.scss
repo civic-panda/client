@@ -1,0 +1,21 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+@import '../../scss/base/reset-forms';
+
+.input-container{
+  display: inline-block;
+
+  .input {
+    @include form-reset-input;
+    background: $white;
+    display: inline-block;
+    height: 1.5 * $standard-spacing;
+    width: 350px;
+    border: solid 2px rgba($black, 0.1);
+    padding: 0 1rem;
+  }
+
+  .input--short {
+    width: 150px;
+  }
+}

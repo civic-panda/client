@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import BackButton from './BackButton';
 import './nav.scss';
-import Link from './NavLink';
+import NavLink from './NavLink';
 
 interface Props {
   currentRoute: string;
@@ -14,7 +14,7 @@ interface State {
 };
 
 const links = [{
-  name: 'About',
+  name: 'about',
   url: '/about',
 }];
 
@@ -50,10 +50,13 @@ export class Nav extends React.Component<Props, State> {
       <div className={navClasses}>
         <div className="row">
           <BackButton currentRoute={this.props.currentRoute} />
+          {this.props.currentRoute === 'tasks' && <NavLink icon={'settings'} to={'issues'} />}
           <div className="links">
             {
-              links.map(link => (
-                <Link key={link.name} text={link.name} to={link.url} />
+              links
+                .filter(link => link.name !== this.props.currentRoute)
+                .map(link => (
+                  <NavLink key={link.name} text={link.name} to={link.url} />
               ))
             }
           </div>

@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as formatters from '../../util/stringFormatters';
 import './text.scss';
 
-type FontSize = 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
+type FontSize = 'xxl' | 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
 type FontType = 'header' | 'label' | 'body';
 type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light';
 type FontWeight = 'normal' | 'bold';
@@ -24,6 +24,7 @@ interface TextProps {
   bottomMargin?: boolean;
   displayBlock?: boolean;
   blockQuote?: boolean;
+  onClick?(e: any): void;
 };
 
 export const Text = (props: TextProps) => {
@@ -40,6 +41,7 @@ export const Text = (props: TextProps) => {
     bottomMargin,
     displayBlock,
     blockQuote,
+    onClick,
   } = props;
 
   const classes = classNames({
@@ -49,6 +51,7 @@ export const Text = (props: TextProps) => {
     [`${type}`]: true,
     [`${weight}`]: true,
     italic,
+    clickable: !!onClick,
     'display-block': displayBlock,
     'block-quote': blockQuote,
     'remove-bottom-margin': !bottomMargin,
@@ -59,7 +62,12 @@ export const Text = (props: TextProps) => {
   const displayText = (props.format) ? formatters.format(rawText, props.format) : rawText;
 
   return (
-    <span className={`text ${classes} ${className}`}>{displayText}{!childrenIsString && children}</span>
+    <span
+      className={`text ${classes} ${className}`}
+      onClick={onClick}
+    >
+      {displayText}{!childrenIsString && children}
+    </span>
   );
 };
 

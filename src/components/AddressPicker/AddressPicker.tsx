@@ -1,9 +1,12 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { Input, Link, Text } from '../ui';
+import { Button, Input, Link, Text } from '../ui';
 import './address-picker.scss';
 
-interface AddressPickerProps {};
+interface AddressPickerProps {
+  style?: 'light' | 'dark';
+};
 
 interface AddressPickerState {
   address: string;
@@ -42,12 +45,16 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   }
 
   public render() {
+    const classes = classNames('address-picker', {
+      'address-picker--light': this.props.style === 'light',
+    });
+
     return (
-      <div className="address-picker">
+      <div className={classes}>
         <div className="row row--centered row--padded">
-          <span><strong>I'm in</strong></span>
+          <Text type={'label'} text={`I'm in `} />
           <Input type={'text'} placeholder={'Your address'} value={this.state.address} onChange={this.setAddress.bind(this)} />
-          <span><strong>and I have</strong></span>
+          <Text type={'label'} text={` and I have `} />
           <Input type={'text'} placeholder={'30 minutes'} value={this.state.minutes} onChange={this.setMinutes.bind(this)} />
           <Link text={'Find tasks'} link={'tasks'} onClick={this.geocodeAddress.bind(this)} />
         </div>

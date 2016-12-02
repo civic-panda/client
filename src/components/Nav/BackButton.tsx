@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { AppState, user } from '../../modules';
 import { Text } from '../ui';
-import Link from './NavLink';
+import NavLink from './NavLink';
 
 interface StateProps {
   location: { name: string };
@@ -20,9 +20,10 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
     case 'about':
       return (
         <div className="back-button">
-          <Link
-            text={props.location ? '‹ Your tasks' : '‹ Get started'}
+          <NavLink
+            text={props.location ? 'Your tasks' : 'Get started'}
             to={props.location ? '/tasks' : '/'}
+            icon={'left-arrow'}
           />
         </div>
       );
@@ -30,9 +31,10 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
     case 'faq':
       return (
         <div className="back-button">
-          <Link
-            text={props.location ? '‹ Your tasks' : '‹ Get started'}
+          <NavLink
+            text={props.location ? 'Your tasks' : 'Get started'}
             to={props.location ? '/tasks' : '/'}
+            icon={'left-arrow'}
           />
         </div>
       );
@@ -40,14 +42,22 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
     case 'tasks':
       return (
         <div className="back-button">
-          <Link text={`‹ ${props.location.name}`} to={'/'} />
+          <NavLink
+            text={`${props.location.name}`}
+            to={'/'}
+            icon={'left-arrow'}
+          />
         </div>
       );
 
     case 'task':
       return (
         <div className="back-button">
-          <Link text={'‹ All tasks'} to={'/tasks'} />
+          <NavLink
+            text={'All tasks'}
+            to={'/tasks'}
+            icon={'left-arrow'}
+          />
         </div>
       );
 

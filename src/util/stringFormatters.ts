@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 
-export type Format = 'Currency' | 'Date' | 'Uppercase' | 'Phone Number';
+export type Format = 'Currency' | 'Date' | 'Uppercase' | 'Phone Number' | 'Capitalize';
 
 interface Formatters {
   [key: string]: (text: string) => string;
@@ -17,6 +17,7 @@ const formatters: Formatters = {
   Date: date => moment(parseInt(date, 10)).calendar(),
   Uppercase: text => text.toUpperCase(),
   'Phone Number': formatPhoneNumber,
+  Capitalize: text => text.charAt(0).toUpperCase() + text.slice(1),
 };
 
 export const format = (text: string, formatList: Format | Format[]) => {

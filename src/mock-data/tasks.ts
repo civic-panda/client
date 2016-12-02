@@ -55,14 +55,14 @@ const data: tasks.Task[] = [{
 }, {
   id: 3,
   completed: false,
-  name: 'Call your senators again! Bug the fuck out of them.',
+  name: 'Call your senators again!',
   activityType: 'phone call',
   issueId: 1,
   tags: [
     'important',
     'test',
   ],
-  duration: 30,
+  duration: 'All day',
   startDate: 1480394079073,
   endDate: 1480394079073,
   location: {

@@ -14,6 +14,11 @@
   &:active { background: get-color($accent, 700); }
 }
 
+.input-container+.button,
+.input-container+a {
+  margin-left: 0.5rem;
+}
+
 .button--small {
   height: 1.25 * $standard-spacing;
   width: auto;
@@ -30,4 +35,10 @@
   background: $highlight;
   &:hover { background: get-color($highlight, 600); }
   &:active { background: get-color($highlight, 700); }
+}
+
+.button--colorless {
+  background: rgba($white, 0.9);
+  &:hover { background: rgba($white, 0.8); }
+  &:active { background: rgba($white, 0.5); }
 }

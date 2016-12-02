@@ -1,15 +1,19 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 
-.splash-hero {
-  display: flex;
-  height: 390px;
-  background-color: $primary;
-  padding: $standard-spacing;
-  align-items: center;
-  justify-content: center;
-}
+.splash-page {
+  .splash-hero {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 390px;
+    background-color: $primary;
+    padding: $standard-spacing;
+    align-items: center;
+    justify-content: center;
+  }
 
-.hero-text {
+  .hero-text {
 
+  }
 }

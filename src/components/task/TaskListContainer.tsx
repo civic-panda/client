@@ -6,6 +6,7 @@ import TaskList from './TaskList';
 
 interface StateProps {
   tasks: tasks.Task[];
+  completedTasks: tasks.Task[];
   issues: issues.Issue[];
 }
 
@@ -15,7 +16,8 @@ interface OwnProps {}
 
 const mapStateToProps = (state: AppState) => ({
   issues: issues.selectors.getList(state),
-  tasks: tasks.selectors.getSubscribed(state),
+  tasks: tasks.selectors.getRemaining(state),
+  completedTasks: tasks.selectors.getCompleted(state),
 });
 
 export const TaskListContainer = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskList);

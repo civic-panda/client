@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import './button.scss';
 import Text from './Text';
 
-type ButtonType = 'primary' | 'secondary' | 'highlighted';
+type ButtonType = 'primary' | 'secondary' | 'highlighted' | 'colorless';
 type ButtonSize = 'small' | 'large';
 
 interface ButtonProps {
@@ -14,6 +14,7 @@ interface ButtonProps {
   loading?: boolean;
   children?: string;
   text: string;
+  preventDefault?: boolean;
   onClick?: (event: any) => void;
 };
 
@@ -34,15 +35,26 @@ export const Button = (props: ButtonProps) => {
     }
   );
 
+  const textColor = type === 'secondary' ? 'highlight' : type === 'colorless' ? 'primary' : 'inverse';
+
+  const clickHandler = (e: any) => {
+    if (props.preventDefault) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    onClick(e);
+  };
+
   return (
     <button
       className={classes}
-      onClick={onClick}
+      onClick={clickHandler}
       {...otherProps}
     >
       <Text
         text={`${text}${children}`}
-        color={type === 'secondary' ? 'highlight' : 'inverse'}
+        size={size === 'small' ? 'h5' : 'h4'}
+        color={textColor}
         align={'center'}
       />
     </button>

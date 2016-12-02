@@ -2,18 +2,54 @@
 @import '../../scss/abstracts/variables';
 
 .issue-picker {
+  margin-bottom: $standard-spacing;
+
   .issue-block {
+    position: relative;
     display: flex;
-    height: 200px;
-    margin-top: 0;
+    height: 250px;
+    margin: -0.5 * $standard-spacing;
     cursor: pointer;
-    background: $gray;
+    user-select: none;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: $standard-spacing;
+    transition: background-color 0.3s cubic-bezier(.25,.8,.25,1),
+    color 0.3s cubic-bezier(.25,.8,.25,1);
+    border-style: solid;
+    border-width: 2px;
+    border-color: $gray;
+
+    .button {
+      display: none;
+      position: absolute;
+      bottom: $standard-spacing;
+    }
+
+    &:hover{
+      border-color: transparent;
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2);
+
+      .button { display: initial; }
+    }
+
+    &:active{
+      border-color: transparent;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
   }
 
   .issue-block--is-subscribed {
-    background: $secondary;
+    border-color: transparent;
+    &.issue-block--0th { background-color: $color-0; }
+    &.issue-block--1th { background-color: $color-1; }
+    &.issue-block--2th { background-color: $color-2; }
+    &.issue-block--3th { background-color: $color-3; }
+    &.issue-block--4th { background-color: $color-4; }
   }
 }

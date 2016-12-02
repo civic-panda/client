@@ -3,7 +3,7 @@ import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './call.scss';
 
-import { Button, Link, Text, Toggle } from '../ui';
+import { Button, FadeIn, Link, Text, Toggle } from '../ui';
 
 interface CallProps {
   taskName: string;
@@ -136,15 +136,7 @@ export class Call extends React.Component<CallProps, CallState> {
             />
           </Text>
           {this.state.calleeStance !== 'unknown' &&
-            <ReactCSSTransitionGroup
-              transitionName="call-script-transition"
-              transitionAppear
-              transitionAppearTimeout={280}
-              transitionEnterTimeout={0}
-              transitionLeaveTimeout={0}
-            >
-              {this.renderCallScript(callee)}
-            </ReactCSSTransitionGroup>
+            <FadeIn>{this.renderCallScript(callee)}</FadeIn>
           }
         </div>
         <div className={'task__notes u-hide@lt-lg col--1-3'}>
