@@ -4,14 +4,14 @@ import { Link as RouterLink } from 'react-router';
 import { Icon, IconType, Text } from '../ui';
 
 interface LinkProps {
-  text: string;
   to: string;
+  text?: string;
   icon?: IconType;
 };
 
 interface LinkState {};
 
-export class Link extends React.Component<LinkProps, LinkState> {
+export class NavLink extends React.Component<LinkProps, LinkState> {
   public render() {
     return (
       <RouterLink className={'link'} to={this.props.to}>
@@ -27,4 +27,4 @@ export class Link extends React.Component<LinkProps, LinkState> {
   }
 }
 
-export default Link;
+export default NavLink;

@@ -12,21 +12,20 @@ $nav-height: 70px;
   color: $white;
 
   .back-button {
-    height: 100%;
     float: left;
-    line-height: $nav-height
+    height: 100%;
   }
 
   .links {
-    height: 100%;
     float: right;
-    line-height: $nav-height
+    height: 100%;
   }
 
   .link {
     display: inline-block;
     height: 100%;
-    padding: 0 $standard-spacing * 2;
+    padding: 0 $standard-spacing;
+    line-height: $nav-height;
 
     &:hover {
       text-decoration: underline;
