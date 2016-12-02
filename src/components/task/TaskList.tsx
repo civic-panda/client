@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 
 import { issues, tasks } from '../../modules';
-import { Button, Input, Text } from '../ui';
+import { Button, FadeIn, Input, Text } from '../ui';
 import './task-list.scss';
 import TaskDetails from './TaskDetails';
 
@@ -94,9 +94,7 @@ export class TaksList extends React.Component<Props, State> {
             onClick={() => this.setState({ showCompleted: !this.state.showCompleted })}
           />
         </div>
-        {this.state.showCompleted &&
-          this.props.completedTasks.map(this.renderTask)
-        }
+        {this.state.showCompleted && this.props.completedTasks.map(this.renderTask)}
       </div>
     );
   }
