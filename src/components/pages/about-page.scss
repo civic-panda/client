@@ -1,0 +1,20 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+@import '../../scss/vendors/include-media';
+@import '../Nav/nav';
+
+.about-page {
+  background: $primary;
+  min-height: calc(100vh - #{$nav-height});
+
+  .text-container {
+    width: 100%;
+    max-width: 630px;
+    margin: 0 auto;
+    padding: $standard-spacing;
+
+    @include media('>small') {
+      padding-top: 5 * $standard-spacing;
+    }
+  }
+}

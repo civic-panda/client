@@ -14,7 +14,7 @@ interface State {
 };
 
 const links = [{
-  name: 'About',
+  name: 'about',
   url: '/about',
 }];
 
@@ -52,8 +52,10 @@ export class Nav extends React.Component<Props, State> {
           <BackButton currentRoute={this.props.currentRoute} />
           <div className="links">
             {
-              links.map(link => (
-                <Link key={link.name} text={link.name} to={link.url} />
+              links
+                .filter(link => link.name !== this.props.currentRoute)
+                .map(link => (
+                  <Link key={link.name} text={link.name} to={link.url} />
               ))
             }
           </div>
