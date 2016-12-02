@@ -2,6 +2,10 @@ machine:
   node:
     version: 6.5.0
 
+dependencies:
+  pre:
+    - npm rebuild node-sass
+
 test:
   override:
     - npm run test
