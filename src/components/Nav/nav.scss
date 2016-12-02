@@ -10,6 +10,7 @@ $nav-height: 70px;
   width: 100%;
   background-color: $primary;
   color: $white;
+  z-index: 10;
 
   .back-button {
     float: left;

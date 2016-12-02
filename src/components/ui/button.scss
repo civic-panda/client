@@ -36,3 +36,9 @@
   &:hover { background: get-color($highlight, 600); }
   &:active { background: get-color($highlight, 700); }
 }
+
+.button--colorless {
+  background: rgba($white, 0.9);
+  &:hover { background: rgba($white, 0.8); }
+  &:active { background: rgba($white, 0.5); }
+}

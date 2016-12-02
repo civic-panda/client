@@ -5,11 +5,13 @@
   margin-bottom: $standard-spacing;
 
   .issue-block {
+    position: relative;
     display: flex;
     height: 250px;
     margin: -0.5 * $standard-spacing;
     cursor: pointer;
     user-select: none;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: $standard-spacing;
@@ -19,11 +21,19 @@
     border-width: 2px;
     border-color: $gray;
 
+    .button {
+      display: none;
+      position: absolute;
+      bottom: $standard-spacing;
+    }
+
     &:hover{
       border-color: transparent;
       box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
       0 1px 10px 0 rgba(0, 0, 0, 0.12),
       0 2px 4px -1px rgba(0, 0, 0, 0.2);
+
+      .button { display: initial; }
     }
 
     &:active{

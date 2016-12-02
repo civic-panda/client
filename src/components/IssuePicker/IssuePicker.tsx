@@ -66,8 +66,10 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   color={isSubscribed ? 'inverse' : 'light'}
                   weight={'bold'}
                   align={'center'}
+                  bottomMargin
                   displayBlock
                 />
+                <Button type={'colorless'} text={'Info'} size={'small'} preventDefault />
               </div>
             </div>
           );
