@@ -6,7 +6,7 @@ import { Text } from '../ui';
 import NavLink from './NavLink';
 
 interface StateProps {
-  location: { name: string };
+  location: user.Location;
 }
 
 interface ActionProps {}
@@ -43,7 +43,7 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
       return (
         <div className="back-button">
           <NavLink
-            text={`${props.location.name}`}
+            text={`${props.location.state} District ${props.location.district}`}
             to={'/'}
             icon={'left-arrow'}
           />

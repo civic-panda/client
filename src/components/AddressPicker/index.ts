@@ -1,3 +1,3 @@
-import AddressPicker from './AddressPicker';
+import AddressPickerContainer from './AddressPickerContainer';
 
-export default AddressPicker;
+export default AddressPickerContainer;

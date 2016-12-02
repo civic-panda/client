@@ -2,12 +2,10 @@ import * as React from 'react';
 
 import Autocomplete from './ForkedAutocomplete';
 
-const AutocompleteInput = () => (
+const AutocompleteInput = (props: { onChange(results: any): void }) => (
   <Autocomplete
     placeholder={'Your address'}
-    onPlaceSelected={(place: any) => {
-      console.log(place);
-    }}
+    onPlaceSelected={props.onChange}
     types={['geocode']}
     componentRestrictions={{country: 'us'}}
   />

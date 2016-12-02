@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { Action } from '../../redux/action';
 
 type Cause = string
-type Location = {
+export type Location = {
   name: string;
   state: string;
   district: number;

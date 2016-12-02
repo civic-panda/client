@@ -1,12 +1,16 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import { browserHistory } from 'react-router';
 
+import { user } from '../../modules';
+import lookupDistrict from '../../util/lookupDistrict';
 import { Button, Input, Link, Text } from '../ui';
 import './address-picker.scss';
 import AutocompleteInput from './AutocompleteInput';
 
 interface AddressPickerProps {
   style?: 'light' | 'dark';
+  setLocation(location: user.Location): void;
 };
 
 interface AddressPickerState {
@@ -32,17 +36,22 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     this.setState({ address: this.state.address, minutes: event.target.value });
   }
 
-  public geocodeAddress = () => {
-    const address = this.state.address;
-    const geocoder = new google.maps.Geocoder();
+  public lookupDistrict = async (place: any) => {
+    const lat = place.geometry.location.lat();
+    const lng = place.geometry.location.lng();
+    const { district, state } = await lookupDistrict(lat, lng);
 
-    geocoder.geocode({ address }, (results: google.maps.GeocoderResult[], status: google.maps.GeocoderStatus) => {
-      if (status === google.maps.GeocoderStatus.OK) {
-        console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-      } else {
-        console.log('Geocode was not successful for the following reason: ' + status);
-      }
+    this.props.setLocation({
+      name: place.formatted_address,
+      latitude: lat,
+      longitude: lng,
+      state,
+      district,
     });
+  }
+
+  public goToTasks = () => {
+    browserHistory.push('/tasks');
   }
 
   public render() {
@@ -59,7 +68,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             placeholder={'Your address'}
             value={this.state.address}
             onChange={this.setAddress}
-            customInput={<AutocompleteInput />}
+            customInput={<AutocompleteInput onChange={this.lookupDistrict} />}
           />
           <Input
             label={`and I have`}
@@ -69,7 +78,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             onChange={this.setMinutes}
             size={'short'}
           />
-          <Button text={'Find tasks'} onClick={this.geocodeAddress} />
+          <Button text={'Find tasks'} onClick={this.goToTasks} />
         </div>
       </div>
     );
