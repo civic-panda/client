@@ -10,3 +10,8 @@ test:
   override:
     - npm run test
     - npm run build
+
+general:
+  branches:
+    ignore:
+      - gh-pages
