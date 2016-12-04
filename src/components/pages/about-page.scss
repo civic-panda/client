@@ -5,7 +5,7 @@
 
 .about-page {
   background: $primary;
-  min-height: calc(100vh - #{$nav-height});
+  min-height: calc(100vh - #{$mobile-nav-height});
 
   .text-container {
     width: 100%;
@@ -13,7 +13,14 @@
     margin: 0 auto;
     padding: $standard-spacing;
 
-    @include media('>small') {
+  }
+}
+
+@include media('>=md') {
+  .about-page {
+    min-height: calc(100vh - #{$nav-height});
+
+    .text-container {
       padding-top: 5 * $standard-spacing;
     }
   }

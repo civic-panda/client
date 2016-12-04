@@ -1,10 +1,14 @@
 @import '../Nav/nav';
+@import '../../scss/vendors/include-media';
+@import '../../scss/abstracts/colors';
 
 .page-container {
   .page-content {
     width: 100%;
     min-height: 100%;
-    padding-top: $nav-height;
+    border-width: $mobile-nav-height 0 0 0;
+    border-style: solid;
+    border-color: $primary;
   }
 }
 
@@ -35,4 +39,12 @@
   z-index: 0;
   opacity: 0.01;
   transition: opacity 180ms ease-out;
+}
+
+@include media('>=md') {
+  .page-container {
+    .page-content {
+      border-width: $nav-height 0 0 0;
+    }
+  }
 }

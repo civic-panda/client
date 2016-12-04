@@ -49,7 +49,7 @@
 
 }
 
-@include media('>small') {
+@include media('>sm') {
   .button {
     width: 130px;
     margin: 0 auto;
@@ -62,7 +62,7 @@
   }
 }
 
-@include media('>medium') {
+@include media('>md') {
   .button {
     display: inline-block;
   }

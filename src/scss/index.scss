@@ -19,6 +19,11 @@
 **/
 
 /**
+  importd before vendors to overwrite default sass variables
+**/
+@import './layout/breakpoints';
+
+/**
   Vendors
 **/
 @import './vendors/include-media';
@@ -29,7 +34,6 @@
   includes variables for $standard-spacing, which is used for most margins and padding
 **/
 @import './abstracts/variables';
-
 /**
   includes variables for:
     $primary $accent $secondary $color-2 $color-1
@@ -50,7 +54,6 @@
 
   use the .u-hide and .u-show utility classes similarly
 **/
-@import './layout/breakpoints';
 @import './layout/columns';
 @import './layout/show-hide';
 

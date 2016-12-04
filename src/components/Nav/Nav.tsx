@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
+import { Icon } from '../ui';
 import BackButton from './BackButton';
 import './nav.scss';
 import NavLink from './NavLink';
@@ -48,7 +49,12 @@ export class Nav extends React.Component<Props, State> {
 
     return (
       <div className={navClasses}>
-        <div className="row">
+        <div className="row u-hide@gt-sm">
+          <div className="link">
+            <Icon type={'hamburger'} />
+          </div>
+        </div>
+        <div className="row u-hide@sm">
           <BackButton currentRoute={this.props.currentRoute} />
           {this.props.currentRoute === 'tasks' && <NavLink icon={'settings'} to={'issues'} />}
           <div className="links">

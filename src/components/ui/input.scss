@@ -25,7 +25,7 @@
 
 }
 
-@include media('>=small') {
+@include media('>=sm') {
   .input-container {
     display: block;
 
@@ -41,7 +41,7 @@
   }
 }
 
-@include media('>=medium') {
+@include media('>md') {
   .input-container {
     width: auto;
     margin-bottom: 0;
