@@ -6,6 +6,7 @@ const siteRoutes = {
   name: 'splash',
   component: pages.PageWrapper,
   indexRoute: { component: pages.SplashPage },
+  onChange: (prevState: any, nextState: any) => { window.scrollTo(0, 0); },
   childRoutes: [
     { name: 'faq', path: 'faq', component: pages.FAQPage },
     { name: 'about', path: 'about', component: pages.AboutPage },
