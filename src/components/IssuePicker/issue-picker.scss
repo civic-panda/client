@@ -46,10 +46,31 @@
 
   .issue-block--is-subscribed {
     border-color: transparent;
-    &.issue-block--0th { background-color: $color-0; }
-    &.issue-block--1th { background-color: $color-1; }
-    &.issue-block--2th { background-color: $color-2; }
-    &.issue-block--3th { background-color: $color-3; }
-    &.issue-block--4th { background-color: $color-4; }
+    &.issue-block--0th {
+      background-color: $color-0;
+      .icon { color: $color-0; background: rgba($white, 0.9); }
+    }
+    &.issue-block--1th {
+      background-color: $color-1;
+      .icon { color: $color-1; background: rgba($white, 0.9); }
+    }
+    &.issue-block--2th {
+      background-color: $color-2;
+      .icon { color: $color-2; background: rgba($white, 0.9); }
+    }
+    &.issue-block--3th {
+      background-color: $color-3;
+      .icon { color: $color-3; background: rgba($white, 0.9); }
+    }
+    &.issue-block--4th {
+      background-color: $color-4;
+      .icon { color: $color-4; background: rgba($white, 0.9); }
+    }
+  }
+
+  .check-mark {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
   }
 }
