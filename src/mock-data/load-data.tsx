@@ -5,7 +5,7 @@ import { AppState, congress, issues, tasks, user } from '../modules';
 import congressData from './congress';
 import issueData from './issues';
 import taskData from './tasks';
-import userData from './user';
+// import userData from './user';
 
 interface ActionProps {
   setTasks(tasks: tasks.Task[]): void;

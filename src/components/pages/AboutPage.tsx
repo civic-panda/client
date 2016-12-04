@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import AddressPicker from '../AddressPicker';
 import './about-page.scss';
 
 import { Button, Link, Text } from '../ui';
@@ -51,6 +52,9 @@ export class AboutPage extends React.Component<Props, State> {
               reps with confidence
             `}
           />
+        </div>
+        <div className="pin-to-bottom">
+          <AddressPicker />
         </div>
       </div>
     );

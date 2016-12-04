@@ -5,6 +5,7 @@ const mockUser: user.State = {
   name: 'Joe Plumber',
   location: {
     name: '143 Mott St, New York, NY 10013',
+    address: '143 Mott St, New York, NY 10013',
     state: 'NY',
     district: 2,
     latitude: 1234,

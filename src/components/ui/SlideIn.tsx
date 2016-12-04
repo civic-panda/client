@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import './fade-in.scss';
+import './slide-in.scss';
 
 interface Props {
   show?: boolean;
   children?: any;
 }
 
-export const FadeIn = (props: Props) => (
+export const SlideIn = (props: Props) => (
   <ReactCSSTransitionGroup
-    transitionName="fade-transition"
+    transitionName="slide-transition"
     transitionAppear
     transitionAppearTimeout={280}
     transitionEnterTimeout={0}
@@ -19,5 +19,3 @@ export const FadeIn = (props: Props) => (
     {(props.show === undefined || props.show) && props.children}
   </ReactCSSTransitionGroup>
 );
-
-export default FadeIn;

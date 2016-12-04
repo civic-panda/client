@@ -24,31 +24,54 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
       super(props);
 
       this.state = {
-          address: '',
+          address: props.location ? props.location.address : '',
           minutes: '',
       };
   }
 
+  public componentWillReceiveProps(nextProps: AddressPickerProps) {
+    if (nextProps.location && nextProps.location.address !== this.state.address) {
+      const newState = { ...this.state, address: nextProps.location.address };
+      this.setState(newState);
+    }
+  }
+
   public setAddress = (event: any) => {
-    this.setState({ address: event.target.value, minutes: this.state.minutes });
+    const newState = { ...this.state, address: event.target.value };
+    this.setState(newState);
   }
 
   public setMinutes = (event: any) => {
-    this.setState({ address: this.state.address, minutes: event.target.value });
+    const newState = { ...this.state, minutes: event.target.value };
+    this.setState(newState);
   }
 
   public lookupDistrict = async (place: any) => {
+    console.log('lookupDistrict', place)
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
     const { district, state } = await lookupDistrict(lat, lng);
 
     this.props.setLocation({
       name: place.name,
+      address: place.formatted_address,
       latitude: lat,
       longitude: lng,
       state,
       district,
     });
+  }
+
+  public clearIfNotSet = () => {
+    if (!this.isLocationSet()) {
+      const newState = { ...this.state, address: '' };
+      this.setState(newState);
+    }
+
+    if (this.props.location && this.props.location.address !== this.state.address) {
+      const newState = { ...this.state, address: this.props.location.address };
+      this.setState(newState);
+    }
   }
 
   public isLocationSet = () =>
@@ -63,16 +86,25 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
       'address-picker--light': this.props.style === 'light',
     });
 
+    const AutoComplete = (
+      <AutocompleteInput
+        value={this.state.address}
+        onChange={this.setAddress}
+        onBlur={this.clearIfNotSet}
+        onPlaceSelected={this.lookupDistrict}
+      />
+    );
+
     return (
       <div className={classes}>
         <div className="row row--centered row--padded">
           <Input
-            label={`I'm in`}
+            label={`I'm at`}
             type={'text'}
             placeholder={'Your address'}
             value={this.state.address}
             onChange={this.setAddress}
-            customInput={<AutocompleteInput onChange={this.lookupDistrict} />}
+            customInput={AutoComplete}
           />
           <Input
             label={`and I have`}
@@ -82,7 +114,12 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             onChange={this.setMinutes}
             size={'short'}
           />
-          <Button disabled={this.isLocationSet()} text={'Find tasks'} onClick={this.goToTasks} />
+          <Button
+            disabled={!this.isLocationSet()}
+            text={'Find tasks'}
+            disabledText={'Please select an address.'}
+            onClick={this.goToTasks}
+          />
         </div>
       </div>
     );

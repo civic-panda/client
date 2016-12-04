@@ -3,22 +3,44 @@
 @import '../../scss/vendors/include-media';
 @import '../Nav/nav';
 
+$address-picker-height: 154px;
+$address-picker-height-tablet: 294px;
+$address-picker-height-mobile: 356px;
+
 .about-page {
+  position: relative;
   background: $primary;
   min-height: calc(100vh - #{$mobile-nav-height});
+  padding-bottom: $address-picker-height-mobile;
 
   .text-container {
     width: 100%;
     max-width: 630px;
     margin: 0 auto;
     padding: $standard-spacing;
+  }
 
+  .pin-to-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+
+    .address-picker {
+      margin-bottom: 0;
+    }
   }
 }
 
-@include media('>=md') {
+@include media('>sm') {
+  .about-page {
+    padding-bottom: $address-picker-height-tablet;
+  }
+}
+
+@include media('>md') {
   .about-page {
     min-height: calc(100vh - #{$nav-height});
+    padding-bottom: $address-picker-height;
 
     .text-container {
       padding-top: 5 * $standard-spacing;

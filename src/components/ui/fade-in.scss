@@ -1,8 +1,19 @@
-.fade-transition-appear {
+.fade-transition-appear,
+.fade-transition-enter {
   opacity: 0;
+  transition: opacity 280ms ease-in;
 }
 
-.fade-transition-appear.fade-transition-appear-active {
+.fade-transition-appear.fade-transition-appear-active,
+.fade-transition-enter.fade-transition-enter-active {
+  opacity: 1;
+}
+
+.fade-transition-leave {
   opacity: 1;
   transition: opacity 280ms ease-in;
+}
+
+.fade-transition-leave.fade-transition-leave-active {
+  opacity: 0;
 }
