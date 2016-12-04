@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 import { user } from '../../modules';
 import lookupDistrict from '../../util/lookupDistrict';
@@ -78,7 +78,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     !!this.props.location && !!this.props.location.state && !!this.props.location.district
 
   public goToTasks = () => {
-    browserHistory.push('/tasks');
+    hashHistory.push('/tasks');
   }
 
   public render() {
