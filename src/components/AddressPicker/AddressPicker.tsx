@@ -10,6 +10,7 @@ import AutocompleteInput from './AutocompleteInput';
 
 interface AddressPickerProps {
   style?: 'light' | 'dark';
+  location: user.Location;
   setLocation(location: user.Location): void;
 };
 
@@ -50,6 +51,9 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     });
   }
 
+  public isLocationSet = () =>
+    !!this.props.location && !!this.props.location.state && !!this.props.location.district
+
   public goToTasks = () => {
     browserHistory.push('/tasks');
   }
@@ -78,7 +82,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             onChange={this.setMinutes}
             size={'short'}
           />
-          <Button text={'Find tasks'} onClick={this.goToTasks} />
+          <Button disabled={this.isLocationSet()} text={'Find tasks'} onClick={this.goToTasks} />
         </div>
       </div>
     );

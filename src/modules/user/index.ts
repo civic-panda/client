@@ -7,8 +7,8 @@ export type Location = {
   name: string;
   state: string;
   district: number;
-  latitude?: number;
-  longitude?: number;
+  latitude: number;
+  longitude: number;
 }
 
 export interface State {

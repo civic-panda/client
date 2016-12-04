@@ -11,6 +11,7 @@ type ButtonSize = 'small' | 'large';
 interface ButtonProps {
   type?: ButtonType;
   size?: ButtonSize;
+  disabled?: boolean;
   loading?: boolean;
   children?: string;
   text: string;
@@ -33,6 +34,7 @@ export const Button = (props: ButtonProps) => {
     text = '',
     loading,
     onClick = nullFn,
+    disabled,
     preventDefault, ...otherProps,
   } = props;
 
@@ -57,6 +59,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <button
+      disabled={disabled}
       className={classes}
       onClick={clickHandler}
       {...otherProps}
