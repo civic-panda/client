@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 
 import './button.scss';
+import FadeIn from './FadeIn';
 import Text from './Text';
 
 type ButtonType = 'primary' | 'secondary' | 'highlighted' | 'colorless';
@@ -11,6 +12,8 @@ type ButtonSize = 'small' | 'large';
 interface ButtonProps {
   type?: ButtonType;
   size?: ButtonSize;
+  disabled?: boolean;
+  disabledText?: string;
   loading?: boolean;
   children?: string;
   text: string;
@@ -33,12 +36,15 @@ export const Button = (props: ButtonProps) => {
     text = '',
     loading,
     onClick = nullFn,
+    disabled = false,
+    disabledText,
     preventDefault, ...otherProps,
   } = props;
 
   const classes = classNames(
     'button',
     {
+      'button--is-disabled': !!disabled,
       'button--is-loading': !!loading,
       [`button--${type}`]: !!type,
       [`button--${size}`]: !!size,
@@ -57,6 +63,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <button
+      disabled={disabled}
       className={classes}
       onClick={clickHandler}
       {...otherProps}
@@ -67,6 +74,11 @@ export const Button = (props: ButtonProps) => {
         color={textColor}
         align={'center'}
       />
+      <FadeIn show={disabled && !!disabledText}>
+        <div className="disabled-notification elevation--1">
+          {disabledText}
+        </div>
+      </FadeIn>
     </button>
   );
 };

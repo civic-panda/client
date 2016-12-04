@@ -7,8 +7,17 @@ interface Props {
   placeholder?: string;
   style?: any;
   types?: any[];
+  label?: string;
+  name?: string;
+  error?: string;
+  value?: string;
+  autoFocus?: boolean;
+  customInput?: any;
   componentRestrictions?: any;
   onPlaceSelected(place: any): void;
+  onChange(event: any): void;
+  onFocus?(event: any): void;
+  onBlur?(event: any): void;
 }
 
 export default class ReactGoogleAutocomplete extends React.Component<Props, {}> {
@@ -39,12 +48,20 @@ export default class ReactGoogleAutocomplete extends React.Component<Props, {}> 
 
   public render() {
     const { onPlaceSelected, types, componentRestrictions } = this.props;
+    const { autoFocus, placeholder, name, label, value, error, onChange, onFocus, onBlur } = this.props;
 
     return (
       <input
         ref="input"
         className="input"
-        placeholder={this.props.placeholder}
+        id={name}
+        name={name}
+        onChange={onChange}
+        placeholder={placeholder}
+        value={value}
+        autoFocus={autoFocus}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
     );
   }

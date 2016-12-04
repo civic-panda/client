@@ -5,7 +5,7 @@ import { AppState, congress, issues, tasks, user } from '../modules';
 import congressData from './congress';
 import issueData from './issues';
 import taskData from './tasks';
-import userData from './user';
+// import userData from './user';
 
 interface ActionProps {
   setTasks(tasks: tasks.Task[]): void;
@@ -31,7 +31,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
         this.props.setTasks(taskData);
         this.props.setCongress(congressData);
         this.props.setIssues(issueData);
-        this.props.setUser(userData);
+        // this.props.setUser(userData);
         issueData.forEach(issue => this.props.subscribe(issue.id));
       }, 300);
     }

@@ -5,10 +5,11 @@ import { Action } from '../../redux/action';
 type Cause = string
 export type Location = {
   name: string;
+  address: string;
   state: string;
   district: number;
-  latitude?: number;
-  longitude?: number;
+  latitude: number;
+  longitude: number;
 }
 
 export interface State {

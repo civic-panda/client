@@ -1,0 +1,29 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.pull-out-menu-container {
+  .pull-out-menu {
+    position: fixed;
+    height: 100%;
+    width: 80%;
+    width: calc(100vw - 56px);
+    top: 0;
+    left: 0;
+    background: $primary;
+    z-index: 20;
+    // transform: translate3d(-120%, 0, 0);
+
+    // &.pull-out-menu--is-showing {
+    //   transform: translate3d(0, 0, 0);
+    // }
+  }
+
+  .page-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba($black, 0.5);
+  }
+}

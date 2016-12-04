@@ -1,12 +1,14 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
+@import '../../scss/vendors/include-media';
 
+$mobile-nav-height: 56px;
 $nav-height: 70px;
 
 .nav {
   position: fixed;
   top: 0;
-  height: $nav-height;
+  height: $mobile-nav-height;
   width: 100%;
   background-color: $primary;
   color: $white;
@@ -25,11 +27,22 @@ $nav-height: 70px;
   .link {
     display: inline-block;
     height: 100%;
-    padding: 0 $standard-spacing;
-    line-height: $nav-height;
+    padding: 0 1rem;
+    line-height: $mobile-nav-height;
+
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@include media('>=md') {
+  .nav {
+    height: $nav-height;
+
+    .link {
+      line-height: $nav-height;
     }
   }
 }

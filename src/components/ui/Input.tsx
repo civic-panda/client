@@ -19,10 +19,12 @@ interface InputProps {
   autoFocus?: boolean;
   customInput?: any;
   onChange(event: any): void;
+  onFocus?(event: any): void;
+  onBlur?(event: any): void;
 };
 
 export const Input = (props: InputProps) => {
-  const { autoFocus, placeholder, size, name, label, value, error, type = 'text', onChange } = props;
+  const { autoFocus, placeholder, size, name, label, value, error, type = 'text', onChange, onFocus, onBlur } = props;
   const containerClasses = classNames('input-container', { 'input-container--has-error': !!error });
   const inputClasses = classNames('input', { 'input--has-error': !!error, [`input--${size}`]: !!size });
   const labelClasses = classNames('input-label h5');
@@ -38,16 +40,18 @@ export const Input = (props: InputProps) => {
       {error && <span className={'input__error'}>{error}</span>}
       {props.customInput
         ? props.customInput
-        : <input
-          id={name}
-          className={inputClasses}
-          type={type}
-          name={name}
-          onChange={onChange}
-          placeholder={placeholder}
-          value={value}
-          autoFocus={autoFocus}
-        />
+        : (<input
+            id={name}
+            className={inputClasses}
+            type={type}
+            name={name}
+            onChange={onChange}
+            placeholder={placeholder}
+            value={value}
+            autoFocus={autoFocus}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />)
       }
     </div>
   );

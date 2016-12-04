@@ -1,3 +1,16 @@
+@import '../../scss/abstracts/colors';
+
 .icon {
   font-size: 1.33rem;
+
+  &.encircle {
+    display: flex;
+    width: 2.2rem;
+    height: 2.2rem;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    background: rgba($white, 0.2);
+    border-radius: 1.1rem;
+  }
 }

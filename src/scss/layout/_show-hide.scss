@@ -28,7 +28,7 @@ $i: 0; //index to track through loop
 
   //hide less than breakpoint
   .u-hide\@lt-#{$breakpointName}{
-    @include media('<' + $breakpointName){
+    @include media('<=' + $breakpointName){
       display: none !important;
     }
   }

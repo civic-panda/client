@@ -3,21 +3,29 @@ import * as React from 'react';
 
 import './icon.scss';
 
-export type IconType = 'phone' | 'info' | 'settings' | 'left-arrow';
+export type IconType = 'check' | 'phone' | 'hamburger' | 'info' |
+  'settings' | 'stopwatch' | 'star' | 'star-outline' | 'left-arrow';
 
 interface Props {
   type: IconType;
+  encircle?: boolean;
+  className?: string;
 };
 
 const classMap = {
-  phone: 'icon-phone-1',
+  phone: 'icon-phone',
   info: 'icon-info',
-  settings: 'icon-marchingcats-09',
+  star: 'icon-star',
+  hamburger: 'icon-hamburger',
+  stopwatch: 'icon-stopwatch',
+  settings: 'icon-settings',
+  check: 'icon-check',
+  'star-outline': 'icon-star-outline',
   'left-arrow': 'icon-angle-left',
 };
 
 export const Icon = (props: Props) => (
-  <span className={`icon ${classMap[props.type]}`}></span>
+  <span className={classNames('icon', classMap[props.type], props.className, { encircle: props.encircle })}></span>
 );
 
 export default Icon;

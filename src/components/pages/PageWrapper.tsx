@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import Footer from '../Footer';
 import Nav from '../Nav';
 import './page-wrapper.scss';
 
@@ -27,6 +28,7 @@ export class PageWrapper extends React.Component<Props, State> {
             {this.props.children}
           </div>
         </ReactCSSTransitionGroup>
+        <Footer />
       </div>
     );
   }

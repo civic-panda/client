@@ -1,0 +1,19 @@
+.slide-transition-appear,
+.slide-transition-enter {
+  transform: translate3d(-120%, 0, 0);
+  transition: all 280ms ease-out;
+}
+
+.slide-transition-appear.slide-transition-appear-active,
+.slide-transition-enter.slide-transition-enter-active {
+  transform: translate3d(0, 0, 0);
+}
+
+.slide-transition-leave {
+  transform: translate3d(0, 0, 0);
+  transition: all 280ms ease-out;
+}
+
+.slide-transition-leave.slide-transition-leave-active {
+  transform: translate3d(-120%, 0, 0);
+}

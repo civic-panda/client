@@ -3,15 +3,33 @@
 @import '../../scss/base/reset-forms';
 @import '../../scss/vendors/include-media';
 
+.disabled-notification {
+  display: none;
+  position: absolute;
+  background: #332f2f;
+  bottom: 1.75 * $standard-spacing;
+  width: 210px;
+  color: white;
+  border-radius: 3px;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  left: 50%;
+  margin-left: -105px;
+}
+
 .button {
   @include form-reset-button;
   display: block;
+  position: relative;
   width: 100%;
   height: 1.5 * $standard-spacing;
   background: $accent;
   cursor: pointer;
 
-  &:hover { background: get-color($accent, 600); }
+  &:hover {
+    background: get-color($accent, 600);
+    .disabled-notification { display: block; }
+  }
   &:active { background: get-color($accent, 700); }
 }
 
@@ -33,6 +51,14 @@
   &:active { background: get-color($highlight, 700); }
 }
 
+.button--is-disabled {
+  background: get-color($accent, 200);
+  color: get-color($gray, 700);
+  cursor: not-allowed;
+  &:hover { background: get-color($accent, 200); }
+  &:active { background: get-color($accent, 200); }
+}
+
 .button--colorless {
   background: rgba($white, 0.9);
   border: solid 1px rgba($gray, 0.8);
@@ -46,24 +72,23 @@
     background: rgba($gray, 0.5);
     border: solid 1px transparent;
   }
-
 }
 
-@include media('>small') {
+@include media('>sm') {
   .button {
+    display: block;
     width: 130px;
     margin: 0 auto;
   }
+}
 
+@include media('>md') {
+  .button {
+    display: inline-block;
+  }
   .input-container+.button,
   .input-container+a {
     display: inline-block;
     margin-left: 0.5rem;
-  }
-}
-
-@include media('>medium') {
-  .button {
-    display: inline-block;
   }
 }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { AppState, issues } from '../../modules';
-import { Button, Link, Text } from '../ui';
+import { Button, Icon, Link, Text } from '../ui';
 import './issue-picker.scss';
 
 interface Props {};
@@ -53,12 +53,13 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
           return (
             <div
               key={issue.id}
-              className="col--1-1 col--1-2@md col--1-3@lg col--1-4@xl"
+              className="col--1-1 col--1-2@sm col--1-3@lg col--1-4@xl"
             >
               <div
                 className={classes}
                 onClick={() => isSubscribed ? this.props.unsubscribe(issue.id) : this.props.subscribe(issue.id)}
               >
+                {isSubscribed && <Icon className={'check-mark'} type={'check'} encircle />}
                 <Text
                   text={issue.name}
                   size={'h4'}
