@@ -76,19 +76,19 @@
 
 @include media('>sm') {
   .button {
+    display: block;
     width: 130px;
     margin: 0 auto;
-  }
-
-  .input-container+.button,
-  .input-container+a {
-    display: inline-block;
-    margin-left: 0.5rem;
   }
 }
 
 @include media('>md') {
   .button {
     display: inline-block;
+  }
+  .input-container+.button,
+  .input-container+a {
+    display: inline-block;
+    margin-left: 0.5rem;
   }
 }

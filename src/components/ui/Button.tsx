@@ -36,7 +36,7 @@ export const Button = (props: ButtonProps) => {
     text = '',
     loading,
     onClick = nullFn,
-    disabled,
+    disabled = false,
     disabledText,
     preventDefault, ...otherProps,
   } = props;

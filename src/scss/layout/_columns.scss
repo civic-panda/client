@@ -1,4 +1,5 @@
 @import '../abstracts/variables';
+@import '../vendors/include-media';
 
 $column-sizes: (1, 2, 3, 4, 5, 12);
 
@@ -69,7 +70,17 @@ $column-sizes: (1, 2, 3, 4, 5, 12);
   >.col,
   >[class^="col--"],
   >[class*=" col--"]{
-    padding: $standard-spacing;
+    padding: $standard-spacing 0;
+  }
+}
+
+@include media('>sm') {
+  .row--padded {
+    >.col,
+    >[class^="col--"],
+    >[class*=" col--"]{
+      padding: $standard-spacing;
+    }
   }
 }
 

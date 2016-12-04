@@ -94,7 +94,11 @@ export class TaksList extends React.Component<Props, State> {
             onClick={() => this.setState({ showCompleted: !this.state.showCompleted })}
           />
         </div>
-        {this.state.showCompleted && this.props.completedTasks.map(this.renderTask)}
+        <FadeIn show={this.state.showCompleted}>
+          <div className="completed-task-list">
+            {this.props.completedTasks.map(this.renderTask)}
+          </div>
+        </FadeIn>
       </div>
     );
   }

@@ -12,7 +12,7 @@ export const FadeIn = (props: Props) => (
   <ReactCSSTransitionGroup
     transitionName="fade-transition"
     transitionAppear
-    transitionAppearTimeout={280}
+    transitionAppearTimeout={200}
     transitionEnterTimeout={0}
     transitionLeaveTimeout={0}
   >
