@@ -9,11 +9,11 @@ interface CongressPerson {
   fullName: string;
   commonName: string;
   party: 'R' | 'I' | 'D';
-  phoneNumbers: string[];
+  phoneNumbers: (string | number)[];
   address: string;
-  email: string;
+  email?: string;
   ontheissuesUrl: string;
-  committees: number[];
+  committees?: number[];
 }
 
 export interface Senator extends CongressPerson {

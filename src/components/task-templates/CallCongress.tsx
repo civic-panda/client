@@ -28,8 +28,14 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const representatives = congress.selectors.getRepresentatives(state, ownProps);
   const senators = congress.selectors.getSenators(state, ownProps);
   const callList = [
-    ...senators.map(senator => ({ name: `Senator ${senator.commonName}`, phoneNumbers: senator.phoneNumbers })),
-    ...representatives.map(rep => ({ name: `Representative ${rep.commonName}`, phoneNumbers: rep.phoneNumbers })),
+    ...senators.map(senator => ({
+      name: `Senator ${senator.commonName}`,
+      phoneNumbers: senator.phoneNumbers.map(number => `${number}`),
+    })),
+    ...representatives.map(rep => ({
+      name: `Representative ${rep.commonName}`,
+      phoneNumbers: rep.phoneNumbers.map(number => `${number}`),
+    })),
   ];
 
   return {

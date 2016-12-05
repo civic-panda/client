@@ -31,7 +31,10 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
     taskName: task.name,
     taskId: task.id,
     requestedAction: task.templateProps.requestedAction,
-    callList: representatives.map(rep => ({ name: rep.commonName, phoneNumbers: rep.phoneNumbers })),
+    callList: representatives.map(rep => ({
+      name: rep.commonName,
+      phoneNumbers: rep.phoneNumbers.map(number => `${number}`),
+    })),
     scripts: task.templateProps.scripts,
   };
 };

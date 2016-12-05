@@ -1,4 +1,5 @@
 import { congress } from '../modules';
+import { representatives } from './representatives';
 
 const senators: congress.Senator[] = [{
   id: 0,
@@ -46,22 +47,23 @@ const senators: congress.Senator[] = [{
   committees: [],
 }];
 
-const representatives: congress.Representative[] = [{
-  id: 0,
-  state: 'NY',
-  district: 2,
-  fullName: 'Peter Thomas "Pete" King',
-  commonName: 'Pete King',
-  party: 'R',
-  phoneNumbers: [
-    '2022257896',
-    '5165414225',
-  ],
-  address: '339 Cannon House Office Building Washington, DC 20515',
-  email: '',
-  ontheissuesUrl: 'http://www.ontheissues.org/NY/Peter_King.htm',
-  committees: [],
-}];
+// const representatives: congress.Representative[] = require('./representatives.json');
+// const representatives: congress.Representative[] = [{
+//   id: 0,
+//   state: 'NY',
+//   district: 2,
+//   fullName: 'Peter Thomas "Pete" King',
+//   commonName: 'Pete King',
+//   party: 'R',
+//   phoneNumbers: [
+//     '2022257896',
+//     '5165414225',
+//   ],
+//   address: '339 Cannon House Office Building Washington, DC 20515',
+//   email: '',
+//   ontheissuesUrl: 'http://www.ontheissues.org/NY/Peter_King.htm',
+//   committees: [],
+// }];
 
 const committees: congress.Committee[] = [];
 

@@ -14,7 +14,6 @@ type Location = {
 
 export interface Task {
   id: number;
-  completed: boolean;
   name: string;
   issueId: number | string;
   activityType: Activity;
@@ -23,7 +22,6 @@ export interface Task {
   startDate: number;
   endDate: number;
   location: Location;
-  notes: string;
   template: Template;
   templateProps: any;
 }
