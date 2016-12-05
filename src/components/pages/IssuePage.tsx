@@ -39,11 +39,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               displayBlock
               bottomMargin
             />
-            <Text
-              text={this.props.issue.summary}
-              displayBlock
-              bottomMargin
-            />
+            <p dangerouslySetInnerHTML={{ __html: this.props.issue.summary }} />
             <br />
             <Text
               size={'h4'}
@@ -55,7 +51,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
             />
             <ul>
               {this.props.issue.facts.map((fact, index) => (
-                <li key={index}><Text text={fact} displayBlock bottomMargin /></li>
+                <li key={index}><p dangerouslySetInnerHTML={{ __html: fact }} /></li>
               ))}
             </ul>
           </div>
@@ -69,7 +65,9 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               bottomMargin
             />
             {this.props.issue.reading.map(link => (
-              <a key={link.name} className="external-link" href={link.url} target={'_blank'}>{link.name}</a>
+              <div>
+                <a key={link.name} className="external-link" href={link.url} target={'_blank'}>{link.name}</a>
+              </div>
             ))}
           </div>
         </div>

@@ -1,4 +1,3 @@
-import loadGoogleMapsAPI from 'load-google-maps-api';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
