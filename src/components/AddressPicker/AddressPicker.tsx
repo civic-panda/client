@@ -47,7 +47,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   }
 
   public lookupDistrict = async (place: any) => {
-    console.log('lookupDistrict', place)
+    console.log('lookupDistrict', place);
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
     const { district, state } = await lookupDistrict(lat, lng);

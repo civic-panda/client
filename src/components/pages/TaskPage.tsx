@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { AppState, issues, tasks } from '../../modules';
 import { TaskDetails } from '../task';
 import * as templates from '../task-templates';
-import { Text } from '../ui';
+import { Icon, Text } from '../ui';
 import './task-page.scss';
 
 interface Props {
@@ -36,9 +36,30 @@ class TaskPage extends React.Component<Props & StateProps, State> {
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
               <Link to={`/issues/${this.props.issue.id}`}>
-                <Text text={this.props.issue.name} color={'inverse'} bottomMargin displayBlock />
+                <Text
+                  text={this.props.issue.name}
+                  color={'inverse'}
+                  type={'label'}
+                  bottomMargin
+                  displayBlock
+                />
               </Link>
-              <Text text={this.props.task.name} color={'inverse'} size={'lg'} displayBlock />
+              <Text
+                text={this.props.task.name}
+                color={'inverse'}
+                size={'lg'}
+                bottomMargin
+                displayBlock
+              />
+              <Link to={`/issues/${this.props.issue.id}`}>
+                <Icon type={'info'} encircle inline />
+                <Text
+                  text={'Why is this issue important?'}
+                  color={'inverse'}
+                  type={'label'}
+                  underline
+                />
+              </Link>
             </div>
             <div className="details-container u-hide@lt-lg col--1-3">
               <TaskDetails task={this.props.task} darkBackground />

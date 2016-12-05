@@ -7,12 +7,24 @@
     display: flex;
     width: 2.2rem;
     height: 2.2rem;
+    margin-top: -0.3rem;
     align-items: center;
     justify-content: center;
     color: $white;
     background: rgba($white, 0.2);
     border-radius: 1.1rem;
   }
+
+  &.inline {
+    float: left;
+    margin-right: 1rem;
+  }
+}
+
+.icon-info-light:before {
+  content: 'i';
+  font-size: 1.33rem;
+  font-weight: light;
 }
 
 .icon-close:before {
