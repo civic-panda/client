@@ -1,6 +1,11 @@
 import * as React from 'react';
 
+import { Text } from '../ui';
 import Autocomplete from './ForkedAutocomplete';
+
+interface State {
+  googlemaps: any;
+}
 
 interface Props {
   style?: any;
@@ -16,14 +21,49 @@ interface Props {
   onBlur?(event: any): void;
 }
 
-const AutocompleteInput = (props: Props) => (
-  <Autocomplete
-    placeholder={'Your address'}
-    onPlaceSelected={props.onPlaceSelected}
-    types={['geocode']}
-    componentRestrictions={{country: 'us'}}
-    {...props}
-  />
-);
+interface Context {
+  googlemaps: any;
+  onGoogleMapsLoaded: (fn: (gm: any) => void) => void;
+}
+
+class AutocompleteInput extends React.Component<Props, State> {
+  public static contextTypes = {
+    googlemaps: React.PropTypes.object,
+    onGoogleMapsLoaded: React.PropTypes.func,
+  };
+
+  public context: Context;
+
+  public constructor(props: Props, context: Context) {
+    super(props);
+    this.state = {
+      googlemaps: context.googlemaps,
+    };
+  }
+
+  public componentDidMount() {
+    this.context.onGoogleMapsLoaded((googlemaps: any) => {
+      this.setState({ googlemaps });
+    });
+  }
+
+  public render () {
+    return this.state.googlemaps.places
+      ? (
+        <Autocomplete
+          placeholder={'Your address'}
+          onPlaceSelected={this.props.onPlaceSelected}
+          types={['geocode']}
+          componentRestrictions={{country: 'us'}}
+          places={this.state.googlemaps.places}
+          {...this.props}
+        />
+      ) : (
+        <div className={'input'} style={{ 'text-align': 'left', 'line-height': '38px' }}>
+          <Text align={'left'} text={'Loading Google Maps'} />
+        </div>
+      );
+  }
+}
 
 export default AutocompleteInput;

@@ -44,3 +44,23 @@ declare module 'redux-persist' {
 declare module 'redux-persist/constants' {
   export var REHYDRATE: string;
 }
+
+declare module 'load-google-maps-api' {
+  interface GMLibraries {
+    places: {
+      Autocomplete: any;
+    }
+  }
+
+  interface Options {
+    client?: string;
+    key?: string;
+    language?: string;
+    libraries?: string[];
+    timeout?: number;
+    v?: string;
+  }
+
+  function loadGoogleMapsAPI(options?: Options): Promise<GMLibraries>;
+  export default loadGoogleMapsAPI;
+}
