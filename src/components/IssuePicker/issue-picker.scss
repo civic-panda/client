@@ -1,5 +1,6 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
+@import '../../scss/vendors/include-media';
 
 .issue-picker {
   margin-bottom: $standard-spacing;
@@ -22,9 +23,8 @@
     border-color: $gray;
 
     a {
-      display: none;
       position: absolute;
-      bottom: $standard-spacing;
+      bottom: 0;
     }
 
     &:hover{
@@ -72,5 +72,24 @@
     position: absolute;
     right: 1rem;
     top: 1.3rem;
+  }
+}
+
+@include media('<=sm') {
+  .issue-picker {
+    .issue-block a,
+    .issue-block .button {
+      width: 100%;
+      height: 56px;
+    }
+  }
+}
+
+@include media('>md') {
+  .issue-picker {
+    .issue-block a {
+      display: none;
+      bottom: $standard-spacing;
+    }
   }
 }
