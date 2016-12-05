@@ -14,7 +14,7 @@ class App extends React.Component<{}, {}> {
   public render() {
     return (
       <Provider store={store}>
-        <RouterWithData history={hashHistory} routes={routes} />
+        <RouterWithData history={hashHistory} routes={routes(store)} />
       </Provider>
     );
   }
