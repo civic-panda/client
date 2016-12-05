@@ -48,7 +48,7 @@ class AutocompleteInput extends React.Component<Props, State> {
   }
 
   public render () {
-    return this.state.googlemaps.places
+    return this.state.googlemaps
       ? (
         <Autocomplete
           placeholder={'Your address'}
@@ -59,7 +59,7 @@ class AutocompleteInput extends React.Component<Props, State> {
           {...this.props}
         />
       ) : (
-        <div className={'input'} style={{ 'text-align': 'left', 'line-height': '38px' }}>
+        <div className={'input'} style={{ textAlign: 'left', lineHeight: '38px' }}>
           <Text align={'left'} text={'Loading Google Maps'} />
         </div>
       );

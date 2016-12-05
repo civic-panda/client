@@ -21,7 +21,7 @@ const loadGoogle = (WrappedComponent: React.ComponentClass<{}>) => {
 
     public constructor (props: Props) {
       super(props);
-      this.state = { googlemaps: {} };
+      this.state = { googlemaps: undefined };
     }
 
     public componentDidMount() {
@@ -31,7 +31,9 @@ const loadGoogle = (WrappedComponent: React.ComponentClass<{}>) => {
     public getChildContext() {
       return {
         googlemaps: this.state.googlemaps,
-        onGoogleMapsLoaded: (fn: (gm: any) => void) => this.subscriptions.push(fn),
+        onGoogleMapsLoaded: (fn: (gm: any) => void) => {
+          this.state.googlemaps ? fn(this.state.googlemaps) : this.subscriptions.push(fn);
+        },
       };
     }
 
@@ -40,7 +42,7 @@ const loadGoogle = (WrappedComponent: React.ComponentClass<{}>) => {
         key: 'AIzaSyAZXY77aglmg1UXo7yHJs6xsRVaO9dvQnY',
         libraries: ['places'],
       });
-      this.setState({ googlemaps: { googlemaps } });
+      this.setState({ googlemaps });
       this.subscriptions.forEach(f => f(googlemaps));
     }
 
