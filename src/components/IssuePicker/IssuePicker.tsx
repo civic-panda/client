@@ -24,24 +24,6 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
   public render() {
     return (
       <div className="issue-picker row row--padded">
-        <div className="col--1-1">
-          <Text
-            text={'The Issues'}
-            size={'h1'}
-            type={'header'}
-            align={'center'}
-            displayBlock
-            bottomMargin
-          />
-          <Text
-            text={'(Click to select and deselect)'}
-            type={'header'}
-            size={'h4'}
-            align={'center'}
-            displayBlock
-            bottomMargin
-          />
-        </div>
         {this.props.issues.map((issue, index) => {
           const isSubscribed = this.props.subscribed.indexOf(issue.id) > -1;
           const classes = classNames(

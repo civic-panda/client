@@ -36,6 +36,24 @@ export class SplashPage extends React.Component<SplashPageProps, SplashPageState
         </div>
         <div>
           <AddressPicker />
+          <div className="col--1-1 col--padded">
+            <Text
+              text={'The Issues'}
+              size={'h1'}
+              type={'header'}
+              align={'center'}
+              displayBlock
+              bottomMargin
+            />
+            <Text
+              text={'(Click to select and deselect)'}
+              type={'header'}
+              size={'h4'}
+              align={'center'}
+              displayBlock
+              bottomMargin
+            />
+          </div>
           <IssuePicker />
           <AddressPicker style={'light'} />
         </div>
