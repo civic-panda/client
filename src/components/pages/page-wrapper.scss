@@ -20,6 +20,7 @@
   top: 0;
   opacity: 0.01;
   transition: opacity 180ms ease-out;
+  background: $white;
 }
 
 .page-transition-enter.page-transition-enter-active {
@@ -29,18 +30,18 @@
   opacity: 1;
 }
 
-.page-transition-leave {
-  position: relative;
-  opacity: 1;
-  z-index: 0;
-  transition: opacity 180ms ease-out;
-}
+// .page-transition-leave {
+//   position: relative;
+//   opacity: 1;
+//   z-index: 0;
+//   transition: opacity 180ms ease-out;
+// }
 
-.page-transition-leave.page-transition-leave-active {
-  position: relative;
-  z-index: 0;
-  opacity: 0.01;
-}
+// .page-transition-leave.page-transition-leave-active {
+//   position: relative;
+//   z-index: 0;
+//   opacity: 0.01;
+// }
 
 @include media('>=md') {
   .page-container {

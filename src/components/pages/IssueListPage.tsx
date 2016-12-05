@@ -27,7 +27,6 @@ export class IssueListPage extends React.Component<Props, State> {
                 type={'header'}
                 color={'inverse'}
                 displayBlock
-                bottomMargin
               />
             </div>
           </div>
