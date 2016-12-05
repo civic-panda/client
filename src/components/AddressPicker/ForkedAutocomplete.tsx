@@ -4,6 +4,12 @@
 
 import * as React from 'react';
 
+import { Spinner } from '../ui';
+
+interface State {
+  loading: boolean;
+}
+
 interface Props {
   places?: any;
   placeholder?: string;
@@ -22,13 +28,16 @@ interface Props {
   onBlur?(event: any): void;
 }
 
-export default class ReactGoogleAutocomplete extends React.Component<Props, {}> {
+export default class ReactGoogleAutocomplete extends React.Component<Props, State> {
   public refs: any = {};
   private autocomplete: any;
 
   constructor(props: Props) {
     super(props);
     this.autocomplete = null;
+    this.state = {
+      loading: false,
+    };
   }
 
   public componentDidMount() {
@@ -42,10 +51,10 @@ export default class ReactGoogleAutocomplete extends React.Component<Props, {}> 
     this.autocomplete.addListener('place_changed', this.onSelected.bind(this));
   }
 
-  public onSelected = () => {
-    if (this.props.onPlaceSelected) {
-      this.props.onPlaceSelected(this.autocomplete.getPlace());
-    }
+  public onSelected = async () => {
+    this.setState({ loading: true });
+    await this.props.onPlaceSelected(this.autocomplete.getPlace());
+    this.setState({ loading: false });
   }
 
   public render() {
@@ -53,18 +62,21 @@ export default class ReactGoogleAutocomplete extends React.Component<Props, {}> 
     const { autoFocus, placeholder, name, label, value, error, onChange, onFocus, onBlur } = this.props;
 
     return (
-      <input
-        ref="input"
-        className="input"
-        id={name}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        value={value}
-        autoFocus={autoFocus}
-        onFocus={onFocus}
-        onBlur={onBlur}
-      />
+      <span style={{ position: 'relative' }} className={`${this.state.loading && 'input--is-loading'}`}>
+        <input
+          ref="input"
+          className={`input`}
+          id={name}
+          name={name}
+          onChange={onChange}
+          placeholder={placeholder}
+          value={this.state.loading ? 'Loading your district' : value}
+          autoFocus={autoFocus}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
+        <Spinner color={'gray'} />
+      </span>
     );
   }
 }

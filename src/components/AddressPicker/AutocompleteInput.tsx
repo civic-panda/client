@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text } from '../ui';
+import { Spinner, Text } from '../ui';
 import Autocomplete from './ForkedAutocomplete';
 
 interface State {
@@ -59,8 +59,9 @@ class AutocompleteInput extends React.Component<Props, State> {
           {...this.props}
         />
       ) : (
-        <div className={'input'} style={{ textAlign: 'left', lineHeight: '38px' }}>
+        <div className={'input input--is-loading'} style={{ textAlign: 'left', lineHeight: '38px' }}>
           <Text align={'left'} text={'Loading Google Maps'} />
+          <Spinner color={'gray'} />
         </div>
       );
   }

@@ -23,6 +23,7 @@
   position: relative;
   width: 100%;
   height: 1.5 * $standard-spacing;
+  line-height: 1.5 * $standard-spacing;
   background: $accent;
   cursor: pointer;
 
@@ -35,6 +36,7 @@
 
 .button--small {
   height: 1.25 * $standard-spacing;
+  line-height: 1.25 * $standard-spacing;
   width: auto;
   padding: 0 $standard-spacing;
 }
@@ -79,6 +81,10 @@
     display: block;
     width: 130px;
     margin: 0 auto;
+  }
+
+  .button--is-loading {
+    padding-right: 28px;
   }
 }
 

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import './button.scss';
 import FadeIn from './FadeIn';
+import Spinner from './Spinner';
 import Text from './Text';
 
 type ButtonType = 'primary' | 'secondary' | 'highlighted' | 'colorless';
@@ -74,6 +75,7 @@ export const Button = (props: ButtonProps) => {
         color={textColor}
         align={'center'}
       />
+      <Spinner />
       <FadeIn show={disabled && !!disabledText}>
         <div className="disabled-notification elevation--1">
           {disabledText}
