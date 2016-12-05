@@ -1,4 +1,3 @@
-import loadGoogleMapsAPI from 'load-google-maps-api';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
@@ -15,7 +14,7 @@ class App extends React.Component<{}, {}> {
   public render() {
     return (
       <Provider store={store}>
-        <RouterWithData history={hashHistory} routes={routes} />
+        <RouterWithData history={hashHistory} routes={routes(store)} />
       </Provider>
     );
   }
