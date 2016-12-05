@@ -1,0 +1,21 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.issue-page{
+  .issue {
+
+  }
+
+  .issue__header {
+    background: $primary;
+  }
+
+  .details-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .issue__body {
+
+  }
+}

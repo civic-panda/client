@@ -58,6 +58,7 @@ export class TaksList extends React.Component<Props, State> {
     <div>
       <Text
         text={`Wow you've been busy!`}
+        type={'header'}
         size={'lg'}
         displayBlock
         bottomMargin

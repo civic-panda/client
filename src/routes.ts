@@ -12,6 +12,8 @@ const siteRoutes = {
     { name: 'about', path: 'about', component: pages.AboutPage },
     { name: 'tasks', path: 'tasks', component: pages.TaskListPage },
     { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage },
+    { name: 'issues', path: 'issues', component: pages.IssueListPage },
+    { name: 'issue', path: 'issues/:issueId', component: pages.IssuePage },
   ],
 };
 

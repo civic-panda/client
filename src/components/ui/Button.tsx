@@ -85,10 +85,16 @@ export const Button = (props: ButtonProps) => {
 
 // Link Button
 const LinkButton = (props: LinkProps) => {
-  const { link, ...otherProps } = props;
+  const { link, preventDefault, ...otherProps } = props;
+
+  const clickHandler = (e: any) => {
+    if (preventDefault) {
+      e.stopPropagation();
+    }
+  };
 
   return (
-    <Link to={link}>
+    <Link to={link} onClick={clickHandler}>
       <Button {...otherProps} />
     </Link>
   );

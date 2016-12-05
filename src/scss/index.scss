@@ -81,3 +81,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+a.external-link {
+  color: $highlight;
+  text-decoration: underline;
+}
+
+ul {
+ list-style-type: disc;
+ list-style-position: outside;
+ list-style-image: none;
+ padding-left: 1rem;
+}
+
+li {
+  margin-left: 1rem;
+}

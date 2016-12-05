@@ -10,12 +10,12 @@ interface Props {};
 
 interface StateProps {
   issues: issues.Issue[];
-  subscribed: number[];
+  subscribed: (number | string)[];
 };
 
 interface DispatchProps {
-  subscribe: (issue: number) => void;
-  unsubscribe: (issue: number) => void;
+  subscribe: (issue: number | string) => void;
+  unsubscribe: (issue: string | number) => void;
 };
 
 interface State {};
@@ -69,7 +69,13 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   align={'center'}
                   displayBlock
                 />
-                <Button type={'colorless'} text={'Info'} size={'small'} preventDefault />
+                <Link
+                  link={`/issues/${issue.id}`}
+                  type={'colorless'}
+                  text={'Info'}
+                  size={'small'}
+                  preventDefault
+                />
               </div>
             </div>
           );

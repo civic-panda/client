@@ -2,6 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 import Button from './Button';
+import './toggle.scss';
 
 type Option = string | { name: string, value: string };
 

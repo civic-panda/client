@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import './icon.scss';
 
-export type IconType = 'check' | 'phone' | 'hamburger' | 'info' |
+export type IconType = 'check' | 'close' | 'phone' | 'hamburger' | 'info' |
   'settings' | 'stopwatch' | 'star' | 'star-outline' | 'left-arrow';
 
 interface Props {
@@ -22,6 +22,7 @@ const classMap = {
   check: 'icon-check',
   'star-outline': 'icon-star-outline',
   'left-arrow': 'icon-angle-left',
+  close: 'icon-close',
 };
 
 export const Icon = (props: Props) => (

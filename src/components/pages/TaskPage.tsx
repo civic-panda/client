@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { AppState, issues, tasks } from '../../modules';
 import { TaskDetails } from '../task';
@@ -34,7 +35,9 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              <Text text={this.props.issue.name} color={'inverse'} bottomMargin displayBlock />
+              <Link to={`/issues/${this.props.issue.id}`}>
+                <Text text={this.props.issue.name} color={'inverse'} bottomMargin displayBlock />
+              </Link>
               <Text text={this.props.task.name} color={'inverse'} size={'lg'} displayBlock />
             </div>
             <div className="details-container u-hide@lt-lg col--1-3">

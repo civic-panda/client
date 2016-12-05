@@ -12,7 +12,7 @@ interface ActionProps {
   setIssues(issues: issues.Issue[]): void;
   setCongress(congress: congress.State): void;
   setUser(user: user.State): void;
-  subscribe(issueId: number): void;
+  subscribe(issueId: number | string): void;
 }
 
 interface StateProps {

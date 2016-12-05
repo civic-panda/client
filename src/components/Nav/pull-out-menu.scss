@@ -18,6 +18,36 @@
     // }
   }
 
+  .mobile-link {
+    display: block;
+    height: 56px;
+    line-height: 56px;
+    width: 100%;
+    padding-left: 2rem;
+  }
+
+  .mobile-link:nth-child(2n) {
+    background: get-color($primary, 400);
+  }
+
+  .mobile-link--is-active {
+    padding-left: 1rem;
+    border-width: 0 0 0 1rem;
+    border-style: solid;
+    border-color: $highlight;
+  }
+
+  .close-button {
+    height: 56px;
+    line-height: 56px;
+    width: 100%;
+
+    .icon {
+      position: absolute;
+      right: 1rem;
+    }
+  }
+
   .page-overlay {
     position: fixed;
     height: 100%;
