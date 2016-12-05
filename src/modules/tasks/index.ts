@@ -16,7 +16,7 @@ export interface Task {
   id: number;
   completed: boolean;
   name: string;
-  issueId: number;
+  issueId: number | string;
   activityType: Activity;
   tags: Tag[];
   duration: number | string;
@@ -78,12 +78,12 @@ const getSubscribed = createSelector(
 );
 const getCompleted = createSelector(
   getState,
-  state => state.list.filter(task => state.completed.indexOf(task.issueId) > -1)
+  state => state.list.filter(task => state.completed.indexOf(task.id) > -1)
 );
 const getRemaining = createSelector(
   getState,
   getSubscribed,
-  (state, subscribed) => subscribed.filter(task => state.completed.indexOf(task.issueId) === -1)
+  (state, subscribed) => subscribed.filter(task => state.completed.indexOf(task.id) === -1)
 );
 const getTaskId = (_state: any, { taskId }: { taskId: number }) => taskId;
 const getTask = createSelector(getList, getTaskId, (list, taskId) => list.find(task => task.id === taskId));

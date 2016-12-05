@@ -44,10 +44,23 @@ export class TaksList extends React.Component<Props, State> {
             text={this.props.issues.find(issue => issue.id === task.issueId).name}
             size={'small'}
             color={'light'}
+            type={'label'}
             bottomMargin
           />
-          <Text className="task-name" text={task.name} size={'h2'} bottomMargin />
-          <Text className="u-hide@sm" text={task.tags.join(', ')} size={'small'} />
+          <Text
+            className="task-name"
+            text={task.name}
+            size={'h2'}
+            type={'header'}
+            bottomMargin
+          />
+          <Text
+            className="u-hide@sm"
+            text={task.tags.join(', ')}
+            type={'label'}
+            format={'Uppercase'}
+            size={'small'}
+          />
         </div>
         <TaskDetails task={task} />
       </div>
@@ -58,6 +71,7 @@ export class TaksList extends React.Component<Props, State> {
     <div>
       <Text
         text={`Wow you've been busy!`}
+        type={'header'}
         size={'lg'}
         displayBlock
         bottomMargin

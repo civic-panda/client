@@ -17,6 +17,12 @@ interface State {
 };
 
 const links = [{
+  name: 'tasks',
+  url: '/tasks',
+}, {
+  name: 'issues',
+  url: '/issues',
+}, {
   name: 'about',
   url: '/about',
 }];
@@ -63,19 +69,24 @@ export class Nav extends React.Component<Props, State> {
             <Icon type={'hamburger'} />
           </div>
           <PullOutMenu
+            currentRoute={this.props.currentRoute}
             isShowing={this.state.showPullOutMenu}
+            links={links}
             hide={() => this.toggleMenu(false)}
           />
         </div>
         <div className="u-hide@sm">
           <BackButton currentRoute={this.props.currentRoute} />
-          {this.props.currentRoute === 'tasks' && <NavLink icon={'settings'} to={'issues'} />}
           <div className="links">
             {
               links
-                .filter(link => link.name !== this.props.currentRoute)
                 .map(link => (
-                  <NavLink key={link.name} text={link.name} to={link.url} />
+                  <NavLink
+                    key={link.name}
+                    text={link.name}
+                    to={link.url}
+                    active={link.name === this.props.currentRoute}
+                  />
               ))
             }
           </div>

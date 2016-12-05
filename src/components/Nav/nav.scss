@@ -30,6 +30,10 @@ $nav-height: 70px;
     padding: 0 1rem;
     line-height: $mobile-nav-height;
 
+    &.link--is-active {
+      color: $highlight;
+      cursor: default;
+    }
 
     &:hover {
       text-decoration: underline;

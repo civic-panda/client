@@ -31,7 +31,7 @@ const data: tasks.Task[] = [{
   completed: false,
   name: 'Call your senators',
   activityType: 'phone call',
-  issueId: 2,
+  issueId: 'ui-testing',
   tags: [
     'important',
     'test',

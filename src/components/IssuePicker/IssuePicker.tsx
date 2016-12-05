@@ -10,12 +10,12 @@ interface Props {};
 
 interface StateProps {
   issues: issues.Issue[];
-  subscribed: number[];
+  subscribed: (number | string)[];
 };
 
 interface DispatchProps {
-  subscribe: (issue: number) => void;
-  unsubscribe: (issue: number) => void;
+  subscribe: (issue: number | string) => void;
+  unsubscribe: (issue: string | number) => void;
 };
 
 interface State {};
@@ -24,24 +24,6 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
   public render() {
     return (
       <div className="issue-picker row row--padded">
-        <div className="col--1-1">
-          <Text
-            text={'The Issues'}
-            size={'h1'}
-            type={'header'}
-            align={'center'}
-            displayBlock
-            bottomMargin
-          />
-          <Text
-            text={'(Click to select and deselect)'}
-            type={'header'}
-            size={'h4'}
-            align={'center'}
-            displayBlock
-            bottomMargin
-          />
-        </div>
         {this.props.issues.map((issue, index) => {
           const isSubscribed = this.props.subscribed.indexOf(issue.id) > -1;
           const classes = classNames(
@@ -69,7 +51,13 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   align={'center'}
                   displayBlock
                 />
-                <Button type={'colorless'} text={'Info'} size={'small'} preventDefault />
+                <Link
+                  link={`/issues/${issue.id}`}
+                  type={'colorless'}
+                  text={'Info'}
+                  size={'small'}
+                  preventDefault
+                />
               </div>
             </div>
           );

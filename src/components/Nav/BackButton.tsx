@@ -17,27 +17,42 @@ interface OwnProps {
 
 const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) => {
   switch (props.currentRoute) {
-    case 'about':
+    // case 'about':
+    // case 'issues':
+    //   return (
+    //     <div className="back-button">
+    //       <NavLink
+    //         text={props.location ? 'Your tasks' : 'Get started'}
+    //         to={props.location ? '/tasks' : '/'}
+    //         icon={'left-arrow'}
+    //         indexLink={!props.location}
+    //       />
+    //     </div>
+    //   );
+
+
+    case 'issue':
       return (
         <div className="back-button">
           <NavLink
-            text={props.location ? 'Your tasks' : 'Get started'}
-            to={props.location ? '/tasks' : '/'}
+            text={'All issues'}
+            to={'/issues'}
             icon={'left-arrow'}
           />
         </div>
       );
 
-    case 'faq':
-      return (
-        <div className="back-button">
-          <NavLink
-            text={props.location ? 'Your tasks' : 'Get started'}
-            to={props.location ? '/tasks' : '/'}
-            icon={'left-arrow'}
-          />
-        </div>
-      );
+    // case 'faq':
+    //   return (
+    //     <div className="back-button">
+    //       <NavLink
+    //         text={props.location ? 'Your tasks' : 'Get started'}
+    //         to={props.location ? '/tasks' : '/'}
+    //         icon={'left-arrow'}
+    //         indexLink={!props.location}
+    //       />
+    //     </div>
+    //   );
 
     case 'tasks':
       return (
@@ -46,6 +61,7 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
             text={`${props.location.name}, ${props.location.state} District ${props.location.district}`}
             to={'/'}
             icon={'left-arrow'}
+            indexLink={true}
           />
         </div>
       );

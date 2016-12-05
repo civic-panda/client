@@ -3,7 +3,6 @@ const corsProxy = 'https://sunlight-proxy.herokuapp.com';
 const apiEndpoint = 'https://congress.api.sunlightfoundation.com';
 
 const lookup = async (lat: number, lng: number) => {
-  const test = await fetch(`${corsProxy}/test`);
   const result = await fetch(`${corsProxy}/districts/locate?latitude=${lat}&longitude=${lng}`);
 
   if (result.ok) {

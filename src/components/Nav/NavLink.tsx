@@ -7,6 +7,8 @@ interface LinkProps {
   to: string;
   text?: string;
   icon?: IconType;
+  active?: boolean;
+  indexLink?: boolean;
 };
 
 interface LinkState {};
@@ -14,13 +16,19 @@ interface LinkState {};
 export class NavLink extends React.Component<LinkProps, LinkState> {
   public render() {
     return (
-      <RouterLink className={'link'} to={this.props.to}>
+      <RouterLink
+        className={'link'}
+        to={this.props.to}
+        activeClassName={'link--is-active'}
+        onlyActiveOnIndex={this.props.indexLink}
+      >
         {this.props.icon && <Icon type={this.props.icon} />}
         <Text
           format={'Capitalize'}
           text={this.props.text}
-          color={'inverse'}
+          color={this.props.active ? 'highlight' : 'inverse'}
           size={'h4'}
+          type={'label'}
         />
       </RouterLink>
     );

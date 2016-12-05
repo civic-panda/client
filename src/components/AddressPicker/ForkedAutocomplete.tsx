@@ -1,9 +1,11 @@
 /*
   Forked from https://github.com/ErrorPro/react-google-autocomplete and ported to typescript
 */
+
 import * as React from 'react';
 
 interface Props {
+  places?: any;
   placeholder?: string;
   style?: any;
   types?: any[];
@@ -32,7 +34,7 @@ export default class ReactGoogleAutocomplete extends React.Component<Props, {}> 
   public componentDidMount() {
     const { types = ['(cities)'], componentRestrictions = {} } = this.props;
 
-    this.autocomplete = new google.maps.places.Autocomplete(this.refs.input, {
+    this.autocomplete = new this.props.places.Autocomplete(this.refs.input, {
       types,
       componentRestrictions,
     });
