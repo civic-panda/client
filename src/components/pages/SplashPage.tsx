@@ -5,25 +5,66 @@ import IssuePicker from '../IssuePicker';
 import { Button, Link, Text } from '../ui';
 import './splash-page.scss';
 
-interface SplashPageProps {};
+interface Props {};
 
-interface SplashPageState {};
+interface State {
+  titleText: string;
+};
 
-export class SplashPage extends React.Component<SplashPageProps, SplashPageState> {
+export class SplashPage extends React.Component<Props, State> {
+  public interval: any;
+  public counter: number;
+
+  public constructor(props: Props) {
+    super(props);
+    this.counter = 0;
+    this.state = {
+      titleText: 'this',
+    };
+  }
+
+  public componentDidMount() {
+    // const labels = ['global warming', 'campaign finance', 'this', 'this' ];
+    // this.interval = setInterval(() => {
+    //   this.setState({ titleText: labels[this.counter % labels.length] });
+    //   this.counter ++;
+    // }, 2200);
+  }
+
+  public componentWillUnMount() {
+    // clearInterval(this.interval);
+  }
+
   public render() {
     return (
       <div className="splash-page">
         <div className="splash-hero ">
-          <Text
-            className={'hero-text col--1-1'}
-            align={'center'}
-            size={'xxl'}
-            type={'header'}
-            color={'inverse'}
-            text={'WolfPAC'}
-            bottomMargin
-            displayBlock
-          />
+          <Text className="hero-text col--1-1" align={'center'} displayBlock>
+            <Text
+              align={'center'}
+              size={'xxl'}
+              type={'header'}
+              color={'inverse'}
+              text={`Act on [`}
+              bottomMargin
+            />
+            <Text
+              align={'center'}
+              size={'xxl'}
+              type={'header'}
+              color={'inverse'}
+              text={`${this.state.titleText}`}
+              bottomMargin
+            />
+            <Text
+              align={'center'}
+              size={'xxl'}
+              type={'header'}
+              color={'inverse'}
+              text={`]`}
+              bottomMargin
+            />
+          </Text>
           <Text
             className={'hero-text col--1-1'}
             align={'center'}
