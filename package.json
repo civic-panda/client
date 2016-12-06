@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://civic-panda.github.io/client",
+  "homepage": "http://www.actonthis.org",
   "devDependencies": {
     "@types/classnames": "^0.0.32",
     "@types/googlemaps": "^3.25.37",
