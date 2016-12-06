@@ -1,6 +1,6 @@
 // TODO host this somewhere better (on free heroku server)
-const corsProxy = 'http://localhost:5000';
-// const corsProxy = 'https://sunlight-proxy.herokuapp.com';
+// const corsProxy = 'http://localhost:5000';
+const corsProxy = 'https://sunlight-proxy.herokuapp.com';
 const apiEndpoint = 'https://congress.api.sunlightfoundation.com';
 
 const lookup = async (lat: number, lng: number) => {
