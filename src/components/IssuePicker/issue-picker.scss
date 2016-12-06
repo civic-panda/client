@@ -79,8 +79,9 @@
   .issue-picker {
     .issue-block a,
     .issue-block .button {
-      width: 100%;
       height: 56px;
+      width: 100%;
+      left: 0;
     }
   }
 }
