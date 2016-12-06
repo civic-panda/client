@@ -39,7 +39,7 @@ export class SplashPage extends React.Component<Props, State> {
     return (
       <div className="splash-page">
         <div className="splash-hero ">
-          <Text className="hero-text col--1-1" align={'center'} displayBlock>
+          <Text className="hero-text col--1-1" align={'center'} displayBlock bottomMargin>
             <Text
               align={'center'}
               size={'xxl'}
@@ -71,7 +71,7 @@ export class SplashPage extends React.Component<Props, State> {
             size={'lg'}
             type={'header'}
             color={'inverse'}
-            text={'Your political action cheat sheet.'}
+            text={'Your political action cheat sheet. (beta)'}
             displayBlock
           />
         </div>
