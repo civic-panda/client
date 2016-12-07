@@ -1,7 +1,10 @@
 // TODO host this somewhere better (on free heroku server)
+// LOCAL
 // const corsProxy = 'http://localhost:5000';
-const corsProxy = 'https://sunlight-proxy.herokuapp.com';
-const apiEndpoint = 'https://congress.api.sunlightfoundation.com';
+// STAGING
+// const corsProxy = 'https://sunlight-proxy-pr-1.herokuapp.com';
+// PROD
+const corsProxy = 'https://api.actonthis.org';
 
 const lookup = async (lat: number, lng: number) => {
   const result = await fetch(`${corsProxy}/districts/locate?latitude=${lat}&longitude=${lng}`);
