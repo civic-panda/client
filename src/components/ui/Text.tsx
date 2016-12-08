@@ -4,14 +4,14 @@ import * as React from 'react';
 import * as formatters from '../../util/stringFormatters';
 import './text.scss';
 
-type FontSize = 'xxl' | 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
-type FontType = 'header' | 'label' | 'body';
-type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light';
-type FontWeight = 'normal' | 'bold';
-type Alignment = 'left' | 'center' | 'right';
+export type FontSize = 'xxl' | 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
+export type FontType = 'header' | 'label' | 'body';
+export type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light';
+export type FontWeight = 'normal' | 'bold';
+export type FontAlignment = 'left' | 'center' | 'right';
 
 interface TextProps {
-  align?: Alignment;
+  align?: FontAlignment;
   size?: FontSize;
   color?: FontColor;
   type?: FontType;

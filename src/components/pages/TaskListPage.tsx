@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TaskListContainer, TaskMap } from '../task';
+import { TaskListContainer, TaskMapContainer } from '../task';
 import { Text } from '../ui';
 import './task-page.scss';
 
@@ -29,7 +29,7 @@ export class TaskListPage extends React.Component<TaskListPageProps, TaskListPag
             <TaskListContainer />
           </div>
           <div className="u-hide@lt-lg col--1-3">
-            <TaskMap />
+            <TaskMapContainer />
           </div>
         </div>
       </div>

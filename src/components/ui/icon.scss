@@ -19,6 +19,26 @@
     float: left;
     margin-right: 1rem;
   }
+
+  &.primary {
+    color: $black;
+  }
+
+  &.highlight {
+    color: $highlight;
+  }
+
+  &.accent {
+    color: $accent;
+  }
+
+  &.inverse {
+    color: $white;
+  }
+
+  &.light {
+    color: get-color($gray, 900);
+  }
 }
 
 .icon-info-light:before {

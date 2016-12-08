@@ -43,7 +43,6 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   }
 
   public setMinutes = (event: any) => {
-    console.log('setMinutes', event, event.target.value);
     const newState = { ...this.state, minutes: event.target.value };
     this.setState(newState);
   }
@@ -80,8 +79,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     }
   }
 
-  public isLocationSet = () =>
-    !!this.props.location && !!this.props.location.state && !!this.props.location.district
+  public isLocationSet = () => !!this.props.location
 
   public goToTasks = () => {
     hashHistory.push('/tasks');

@@ -30,7 +30,6 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
     //     </div>
     //   );
 
-
     case 'issue':
       return (
         <div className="back-button">

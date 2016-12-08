@@ -3,7 +3,7 @@ import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './call.scss';
 
-import { Button, FadeIn, Link, Text, Toggle } from '../ui';
+import { Button, FadeIn, Icon, Link, Text, Toggle } from '../ui';
 
 interface CallProps {
   taskName: string;
@@ -74,6 +74,7 @@ export class Call extends React.Component<CallProps, CallState> {
         {
           callee.phoneNumbers.map(phoneNumber => (
             <div key={phoneNumber} className="col--1-2 col--1-4@md">
+              <Icon type={'phone'} color={'highlight'} inline />
               <Text
                 text={phoneNumber}
                 color={'highlight'}
