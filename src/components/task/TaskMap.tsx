@@ -21,7 +21,7 @@ class TaskMap extends React.Component<Props & StateProps, State> {
       <div style={{ background: 'gray', minHeight: '380px', position: 'relative' }}>
         <Map
           center={center}
-          zoom={13}
+          zoom={12}
           style={{ height: '380px', position: 'relative', zIndex: 1 }}
         >
           <Marker position={center} />

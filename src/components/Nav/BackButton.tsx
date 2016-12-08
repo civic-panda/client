@@ -57,7 +57,11 @@ const BackButton = (props: StateProps & ActionProps & OwnProps, context: any) =>
       return (
         <div className="back-button">
           <NavLink
-            text={`${props.location.name}, ${props.location.state} District ${props.location.district}`}
+            text={`
+              ${props.location.name},
+              ${props.location.state}
+              ${props.location.district > 0 ? 'District ' + props.location.district : 'At-Large'}
+            `}
             to={'/'}
             icon={'left-arrow'}
             indexLink={true}
