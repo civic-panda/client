@@ -2,7 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { AppState, congress, issues, tasks, user } from '../modules';
-import congressData from './congress';
 import issueData from './issues';
 import taskData from './tasks';
 
@@ -28,7 +27,6 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
     public componentDidMount() {
       setTimeout(() => {
         this.props.setTasks(taskData);
-        this.props.setCongress(congressData);
         this.props.setIssues(issueData);
         issueData.forEach(issue => this.props.subscribe(issue.id));
       }, 300);

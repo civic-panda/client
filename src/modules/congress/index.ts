@@ -3,40 +3,67 @@ import * as reselect from 'reselect';
 import { Action } from '../../redux/action';
 import { selectors as userSelectors } from '../user';
 
-interface CongressPerson {
-  id: number;
+interface Term {
+  start: string;
+  end: string;
   state: string;
-  fullName: string;
-  commonName: string;
-  party: 'R' | 'I' | 'D';
-  phoneNumbers: (string | number)[];
+  party: string;
+  caucus: string;
+  partyAffiliations: string;
+  url: string;
   address: string;
-  email?: string;
-  ontheissuesUrl: string;
-  committees?: number[];
+  phone: string;
+  fax: string;
+  contactForm: string;
+  office: string;
+  rssUrl: string;
 }
 
-export interface Senator extends CongressPerson {
-  seniority: 'junior' | 'senior';
-}
-
-export interface Representative extends CongressPerson {
+interface RepTerm extends Term {
+  type: 'rep';
   district: number;
 }
 
-export interface Committee {
-  id: number;
-  branch: 'house' | 'senate';
-  type: 'standing' | 'special';
-  name: string;
-  chairman: number;
-  rankingMember: number;
+interface SenTerm extends Term {
+  type: 'sen';
+  class: number;
+  stateRank: 'junior' | 'senior';
+}
+
+export interface CongressPerson {
+  id: {
+    bioguide: string;
+    thomas: string;
+    govtrack: number;
+    opensecrets: string;
+    votesmart: number;
+    fec: string[];
+    cspan: number;
+    wikipedia: string;
+    ballotpedia: string;
+    maplight: number;
+    houseHistory: number;
+    icpsr: number;
+  };
+  name: {
+    first: string;
+    middle: string;
+    last: string;
+    nickname?: string;
+    suffix?: string;
+    officialFull?: string;
+  };
+  bio: {
+    birthday: string;
+    gender: 'M' | 'F';
+    religion?: string;
+  };
+  terms: (SenTerm | RepTerm)[];
 }
 
 export interface State {
-  senators: Senator[];
-  representatives: Representative[];
-  committees: Committee[];
+  senators: CongressPerson[];
+  representatives: CongressPerson[];
 }
 
 export const KEY = 'congress';
@@ -52,7 +79,6 @@ export const actionCreators = {
 const initialState: State = {
   senators: [],
   representatives: [],
-  committees: [],
 };
 
 export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {
@@ -71,13 +97,16 @@ const getUserState = (_state: any, { state }: { state: string }) => state;
 const getSenators = reselect.createSelector(
   getState,
   userSelectors.getLocation,
-  (congress, location) => congress.senators.filter(rep => (rep.state === location.state))
+  (congress, location) => congress.senators.filter(sen => (sen.terms[sen.terms.length - 1].state === location.state))
 );
 const getRepresentatives = reselect.createSelector(
   getState,
   userSelectors.getLocation,
   (congress, location) => congress.representatives
-    .filter(rep => (rep.state === location.state && rep.district === location.district))
+    .filter(rep => {
+      const currentTerm = rep.terms[rep.terms.length - 1] as RepTerm;
+      return (currentTerm.state === location.state  && currentTerm.district === location.district);
+    })
 );
 export const selectors = {
   getState,

@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { hashHistory } from 'react-router';
 
-import { user } from '../../modules';
-import lookupDistrict from '../../util/lookupDistrict';
+import { congress, user } from '../../modules';
+import { lookupDistrict } from '../../util/api';
 import { Button, Input, Link, Text } from '../ui';
 import './address-picker.scss';
 import AutocompleteInput from './AutocompleteInput';
@@ -12,6 +12,7 @@ interface AddressPickerProps {
   style?: 'light' | 'dark';
   location: user.Location;
   setLocation(location: user.Location): void;
+  setCongress(congress: congress.State): void;
 };
 
 interface AddressPickerState {
@@ -49,7 +50,12 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   public lookupDistrict = async (place: any) => {
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
-    const { district, state } = await lookupDistrict(lat, lng);
+    const { district, representatives, senators, state } = await lookupDistrict(lat, lng);
+
+    this.props.setCongress({
+      senators,
+      representatives,
+    });
 
     this.props.setLocation({
       name: place.name,
