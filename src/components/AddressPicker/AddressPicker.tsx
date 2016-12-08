@@ -4,7 +4,7 @@ import { hashHistory } from 'react-router';
 
 import { congress, user } from '../../modules';
 import { lookupDistrict } from '../../util/api';
-import { Button, Input, Link, Text } from '../ui';
+import { Button, Input, Link, Select, Text } from '../ui';
 import './address-picker.scss';
 import AutocompleteInput from './AutocompleteInput';
 
@@ -43,6 +43,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   }
 
   public setMinutes = (event: any) => {
+    console.log('setMinutes', event, event.target.value);
     const newState = { ...this.state, minutes: event.target.value };
     this.setState(newState);
   }
@@ -111,12 +112,16 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
             onChange={this.setAddress}
             customInput={AutoComplete}
           />
-          <Input
+          <Select
             label={`and I have`}
             type={'text'}
-            placeholder={'30 minutes'}
             value={this.state.minutes}
             onChange={this.setMinutes}
+            options={[
+              { name: '30 minutes', value: 30 },
+              { name: 'An hour', value: 60 },
+              { name: 'All day', value: 300 },
+            ]}
             size={'short'}
           />
           <Button

@@ -8,7 +8,7 @@ type HtmlInput = 'color' | 'date' | 'datetime' | 'datetime-local' | 'email' | 'm
 
 type InputSize = 'short' | 'small' | 'large';
 
-interface InputProps {
+export interface InputProps {
   type?: HtmlInput;
   size?: InputSize;
   label?: string;

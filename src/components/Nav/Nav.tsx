@@ -42,10 +42,10 @@ export class Nav extends React.Component<Props, State> {
   };
 
   public handleScroll = (event: any) => {
-    if (event.srcElement.body.scrollTop > 0 && !this.state.showShadow) {
+    if (event.target.body.scrollTop > 0 && !this.state.showShadow) {
       const newState = { ...this.state, showShadow: true };
       this.setState(newState);
-    } else if (event.srcElement.body.scrollTop === 0 && this.state.showShadow) {
+    } else if (event.target.body.scrollTop === 0 && this.state.showShadow) {
       const newState = { ...this.state, showShadow: false };
       this.setState(newState);
     }
@@ -75,7 +75,7 @@ export class Nav extends React.Component<Props, State> {
             hide={() => this.toggleMenu(false)}
           />
         </div>
-        <div className="u-hide@sm">
+        <div className="row row--padded u-hide@sm">
           <BackButton currentRoute={this.props.currentRoute} />
           <div className="links">
             {
