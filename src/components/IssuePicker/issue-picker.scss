@@ -75,7 +75,7 @@
   }
 }
 
-@include media('<=sm') {
+@include media('<=md') {
   .issue-picker {
     .issue-block a,
     .issue-block .button {
