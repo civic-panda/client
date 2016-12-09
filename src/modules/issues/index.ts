@@ -2,17 +2,12 @@ import { createSelector } from 'reselect';
 
 import { Action } from '../../redux/action';
 
-interface URL {
-  name: string;
-  url: string;
-}
-
 export interface Issue {
-  id: string | number;
+  id: string;
   name: string;
   summary: string;
-  facts: string[];
-  reading: URL[];
+  facts: string;
+  reading: string;
 }
 
 export interface State {
@@ -30,8 +25,8 @@ export const actions = {
 
 export const actionCreators = {
   setList: (list: Issue[]) => ({ type: actions.SET_LIST, payload: list }),
-  subscribe: (taskId: number | string) => ({ type: actions.SUBSCRIBE, payload: taskId }),
-  unsubscribe: (taskId: number | string) => ({ type: actions.UNSUBSCRIBE, payload: taskId }),
+  subscribe: (taskId: string) => ({ type: actions.SUBSCRIBE, payload: taskId }),
+  unsubscribe: (taskId: string) => ({ type: actions.UNSUBSCRIBE, payload: taskId }),
 };
 
 const initialState: State = {
@@ -60,15 +55,11 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
 const getState = (state: any): State => state[KEY];
 const getList = createSelector(getState, state => state.list);
 const getSubscribed = createSelector(getState, state => state.subscribed);
-const getIssueId = (_state: any, { issueId }: { issueId: number | string }) => issueId;
+const getIssueId = (_state: any, { issueId }: { issueId: string }) => issueId;
 const getIssue = createSelector(
   getList,
   getIssueId,
-  (list, issueId) => list.find(issue => {
-    const matchesString = issue.id === issueId;
-    const matchesInt = typeof issueId === 'string' ? issue.id === parseInt(issueId, 10) : false;
-    return matchesString || matchesInt;
-  })
+  (list, issueId) => list.find(issue => issue.id === issueId)
 );
 export const selectors = {
   getState,

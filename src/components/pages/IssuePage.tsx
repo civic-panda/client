@@ -49,11 +49,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               displayBlock
               bottomMargin
             />
-            <ul>
-              {this.props.issue.facts.map((fact, index) => (
-                <li key={index}><p dangerouslySetInnerHTML={{ __html: fact }} /></li>
-              ))}
-            </ul>
+            <div><p dangerouslySetInnerHTML={{ __html: this.props.issue.facts }} /></div>
           </div>
           <div className={'issue__notes col--1-1 col--1-3@lg'}>
             <Text
@@ -64,11 +60,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               displayBlock
               bottomMargin
             />
-            {this.props.issue.reading.map(link => (
-              <div>
-                <a key={link.name} className="external-link" href={link.url} target={'_blank'}>{link.name}</a>
-              </div>
-            ))}
+            <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.issue.reading }} /></div>
           </div>
         </div>
       </div>

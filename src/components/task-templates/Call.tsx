@@ -7,14 +7,12 @@ import { Button, FadeIn, Icon, Link, Text, Toggle } from '../ui';
 
 interface CallProps {
   taskName: string;
-  taskId: number;
-  completeCall: (id: number) => void;
+  taskId: string;
+  completeCall: (id: string) => void;
   callList: { name: string, phoneNumbers: string[] }[];
   requestedAction: string;
-  scripts: {
-    petition: string;
-    thankYou: string;
-  };
+  petitionScript: string;
+  thankYouScript: string;
 };
 
 type Stance = 'unknown' | 'yea' | 'nay';
@@ -99,8 +97,8 @@ export class Call extends React.Component<CallProps, CallState> {
         <p
           dangerouslySetInnerHTML={{
             __html: this.state.calleeStance === 'yea'
-              ? this.props.scripts.thankYou
-              : this.props.scripts.petition,
+              ? this.props.thankYouScript
+              : this.props.petitionScript,
           }}
         />
       </Text>

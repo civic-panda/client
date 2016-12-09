@@ -2,8 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { AppState, congress, issues, tasks, user } from '../modules';
-import issueData from './issues';
-import taskData from './tasks';
+import { loadInitialData } from '../util/api';
 
 interface ActionProps {
   setTasks(tasks: tasks.Task[]): void;
@@ -25,11 +24,14 @@ interface Props {
 export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
   class LoadData extends React.Component<Props & ActionProps & StateProps, {}> {
     public componentDidMount() {
-      setTimeout(() => {
-        this.props.setTasks(taskData);
-        this.props.setIssues(issueData);
-        issueData.forEach(issue => this.props.subscribe(issue.id));
-      }, 300);
+      this.loadData();
+    }
+
+    public loadData = async () => {
+      const { issues, tasks } = await loadInitialData();
+      this.props.setTasks(tasks);
+      this.props.setIssues(issues);
+      issues.forEach(issue => this.props.subscribe(issue.id));
     }
 
     public render() {

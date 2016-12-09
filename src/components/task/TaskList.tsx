@@ -41,7 +41,7 @@ export class TaksList extends React.Component<Props, State> {
       <div className="task">
         <div className="task__description">
           <Text
-            text={this.props.issues.find(issue => issue.id === task.issueId).name}
+            text={this.props.issues.find(issue => issue.id === task.issue).name}
             size={'small'}
             color={'light'}
             type={'label'}

@@ -8,18 +8,16 @@ interface StateProps {
   taskName: string;
   callList: { name: string, phoneNumbers: string[] }[];
   requestedAction: string;
-  scripts: {
-    petition: string;
-    thankYou: string;
-  };
+  petitionScript: string;
+  thankYouScript: string;
 }
 
 interface ActionProps {
-  completeCall: (id: number) => void;
+  completeCall: (id: string) => void;
 }
 
 interface OwnProps {
-  taskId: number;
+  taskId: string;
 }
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
@@ -43,7 +41,8 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
     taskId: task.id,
     requestedAction: task.templateProps.requestedAction,
     callList,
-    scripts: task.templateProps.scripts,
+    petitionScript: task.templateProps.petitionScript,
+    thankYouScript: task.templateProps.thankYouScript,
   };
 };
 

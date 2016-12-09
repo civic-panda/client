@@ -3,21 +3,23 @@ import { createSelector } from 'reselect';
 import { Action } from '../../redux/action';
 import { selectors as issueSelectors } from '../issues';
 
-type Activity = 'door knocking' | 'phone banking' | 'rally' | string;
-type Tag = 'high priority' | string;
 type Template = 'CallSenate' | 'CallHouse' | 'CallCongress';
 
 type Location = {
   latitude?: number;
   longitude?: number;
+  street1?: string;
+  suburb?: string;
+  state?: string;
+  postcode?: string;
+  country?: string;
 }
 
 export interface Task {
-  id: number;
+  id: string;
   name: string;
-  issueId: number | string;
-  activityType: Activity;
-  tags: Tag[];
+  issue: string;
+  tags: string[];
   duration: number | string;
   startDate: number;
   endDate: number;
@@ -28,7 +30,7 @@ export interface Task {
 
 export interface State {
   list: Task[];
-  completed: number[];
+  completed: string[];
 }
 
 export const KEY = 'tasks';
@@ -72,7 +74,7 @@ const getList = createSelector(getState, state => state.list);
 const getSubscribed = createSelector(
   getList,
   issueSelectors.getSubscribed,
-  (tasks, subscribedIssues) => tasks.filter(task => subscribedIssues.indexOf(task.issueId) > -1)
+  (tasks, subscribedIssues) => tasks.filter(task => subscribedIssues.indexOf(task.issue) > -1)
 );
 const getCompleted = createSelector(
   getState,
@@ -83,7 +85,7 @@ const getRemaining = createSelector(
   getSubscribed,
   (state, subscribed) => subscribed.filter(task => state.completed.indexOf(task.id) === -1)
 );
-const getTaskId = (_state: any, { taskId }: { taskId: number }) => taskId;
+const getTaskId = (_state: any, { taskId }: { taskId: string }) => taskId;
 const getTask = createSelector(getList, getTaskId, (list, taskId) => list.find(task => task.id === taskId));
 export const selectors = {
   getState,

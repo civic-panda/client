@@ -68,7 +68,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         </div>
         {
           Template
-            ? (<Template taskId={parseInt(this.props.params.taskId, 10)} />)
+            ? (<Template taskId={this.props.params.taskId} />)
             : (<NoTemplate {...this.props} />)
         }
       </div>
@@ -77,8 +77,8 @@ class TaskPage extends React.Component<Props & StateProps, State> {
 }
 
 const mapStateToProps = (state: AppState, ownProps: Props) => {
-  const currentTask = tasks.selectors.getTask(state, { taskId: parseInt(ownProps.params.taskId, 10) });
-  const currentIssue = issues.selectors.getIssue(state, { issueId: currentTask.issueId });
+  const currentTask = tasks.selectors.getTask(state, { taskId: ownProps.params.taskId });
+  const currentIssue = issues.selectors.getIssue(state, { issueId: currentTask.issue });
 
   return {
     task: currentTask,

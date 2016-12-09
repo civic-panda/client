@@ -1,6 +1,6 @@
 import { tasks } from '../modules';
 
-const data: tasks.Task[] = [{
+const data: any[] = [{
   id: 1,
   name: 'Ask congress to support the National Popular Vote law',
   activityType: 'phone call',

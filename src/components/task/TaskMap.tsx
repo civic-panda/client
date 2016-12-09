@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 
-import { AppState, user } from '../../modules';
+import { AppState, tasks, user } from '../../modules';
 import { Button, Link, Text } from '../ui';
 
 interface StateProps {
   location: user.Location;
+  tasks: tasks.Task[];
 }
 
 interface Props {};
@@ -21,10 +22,17 @@ class TaskMap extends React.Component<Props & StateProps, State> {
       <div style={{ background: 'gray', minHeight: '380px', position: 'relative' }}>
         <Map
           center={center}
-          zoom={12}
+          zoom={11}
           style={{ height: '380px', position: 'relative', zIndex: 1 }}
         >
-          <Marker position={center} />
+          {
+            this.props.tasks.map(task => {
+              const location = task.location.latitude
+                ? [task.location.latitude, task.location.longitude]
+                : center;
+              return (<Marker position={location} />);
+            })
+          }
           <TileLayer
             url={'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'}
           />
@@ -36,6 +44,7 @@ class TaskMap extends React.Component<Props & StateProps, State> {
 
 const mapStateToProps = (state: AppState) => ({
   location: user.selectors.getLocation(state),
+  tasks: tasks.selectors.getRemaining(state),
 });
 
 export const TaskMapContainer = connect<StateProps, {}, Props>(mapStateToProps)(TaskMap);

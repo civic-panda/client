@@ -1,15 +1,15 @@
-import { congress, user } from '../modules';
+import { congress, issues, tasks, user } from '../modules';
 
 // TODO host this somewhere better (on free heroku server)
 // LOCAL
-// const corsProxy = 'http://localhost:5000';
+const apiEndpoint = 'http://localhost:5000';
 // STAGING
-// const corsProxy = 'https://sunlight-proxy-pr-1.herokuapp.com';
+// const apiEndpoint = 'https://sunlight-proxy-pr-1.herokuapp.com';
 // PROD
-const corsProxy = 'https://api.actonthis.org';
+// const apiEndpoint = 'https://api.actonthis.org';
 
 export const lookupDistrict = async (lat: number, lng: number) => {
-  const result = await fetch(`${corsProxy}/districts/locate?latitude=${lat}&longitude=${lng}`);
+  const result = await fetch(`${apiEndpoint}/districts/locate?latitude=${lat}&longitude=${lng}`);
 
   if (result.ok) {
     const body: {
@@ -27,4 +27,19 @@ export const lookupDistrict = async (lat: number, lng: number) => {
       senators: [],
     };
   }
+};
+
+export const loadInitialData = async () => {
+  const result = await fetch(`${apiEndpoint}/data`);
+
+  if (!result.ok) {
+    throw new Error('unable to load data');
+  }
+
+  const body: {
+    tasks: tasks.Task[],
+    issues: issues.Issue[],
+  } = await result.json();
+
+  return body;
 };

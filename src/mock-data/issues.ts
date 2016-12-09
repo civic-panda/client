@@ -1,6 +1,6 @@
 import { issues } from '../modules';
 
-const data: issues.Issue[] = [{
+const data: any[] = [{
   id: 'electoral-reform',
   name: 'Electoral reform',
   summary: `
