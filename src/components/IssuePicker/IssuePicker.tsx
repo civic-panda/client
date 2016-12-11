@@ -47,6 +47,7 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   size={'h4'}
                   type={'header'}
                   color={isSubscribed ? 'inverse' : 'light'}
+                  className={isSubscribed ? 'text-shadow' : ''}
                   weight={'bold'}
                   align={'center'}
                   displayBlock
@@ -58,6 +59,15 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   size={'small'}
                   preventDefault
                 />
+                <div
+                  className="background-image"
+                  style={{
+                    backgroundImage: (issue.image && issue.image.secure_url)
+                      ? `url(${issue.image.secure_url})`
+                      : undefined,
+                  }}
+                >
+                </div>
               </div>
             </div>
           );

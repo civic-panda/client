@@ -8,6 +8,11 @@ export interface Issue {
   summary: string;
   facts: string;
   reading: string;
+  image: {
+    width: number;
+    height: number;
+    secure_url: string;
+  };
 }
 
 export interface State {
@@ -36,8 +41,12 @@ const initialState: State = {
 
 export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {
   switch (action.type) {
-    case actions.SET_LIST:
-      return {...state, list: action.payload };
+    case actions.SET_LIST: {
+      const newIds = action.payload
+        .filter((issue: Issue) => state.list.findIndex(i => i.id === issue.id) === -1)
+        .map((issue: Issue) => issue.id);
+      return {...state, list: action.payload, subscribed: [...state.subscribed, ...newIds] };
+    }
 
     case actions.SUBSCRIBE:
       return (state.subscribed.indexOf(action.payload) === -1)

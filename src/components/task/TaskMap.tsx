@@ -30,7 +30,7 @@ class TaskMap extends React.Component<Props & StateProps, State> {
               const location = task.location.latitude
                 ? [task.location.latitude, task.location.longitude]
                 : center;
-              return (<Marker position={location} />);
+              return (<Marker key={task.id} position={location} />);
             })
           }
           <TileLayer

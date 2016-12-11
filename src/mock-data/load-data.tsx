@@ -31,13 +31,12 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
       const { issues, tasks } = await loadInitialData();
       this.props.setTasks(tasks);
       this.props.setIssues(issues);
-      issues.forEach(issue => this.props.subscribe(issue.id));
     }
 
     public render() {
       return this.props.isLoaded
         ? (<WrappedComponent {...this.props} />)
-        : (<div>Loading Mock Data</div>);
+        : (<div>Loading Data</div>);
     }
   }
 

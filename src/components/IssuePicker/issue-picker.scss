@@ -5,6 +5,7 @@
 .issue-picker {
   margin-bottom: $standard-spacing;
 
+
   .issue-block {
     position: relative;
     display: flex;
@@ -18,9 +19,15 @@
     padding: $standard-spacing;
     transition: background-color 0.3s cubic-bezier(.25,.8,.25,1),
     color 0.3s cubic-bezier(.25,.8,.25,1);
-    border-style: solid;
-    border-width: 2px;
-    border-color: $gray;
+
+    .text-shadow {
+      text-shadow: 0px 1px 1px rgba($black, 0.25);
+    }
+
+    .background-image {
+      transition: opacity 0.3s cubic-bezier(.25,.8,.25,1);
+      opacity: 0;
+    }
 
     a {
       position: absolute;
@@ -28,7 +35,6 @@
     }
 
     &:hover{
-      border-color: transparent;
       box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
       0 1px 10px 0 rgba(0, 0, 0, 0.12),
       0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -37,7 +43,6 @@
     }
 
     &:active{
-      border-color: transparent;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
       0 3px 1px -2px rgba(0, 0, 0, 0.2),
       0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -45,25 +50,41 @@
   }
 
   .issue-block--is-subscribed {
-    border-color: transparent;
+    .background-image {
+      position: absolute;
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
     &.issue-block--0th {
-      background-color: $color-0;
+      background-color: rgba($color-0, 0.75);
+      .background-image { background-color: $color-0; }
       .icon { color: $color-0; background: rgba($white, 0.9); }
     }
     &.issue-block--1th {
-      background-color: $color-1;
+      background-color: rgba($color-1, 0.75);
+      .background-image { background-color: $color-1; }
       .icon { color: $color-1; background: rgba($white, 0.9); }
     }
     &.issue-block--2th {
-      background-color: $color-2;
+      background-color: rgba($color-2, 0.75);
+      .background-image { background-color: $color-2; }
       .icon { color: $color-2; background: rgba($white, 0.9); }
     }
     &.issue-block--3th {
-      background-color: $color-3;
+      background-color: rgba($color-3, 0.75);
+      .background-image { background-color: $color-3; }
       .icon { color: $color-3; background: rgba($white, 0.9); }
     }
     &.issue-block--4th {
-      background-color: $color-4;
+      background-color: rgba($color-4, 0.75);
+      .background-image { background-color: $color-4; }
       .icon { color: $color-4; background: rgba($white, 0.9); }
     }
   }
@@ -82,6 +103,9 @@
       height: 56px;
       width: 100%;
       left: 0;
+      background: rgba(254, 254, 255, 0.5);
+      border-top: solid 1px rgba(242, 242, 242, 0.8);
+      border: 0;
     }
   }
 }
@@ -91,6 +115,7 @@
     .issue-block a {
       display: none;
       bottom: $standard-spacing;
+      border: none;
     }
   }
 }
