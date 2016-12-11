@@ -34,9 +34,7 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
     }
 
     public render() {
-      return this.props.isLoaded
-        ? (<WrappedComponent {...this.props} />)
-        : (<div>Loading Data</div>);
+      return (<WrappedComponent {...this.props} />);
     }
   }
 
