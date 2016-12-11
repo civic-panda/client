@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link as RouterLink } from 'react-router';
+import { IndexLink, Link as RouterLink } from 'react-router';
 
 import { Icon, IconType, Text } from '../ui';
 
@@ -15,8 +15,9 @@ interface LinkState {};
 
 export class NavLink extends React.Component<LinkProps, LinkState> {
   public render() {
+    const LinkComponent = this.props.indexLink ? IndexLink : RouterLink;
     return (
-      <RouterLink
+      <LinkComponent
         className={'link'}
         to={this.props.to}
         activeClassName={'link--is-active'}
@@ -30,7 +31,7 @@ export class NavLink extends React.Component<LinkProps, LinkState> {
           size={'h4'}
           type={'label'}
         />
-      </RouterLink>
+      </LinkComponent>
     );
   }
 }

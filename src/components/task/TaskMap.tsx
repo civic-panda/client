@@ -34,7 +34,7 @@ class TaskMap extends React.Component<Props & StateProps, State> {
             })
           }
           <TileLayer
-            url={'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'}
+            url={'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'}
           />
         </Map>
       </div>

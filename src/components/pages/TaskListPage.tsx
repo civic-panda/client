@@ -1,14 +1,24 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
+import { AppState, user } from '../../modules';
 import { TaskListContainer, TaskMapContainer } from '../task';
 import { Text } from '../ui';
 import './task-page.scss';
 
-interface TaskListPageProps {};
+interface State {};
 
-interface TaskListPageState {};
+interface StateProps {
+  location: user.Location;
+}
 
-export class TaskListPage extends React.Component<TaskListPageProps, TaskListPageState> {
+interface ActionProps {}
+
+interface OwnProps {
+  currentRoute: string;
+}
+
+class TaskListP extends React.Component<StateProps & ActionProps & OwnProps, State> {
   public render() {
     return (
       <div className="task-page">
@@ -19,6 +29,17 @@ export class TaskListPage extends React.Component<TaskListPageProps, TaskListPag
                 text={'Your task list'}
                 color={'inverse'}
                 size={'lg'}
+                bottomMargin
+                displayBlock
+              />
+              <Text
+                text={`
+                 ${this.props.location.name},
+                 ${this.props.location.state}
+                 ${this.props.location.district > 0 ? 'District ' + this.props.location.district : 'At-Large'}
+               `}
+                type={'header'}
+                color={'inverse'}
                 displayBlock
               />
             </div>
@@ -37,4 +58,9 @@ export class TaskListPage extends React.Component<TaskListPageProps, TaskListPag
   }
 }
 
+const mapStateToProps = (state: AppState) => ({
+  location: user.selectors.getLocation(state),
+});
+
+export const TaskListPage = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskListP);
 export default TaskListPage;
