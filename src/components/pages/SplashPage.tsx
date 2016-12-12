@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import AddressPicker from '../AddressPicker';
+import EmailSignUp from '../EmailSignUp';
 import IssuePicker from '../IssuePicker';
 import { Button, Link, Text } from '../ui';
 import './splash-page.scss';
@@ -97,6 +98,7 @@ export class SplashPage extends React.Component<Props, State> {
           </div>
           <IssuePicker />
           <AddressPicker style={'light'} />
+          <EmailSignUp />
         </div>
       </div>
     );

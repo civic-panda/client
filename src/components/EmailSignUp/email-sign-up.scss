@@ -1,0 +1,7 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.email-sign-up {
+  padding: 2 * $standard-spacing 0;
+  background: $highlight;
+}
