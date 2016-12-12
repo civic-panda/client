@@ -23,7 +23,7 @@ class TaskMap extends React.Component<Props & StateProps, State> {
         <Map
           center={center}
           zoom={11}
-          style={{ height: '380px', position: 'relative', zIndex: 1 }}
+          style={{ height: '380px', position: 'relative', zIndex: 0 }}
         >
           {
             this.props.tasks.map(task => {
