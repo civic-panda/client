@@ -98,7 +98,22 @@ export class SplashPage extends React.Component<Props, State> {
           </div>
           <IssuePicker />
           <AddressPicker style={'light'} />
-          <EmailSignUp />
+          <div className="email-sign-up">
+            <div className="row row--padded row--centered">
+              <div className="col--1-1">
+                <Text
+                  text={`Stay in the loop`}
+                  type={'header'}
+                  color={'inverse'}
+                  align={'center'}
+                  size={'lg'}
+                  displayBlock
+                  bottomMargin
+                />
+                <EmailSignUp align={'center'} color={'inverse'} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -7,7 +7,7 @@ export interface AppState {
   congress: congress.State;
   issues: issues.State;
   tasks: tasks.State;
-  user: user.State;
+  user: user.UserState;
   storage: { isLoaded: boolean };
 }
 

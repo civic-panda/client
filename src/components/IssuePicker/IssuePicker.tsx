@@ -10,12 +10,12 @@ interface Props {};
 
 interface StateProps {
   issues: issues.Issue[];
-  subscribed: (number | string)[];
+  subscribed: string[];
 };
 
 interface DispatchProps {
-  subscribe: (issue: number | string) => void;
-  unsubscribe: (issue: string | number) => void;
+  subscribe: (issue: string) => void;
+  unsubscribe: (issue: string) => void;
 };
 
 interface State {};

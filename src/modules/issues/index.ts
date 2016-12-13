@@ -17,7 +17,7 @@ export interface Issue {
 
 export interface State {
   list: Issue[];
-  subscribed: (number | string)[];
+  subscribed: string[];
 }
 
 export const KEY = 'issues';

@@ -8,7 +8,7 @@ interface ActionProps {
   setTasks(tasks: tasks.Task[]): void;
   setIssues(issues: issues.Issue[]): void;
   setCongress(congress: congress.State): void;
-  setUser(user: user.State): void;
+  setUser(user: user.UserState): void;
   subscribe(issueId: number | string): void;
 }
 

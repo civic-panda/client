@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 
 import { issues, tasks } from '../../modules';
+import EmailSignUp from '../EmailSignUp';
 import { Button, FadeIn, Input, Text } from '../ui';
 import './task-list.scss';
 import TaskDetails from './TaskDetails';
@@ -81,13 +82,7 @@ export class TaksList extends React.Component<Props, State> {
         displayBlock
         bottomMargin
       />
-      <Text
-        text={`Give us your email and weʼll send you an update when we get a fresh batch of tasks.`}
-        displayBlock
-        bottomMargin
-      />
-      <Input type={'text'} onChange={() => null} placeholder={'Your email address'} />
-      <Button text={'Get updates'} />
+      <EmailSignUp />
     </div>
   )
 

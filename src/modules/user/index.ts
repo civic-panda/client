@@ -12,9 +12,11 @@ export type Location = {
   longitude: number;
 }
 
-export interface State {
+export interface UserState {
   id?: number;
   name?: string;
+  email?: string;
+  isSubscribed?: 'loading' | boolean;
   location?: Location;
   causes: Cause[];
 }
@@ -24,21 +26,29 @@ export const KEY = 'user';
 export const actions = {
   SET: 'civic/user/SET',
   SET_LOCATION: 'civic/user/SET_LOCATION',
+  SUBSCRIPTION_ATTEMPT: 'civic/user/SUBSCRIPTION_ATTEMPT',
+  SUBSCRIPTION_FAILURE: 'civic/user/SUBSCRIPTION_FAILURE',
+  SUBSCRIPTION: 'civic/user/SUBSCRIPTION',
 };
 
 export const actionCreators = {
   setLocation: (location: Location) => ({ type: actions.SET_LOCATION, payload: location }),
-  set: (user: State) => ({ type: actions.SET, payload: user }),
+  set: (user: UserState) => ({ type: actions.SET, payload: user }),
+  subscriptionAttempt: () => ({ type: actions.SUBSCRIPTION_ATTEMPT }),
+  subscriptionFailure: () => ({ type: actions.SUBSCRIPTION_FAILURE }),
+  subscription: (email: string) => ({ type: actions.SUBSCRIPTION, payload: { email }}),
 };
 
-const initialState: State = {
+const initialState: UserState = {
   id: undefined,
   name: undefined,
+  email: undefined,
+  isSubscribed: false,
   location: undefined,
   causes: [],
 };
 
-export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {
+export const reducer: Redux.Reducer<UserState> = (state = initialState, action: Action) => {
   switch (action.type) {
     case actions.SET:
       return {...state, ...action.payload };
@@ -46,12 +56,21 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
     case actions.SET_LOCATION:
       return {...state, location: action.payload };
 
+    case actions.SUBSCRIPTION_ATTEMPT:
+      return {...state, isSubscribed: 'loading' };
+
+    case actions.SUBSCRIPTION_FAILURE:
+      return {...state, isSubscribed: false };
+
+    case actions.SUBSCRIPTION:
+      return {...state, email: action.payload.email, isSubscribed: true };
+
     default:
       return state;
   }
 };
 
-const getState = (state: any): State => state[KEY];
+const getState = (state: any): UserState => state[KEY];
 const getLocation = createSelector(getState, state => state.location);
 
 export const selectors = {
