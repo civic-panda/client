@@ -2,12 +2,13 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
 // Middlewares and enhancers
 import * as logger from './redux/logger';
+import * as mixpanel from './redux/mixpanel';
 import * as persist from './redux/persist';
 
 // Reducers
 import { AppState, congress, issues, tasks, user } from './modules';
 
-const middleware = applyMiddleware(logger.middleware);
+const middleware = applyMiddleware(logger.middleware, mixpanel.middleware);
 
 const setupStore = () => {
   const rootReducer = combineReducers<AppState>({

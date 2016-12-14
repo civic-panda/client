@@ -1,6 +1,8 @@
 import * as pages from './components/pages';
 import { requireLocation } from './requireLocation';
 
+const scrollToTop = () => window.scrollTo(0, 0);
+
 // ALL routes must have a name prop! This is used by the navbar
 function siteRoutes(store: any) {
   return {
@@ -8,7 +10,7 @@ function siteRoutes(store: any) {
     name: 'splash',
     component: pages.PageWrapper,
     indexRoute: { component: pages.SplashPage },
-    onChange: (prevState: any, nextState: any) => { window.scrollTo(0, 0); },
+    onChange: scrollToTop,
     childRoutes: [
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },

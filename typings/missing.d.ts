@@ -225,3 +225,8 @@ declare module 'react-leaflet' {
   let Marker: React.ComponentClass<OtherProps>;
   export { Map, Marker, TileLayer };
 }
+
+declare module 'mixpanel-browser' {
+  var mixpanel: Mixpanel;
+  export = mixpanel;
+}

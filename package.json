@@ -70,10 +70,12 @@
     "whatwg-fetch": "^2.0.1"
   },
   "dependencies": {
+    "@types/mixpanel": "^0.0.28",
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "leaflet": "^1.0.2",
     "load-google-maps-api": "0.0.2",
+    "mixpanel-browser": "^2.9.17",
     "moment": "^2.17.0",
     "react": "^15.4.1",
     "react-addons-css-transition-group": "^15.4.1",
