@@ -4,9 +4,11 @@ import { REHYDRATE } from 'redux-persist/constants';
 import { AppState, issues, tasks, user } from '../modules';
 import { Action } from './action';
 
-const mixpanelKey = process.env.NODE_ENV !== 'production'
-  ? '6b1ead1cf8b7431fc6db2dd755bd05b8'
-  : 'bf29b5b66563531acdc0ea80c73b3705';
+// const mixpanelKey = process.env.NODE_ENV !== 'production'
+//   ? '6b1ead1cf8b7431fc6db2dd755bd05b8'
+//   : 'bf29b5b66563531acdc0ea80c73b3705';
+
+const mixpanelKey = 'bf29b5b66563531acdc0ea80c73b3705';
 
 mixpanel.init(mixpanelKey);
 
