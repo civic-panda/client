@@ -8,6 +8,9 @@ import { Action } from './action';
 //   ? '6b1ead1cf8b7431fc6db2dd755bd05b8'
 //   : 'bf29b5b66563531acdc0ea80c73b3705';
 
+// DEV
+// const mixpanelKey = '6b1ead1cf8b7431fc6db2dd755bd05b8';
+// PROD
 const mixpanelKey = 'bf29b5b66563531acdc0ea80c73b3705';
 
 mixpanel.init(mixpanelKey);

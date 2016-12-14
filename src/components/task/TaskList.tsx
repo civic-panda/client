@@ -51,19 +51,10 @@ export class TaksList extends React.Component<Props, State> {
           <Text
             className="task-name"
             text={task.name}
-            size={'h2'}
+            size={'h3'}
             type={'header'}
-            bottomMargin
-          />
-          <Text
-            className="u-hide@sm"
-            text={task.tags.join(', ')}
-            type={'label'}
-            format={'Uppercase'}
-            size={'small'}
           />
         </div>
-        <TaskDetails task={task} />
       </div>
     </Link>
   )
