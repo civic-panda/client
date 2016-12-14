@@ -15,6 +15,7 @@
   line-height: 2.4rem;
   left: 50%;
   margin-left: -105px;
+  user-select: none;
 }
 
 .button {
@@ -26,6 +27,7 @@
   line-height: 1.5 * $standard-spacing;
   background: $accent;
   cursor: pointer;
+  white-space: nowrap;
 
   &:hover {
     background: get-color($accent, 600);

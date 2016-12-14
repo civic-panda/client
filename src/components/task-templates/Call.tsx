@@ -126,7 +126,7 @@ export class Call extends React.Component<CallProps, CallState> {
             bottomMargin
           />
           <Text
-            text={`1. Does ${callee.name} ${this.props.requestedAction}?`}
+            text={`1. Has ${callee.name} ${this.props.requestedAction}?`}
             displayBlock
             bottomMargin
           />

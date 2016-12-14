@@ -55,7 +55,7 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                 <Link
                   link={`/issues/${issue.id}`}
                   type={'colorless'}
-                  text={'Info'}
+                  text={'View More'}
                   size={'small'}
                   preventDefault
                 />

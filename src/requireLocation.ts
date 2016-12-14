@@ -3,5 +3,5 @@ export const requireLocation = (store: any) => {
     if (!store.getState().user.location) {
       replace({ pathname: '/' });
     }
-  }
+  };
 };

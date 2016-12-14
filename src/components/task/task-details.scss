@@ -12,12 +12,11 @@
 
 .duration {
   display: inline-block;
-  height: $standard-spacing;
+  height: $standard-spacing * 1.25;
   width: 40%;
-  line-height: $standard-spacing;
+  line-height: $standard-spacing * 1.25;
   text-align: center;
   background: $primary;
-  border: 1px solid $white;
 
   &.duration--short { background: $color-1 }
   &.duration--long { background: $color-2 }

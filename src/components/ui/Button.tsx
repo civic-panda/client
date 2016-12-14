@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import './button.scss';
 import FadeIn from './FadeIn';
 import Spinner from './Spinner';
-import Text from './Text';
+import Text, { FontColor } from './Text';
 
 type ButtonType = 'primary' | 'secondary' | 'highlighted' | 'colorless';
 type ButtonSize = 'small' | 'large';
@@ -15,6 +15,7 @@ interface ButtonProps {
   size?: ButtonSize;
   disabled?: boolean;
   disabledText?: string;
+  color?: FontColor;
   loading?: boolean;
   children?: string;
   text: string;
@@ -36,6 +37,7 @@ export const Button = (props: ButtonProps) => {
     size,
     text = '',
     loading,
+    color,
     onClick = nullFn,
     disabled = false,
     disabledText,
@@ -52,7 +54,7 @@ export const Button = (props: ButtonProps) => {
     }
   );
 
-  const textColor = type === 'secondary' ? 'highlight' : type === 'colorless' ? 'primary' : 'inverse';
+  const textColor = color || type === 'secondary' ? 'highlight' : type === 'colorless' ? 'primary' : 'inverse';
 
   const clickHandler = (e: any) => {
     if (preventDefault) {
@@ -71,6 +73,7 @@ export const Button = (props: ButtonProps) => {
     >
       <Text
         text={`${text}${children}`}
+        type={'label'}
         size={size === 'small' ? 'h5' : 'h4'}
         color={textColor}
         align={'center'}

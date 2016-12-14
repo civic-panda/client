@@ -5,4 +5,7 @@
   position: relative;
   width: 100%;
   background: get-color($primary, 800);
+  .text.light {
+    color: get-color($primary, 200);
+  }
 }

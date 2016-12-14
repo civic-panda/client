@@ -1,3 +1,5 @@
+declare var process: any;
+
 declare module 'redux-persist' {
   type Function = (_: any) => any;
   type Action = Object
