@@ -32,7 +32,7 @@ export const middleware = (store: Redux.Store<AppState>) =>
         break;
 
       case tasks.actions.COMPLETE_TASK:
-        mixpanel.track('task completed', action.payload);
+        mixpanel.track('task completed', { taskId: action.payload });
         mixpanel.people.increment('tasks completed');
         break;
 
