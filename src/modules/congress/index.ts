@@ -61,9 +61,35 @@ export interface CongressPerson {
   terms: (SenTerm | RepTerm)[];
 }
 
+export interface Committee {
+  type: 'house' | 'senate' | 'joint';
+  name: string;
+  thomasId: string;
+  senateCommitteeId?: string;
+  houseCommitteeId?: string;
+  jurisdiction: string;
+  jurisdictionSource: string;
+  url: string;
+  address: string;
+  phone: string;
+  rssUrl: string;
+  minorityRssUrl: string;
+
+  subcommittees: Subcommittee[];
+}
+
+export interface Subcommittee {
+  name: string;
+  thomasId: string;
+  address: string;
+  phone: string;
+  wikipedia?: string;
+}
+
 export interface State {
   senators: CongressPerson[];
   representatives: CongressPerson[];
+  committees: Committee[];
 }
 
 export const KEY = 'congress';
@@ -79,6 +105,7 @@ export const actionCreators = {
 const initialState: State = {
   senators: [],
   representatives: [],
+  committees: [],
 };
 
 export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {

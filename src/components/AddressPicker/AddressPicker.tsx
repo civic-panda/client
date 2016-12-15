@@ -12,7 +12,10 @@ interface AddressPickerProps {
   style?: 'light' | 'dark';
   location: user.Location;
   setLocation(location: user.Location): void;
-  setCongress(congress: congress.State): void;
+  setCongress(congress: {
+    senators: congress.CongressPerson[],
+    representatives: congress.CongressPerson[],
+  }): void;
 };
 
 interface AddressPickerState {

@@ -44,6 +44,22 @@ export const loadInitialData = async () => {
   return body;
 };
 
+export const loadCommittee = async (committeeId: string, subcommitteeId?: string) => {
+  const result = await fetch(`${apiEndpoint}/committees/${committeeId}${subcommitteeId ? '/subcommittees/' + subcommitteeId : ''}`);
+
+  if (!result.ok) {
+    throw new Error('unable to load committee');
+  }
+
+  const body: {
+    members: congress.CongressPerson[];
+    committee: congress.Committee[];
+    subcommittee: congress.Subcommittee[];
+  } = await result.json();
+
+  return body;
+};
+
 export const subscribeEmail = async (email: string, issues: string[]) => {
   const result = await fetch(`${apiEndpoint}/email-subscribers`, {
     method: 'POST',
