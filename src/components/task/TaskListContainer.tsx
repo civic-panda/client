@@ -12,11 +12,15 @@ interface StateProps {
 
 interface ActionProps {}
 
-interface OwnProps {}
+interface OwnProps {
+  organizationId?: string;
+}
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
   issues: issues.selectors.getList(state),
-  tasks: tasks.selectors.getRemaining(state),
+  tasks: ownProps.organizationId
+    ? tasks.selectors.getRemaining(state).filter(task => task.issue === ownProps.organizationId)
+    : tasks.selectors.getRemaining(state),
   completedTasks: tasks.selectors.getCompleted(state),
 });
 

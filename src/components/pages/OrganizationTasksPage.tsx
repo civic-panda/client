@@ -51,10 +51,10 @@ class OrganizationTasks extends React.Component<StateProps & ActionProps & OwnPr
         </div>
         <div className={'row row--padded'}>
           <div className="col--1-1 col--2-3@lg">
-            <TaskListContainer />
+            <TaskListContainer organizationId={this.props.organization.id} />
           </div>
           <div className="u-hide@lt-lg col--1-3">
-            <TaskMapContainer />
+            <TaskMapContainer organizationId={this.props.organization.id} />
           </div>
         </div>
       </div>

@@ -10,11 +10,14 @@ interface StateProps {
   tasks: tasks.Task[];
 }
 
-interface Props {};
+
+interface OwnProps {
+  organizationId?: string;
+}
 
 interface State {};
 
-class TaskMap extends React.Component<Props & StateProps, State> {
+class TaskMap extends React.Component<OwnProps & StateProps, State> {
   public render() {
     const center = [this.props.location.latitude, this.props.location.longitude];
 
@@ -42,10 +45,12 @@ class TaskMap extends React.Component<Props & StateProps, State> {
   }
 }
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
   location: user.selectors.getLocation(state),
-  tasks: tasks.selectors.getRemaining(state),
+  tasks: ownProps.organizationId
+    ? tasks.selectors.getRemaining(state).filter(task => task.issue === ownProps.organizationId)
+    : tasks.selectors.getRemaining(state),
 });
 
-export const TaskMapContainer = connect<StateProps, {}, Props>(mapStateToProps)(TaskMap);
+export const TaskMapContainer = connect<StateProps, {}, OwnProps>(mapStateToProps)(TaskMap);
 export default TaskMapContainer;

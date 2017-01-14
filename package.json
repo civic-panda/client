@@ -64,7 +64,7 @@
     "ts-jest": "^17.0.3",
     "ts-loader": "^1.2.2",
     "typescript": "next",
-    "typings": "2.0.0",
+    "typings": "^2.0.0",
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",
@@ -95,7 +95,7 @@
     "start": "node server/index.js",
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "postinstall": "npm run build",
+    "postinstall": "rimraf build && npm run build",
     "test": "node scripts/test.js --env=jsdom",
     "deploy": "./node_modules/.bin/gh-pages -d build"
   },
