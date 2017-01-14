@@ -4,9 +4,9 @@ import { congress, issues, tasks, user } from '../modules';
 // LOCAL
 // const apiEndpoint = 'http://localhost:5000';
 // STAGING
-// const apiEndpoint = 'https://sunlight-proxy-pr-1.herokuapp.com';
+const apiEndpoint = 'https://act-on-this-api-staging.herokuapp.com/';
 // PROD
-const apiEndpoint = 'https://api.actonthis.org';
+// const apiEndpoint = 'https://api.actonthis.org';
 
 export const lookupDistrict = async (lat: number, lng: number) => {
   const result = await fetch(`${apiEndpoint}/districts/locate?latitude=${lat}&longitude=${lng}`);
