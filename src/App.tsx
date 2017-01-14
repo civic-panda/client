@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { Router, hashHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 
 import loadGoogleMaps from './components/AddressPicker/loadGoogleMaps';
 import createStore from './createStore';
@@ -14,7 +14,7 @@ class App extends React.Component<{}, {}> {
   public render() {
     return (
       <Provider store={store}>
-        <RouterWithData history={hashHistory} routes={routes(store)} />
+        <RouterWithData history={browserHistory} routes={routes(store)} />
       </Provider>
     );
   }
