@@ -3,44 +3,46 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { AppState, issues, tasks } from '../../modules';
+import AddressPicker from '../AddressPicker';
 import { Text } from '../ui';
-import './issue-page.scss';
+import './organization-page.scss';
 
 interface Props {
   params: {
-    issueId: string;
+    causeName: string;
   };
 };
 
 interface StateProps {
-  issue: issues.Issue;
+  organization: issues.Issue;
   tasks: tasks.Task[];
 };
 
 interface State {};
 
-class IssuePage extends React.Component<Props & StateProps, State> {
+class OrganizationPage extends React.Component<Props & StateProps, State> {
   public render() {
     return (
-      <div className={'issue-page'}>
-        <div className={'issue__header'}>
+      <div className={'organization-page'}>
+        <div className={'organization__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              <Text text={this.props.issue.name} color={'inverse'} size={'lg'} displayBlock />
+              <Text text={this.props.organization.name} color={'inverse'} size={'lg'} displayBlock />
             </div>
           </div>
         </div>
-        <div className={'issue row row--padded'}>
-          <div className={'issue__body col--1-1 col--2-3@lg'}>
+        <AddressPicker />
+        <div className={'organization row row--padded'}>
+          <div className={'organization__body col--1-1 col--2-3@lg'}>
             <Text
               size={'h4'}
               type={'header'}
               color={'accent'}
-              text={`The Issue`}
+              text={`The Organization`}
               displayBlock
               bottomMargin
             />
-            <p dangerouslySetInnerHTML={{ __html: this.props.issue.summary }} />
+            <p dangerouslySetInnerHTML={{ __html: this.props.organization.summary }} />
             <br />
             <Text
               size={'h4'}
@@ -50,7 +52,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               displayBlock
               bottomMargin
             />
-            <div><p dangerouslySetInnerHTML={{ __html: this.props.issue.facts }} /></div>
+            <div><p dangerouslySetInnerHTML={{ __html: this.props.organization.facts }} /></div>
             <br/>
             <Text
               size={'h4'}
@@ -85,7 +87,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               displayBlock
               bottomMargin
             />
-            <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.issue.reading }} /></div>
+            <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.organization.reading }} /></div>
           </div>
         </div>
       </div>
@@ -94,16 +96,16 @@ class IssuePage extends React.Component<Props & StateProps, State> {
 }
 
 const mapStateToProps = (state: AppState, ownProps: Props) => {
-  const currentIssue = issues.selectors.getIssue(state, { issueId: ownProps.params.issueId });
+  const currentOrganization = issues.selectors.getIssueByParam(state, { param: ownProps.params.causeName });
 
   return {
-    issue: currentIssue,
-    tasks: tasks.selectors.getList(state).filter(task => task.issue === currentIssue.id),
+    organization: currentOrganization,
+    tasks: tasks.selectors.getList(state).filter(task => task.issue === currentOrganization.id),
   };
 };
 
-const ConnectedPage = connect<StateProps, {}, Props>(mapStateToProps)(IssuePage);
+const ConnectedPage = connect<StateProps, {}, Props>(mapStateToProps)(OrganizationPage);
 
 export {
-  ConnectedPage as IssuePage,
+  ConnectedPage as OrganizationPage,
 }

@@ -64,7 +64,7 @@
     "ts-jest": "^17.0.3",
     "ts-loader": "^1.2.2",
     "typescript": "next",
-    "typings": "^2.0.0",
+    "typings": "2.0.0",
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",

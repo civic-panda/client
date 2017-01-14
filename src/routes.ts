@@ -18,6 +18,8 @@ function siteRoutes(store: any) {
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
       { name: 'issues', path: 'issues', component: pages.IssueListPage },
       { name: 'issue', path: 'issues/:issueId', component: pages.IssuePage },
+      { name: 'cause', path: 'causes/:causeName', component: pages.OrganizationPage },
+      { name: 'causeTasks', path: 'causes/:causeName/tasks', component: pages.OrganizationTasksPage },
     ],
   };
 }

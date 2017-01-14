@@ -1,0 +1,25 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.organization-page{
+  .organization {
+
+  }
+
+  .organization__header {
+    background: $primary;
+  }
+
+  .details-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .organization__body {
+
+  }
+
+  .organization-list {
+    padding-top: $standard-spacing;
+  }
+}

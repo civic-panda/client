@@ -70,9 +70,16 @@ const getIssue = createSelector(
   getIssueId,
   (list, issueId) => list.find(issue => issue.id === issueId)
 );
+const getIssueNameFromParam = (_state: any, { param }: { param: string }) => param.split('-').join(' ').toLowerCase();
+const getIssueByParam = createSelector(
+  getList,
+  getIssueNameFromParam,
+  (list, issueName) => list.find(issue => issue.name.toLowerCase() === issueName)
+);
 export const selectors = {
   getState,
   getList,
   getSubscribed,
   getIssue,
+  getIssueByParam,
 };

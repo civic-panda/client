@@ -6,3 +6,5 @@ export * from './TaskListPage';
 export * from './TaskPage';
 export * from './IssueListPage';
 export * from './IssuePage';
+export * from './OrganizationPage';
+export * from './OrganizationTasksPage';
