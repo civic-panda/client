@@ -4,7 +4,7 @@ import { congress, issues, tasks, user } from '../modules';
 // LOCAL
 // const apiEndpoint = 'http://localhost:5000';
 // STAGING
-const apiEndpoint = 'https://act-on-this-api-staging.herokuapp.com/';
+const apiEndpoint = 'https://act-on-this-api-staging.herokuapp.com';
 // PROD
 // const apiEndpoint = 'https://api.actonthis.org';
 
