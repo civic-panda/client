@@ -1,3 +1,5 @@
+@import '../abstracts/colors';
+
 $base-size: 14px;
 $base-line-height: $base-size * 1.5; /* 21px */
 $base-family: 'Roboto', Verdana, "Trebuchet MS", Geneva,sans-serif;
@@ -7,10 +9,11 @@ html, body {
   font-size: $base-size;
   line-height: $base-line-height;
   font-family: $base-family;
-}
+  color: $gray;
+};
 
          .xxl { font-family: $header-family; font-weight: 400; font-size: 5 * $base-size;     font-size: 5 * 1rem;     line-height: 1.333; margin-bottom: 1.333 * $base-size; margin-bottom: 1.333rem; }
-          .xl { font-family: $header-family; font-weight: 400; font-size: 3 * $base-size;     font-size: 3 * 1rem;     line-height: 1.333; margin-bottom: 1.333 * $base-size; margin-bottom: 1.333rem; }
+          .xl { font-family: $header-family; font-weight: 400; font-size: 3.5 * $base-size;   font-size: 3.5 * 1rem;   line-height: 1.333; margin-bottom: 1.333 * $base-size; margin-bottom: 1.333rem; }
           .lg { font-family: $header-family; font-weight: 400; font-size: 2.5 * $base-size;   font-size: 2.5 * 1rem;   line-height: 1.2;   margin-bottom: 1.2   * $base-size; margin-bottom: 1.2rem;   }
       h1, .h1 { font-family: $header-family; font-weight: 400; font-size: 2 * $base-size;     font-size: 2 * 1rem;     line-height: 1.5;   margin-bottom: 1.5   * $base-size; margin-bottom: 1.5rem;   }
       h2, .h2 { font-family: $header-family; font-weight: 400; font-size: 1.5 * $base-size;   font-size: 1.5 * 1rem;   line-height: 1.666; margin-bottom: 1.666 * $base-size; margin-bottom: 1.666rem; }

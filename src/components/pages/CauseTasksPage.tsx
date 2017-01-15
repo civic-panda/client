@@ -9,7 +9,7 @@ import './task-page.scss';
 interface State {};
 
 interface StateProps {
-  organization: issues.Issue;
+  cause: issues.Issue;
   location: user.Location;
 }
 
@@ -22,7 +22,7 @@ interface OwnProps {
   }
 }
 
-class OrganizationTasks extends React.Component<StateProps & ActionProps & OwnProps, State> {
+class CauseTasks extends React.Component<StateProps & ActionProps & OwnProps, State> {
   public render() {
     return (
       <div className="task-page">
@@ -30,31 +30,26 @@ class OrganizationTasks extends React.Component<StateProps & ActionProps & OwnPr
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
               <Text
-                text={`${this.props.organization.name} Task List`}
-                color={'inverse'}
-                size={'lg'}
-                bottomMargin
-                displayBlock
-              />
-              <Text
                 text={`
                  ${this.props.location.name},
                  ${this.props.location.state}
                  ${this.props.location.district > 0 ? 'District ' + this.props.location.district : 'At-Large'}
                `}
+                type={'label'}
+                displayBlock
+              />
+              <Text
+                text={`${this.props.cause.name} Task List`}
+                size={'lg'}
                 type={'header'}
-                color={'inverse'}
                 displayBlock
               />
             </div>
           </div>
         </div>
         <div className={'row row--padded'}>
-          <div className="col--1-1 col--2-3@lg">
-            <TaskListContainer organizationId={this.props.organization.id} />
-          </div>
-          <div className="u-hide@lt-lg col--1-3">
-            <TaskMapContainer organizationId={this.props.organization.id} />
+          <div className="col--1-1">
+            <TaskListContainer causeId={this.props.cause.id} />
           </div>
         </div>
       </div>
@@ -63,9 +58,9 @@ class OrganizationTasks extends React.Component<StateProps & ActionProps & OwnPr
 }
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
-  organization: issues.selectors.getIssueByParam(state, { param: ownProps.params.causeName }),
+  cause: issues.selectors.getIssueByParam(state, { param: ownProps.params.causeName }),
   location: user.selectors.getLocation(state),
 });
 
-export const OrganizationTasksPage = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(OrganizationTasks);
-export default OrganizationTasks;
+export const CauseTasksPage = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(CauseTasks);
+export default CauseTasks;

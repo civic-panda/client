@@ -16,10 +16,10 @@ function siteRoutes(store: any) {
       { name: 'about', path: 'about', component: pages.AboutPage },
       { name: 'tasks', path: 'tasks', component: pages.TaskListPage, onEnter: requireLocation(store) },
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
-      { name: 'issues', path: 'issues', component: pages.IssueListPage },
-      { name: 'issue', path: 'issues/:issueId', component: pages.IssuePage },
-      { name: 'cause', path: 'causes/:causeName', component: pages.OrganizationPage },
-      { name: 'causeTasks', path: 'causes/:causeName/tasks', component: pages.OrganizationTasksPage },
+      { name: 'causes', path: 'causes', component: pages.CauseListPage },
+      { name: 'cause', path: 'causes/:causeName', component: pages.CausePage },
+      { name: 'causeTasks', path: 'causes/:causeName/tasks', component: pages.CauseTasksPage },
+      { name: 'causeTask', path: 'causes/:causeName/tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
     ],
   };
 }

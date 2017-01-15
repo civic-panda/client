@@ -5,9 +5,17 @@ import { Action } from '../../redux/action';
 export interface Issue {
   id: string;
   name: string;
+  callToAction: string;
+  blurb: string;
   summary: string;
+  brandColor: string;
   facts: string;
   reading: string;
+  logo: {
+    width: number;
+    height: number;
+    secure_url: string;
+  };
   image: {
     width: number;
     height: number;

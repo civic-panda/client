@@ -26,17 +26,19 @@ export interface InputProps {
 export const Input = (props: InputProps) => {
   const { autoFocus, placeholder, size, name, label, value, error, type = 'text', onChange, onFocus, onBlur } = props;
   const containerClasses = classNames('input-container', { 'input-container--has-error': !!error });
-  const inputClasses = classNames('input', { 'input--has-error': !!error, [`input--${size}`]: !!size });
+  const inputClasses = classNames('input', 'elevation--1', { 'input--has-error': !!error, [`input--${size}`]: !!size });
   const labelClasses = classNames('input-label h5');
 
   return (
     <div className={containerClasses}>
-      <label
-        className={labelClasses}
-        htmlFor={name}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          className={labelClasses}
+          htmlFor={name}
+        >
+          {label}
+        </label>
+      )}
       {error && <span className={'input__error'}>{error}</span>}
       {props.customInput
         ? props.customInput

@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import { congress, user } from '../../modules';
 import { lookupDistrict } from '../../util/api';
@@ -85,7 +85,8 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   public isLocationSet = () => !!this.props.location
 
   public goToTasks = () => {
-    hashHistory.push('/tasks');
+    const location = browserHistory.getCurrentLocation();
+    browserHistory.push(location.pathname === '/' ? '/tasks' : location.pathname + '/tasks');
   }
 
   public render() {
@@ -104,22 +105,26 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
 
     return (
       <div className={classes}>
-        <div className="row row--centered row--padded">
+        <div className="row">
           <Input
-            
             type={'text'}
             placeholder={'Your address'}
             value={this.state.address}
             onChange={this.setAddress}
             customInput={AutoComplete}
           />
-          
+
           <Button
             disabled={!this.isLocationSet()}
             text={'Act On This'}
             disabledText={'Please select an address.'}
             onClick={this.goToTasks}
           />
+          <br />
+          <br />
+          <Text className={'col--1-1 col--1-2@md'} type={'label'} size={'small'} displayBlock>
+            Your location helps us to localize tasks that need immediate action in your area
+          </Text>
         </div>
       </div>
     );

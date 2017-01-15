@@ -53,7 +53,7 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   displayBlock
                 />
                 <Link
-                  link={`/issues/${issue.id}`}
+                  link={`/causes/${issue.name.split(' ').join('-')}`}
                   type={'colorless'}
                   text={'View More'}
                   size={'small'}

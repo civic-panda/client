@@ -1,0 +1,33 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.cause-page{
+  .cause {
+
+  }
+
+  .cause__header {
+    background: $top_primary;
+    padding: $standard-spacing 0;
+  }
+
+  .cause__splash-image {
+    background-color: $gray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .details-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .cause__body {
+
+  }
+
+  .cause-list {
+    padding-top: $standard-spacing;
+  }
+}

@@ -26,17 +26,17 @@ class TaskListP extends React.Component<StateProps & ActionProps & OwnProps, Sta
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
               <Text
-                text={'Your task list'}
-                size={'lg'}
-                bottomMargin
-                displayBlock
-              />
-              <Text
                 text={`
                  ${this.props.location.name},
                  ${this.props.location.state}
                  ${this.props.location.district > 0 ? 'District ' + this.props.location.district : 'At-Large'}
                `}
+                type={'label'}
+                displayBlock
+              />
+              <Text
+                text={'Your task list'}
+                size={'lg'}
                 type={'header'}
                 displayBlock
               />

@@ -19,6 +19,7 @@ export interface Task {
   id: string;
   name: string;
   issue: string;
+  summary: string;
   tags: string[];
   duration: number | string;
   startDate: number;
@@ -26,6 +27,11 @@ export interface Task {
   location: Location;
   template: Template;
   templateProps: any;
+  image: {
+    width: number;
+    height: number;
+    secure_url: string;
+  };
 }
 
 export interface State {

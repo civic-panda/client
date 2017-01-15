@@ -7,29 +7,33 @@ $nav-height: 70px;
 
 .nav {
   position: fixed;
+  z-index: 10;
   top: 0;
   height: $mobile-nav-height;
   width: 100%;
+  padding: 0 $standard-spacing;
   background-color: $top_primary;
   color: $accent;
-  z-index: 10;
-  opacity: 0.75;
+  opacity: 0.95;
 
-.nav-border {
-  border-bottom: solid 1px #cacaca;
-}
+  .nav__bottom-border {
+    width: 100%;
+    float: left;
+    border-bottom: solid 1px $gray;
+  }
 
   .back-button {
+    display: flex;
     float: left;
-    height: 100%;
+    height: $mobile-nav-height;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .links {
     float: right;
     height: 100%;
-    
-    
-
   }
 
   .link {
@@ -37,8 +41,6 @@ $nav-height: 70px;
     height: 100%;
     padding: 0 1rem;
     line-height: $mobile-nav-height;
-
-
 
     &.link--is-active {
       color: $highlight;
@@ -50,14 +52,27 @@ $nav-height: 70px;
       color: $blue;
     }
   }
+
+  .logo {
+    height: 40px;
+    mix-blend-mode: multiply;
+  }
 }
 
 @include media('>=md') {
   .nav {
     height: $nav-height;
 
+    .back-button{
+      height: $nav-height;
+    }
+
     .link {
       line-height: $nav-height;
+    }
+
+    .logo {
+      height: 60px;
     }
   }
 }

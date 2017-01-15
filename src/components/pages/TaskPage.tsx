@@ -35,10 +35,9 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              <Link to={`/issues/${this.props.issue.id}`}>
+              <Link to={`/causes/${this.props.issue.name.split(' ').join('-')}`}>
                 <Text
                   text={this.props.issue.name}
-                  color={'inverse'}
                   type={'label'}
                   bottomMargin
                   displayBlock
@@ -46,16 +45,15 @@ class TaskPage extends React.Component<Props & StateProps, State> {
               </Link>
               <Text
                 text={this.props.task.name}
-                color={'inverse'}
                 size={'lg'}
+                type={'header'}
                 bottomMargin
                 displayBlock
               />
-              <Link to={`/issues/${this.props.issue.id}`}>
+              <Link to={`/causes/${this.props.issue.id}`}>
                 <Icon type={'info'} encircle inline />
                 <Text
                   text={'Why is this issue important?'}
-                  color={'inverse'}
                   type={'label'}
                   underline
                 />

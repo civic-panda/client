@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 import { issues, tasks } from '../../modules';
 import EmailSignUp from '../EmailSignUp';
 import { Button, FadeIn, Input, Text } from '../ui';
+import TaskSummary from './TaskSummary';
 import './task-list.scss';
-import TaskDetails from './TaskDetails';
 
 interface Props {
   tasks: tasks.Task[];
@@ -37,28 +37,6 @@ export class TaksList extends React.Component<Props, State> {
       }
   }
 
-  public renderTask = (task: tasks.Task) => (
-    <Link key={task.id} to={`/tasks/${task.id}`}>
-      <div className="task">
-        <div className="task__description">
-          <Text
-            text={this.props.issues.find(issue => issue.id === task.issue).name}
-            size={'small'}
-            color={'light'}
-            type={'label'}
-            bottomMargin
-          />
-          <Text
-            className="task-name"
-            text={task.name}
-            size={'h3'}
-            type={'header'}
-          />
-        </div>
-      </div>
-    </Link>
-  )
-
   public renderEmpty = () => (
     <div>
       <Text
@@ -80,7 +58,15 @@ export class TaksList extends React.Component<Props, State> {
   public render() {
     return (
       <div className={'task-list'}>
-        {this.props.tasks.length ? this.props.tasks.map(this.renderTask) : this.renderEmpty()}
+        {this.props.tasks.length
+          ? this.props.tasks.map(task => (
+            <TaskSummary
+              key={task.id}
+              task={task}
+              cause={this.props.issues.find(issue => issue.id === task.issue)}
+            />
+          )) : this.renderEmpty()
+        }
         <div className="show-more-link">
           <Text
             text={
@@ -91,12 +77,22 @@ export class TaksList extends React.Component<Props, State> {
             size={'h4'}
             color={'highlight'}
             displayBlock
+            bottomMargin
             onClick={() => this.setState({ showCompleted: !this.state.showCompleted })}
           />
         </div>
         <FadeIn show={this.state.showCompleted}>
           <div className="completed-task-list">
-            {this.props.completedTasks.map(this.renderTask)}
+            {
+              this.props.completedTasks
+                .map(task => (
+                  <TaskSummary
+                    key={task.id}
+                    task={task}
+                    cause={this.props.issues.find(issue => issue.id === task.issue)}
+                  />
+                ))
+            }
           </div>
         </FadeIn>
       </div>

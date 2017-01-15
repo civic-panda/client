@@ -12,7 +12,7 @@ interface StateProps {
 
 
 interface OwnProps {
-  organizationId?: string;
+  causeId?: string;
 }
 
 interface State {};
@@ -47,8 +47,8 @@ class TaskMap extends React.Component<OwnProps & StateProps, State> {
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
   location: user.selectors.getLocation(state),
-  tasks: ownProps.organizationId
-    ? tasks.selectors.getRemaining(state).filter(task => task.issue === ownProps.organizationId)
+  tasks: ownProps.causeId
+    ? tasks.selectors.getRemaining(state).filter(task => task.issue === ownProps.causeId)
     : tasks.selectors.getRemaining(state),
 });
 

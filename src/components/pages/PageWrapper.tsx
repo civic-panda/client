@@ -36,7 +36,7 @@ export class PageWrapper extends React.Component<Props, State> {
     const currentRoute = this.props.routes[this.props.routes.length - 1];
     return (
       <div className="page-container">
-        <Nav currentRoute={currentRoute.name} />
+        <Nav currentRoute={currentRoute.name} routeParams={this.props.params} />
         <ReactCSSTransitionGroup
           transitionName="page-transition"
           transitionEnterTimeout={180}

@@ -1,6 +1,10 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 
+.text {
+  color: $gray;
+}
+
 .text.clickable:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -16,10 +20,12 @@
 
 .text.header {
   font-family: 'Roboto', serif;
+  color: $black;
 }
 
 .text.label {
   font-family: 'Space Mono', serif;
+  color: $highlight;
 }
 
 .text.body {
@@ -31,7 +37,6 @@
 .text.right { text-align: right; }
 
 .text.primary {
-  color: $black;
 }
 
 .text.highlight {

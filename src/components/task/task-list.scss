@@ -1,33 +1,26 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 
-.task-list {
-  .task {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    overflow: hidden;
-    padding: $standard-spacing 0;
-    border-bottom: solid 1px $gray;
-
-    &:hover {
-      background: get-color($gray, 400);
-      .task-name{
-        text-decoration: underline;
-      }
-    }
-
-    &:active {
-      background: get-color($gray, 500);
-    }
-  }
+.task-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  overflow: hidden;
+  border: solid 1px $gray;
+  margin-bottom: $standard-spacing;
 
   .task__description{
-    display: flex;
-    min-width: 200px;
-    flex-direction: column;
     flex: 1;
     float: left;
+    padding: $standard-spacing;
+  }
+
+  .task__title-block {
+    display: flex;
+  }
+
+  .task__title {
+    flex: 1;
   }
 
   .show-more-link {
@@ -35,3 +28,4 @@
     border-bottom: solid 1px $gray;
   }
 }
+

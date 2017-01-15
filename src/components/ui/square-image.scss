@@ -1,0 +1,51 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/vendors/include-media';
+
+.square-image {
+  display: inline-block;
+  margin: 0;
+  background-color: $gray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.square-image.large {
+  max-height: 360px;
+  max-width: 360px;
+  height: 120px;
+  width: 120px;
+
+  @include media('>sm') {
+    height: 180px;
+    width: 180px;
+  }
+  @include media('>md') {
+    height: 25vw;
+    width: 25vw;
+  }
+  @include media('>lg') {
+    height: 25vw;
+    width: 25vw;
+  }
+}
+
+.square-image.med {
+  max-height: 240px;
+  max-width: 240px;
+  height: 120px;
+  width: 120px;
+
+  @include media('>sm') {
+    height: 180px;
+    width: 180px;
+  }
+  @include media('>md') {
+    height: 20vw;
+    width: 20vw;
+  }
+  @include media('>lg') {
+    height: 20vw;
+    width: 20vw;
+  }
+}

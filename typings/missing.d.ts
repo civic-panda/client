@@ -1,3 +1,5 @@
+declare function require(string: string): string;
+
 declare var process: any;
 
 declare module 'redux-persist' {

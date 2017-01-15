@@ -47,6 +47,7 @@ export const Button = (props: ButtonProps) => {
   const classes = classNames(
     'button',
     {
+      'elevation--1': !disabled,
       'button--is-disabled': !!disabled,
       'button--is-loading': !!loading,
       [`button--${type}`]: !!type,
@@ -73,8 +74,7 @@ export const Button = (props: ButtonProps) => {
     >
       <Text
         text={`${text}${children}`}
-        type={'label'}
-        size={size === 'small' ? 'h5' : 'h4'}
+        size={size === 'small' ? 'p' : 'h5'}
         color={textColor}
         align={'center'}
       />

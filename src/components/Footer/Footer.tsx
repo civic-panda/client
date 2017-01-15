@@ -18,7 +18,7 @@ export const Footer = () => (
         <Link to={'/tasks'}>
           <Text size={'p'} color={'light'} displayBlock bottomMargin>Your Tasks</Text>
         </Link>
-        <Link to={'/issues'}>
+        <Link to={'/causes'}>
           <Text size={'p'} color={'light'} displayBlock bottomMargin>The Issues</Text>
         </Link>
       </div>
