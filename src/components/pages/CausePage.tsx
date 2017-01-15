@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { AppState, issues, tasks } from '../../modules';
 import AddressPicker from '../AddressPicker';
 import { TaskSummary } from '../task';
-import { SquareImage, Text } from '../ui';
+import { SquareImage, Text, Button } from '../ui';
 import './cause-page.scss';
 
 interface Props {
@@ -53,21 +53,29 @@ class CausePage extends React.Component<Props & StateProps, State> {
             <Text
               size={'h1'}
               type={'header'}
+              text={`Additional Reading`}
+              displayBlock
+              bottomMargin
+            />
+             <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
+          </div>
+          <div className={'issue__notes col--1-1 col--1-3@lg'}>
+            <Text
+
+              size={'h2'}
+              type={'label'}
+              color={'site-black'}
               text={`Key Facts`}
               displayBlock
               bottomMargin
             />
             <div><p dangerouslySetInnerHTML={{ __html: this.props.cause.facts }} /></div>
-          </div>
-          <div className={'issue__notes col--1-1 col--1-3@lg'}>
-            <Text
-              size={'h2'}
-              type={'header'}
-              text={`Additional Reading`}
-              displayBlock
-              bottomMargin
+            <Button
+            
+            text={'</>Embed'}
+            disabledText={'Please select an address.'}
+            
             />
-            <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
           </div>
           <div className="col--1-1">
             <Text
