@@ -53,7 +53,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
               <Link to={`/causes/${this.props.issue.id}`}>
                 <Icon type={'info'} encircle inline />
                 <Text
-                  text={'Why is this issue important?'}
+                  text={'Why is this important?'}
                   type={'label'}
                   underline
                 />
