@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { AppState, user, issues } from '../../modules';
 import { Text } from '../ui';
@@ -54,7 +55,9 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
     default:
       return (
         <div className="back-button">
-          <img src={logo} alt="act on this logo" className={'logo'} />
+          <Link to={'/'}>
+            <img src={logo} alt="act on this logo" className={'logo'} />
+          </Link>
         </div>
       );
   }

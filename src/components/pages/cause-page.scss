@@ -11,11 +11,8 @@
     padding: $standard-spacing 0;
   }
 
-  .cause__splash-image {
-    background-color: $gray;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+  .cause__splash-image.cause__splash-image {
+    padding: 0;
   }
 
   .details-container {

@@ -18,7 +18,7 @@ interface State {
 
 const links = [{
   name: 'Act On This',
-  url: '/tasks',
+  url: '/',
 }, {
   name: 'Causes',
   url: '/causes',

@@ -46,9 +46,9 @@
 }
 
 .button--secondary {
-  background: $gray;
-  &:hover { background: get-color($gray, 600); }
-  &:active { background: get-color($gray, 700); }
+  background: get-color($highlight, 100);
+  &:hover { background: get-color($highlight, 300); }
+  &:active { background: get-color($highlight, 400); }
 }
 
 .button--highlighted {
@@ -67,15 +67,15 @@
 
 .button--colorless {
   background: rgba($white, 0.9);
-  border: solid 1px rgba($gray, 0.8);
+  border: solid 1px rgba($white, 0.8);
 
   &:hover {
-    background: rgba($gray, 0.8);
+    background: rgba($white, 0.8);
     border: solid 1px transparent;
   }
 
   &:active {
-    background: rgba($gray, 0.5);
+    background: rgba($white, 0.5);
     border: solid 1px transparent;
   }
 }

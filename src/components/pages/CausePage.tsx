@@ -32,50 +32,53 @@ export default class CausePage extends React.Component<Props & StateProps, State
               }
               <AddressPicker />
             </div>
-            <div className="col--1-1 col--2-5@md col--1-3@lg" style={{ textAlign: 'right' }}>
-              <SquareImage className={'elevation--4'} url={this.props.cause.image.secure_url} />
+            <div className="cause__splash-image col--1-1 col--2-5@md col--1-3@lg" style={{ textAlign: 'right' }}>
+              <SquareImage url={this.props.cause.image.secure_url} />
             </div>
           </div>
         </div>
         <div className={'cause row row--padded'}>
-          <div className={'cause__body col--1-1 col--2-3@lg'}>
-            <Text
-              size={'h1'}
-              type={'header'}
-              text={`About`}
-              displayBlock
-              bottomMargin
-            />
-            <p dangerouslySetInnerHTML={{ __html: this.props.cause.summary }} />
-            <br />
-            <Text
-              size={'h1'}
-              type={'header'}
-              text={`Additional Reading`}
-              displayBlock
-              bottomMargin
-            />
-             <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
-          </div>
-          <div className={'issue__notes col--1-1 col--1-3@lg'}>
-            <Text
-
-              size={'h2'}
-              type={'label'}
-              color={'site-black'}
-              text={`Key Facts`}
-              displayBlock
-              bottomMargin
-            />
-            <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
-            <Embed
-              title={this.props.cause.name}
-              logo={this.props.cause.logo.secure_url}
-              image={this.props.cause.image.secure_url}
-              link={`https://debug-politics.actonthis.org${location.pathname}`}
-              callToAction={this.props.cause.callToAction}
-            />
-          </div>
+          {this.props.cause.summary && (
+            <div className={'cause__body col--1-1 col--2-3@lg'}>
+              <Text
+                size={'h1'}
+                type={'header'}
+                text={`About`}
+                displayBlock
+                bottomMargin
+              />
+              <p dangerouslySetInnerHTML={{ __html: this.props.cause.summary }} />
+              <br />
+              <Text
+                size={'h1'}
+                type={'header'}
+                text={`Additional Reading`}
+                displayBlock
+                bottomMargin
+              />
+              <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
+            </div>
+          )}
+          {this.props.cause.reading && (
+            <div className={'issue__notes col--1-1 col--1-3@lg'}>
+              <Text
+                size={'h2'}
+                type={'label'}
+                color={'site-black'}
+                text={`Key Facts`}
+                displayBlock
+                bottomMargin
+              />
+              <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.facts }} /></div>
+              <Embed
+                title={this.props.cause.name}
+                logo={this.props.cause.logo.secure_url}
+                image={this.props.cause.image.secure_url}
+                link={`https://debug-politics.actonthis.org${location.pathname}`}
+                callToAction={this.props.cause.callToAction}
+              />
+            </div>
+          )}
           <div className="col--1-1">
             <Text
               size={'h1'}

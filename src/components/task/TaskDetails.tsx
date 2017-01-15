@@ -45,7 +45,6 @@ export class TaskDetails extends React.Component<Props, State> {
             text={'0 miles away'}
             type={'label'}
             align={'center'}
-            color={this.props.darkBackground ? 'inverse' : 'primary'}
           />
         </div>
       </div>

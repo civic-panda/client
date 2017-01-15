@@ -21,7 +21,7 @@
     color 0.3s cubic-bezier(.25,.8,.25,1);
 
     .text-shadow {
-      text-shadow: 0px 1px 1px rgba($black, 0.25);
+      text-shadow: 0px 1px 1px rgba($black, 0.45);
     }
 
     .background-image {
@@ -36,48 +36,54 @@
   }
 
   .issue-block--is-subscribed {
+    background-color: rgba($black, 0.2);
+
     .background-image {
       position: absolute;
-      opacity: 1;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
       z-index: -1;
+      opacity: 1;
+      border: solid 1px $gray;
       background-size: cover;
       background-repeat: no-repeat;
     }
 
-    &.issue-block--0th {
-      background-color: rgba($color-0, 0.75);
-      .background-image { background-color: $color-0; }
-      .icon { color: $color-0; background: rgba($white, 0.9); }
-      .button span { color: $color-0; }
-    }
-    &.issue-block--1th {
-      background-color: rgba($color-1, 0.75);
-      .background-image { background-color: $color-1; }
-      .icon { color: $color-1; background: rgba($white, 0.9); }
-      .button span { color: $color-1; }
-    }
-    &.issue-block--2th {
-      background-color: rgba($color-2, 0.75);
-      .background-image { background-color: $color-2; }
-      .icon { color: $color-2; background: rgba($white, 0.9); }
-      .button span { color: $color-2; }
-    }
-    &.issue-block--3th {
-      background-color: rgba($color-3, 0.75);
-      .background-image { background-color: $color-3; }
-      .icon { color: $color-3; background: rgba($white, 0.9); }
-      .button span { color: $color-3; }
-    }
-    &.issue-block--4th {
-      background-color: rgba($color-4, 0.75);
-      .background-image { background-color: $color-4; }
-      .icon { color: $color-4; background: rgba($white, 0.9); }
-      .button span { color: $color-4; }
-    }
+    // .background-image {
+    // }
+
+    // &.issue-block--0th {
+    //   background-color: rgba($color-0, 0.75);
+    //   .background-image { background-color: $color-0; }
+    //   .icon { color: $color-0; background: rgba($white, 0.9); }
+    //   .button span { color: $color-0; }
+    // }
+    // &.issue-block--1th {
+    //   background-color: rgba($color-1, 0.75);
+    //   .background-image { background-color: $color-1; }
+    //   .icon { color: $color-1; background: rgba($white, 0.9); }
+    //   .button span { color: $color-1; }
+    // }
+    // &.issue-block--2th {
+    //   background-color: rgba($color-2, 0.75);
+    //   .background-image { background-color: $color-2; }
+    //   .icon { color: $color-2; background: rgba($white, 0.9); }
+    //   .button span { color: $color-2; }
+    // }
+    // &.issue-block--3th {
+    //   background-color: rgba($color-3, 0.75);
+    //   .background-image { background-color: $color-3; }
+    //   .icon { color: $color-3; background: rgba($white, 0.9); }
+    //   .button span { color: $color-3; }
+    // }
+    // &.issue-block--4th {
+    //   background-color: rgba($color-4, 0.75);
+    //   .background-image { background-color: $color-4; }
+    //   .icon { color: $color-4; background: rgba($white, 0.9); }
+    //   .button span { color: $color-4; }
+    // }
   }
 
   .check-mark {

@@ -4,7 +4,6 @@
 .square-image {
   display: inline-block;
   margin: 0;
-  background-color: $gray;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -31,8 +30,8 @@
 }
 
 .square-image.med {
-  max-height: 240px;
-  max-width: 240px;
+  max-height: 280px;
+  max-width: 280px;
   height: 120px;
   width: 120px;
 
