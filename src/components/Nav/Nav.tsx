@@ -24,7 +24,7 @@ const links = [{
   url: '/issues',
 }, {
   name: 'Tasks',
-  url: '/task',
+  url: '/tasks',
 }];
 
 export class Nav extends React.Component<Props, State> {
