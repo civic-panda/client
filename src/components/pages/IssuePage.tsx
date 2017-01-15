@@ -41,7 +41,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               size={'h4'}
               type={'header'}
               color={'accent'}
-              text={`The Issue12121`}
+              text={`The Issue121`}
               displayBlock
               bottomMargin
             />

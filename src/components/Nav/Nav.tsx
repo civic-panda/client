@@ -33,23 +33,7 @@ export class Nav extends React.Component<Props, State> {
     this.state = { showShadow: false, showPullOutMenu: false };
   }
 
-  public componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  };
-
-  public componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  };
-
-  public handleScroll = (event: any) => {
-    if (event.target.body.scrollTop > 0 && !this.state.showShadow) {
-      const newState = { ...this.state, showShadow: true };
-      this.setState(newState);
-    } else if (event.target.body.scrollTop === 0 && this.state.showShadow) {
-      const newState = { ...this.state, showShadow: false };
-      this.setState(newState);
-    }
-  };
+  
 
   public toggleMenu = (show = !this.state.showPullOutMenu) => {
     const newState = { ...this.state, showPullOutMenu: show };
@@ -57,10 +41,7 @@ export class Nav extends React.Component<Props, State> {
   }
 
   public render() {
-    const navClasses = classNames('nav', 'elevation--animated', {
-      'elevation--0': !this.state.showShadow,
-      'elevation--1': this.state.showShadow,
-    });
+    const navClasses = classNames('nav');
 
     return (
       <div className={navClasses}>
@@ -75,7 +56,7 @@ export class Nav extends React.Component<Props, State> {
             hide={() => this.toggleMenu(false)}
           />
         </div>
-        <div className="row row--padded u-hide@sm">
+        <div className="row row--padded u-hide@sm nav-border">
           <BackButton currentRoute={this.props.currentRoute} />
           <div className="links">
             {
