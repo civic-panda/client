@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import { AppState, issues, tasks } from '../../modules';
 import AddressPicker from '../AddressPicker';
 import { TaskSummary } from '../task';
+import Embed from '../Embed/Embed';
 import { SquareImage, Text } from '../ui';
 import './cause-page.scss';
 
@@ -23,6 +24,7 @@ interface State {};
 
 class CausePage extends React.Component<Props & StateProps, State> {
   public render() {
+    const location = browserHistory.getCurrentLocation();
     return (
       <div className={'cause-page'}>
         <div className={'cause__header'}>
@@ -68,6 +70,13 @@ class CausePage extends React.Component<Props & StateProps, State> {
               bottomMargin
             />
             <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
+            <Embed
+              title={this.props.cause.name}
+              logo={this.props.cause.logo.secure_url}
+              image={this.props.cause.image.secure_url}
+              link={`https://debug-politics.actonthis.org${location.pathname}`}
+              callToAction={this.props.cause.callToAction}
+            />
           </div>
           <div className="col--1-1">
             <Text
