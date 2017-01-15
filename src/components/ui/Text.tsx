@@ -6,7 +6,7 @@ import './text.scss';
 
 export type FontSize = 'xxl' | 'xl' | 'lg' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'small' | 'xs';
 export type FontType = 'header' | 'label' | 'body';
-export type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light';
+export type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light' | 'site-black';
 export type FontWeight = 'normal' | 'bold';
 export type FontAlignment = 'left' | 'center' | 'right';
 

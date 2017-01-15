@@ -6,7 +6,7 @@ import { AppState, issues, tasks } from '../../modules';
 import AddressPicker from '../AddressPicker';
 import { TaskSummary } from '../task';
 import Embed from '../Embed/Embed';
-import { SquareImage, Text } from '../ui';
+import { SquareImage, Text, Button } from '../ui';
 import './cause-page.scss';
 
 export interface Props {};
@@ -51,17 +51,19 @@ export default class CausePage extends React.Component<Props & StateProps, State
             <Text
               size={'h1'}
               type={'header'}
-              text={`Key Facts`}
+              text={`Additional Reading`}
               displayBlock
               bottomMargin
             />
-            <div><p dangerouslySetInnerHTML={{ __html: this.props.cause.facts }} /></div>
+             <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.reading }} /></div>
           </div>
           <div className={'issue__notes col--1-1 col--1-3@lg'}>
             <Text
+
               size={'h2'}
-              type={'header'}
-              text={`Additional Reading`}
+              type={'label'}
+              color={'site-black'}
+              text={`Key Facts`}
               displayBlock
               bottomMargin
             />
