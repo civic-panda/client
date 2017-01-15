@@ -88,7 +88,7 @@ class OrganizationPage extends React.Component<Props & StateProps, State> {
               bottomMargin
             />
             <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.organization.reading }} /></div>
-          </div>
+          </div><p>Test</p>
         </div>
       </div>
     );
