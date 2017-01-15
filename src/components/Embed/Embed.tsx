@@ -39,7 +39,7 @@ const createHtmlString = ({
           </a>
         </div>
       </div>
-      <a style="font-family:Arial,sans-serif; font-weight:700; line-height: 20px; line-height:17px; text-decoration: none;" target="_blank" href="${link}">
+      <a style="position: relative; font-family:Arial,sans-serif; font-weight:700; line-height: 20px; line-height:17px; text-decoration: none;" target="_blank" href="${link}">
         ${callToAction} &gt;
       </a>
     </div>

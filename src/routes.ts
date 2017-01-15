@@ -1,4 +1,5 @@
 import * as pages from './components/pages';
+import FakeNewsEmbed from './components/FakeNewsEmbed';
 import { requireLocation } from './requireLocation';
 
 const scrollToTop = () => window.scrollTo(0, 0);
@@ -12,6 +13,7 @@ function siteRoutes(store: any) {
     indexRoute: { component: pages.ActOnThis },
     onChange: scrollToTop,
     childRoutes: [
+      { name: 'demo', path: 'demo', component: FakeNewsEmbed },
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },
       { name: 'tasks', path: 'tasks', component: pages.TaskListPage, onEnter: requireLocation(store) },

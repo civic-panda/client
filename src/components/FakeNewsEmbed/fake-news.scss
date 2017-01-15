@@ -1,0 +1,28 @@
+@import '../../scss/vendors/include-media';
+
+.fake-news {
+  position: fixed;
+  z-index: 1000;
+  background: white;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  overflow: scroll;
+
+  .article-screenshot {
+    width: 100%;
+  }
+
+  .actonthis-embed {
+    position: absolute;
+    top: 306%;
+    width: 64%;
+    left: 77px;
+    overflow: hidden;
+    z-index: 1;
+    background: white;
+    padding-right: 30%;
+    padding-left: 130px;
+  }
+}
