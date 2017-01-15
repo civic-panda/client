@@ -9,20 +9,16 @@ import Embed from '../Embed/Embed';
 import { SquareImage, Text } from '../ui';
 import './cause-page.scss';
 
-interface Props {
-  params: {
-    causeName: string;
-  };
-};
+export interface Props {};
 
-interface StateProps {
+export interface StateProps {
   cause: issues.Issue;
   tasks: tasks.Task[];
 };
 
 interface State {};
 
-class CausePage extends React.Component<Props & StateProps, State> {
+export default class CausePage extends React.Component<Props & StateProps, State> {
   public render() {
     const location = browserHistory.getCurrentLocation();
     return (
@@ -96,19 +92,4 @@ class CausePage extends React.Component<Props & StateProps, State> {
       </div>
     );
   }
-}
-
-const mapStateToProps = (state: AppState, ownProps: Props) => {
-  const currentCause = issues.selectors.getIssueByParam(state, { param: ownProps.params.causeName });
-
-  return {
-    cause: currentCause,
-    tasks: tasks.selectors.getList(state).filter(task => task.issue === currentCause.id),
-  };
-};
-
-const ConnectedPage = connect<StateProps, {}, Props>(mapStateToProps)(CausePage);
-
-export {
-  ConnectedPage as CausePage,
 }

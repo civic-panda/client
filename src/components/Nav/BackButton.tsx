@@ -51,9 +51,6 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
         </div>
       );
 
-    case undefined:
-      return null;
-
     default:
       return (
         <div className="back-button">

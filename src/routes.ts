@@ -9,7 +9,7 @@ function siteRoutes(store: any) {
     path: '/',
     name: 'splash',
     component: pages.PageWrapper,
-    indexRoute: { component: pages.SplashPage },
+    indexRoute: { component: pages.ActOnThis },
     onChange: scrollToTop,
     childRoutes: [
       { name: 'faq', path: 'faq', component: pages.FAQPage },
@@ -17,7 +17,7 @@ function siteRoutes(store: any) {
       { name: 'tasks', path: 'tasks', component: pages.TaskListPage, onEnter: requireLocation(store) },
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
       { name: 'causes', path: 'causes', component: pages.CauseListPage },
-      { name: 'cause', path: 'causes/:causeName', component: pages.CausePage },
+      { name: 'cause', path: 'causes/:causeName', component: pages.CausePageContainer },
       { name: 'causeTasks', path: 'causes/:causeName/tasks', component: pages.CauseTasksPage },
       { name: 'causeTask', path: 'causes/:causeName/tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
     ],
