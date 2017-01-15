@@ -13,6 +13,11 @@ $nav-height: 70px;
   background-color: $top_primary;
   color: $accent;
   z-index: 10;
+  opacity: 0.75;
+
+.nav-border {
+  border-bottom: solid 1px #cacaca;
+}
 
   .back-button {
     float: left;
