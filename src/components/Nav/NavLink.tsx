@@ -27,7 +27,7 @@ export class NavLink extends React.Component<LinkProps, LinkState> {
         <Text
           format={'Capitalize'}
           text={this.props.text}
-          color={this.props.active ? 'highlight' : 'inverse'}
+          color={this.props.active ? 'highlight' : 'accent'}
           size={'h4'}
           type={'label'}
         />

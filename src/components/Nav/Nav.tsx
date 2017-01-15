@@ -17,14 +17,14 @@ interface State {
 };
 
 const links = [{
-  name: 'tasks',
+  name: 'Act On It',
   url: '/tasks',
 }, {
-  name: 'issues',
+  name: 'Issues',
   url: '/issues',
 }, {
-  name: 'about',
-  url: '/about',
+  name: 'Tasks',
+  url: '/task',
 }];
 
 export class Nav extends React.Component<Props, State> {

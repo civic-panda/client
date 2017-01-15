@@ -106,28 +106,17 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
       <div className={classes}>
         <div className="row row--centered row--padded">
           <Input
-            label={`I'm at`}
+            
             type={'text'}
             placeholder={'Your address'}
             value={this.state.address}
             onChange={this.setAddress}
             customInput={AutoComplete}
           />
-          <Select
-            label={`and I have`}
-            type={'text'}
-            value={this.state.minutes}
-            onChange={this.setMinutes}
-            options={[
-              { name: '30 minutes', value: 30 },
-              { name: 'An hour', value: 60 },
-              { name: 'All day', value: 300 },
-            ]}
-            size={'short'}
-          />
+          
           <Button
             disabled={!this.isLocationSet()}
-            text={'Find tasks'}
+            text={'Act On This'}
             disabledText={'Please select an address.'}
             onClick={this.goToTasks}
           />

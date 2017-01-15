@@ -10,8 +10,8 @@ $nav-height: 70px;
   top: 0;
   height: $mobile-nav-height;
   width: 100%;
-  background-color: $primary;
-  color: $white;
+  background-color: $top_primary;
+  color: $accent;
   z-index: 10;
 
   .back-button {
@@ -22,6 +22,9 @@ $nav-height: 70px;
   .links {
     float: right;
     height: 100%;
+    
+    
+
   }
 
   .link {
@@ -30,6 +33,8 @@ $nav-height: 70px;
     padding: 0 1rem;
     line-height: $mobile-nav-height;
 
+
+
     &.link--is-active {
       color: $highlight;
       cursor: default;
@@ -37,6 +42,7 @@ $nav-height: 70px;
 
     &:hover {
       text-decoration: underline;
+      color: $blue;
     }
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import AddressPicker from '../AddressPicker';
 
 import { AppState, issues, tasks } from '../../modules';
 import { Text } from '../ui';
@@ -25,8 +26,12 @@ class IssuePage extends React.Component<Props & StateProps, State> {
       <div className={'issue-page'}>
         <div className={'issue__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
+            
+            <AddressPicker />
+
             <div className="col--1-1 col--2-3@lg">
               <Text text={this.props.issue.name} color={'inverse'} size={'lg'} displayBlock />
+
             </div>
           </div>
         </div>
@@ -36,7 +41,7 @@ class IssuePage extends React.Component<Props & StateProps, State> {
               size={'h4'}
               type={'header'}
               color={'accent'}
-              text={`The Issue`}
+              text={`The Issue12121`}
               displayBlock
               bottomMargin
             />
