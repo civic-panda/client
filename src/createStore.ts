@@ -3,6 +3,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 // Middlewares and enhancers
 import * as logger from './redux/logger';
 import * as mixpanel from './redux/mixpanel';
+import * as persist from './redux/persist';
 
 // Reducers
 import { AppState, congress, issues, storage, tasks, user } from './modules';
@@ -22,12 +23,12 @@ const setupStore = () => {
     rootReducer,
     undefined,
     compose(
-      storage.storeEnhancer,
+      persist.storeEnhancer,
       middleware,
     )
   );
 
-  storage.loadStore(store);
+  persist.loadStore(store);
   return store;
 };
 
