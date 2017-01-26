@@ -25,6 +25,7 @@ interface State {};
 
 export default class CausePage extends React.Component<Props & StateProps, State> {
   public render() {
+    console.log('CausePage', this.props)
     const location = browserHistory.getCurrentLocation();
     if (!this.props.isLoaded) {
       return <div>Loading {this.props.params.causeName}...</div>

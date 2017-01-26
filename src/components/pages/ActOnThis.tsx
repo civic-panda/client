@@ -52,6 +52,7 @@ const ActOnThisDefault = {
 const mapStateToProps = (state: AppState) => ({
   cause: issues.selectors.getIssue(state, { id: '587bbee01afc9f002628d30d' }) || ActOnThisDefault,
   tasks: tasks.selectors.getRemaining(state),
+  isLoaded: true,
 });
 
 export const ActOnThis = connect(mapStateToProps)(CausePage);
