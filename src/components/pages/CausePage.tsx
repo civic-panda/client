@@ -9,9 +9,14 @@ import Embed from '../Embed/Embed';
 import { SquareImage, Text, Button } from '../ui';
 import './cause-page.scss';
 
-export interface Props {};
+export interface Props {
+  params: {
+    causeName: string;
+  };
+};
 
 export interface StateProps {
+  isLoaded: boolean;
   cause: issues.Issue;
   tasks: tasks.Task[];
 };
@@ -21,6 +26,9 @@ interface State {};
 export default class CausePage extends React.Component<Props & StateProps, State> {
   public render() {
     const location = browserHistory.getCurrentLocation();
+    if (!this.props.isLoaded) {
+      return <div>Loading {this.props.params.causeName}...</div>
+    }
     return (
       <div className={'cause-page'}>
         <div className={'cause__header'}>

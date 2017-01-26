@@ -3,10 +3,9 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 // Middlewares and enhancers
 import * as logger from './redux/logger';
 import * as mixpanel from './redux/mixpanel';
-import * as persist from './redux/persist';
 
 // Reducers
-import { AppState, congress, issues, tasks, user } from './modules';
+import { AppState, congress, issues, storage, tasks, user } from './modules';
 
 const middleware = applyMiddleware(logger.middleware, mixpanel.middleware);
 
@@ -16,19 +15,19 @@ const setupStore = () => {
     [issues.KEY]: issues.reducer,
     [tasks.KEY]: tasks.reducer,
     [user.KEY]: user.reducer,
-    [persist.KEY]: persist.reducer,
+    [storage.KEY]: storage.reducer,
   });
 
   const store = createStore<AppState>(
     rootReducer,
     undefined,
     compose(
-      persist.storeEnhancer,
+      storage.storeEnhancer,
       middleware,
     )
   );
 
-  persist.loadStore(store);
+  storage.loadStore(store);
   return store;
 };
 

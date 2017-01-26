@@ -12,7 +12,7 @@ export type Location = {
   longitude: number;
 }
 
-export interface UserState {
+export interface State {
   id?: number;
   name?: string;
   email?: string;
@@ -33,13 +33,13 @@ export const actions = {
 
 export const actionCreators = {
   setLocation: (location: Location) => ({ type: actions.SET_LOCATION, payload: location }),
-  set: (user: UserState) => ({ type: actions.SET, payload: user }),
+  set: (user: State) => ({ type: actions.SET, payload: user }),
   subscriptionAttempt: () => ({ type: actions.SUBSCRIPTION_ATTEMPT }),
   subscriptionFailure: () => ({ type: actions.SUBSCRIPTION_FAILURE }),
   subscription: (email: string) => ({ type: actions.SUBSCRIPTION, payload: { email }}),
 };
 
-const initialState: UserState = {
+const initialState: State = {
   id: undefined,
   name: undefined,
   email: undefined,
@@ -48,7 +48,7 @@ const initialState: UserState = {
   causes: [],
 };
 
-export const reducer: Redux.Reducer<UserState> = (state = initialState, action: Action) => {
+export const reducer: Redux.Reducer<State> = (state = initialState, action: Action) => {
   switch (action.type) {
     case actions.SET:
       return {...state, ...action.payload };
@@ -70,7 +70,7 @@ export const reducer: Redux.Reducer<UserState> = (state = initialState, action: 
   }
 };
 
-const getState = (state: any): UserState => state[KEY];
+const getState = (state: any): State => state[KEY];
 const getLocation = createSelector(getState, state => state.location);
 
 export const selectors = {

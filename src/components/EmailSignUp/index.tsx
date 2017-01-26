@@ -17,7 +17,7 @@ interface OwnProps {
 
 interface StateProps {
   issues: string[];
-  user: user.UserState;
+  user: user.State;
 }
 
 interface DispatchProps {
