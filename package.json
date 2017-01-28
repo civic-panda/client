@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://www.actonthis.org",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "postinstall": "rimraf build && npm run build",
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy": "./node_modules/.bin/gh-pages -d build"
+  },
   "devDependencies": {},
   "dependencies": {
     "@types/classnames": "^0.0.32",
@@ -92,14 +100,6 @@
     "webpack-dev-server": "1.16.2",
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "^2.0.1"
-  },
-  "scripts": {
-    "start": "node server/index.js",
-    "dev": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "postinstall": "rimraf build && npm run build",
-    "test": "node scripts/test.js --env=jsdom",
-    "deploy": "./node_modules/.bin/gh-pages -d build"
   },
   "jest": {
     "transform": {

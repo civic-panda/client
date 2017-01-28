@@ -2,9 +2,9 @@ import { congress, issues, tasks, user } from '../modules';
 
 // TODO host this somewhere better (on free heroku server)
 // LOCAL
-// const apiEndpoint = 'http://localhost:5000';
+const apiEndpoint = 'http://localhost:8080';
 // STAGING
-const apiEndpoint = 'https://act-on-this-api-staging.herokuapp.com';
+// const apiEndpoint = 'https://act-on-this-api-staging.herokuapp.com';
 // PROD
 // const apiEndpoint = 'https://api.actonthis.org';
 
