@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { AppState, user, issues } from '../../modules';
+import { AppState, user, causes } from '../../modules';
 import { Text } from '../ui';
 import NavLink from './NavLink';
 const logo = require('./act-on-this-logo.png');
@@ -16,7 +16,7 @@ interface OwnProps {
 }
 
 interface StateProps {
-  cause: issues.Issue;
+  cause: causes.Cause;
 };
 
 const BackButton = (props: OwnProps & StateProps, context: any) => {
@@ -66,7 +66,7 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
 };
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
-  cause: ownProps.routeParams.causeName && issues.selectors.getIssueByParam(state, { param: ownProps.routeParams.causeName }),
+  cause: ownProps.routeParams.causeName && causes.selectors.getCauseByParam(state, { param: ownProps.routeParams.causeName }),
 });
 
 export default connect(mapStateToProps)(BackButton);

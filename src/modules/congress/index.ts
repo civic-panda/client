@@ -1,5 +1,6 @@
 import * as reselect from 'reselect';
 
+import storeKey from '../../storeKey';
 import { Action } from '../../redux/action';
 import { selectors as userSelectors } from '../user';
 
@@ -95,7 +96,7 @@ export interface State {
 export const KEY = 'congress';
 
 export const actions = {
-  SET: 'civic/congress/SET',
+  SET: `${storeKey}/${KEY}/SET`,
 };
 
 export const actionCreators = {

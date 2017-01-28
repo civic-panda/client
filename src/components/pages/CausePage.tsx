@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
-import { AppState, issues, tasks } from '../../modules';
+import { AppState, causes, tasks } from '../../modules';
 import AddressPicker from '../AddressPicker';
 import { TaskSummary } from '../task';
 import Embed from '../Embed/Embed';
@@ -17,7 +17,7 @@ export interface Props {
 
 export interface StateProps {
   isLoaded: boolean;
-  cause: issues.Issue;
+  cause: causes.Cause;
   tasks: tasks.Task[];
 };
 
@@ -69,7 +69,7 @@ export default class CausePage extends React.Component<Props & StateProps, State
             </div>
           )}
           {this.props.cause.reading && (
-            <div className={'issue__notes col--1-1 col--1-3@lg'}>
+            <div className={'cause__notes col--1-1 col--1-3@lg'}>
               <Text
                 size={'h2'}
                 type={'label'}

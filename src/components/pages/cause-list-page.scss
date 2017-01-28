@@ -1,12 +1,12 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
 
-.issue-page{
-  .issue {
+.cause-page{
+  .cause {
 
   }
 
-  .issue__header {
+  .cause__header {
     background: $top_primary;
   }
 
@@ -15,11 +15,11 @@
     justify-content: flex-end;
   }
 
-  .issue__body {
+  .cause__body {
 
   }
 
-  .issue-list {
+  .cause-list {
     padding-top: $standard-spacing;
   }
 }

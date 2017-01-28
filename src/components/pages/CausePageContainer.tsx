@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { AppState, issues, storage, tasks } from '../../modules';
+import { AppState, causes, storage, tasks } from '../../modules';
 import CausePage, { Props, StateProps } from './CausePage';
 
 interface OwnProps {
@@ -10,8 +10,8 @@ interface OwnProps {
 }
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
-  const currentCause = issues.selectors.getIssueByParam(state, { param: ownProps.params.causeName });
-  const causeList = issues.selectors.getList(state);
+  const currentCause = causes.selectors.getCauseByParam(state, { param: ownProps.params.causeName });
+  const causeList = causes.selectors.getList(state);
   const taskList = tasks.selectors.getList(state);
   // TODO: this is a hack since loading for issues is not in the state
   const isLoaded = storage.selectors.isLoaded(state) && causeList.length > 0 && taskList.length > 0;
@@ -19,7 +19,7 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   return {
     isLoaded,
     cause: currentCause,
-    tasks: isLoaded ? taskList.filter(task => task.issue === currentCause.id) : [],
+    tasks: isLoaded ? taskList.filter(task => task.cause === currentCause.id) : [],
   };
 };
 

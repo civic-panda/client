@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 
+import storeKey from '../../storeKey';
 import { Action } from '../../redux/action';
-import { selectors as issueSelectors } from '../issues';
+import { selectors as causeSelectors } from '../causes';
 
 type Template = 'CallSenate' | 'CallHouse' | 'CallCongress';
 
@@ -18,7 +19,7 @@ type Location = {
 export interface Task {
   id: string;
   name: string;
-  issue: string;
+  cause: string;
   summary: string;
   tags: string[];
   duration: number | string;
@@ -42,10 +43,12 @@ export interface State {
 export const KEY = 'tasks';
 
 export const actions = {
-  SET_LIST: 'civic/tasks/SET_LIST',
-  COMPLETE_TASK: 'civic/tasks/COMPLETE_TASK',
-  RESTART_TASK: 'civic/tasks/RESTART_TASK',
+  SET_LIST: `${storeKey}/${KEY}/SET_LIST`,
+  COMPLETE_TASK: `${storeKey}/${KEY}/COMPLETE_TASK`,
+  RESTART_TASK: `${storeKey}/${KEY}/RESTART_TASK`,
 };
+
+console.log('Action', actions, storeKey, KEY)
 
 export const actionCreators = {
   setList: (list: Task[]) => ({ type: actions.SET_LIST, payload: list }),
@@ -79,8 +82,8 @@ const getState = (state: any): State => state[KEY];
 const getList = createSelector(getState, state => state.list);
 const getSubscribed = createSelector(
   getList,
-  issueSelectors.getSubscribed,
-  (tasks, subscribedIssues) => tasks.filter(task => subscribedIssues.indexOf(task.issue) > -1)
+  causeSelectors.getSubscribed,
+  (tasks, subscribedCauses) => tasks.filter(task => subscribedCauses.indexOf(task.cause) > -1)
 );
 const getCompleted = createSelector(
   getState,

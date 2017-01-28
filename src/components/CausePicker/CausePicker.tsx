@@ -2,48 +2,48 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, issues } from '../../modules';
+import { AppState, causes } from '../../modules';
 import { Button, Icon, Link, Text } from '../ui';
-import './issue-picker.scss';
+import './cause-picker.scss';
 
 interface Props {};
 
 interface StateProps {
-  issues: issues.Issue[];
+  causes: causes.Cause[];
   subscribed: string[];
 };
 
 interface DispatchProps {
-  subscribe: (issue: string) => void;
-  unsubscribe: (issue: string) => void;
+  subscribe: (cause: string) => void;
+  unsubscribe: (cause: string) => void;
 };
 
 interface State {};
 
-class IssuePicker extends React.Component<Props & StateProps & DispatchProps, State> {
+class CausePicker extends React.Component<Props & StateProps & DispatchProps, State> {
   public render() {
     return (
-      <div className="issue-picker row row--padded">
-        {this.props.issues.map((issue, index) => {
-          const isSubscribed = this.props.subscribed.indexOf(issue.id) > -1;
+      <div className="cause-picker row row--padded">
+        {this.props.causes.map((cause, index) => {
+          const isSubscribed = this.props.subscribed.indexOf(cause.id) > -1;
           const classes = classNames(
-            'issue-block',
-            `issue-block--${index % 5}th`,
-            { 'issue-block--is-subscribed': isSubscribed },
+            'cause-block',
+            `cause-block--${index % 5}th`,
+            { 'cause-block--is-subscribed': isSubscribed },
           );
 
           return (
             <div
-              key={issue.id}
+              key={cause.id}
               className="col--1-1 col--1-2@sm col--1-3@lg col--1-4@xl"
             >
               <div
                 className={classes}
-                onClick={() => isSubscribed ? this.props.unsubscribe(issue.id) : this.props.subscribe(issue.id)}
+                onClick={() => isSubscribed ? this.props.unsubscribe(cause.id) : this.props.subscribe(cause.id)}
               >
                 {isSubscribed && <Icon className={'check-mark'} type={'check'} encircle />}
                 <Text
-                  text={issue.name}
+                  text={cause.name}
                   size={'h4'}
                   type={'header'}
                   color={isSubscribed ? 'inverse' : 'light'}
@@ -53,7 +53,7 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                   displayBlock
                 />
                 <Link
-                  link={`/causes/${issue.name.split(' ').join('-')}`}
+                  link={`/causes/${cause.name.split(' ').join('-')}`}
                   type={'colorless'}
                   text={'View More'}
                   size={'small'}
@@ -62,8 +62,8 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
                 <div
                   className="background-image"
                   style={{
-                    backgroundImage: (issue.image && issue.image.secure_url)
-                      ? `url(${issue.image.secure_url})`
+                    backgroundImage: (cause.image && cause.image.secure_url)
+                      ? `url(${cause.image.secure_url})`
                       : undefined,
                   }}
                 >
@@ -79,13 +79,13 @@ class IssuePicker extends React.Component<Props & StateProps & DispatchProps, St
 }
 
 const mapStateToProps = (state: AppState) => ({
-  issues: issues.selectors.getList(state),
-  subscribed: issues.selectors.getSubscribed(state),
+  causes: causes.selectors.getList(state),
+  subscribed: causes.selectors.getSubscribed(state),
 });
 
 const mapDispatchToProps = {
-  subscribe: issues.actionCreators.subscribe,
-  unsubscribe: issues.actionCreators.unsubscribe,
+  subscribe: causes.actionCreators.subscribe,
+  unsubscribe: causes.actionCreators.unsubscribe,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IssuePicker);
+export default connect(mapStateToProps, mapDispatchToProps)(CausePicker);

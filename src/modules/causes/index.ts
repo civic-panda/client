@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
 
+import storeKey from '../../storeKey';
 import { Action } from '../../redux/action';
 
-export interface Issue {
+export interface Cause {
   id: string;
   name: string;
   callToAction: string;
@@ -24,20 +25,20 @@ export interface Issue {
 }
 
 export interface State {
-  list: Issue[];
+  list: Cause[];
   subscribed: string[];
 }
 
-export const KEY = 'issues';
+export const KEY = 'causes';
 
 export const actions = {
-  SET_LIST: 'civic/issues/SET_LIST',
-  SUBSCRIBE: 'civic/issues/SUBSCRIBE',
-  UNSUBSCRIBE: 'civic/issues/UNSUBSCRIBE',
+  SET_LIST: `${storeKey}/${KEY}/SET_LIST`,
+  SUBSCRIBE: `${storeKey}/${KEY}/SUBSCRIBE`,
+  UNSUBSCRIBE: `${storeKey}/${KEY}/UNSUBSCRIBE`,
 };
 
 export const actionCreators = {
-  setList: (list: Issue[]) => ({ type: actions.SET_LIST, payload: list }),
+  setList: (list: Cause[]) => ({ type: actions.SET_LIST, payload: list }),
   subscribe: (taskId: string) => ({ type: actions.SUBSCRIBE, payload: taskId }),
   unsubscribe: (taskId: string) => ({ type: actions.UNSUBSCRIBE, payload: taskId }),
 };
@@ -51,8 +52,8 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
   switch (action.type) {
     case actions.SET_LIST: {
       const newIds = action.payload
-        .filter((issue: Issue) => state.list.findIndex(i => i.id === issue.id) === -1)
-        .map((issue: Issue) => issue.id);
+        .filter((cause: Cause) => state.list.findIndex(i => i.id === cause.id) === -1)
+        .map((cause: Cause) => cause.id);
       return {...state, list: action.payload, subscribed: [...state.subscribed, ...newIds] };
     }
 
@@ -72,22 +73,22 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
 const getState = (state: any): State => state[KEY];
 const getList = createSelector(getState, state => state.list);
 const getSubscribed = createSelector(getState, state => state.subscribed);
-const getIssueId = (_state: any, { issueId }: { issueId: string }) => issueId;
-const getIssue = createSelector(
+const getCauseId = (_state: any, { causeId }: { causeId: string }) => causeId;
+const getCause = createSelector(
   getList,
-  getIssueId,
-  (list, issueId) => list.find(issue => issue.id === issueId)
+  getCauseId,
+  (list, causeId) => list.find(cause => cause.id === causeId)
 );
-const getIssueNameFromParam = (_state: any, { param }: { param: string }) => param.split('-').join(' ').toLowerCase();
-const getIssueByParam = createSelector(
+const getCauseNameFromParam = (_state: any, { param }: { param: string }) => param.split('-').join(' ').toLowerCase();
+const getCauseByParam = createSelector(
   getList,
-  getIssueNameFromParam,
-  (list, issueName) => list.find(issue => issue.name.toLowerCase() === issueName)
+  getCauseNameFromParam,
+  (list, causeName) => list.find(cause => cause.name.toLowerCase() === causeName)
 );
 export const selectors = {
   getState,
   getList,
   getSubscribed,
-  getIssue,
-  getIssueByParam,
+  getCause,
+  getCauseByParam,
 };

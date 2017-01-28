@@ -2,9 +2,10 @@ import { autoRehydrate, persistStore } from 'redux-persist';
 import { REHYDRATE } from 'redux-persist/constants';
 
 import { AppState } from '../modules';
+import KEY from '../storeKey';
 
 const storeConfig = {
-  keyPrefix: 'civic',
+  keyPrefix: KEY,
   debounce: 250,
 };
 

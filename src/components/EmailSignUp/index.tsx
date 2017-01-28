@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, issues, user } from '../../modules';
+import { AppState, causes, user } from '../../modules';
 import { subscribeEmail } from '../../util/api';
 import { Button, FontAlignment, FontColor, Input, Text } from '../ui';
 import './email-sign-up.scss';
@@ -16,7 +16,7 @@ interface OwnProps {
 }
 
 interface StateProps {
-  issues: string[];
+  causes: string[];
   user: user.State;
 }
 
@@ -43,7 +43,7 @@ class EmailSignUp extends React.Component<StateProps & DispatchProps & OwnProps,
     if (this.state.email.length) {
       this.props.subscriptionAttempt();
       try {
-        await subscribeEmail(this.state.email, this.props.issues);
+        await subscribeEmail(this.state.email, this.props.causes);
         this.props.subscription(this.state.email);
       } catch (e) {
         this.props.subscriptionFailure();
@@ -91,7 +91,7 @@ class EmailSignUp extends React.Component<StateProps & DispatchProps & OwnProps,
 }
 
 const mapStateToProps = (state: AppState) => ({
-  issues: issues.selectors.getSubscribed(state),
+  causes: causes.selectors.getSubscribed(state),
   user: user.selectors.getState(state),
 });
 

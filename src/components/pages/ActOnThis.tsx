@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, issues, tasks } from '../../modules';
+import { AppState, causes, tasks } from '../../modules';
 import CausePage from './CausePage';
 
 const ActOnThisDefault = {
@@ -50,7 +50,7 @@ const ActOnThisDefault = {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  cause: issues.selectors.getIssue(state, { id: '587bbee01afc9f002628d30d' }) || ActOnThisDefault,
+  cause: causes.selectors.getCause(state, { id: '587bbee01afc9f002628d30d' }) || ActOnThisDefault,
   tasks: tasks.selectors.getRemaining(state),
   isLoaded: true,
 });

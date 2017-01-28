@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, congress, issues, tasks, user } from '../modules';
+import { AppState, congress, causes, tasks, user } from '../modules';
 import { loadInitialData } from '../util/api';
 
 interface ActionProps {
   setTasks(tasks: tasks.Task[]): void;
-  setIssues(issues: issues.Issue[]): void;
+  setCauses(causes: causes.Cause[]): void;
   setCongress(congress: congress.State): void;
   setUser(user: user.State): void;
-  subscribe(issueId: number | string): void;
+  subscribe(causeId: number | string): void;
 }
 
 interface StateProps {
@@ -28,9 +28,9 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
     }
 
     public loadData = async () => {
-      const { issues, tasks } = await loadInitialData();
+      const { causes, tasks } = await loadInitialData();
       this.props.setTasks(tasks);
-      this.props.setIssues(issues);
+      this.props.setCauses(causes);
     }
 
     public render() {
@@ -47,9 +47,9 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
   const mapActionsToProps = {
     setTasks: tasks.actionCreators.setList,
     setCongress: congress.actionCreators.setCongress,
-    setIssues: issues.actionCreators.setList,
+    setCauses: causes.actionCreators.setList,
     setUser: user.actionCreators.set,
-    subscribe: issues.actionCreators.subscribe,
+    subscribe: causes.actionCreators.subscribe,
   };
 
   return connect<StateProps, ActionProps, Props>(mapStateToProps, mapActionsToProps)(LoadData);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 
-import { issues, tasks } from '../../modules';
+import { causes, tasks } from '../../modules';
 import EmailSignUp from '../EmailSignUp';
 import { Button, FadeIn, Input, Text } from '../ui';
 import TaskSummary from './TaskSummary';
@@ -10,7 +10,7 @@ import './task-list.scss';
 interface Props {
   tasks: tasks.Task[];
   completedTasks: tasks.Task[];
-  issues: issues.Issue[];
+  causes: causes.Cause[];
 };
 
 interface State {
@@ -63,7 +63,7 @@ export class TaksList extends React.Component<Props, State> {
             <TaskSummary
               key={task.id}
               task={task}
-              cause={this.props.issues.find(issue => issue.id === task.issue)}
+              cause={this.props.causes.find(cause => cause.id === task.cause)}
             />
           )) : this.renderEmpty()
         }
@@ -89,7 +89,7 @@ export class TaksList extends React.Component<Props, State> {
                   <TaskSummary
                     key={task.id}
                     task={task}
-                    cause={this.props.issues.find(issue => issue.id === task.issue)}
+                    cause={this.props.causes.find(cause => cause.id === task.cause)}
                   />
                 ))
             }

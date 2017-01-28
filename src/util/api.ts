@@ -1,4 +1,4 @@
-import { congress, issues, tasks, user } from '../modules';
+import { congress, causes, tasks, user } from '../modules';
 
 // TODO host this somewhere better (on free heroku server)
 // LOCAL
@@ -38,7 +38,7 @@ export const loadInitialData = async () => {
 
   const body: {
     tasks: tasks.Task[],
-    issues: issues.Issue[],
+    causes: causes.Cause[],
   } = await result.json();
 
   return body;
@@ -60,7 +60,7 @@ export const loadCommittee = async (committeeId: string, subcommitteeId?: string
   return body;
 };
 
-export const subscribeEmail = async (email: string, issues: string[]) => {
+export const subscribeEmail = async (email: string, causes: string[]) => {
   const result = await fetch(`${apiEndpoint}/email-subscribers`, {
     method: 'POST',
     headers: {
@@ -68,7 +68,7 @@ export const subscribeEmail = async (email: string, issues: string[]) => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, issues }),
+    body: JSON.stringify({ email, causes }),
   });
 
   if (!result.ok) {

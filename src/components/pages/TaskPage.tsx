@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { AppState, issues, tasks } from '../../modules';
+import { AppState, causes, tasks } from '../../modules';
 import { TaskDetails } from '../task';
 import * as templates from '../task-templates';
 import { Icon, Text } from '../ui';
@@ -15,7 +15,7 @@ interface Props {
 };
 
 interface StateProps {
-  issue: issues.Issue;
+  cause: causes.Cause;
   task: tasks.Task;
 }
 
@@ -35,9 +35,9 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              <Link to={`/causes/${this.props.issue.name.split(' ').join('-')}`}>
+              <Link to={`/causes/${this.props.cause.name.split(' ').join('-')}`}>
                 <Text
-                  text={this.props.issue.name}
+                  text={this.props.cause.name}
                   type={'label'}
                   bottomMargin
                   displayBlock
@@ -50,7 +50,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
                 bottomMargin
                 displayBlock
               />
-              <Link to={`/causes/${this.props.issue.id}`}>
+              <Link to={`/causes/${this.props.cause.id}`}>
                 <Icon type={'info'} encircle inline />
                 <Text
                   text={'Why is this important?'}
@@ -76,11 +76,11 @@ class TaskPage extends React.Component<Props & StateProps, State> {
 
 const mapStateToProps = (state: AppState, ownProps: Props) => {
   const currentTask = tasks.selectors.getTask(state, { taskId: ownProps.params.taskId });
-  const currentIssue = issues.selectors.getIssue(state, { issueId: currentTask.issue });
+  const currentCause = causes.selectors.getCause(state, { causeId: currentTask.cause });
 
   return {
     task: currentTask,
-    issue: currentIssue,
+    cause: currentCause,
   };
 };
 

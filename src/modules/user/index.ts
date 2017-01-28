@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import storeKey from '../../storeKey';
 import { Action } from '../../redux/action';
 
 type Cause = string
@@ -24,11 +25,11 @@ export interface State {
 export const KEY = 'user';
 
 export const actions = {
-  SET: 'civic/user/SET',
-  SET_LOCATION: 'civic/user/SET_LOCATION',
-  SUBSCRIPTION_ATTEMPT: 'civic/user/SUBSCRIPTION_ATTEMPT',
-  SUBSCRIPTION_FAILURE: 'civic/user/SUBSCRIPTION_FAILURE',
-  SUBSCRIPTION: 'civic/user/SUBSCRIPTION',
+  SET: `${storeKey}/${KEY}/SET`,
+  SET_LOCATION: `${storeKey}/${KEY}/SET_LOCATION`,
+  SUBSCRIPTION_ATTEMPT: `${storeKey}/${KEY}/SUBSCRIPTION_ATTEMPT`,
+  SUBSCRIPTION_FAILURE: `${storeKey}/${KEY}/SUBSCRIPTION_FAILURE`,
+  SUBSCRIPTION: `${storeKey}/${KEY}/SUBSCRIPTION`,
 };
 
 export const actionCreators = {

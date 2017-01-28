@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, user, issues } from '../../modules';
+import { AppState, user, causes } from '../../modules';
 import { TaskListContainer, TaskMapContainer } from '../task';
 import { Text } from '../ui';
 import './task-page.scss';
@@ -9,7 +9,7 @@ import './task-page.scss';
 interface State {};
 
 interface StateProps {
-  cause: issues.Issue;
+  cause: causes.Cause;
   location: user.Location;
 }
 
@@ -58,7 +58,7 @@ class CauseTasks extends React.Component<StateProps & ActionProps & OwnProps, St
 }
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
-  cause: issues.selectors.getIssueByParam(state, { param: ownProps.params.causeName }),
+  cause: causes.selectors.getCauseByParam(state, { param: ownProps.params.causeName }),
   location: user.selectors.getLocation(state),
 });
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
 // import { Link } from 'react-router';
 
-import { issues, tasks } from '../../modules';
+import { causes, tasks } from '../../modules';
 import { Link, FadeIn, Input, Text, SquareImage } from '../ui';
 import './task-list.scss';
 
 interface Props {
-  cause: issues.Issue;
+  cause: causes.Cause;
   task: tasks.Task;
 }
 

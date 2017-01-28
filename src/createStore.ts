@@ -6,14 +6,14 @@ import * as mixpanel from './redux/mixpanel';
 import * as persist from './redux/persist';
 
 // Reducers
-import { AppState, congress, issues, storage, tasks, user } from './modules';
+import { AppState, congress, causes, storage, tasks, user } from './modules';
 
 const middleware = applyMiddleware(logger.middleware, mixpanel.middleware);
 
 const setupStore = () => {
   const rootReducer = combineReducers<AppState>({
     [congress.KEY]: congress.reducer,
-    [issues.KEY]: issues.reducer,
+    [causes.KEY]: causes.reducer,
     [tasks.KEY]: tasks.reducer,
     [user.KEY]: user.reducer,
     [storage.KEY]: storage.reducer,

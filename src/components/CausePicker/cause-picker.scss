@@ -2,11 +2,11 @@
 @import '../../scss/abstracts/variables';
 @import '../../scss/vendors/include-media';
 
-.issue-picker {
+.cause-picker {
   margin-bottom: $standard-spacing;
 
 
-  .issue-block {
+  .cause-block {
     position: relative;
     display: flex;
     height: 250px;
@@ -35,7 +35,7 @@
     }
   }
 
-  .issue-block--is-subscribed {
+  .cause-block--is-subscribed {
     background-color: rgba($black, 0.2);
 
     .background-image {
@@ -54,31 +54,31 @@
     // .background-image {
     // }
 
-    // &.issue-block--0th {
+    // &.cause-block--0th {
     //   background-color: rgba($color-0, 0.75);
     //   .background-image { background-color: $color-0; }
     //   .icon { color: $color-0; background: rgba($white, 0.9); }
     //   .button span { color: $color-0; }
     // }
-    // &.issue-block--1th {
+    // &.cause-block--1th {
     //   background-color: rgba($color-1, 0.75);
     //   .background-image { background-color: $color-1; }
     //   .icon { color: $color-1; background: rgba($white, 0.9); }
     //   .button span { color: $color-1; }
     // }
-    // &.issue-block--2th {
+    // &.cause-block--2th {
     //   background-color: rgba($color-2, 0.75);
     //   .background-image { background-color: $color-2; }
     //   .icon { color: $color-2; background: rgba($white, 0.9); }
     //   .button span { color: $color-2; }
     // }
-    // &.issue-block--3th {
+    // &.cause-block--3th {
     //   background-color: rgba($color-3, 0.75);
     //   .background-image { background-color: $color-3; }
     //   .icon { color: $color-3; background: rgba($white, 0.9); }
     //   .button span { color: $color-3; }
     // }
-    // &.issue-block--4th {
+    // &.cause-block--4th {
     //   background-color: rgba($color-4, 0.75);
     //   .background-image { background-color: $color-4; }
     //   .icon { color: $color-4; background: rgba($white, 0.9); }
@@ -94,13 +94,13 @@
 }
 
 @include media('<=md') {
-  .issue-picker {
-    .issue-block {
+  .cause-picker {
+    .cause-block {
       border: solid 1px $gray;
     }
 
-    .issue-block a,
-    .issue-block .button {
+    .cause-block a,
+    .cause-block .button {
       height: 56px;
       width: 100%;
       left: 0;
@@ -112,8 +112,8 @@
 }
 
 @include media('>md') {
-  .issue-picker {
-    .issue-block {
+  .cause-picker {
+    .cause-block {
       &:hover{
         box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
         0 1px 10px 0 rgba(0, 0, 0, 0.12),
@@ -128,7 +128,7 @@
         0 1px 5px 0 rgba(0, 0, 0, 0.12);
       }
     }
-    .issue-block a {
+    .cause-block a {
       display: none;
       bottom: $standard-spacing;
       border: none;

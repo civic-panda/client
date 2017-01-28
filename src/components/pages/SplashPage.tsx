@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import AddressPicker from '../AddressPicker';
 import EmailSignUp from '../EmailSignUp';
-import IssuePicker from '../IssuePicker';
+import CausePicker from '../CausePicker';
 import { Button, Link, Text } from '../ui';
 import './splash-page.scss';
 
@@ -80,7 +80,7 @@ export class SplashPage extends React.Component<Props, State> {
           <AddressPicker />
           <div className="col--1-1 col--padded">
             <Text
-              text={'The Issues'}
+              text={'The Causes'}
               size={'h1'}
               type={'header'}
               align={'center'}
@@ -96,7 +96,7 @@ export class SplashPage extends React.Component<Props, State> {
               bottomMargin
             />
           </div>
-          <IssuePicker />
+          <CausePicker />
           <AddressPicker style={'light'} />
           <div className="email-sign-up">
             <div className="row row--padded row--centered">

@@ -1,7 +1,7 @@
 import * as mixpanel from 'mixpanel-browser';
 import { REHYDRATE } from 'redux-persist/constants';
 
-import { AppState, issues, tasks, user } from '../modules';
+import { AppState, causes, tasks, user } from '../modules';
 import { Action } from './action';
 
 // const mixpanelKey = process.env.NODE_ENV !== 'production'
@@ -45,14 +45,14 @@ export const middleware = (store: Redux.Store<AppState>) =>
         mixpanel.people.increment('tasks completed');
         break;
 
-      case issues.actions.SUBSCRIBE:
-        mixpanel.track('issue subscribed', { issue: action.payload });
-        mixpanel.people.increment('issues subscribed to');
+      case causes.actions.SUBSCRIBE:
+        mixpanel.track('cause subscribed', { cause: action.payload });
+        mixpanel.people.increment('causes subscribed to');
         break;
 
-      case issues.actions.UNSUBSCRIBE:
-        mixpanel.track('issue unsubscribed', { issue: action.payload });
-        mixpanel.people.increment('issues subscribed to', -1);
+      case causes.actions.UNSUBSCRIBE:
+        mixpanel.track('cause unsubscribed', { cause: action.payload });
+        mixpanel.people.increment('causes subscribed to', -1);
         break;
 
       default:

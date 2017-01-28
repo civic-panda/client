@@ -1,10 +1,5 @@
 import { REHYDRATE } from 'redux-persist/constants';
 
-const storeConfig = {
-  keyPrefix: 'civic',
-  debounce: 250,
-};
-
 export interface State { isLoaded: boolean };
 
 export const reducer = (state: State = { isLoaded: false }, action: Redux.Action) => {

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, issues, tasks } from '../../modules';
+import { AppState, causes, tasks } from '../../modules';
 import TaskList from './TaskList';
 
 interface StateProps {
   tasks: tasks.Task[];
   completedTasks: tasks.Task[];
-  issues: issues.Issue[];
+  causes: causes.Cause[];
 }
 
 interface ActionProps {}
@@ -17,9 +17,9 @@ interface OwnProps {
 }
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
-  issues: issues.selectors.getList(state),
+  causes: causes.selectors.getList(state),
   tasks: ownProps.causeId
-    ? tasks.selectors.getRemaining(state).filter(task => task.issue === ownProps.causeId)
+    ? tasks.selectors.getRemaining(state).filter(task => task.cause === ownProps.causeId)
     : tasks.selectors.getRemaining(state),
   completedTasks: tasks.selectors.getCompleted(state),
 });
