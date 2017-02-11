@@ -63,7 +63,7 @@ export class TaksList extends React.Component<Props, State> {
             <TaskSummary
               key={task.id}
               task={task}
-              cause={this.props.causes.find(cause => cause.id === task.cause)}
+              cause={this.props.causes.find(cause => cause.id === task.causeId)}
             />
           )) : this.renderEmpty()
         }
@@ -89,7 +89,7 @@ export class TaksList extends React.Component<Props, State> {
                   <TaskSummary
                     key={task.id}
                     task={task}
-                    cause={this.props.causes.find(cause => cause.id === task.cause)}
+                    cause={this.props.causes.find(cause => cause.id === task.causeId)}
                   />
                 ))
             }

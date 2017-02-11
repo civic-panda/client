@@ -26,8 +26,8 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
     case 'causeTasks':
       return (
         <div className="back-button">
-          {props.cause && props.cause.logo &&
-            (<img src={props.cause.logo.secure_url} alt="act on this logo" className={'logo'} />)
+          {props.cause && props.cause.logoImage &&
+            (<img src={props.cause.logoImage.secure_url} alt="act on this logo" className={'logo'} />)
           }
         </div>
       );

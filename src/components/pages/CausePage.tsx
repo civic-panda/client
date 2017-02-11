@@ -42,7 +42,7 @@ export default class CausePage extends React.Component<Props & StateProps, State
               <AddressPicker />
             </div>
             <div className="cause__splash-image col--1-1 col--2-5@md col--1-3@lg" style={{ textAlign: 'right' }}>
-              <SquareImage url={this.props.cause.image.secure_url} />
+              <SquareImage url={this.props.cause.heroImage.secure_url} />
             </div>
           </div>
         </div>
@@ -81,8 +81,8 @@ export default class CausePage extends React.Component<Props & StateProps, State
               <div className="external-links"><p dangerouslySetInnerHTML={{ __html: this.props.cause.facts }} /></div>
               <Embed
                 title={this.props.cause.name}
-                logo={this.props.cause.logo.secure_url}
-                image={this.props.cause.image.secure_url}
+                logo={this.props.cause.logoImage.secure_url}
+                image={this.props.cause.heroImage.secure_url}
                 link={`https://debug-politics.actonthis.org${location.pathname}`}
                 callToAction={this.props.cause.callToAction}
               />

@@ -6,33 +6,30 @@ import { selectors as causeSelectors } from '../causes';
 
 type Template = 'CallSenate' | 'CallHouse' | 'CallCongress';
 
-type Location = {
-  latitude?: number;
-  longitude?: number;
-  street1?: string;
-  suburb?: string;
-  state?: string;
-  postcode?: string;
-  country?: string;
-}
+// type Location = {
+//   latitude?: number;
+//   longitude?: number;
+//   street1?: string;
+//   suburb?: string;
+//   state?: string;
+//   postcode?: string;
+//   country?: string;
+// }
 
 export interface Task {
   id: string;
   name: string;
-  cause: string;
+  causeId: string;
   summary: string;
   tags: string[];
   duration: number | string;
   startDate: number;
   endDate: number;
-  location: Location;
+  location: any;
   template: Template;
   templateProps: any;
-  image: {
-    width: number;
-    height: number;
-    secure_url: string;
-  };
+  image: string;
+  published: boolean;
 }
 
 export interface State {
@@ -83,7 +80,7 @@ const getList = createSelector(getState, state => state.list);
 const getSubscribed = createSelector(
   getList,
   causeSelectors.getSubscribed,
-  (tasks, subscribedCauses) => tasks.filter(task => subscribedCauses.indexOf(task.cause) > -1)
+  (tasks, subscribedCauses) => tasks.filter(task => subscribedCauses.indexOf(task.causeId) > -1)
 );
 const getCompleted = createSelector(
   getState,

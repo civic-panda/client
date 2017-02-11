@@ -12,16 +12,11 @@ export interface Cause {
   brandColor: string;
   facts: string;
   reading: string;
-  logo: {
-    width: number;
-    height: number;
-    secure_url: string;
-  };
-  image: {
-    width: number;
-    height: number;
-    secure_url: string;
-  };
+  logoImage: string;
+  heroImage: string;
+  placeholderImage: string;
+  parent: string;
+  published: boolean;
 }
 
 export interface State {

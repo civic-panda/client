@@ -19,7 +19,7 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   return {
     isLoaded,
     cause: currentCause,
-    tasks: isLoaded ? taskList.filter(task => task.cause === currentCause.id) : [],
+    tasks: isLoaded ? taskList.filter(task => task.causeId === currentCause.id) : [],
   };
 };
 

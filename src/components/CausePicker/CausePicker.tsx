@@ -62,8 +62,8 @@ class CausePicker extends React.Component<Props & StateProps & DispatchProps, St
                 <div
                   className="background-image"
                   style={{
-                    backgroundImage: (cause.image && cause.image.secure_url)
-                      ? `url(${cause.image.secure_url})`
+                    backgroundImage: (cause.heroImage && cause.heroImage.secure_url)
+                      ? `url(${cause.heroImage.secure_url})`
                       : undefined,
                   }}
                 >

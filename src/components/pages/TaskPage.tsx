@@ -76,7 +76,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
 
 const mapStateToProps = (state: AppState, ownProps: Props) => {
   const currentTask = tasks.selectors.getTask(state, { taskId: ownProps.params.taskId });
-  const currentCause = causes.selectors.getCause(state, { causeId: currentTask.cause });
+  const currentCause = causes.selectors.getCause(state, { causeId: currentTask.causeId });
 
   return {
     task: currentTask,
