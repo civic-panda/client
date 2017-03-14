@@ -74,6 +74,21 @@
   font-weight: 700;
 }
 
+.text.horizontal-rule {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.text.horizontal-rule:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 150px;
+  height: 2px;
+  background: silver;
+  bottom: -.75rem;
+}
+
 .text.block-quote {
   padding: $standard-spacing;
   background: get-color($highlight, 50);

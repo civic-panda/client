@@ -3,115 +3,75 @@ import * as React from 'react';
 import AddressPicker from '../AddressPicker';
 import EmailSignUp from '../EmailSignUp';
 import CausePicker from '../CausePicker';
-import { Button, Link, Text } from '../ui';
+import { Button, Link, Text, InfoBox, Input } from '../ui';
 import './splash-page.scss';
+
+const featureImage1 = require('./feature1.png');
+const featureImage2 = require('./feature2.png');
+const featureImage3 = require('./feature3.png');
+const capitolImage = require('./capitol.png');
+const volunteersImage = require('./volunteers.png');
 
 interface Props {};
 
-interface State {
-  titleText: string;
-};
-
-export class SplashPage extends React.Component<Props, State> {
-  public interval: any;
-  public counter: number;
-
-  public constructor(props: Props) {
-    super(props);
-    this.counter = 0;
-    this.state = {
-      titleText: 'this',
-    };
-  }
-
-  public componentDidMount() {
-    // const labels = ['global warming', 'campaign finance', 'this', 'this' ];
-    // this.interval = setInterval(() => {
-    //   this.setState({ titleText: labels[this.counter % labels.length] });
-    //   this.counter ++;
-    // }, 2200);
-  }
-
-  public componentWillUnMount() {
-    // clearInterval(this.interval);
-  }
-
+export class SplashPage extends React.Component<Props, {}> {
   public render() {
     return (
       <div className="splash-page">
-        <div className="splash-hero ">
-          <Text className="hero-text col--1-1" align={'center'} displayBlock bottomMargin>
-            <Text
-              align={'center'}
-              size={'xxl'}
-              type={'header'}
-              color={'inverse'}
-              text={`Act on [`}
-              bottomMargin
-            />
-            <Text
-              align={'center'}
-              size={'xxl'}
-              type={'header'}
-              color={'inverse'}
-              text={`${this.state.titleText}`}
-              bottomMargin
-            />
-            <Text
-              align={'center'}
-              size={'xxl'}
-              type={'header'}
-              color={'inverse'}
-              text={`]`}
-              bottomMargin
-            />
-          </Text>
-          <Text
-            className={'hero-text col--1-1'}
-            align={'center'}
-            size={'lg'}
-            type={'header'}
-            color={'inverse'}
-            text={'Your political action cheat sheet. (beta)'}
-            displayBlock
-          />
+        <div className="hero tinted-image-background">
+          <div className="row row--padded">
+            <div className="col col--1-1">
+              <Text size={'xl'} displayBlock bottomMargin>Make change happen.</Text>
+              <Text displayBlock bottomMargin>Mobilize volunteers like a big budget campaign with Act On This.</Text>
+              <EmailSignUp />
+            </div>
+          </div>
         </div>
-        <div>
-          <AddressPicker />
-          <div className="col--1-1 col--padded">
-            <Text
-              text={'The Causes'}
-              size={'h1'}
-              type={'header'}
-              align={'center'}
-              displayBlock
-              bottomMargin
-            />
-            <Text
-              text={'(Click to select and deselect)'}
-              type={'header'}
-              size={'h4'}
-              align={'center'}
-              displayBlock
-              bottomMargin
+        <div className="row row--padded">
+          <div className="col col--1-1">
+            <Text size={'h1'} type={'header'} horizontalRule displayBlock>What we do</Text>
+            <div className="col col--1-1 product-feature">
+              <div className="col col--1-1 col--1-2@md product-feature-description">
+                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Feature number one</Text>
+                <Text displayBlock bottomMargin>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Consectetur adipiscing elit, sed do eiusmod tempor incididunt, lorem ipsum dolor sit amet.</Text>
+              </div>
+              <div className="col col--1-1 col--1-2@md product-feature-image-container">
+                <img className="product-feature-image" src={featureImage3} alt={'placeholder product feature'} />
+              </div>
+            </div>
+            <div className="col col--1-1 product-feature">
+              <div className="col col--1-1 col--1-2@md product-feature-description u-pull-right">
+                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Feature number two</Text>
+                <Text displayBlock bottomMargin>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Consectetur adipiscing elit, sed do eiusmod tempor incididunt, lorem ipsum dolor sit amet.</Text>
+              </div>
+              <div className="col col--1-1 col--1-2@md product-feature-image-container">
+                <img className="product-feature-image" src={featureImage2} alt={'placeholder product feature'} />
+              </div>
+            </div>
+            <div className="col col--1-1 product-feature">
+              <div className="col col--1-1 col--1-2@md product-feature-description">
+                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Feature number three</Text>
+                <Text displayBlock bottomMargin>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Consectetur adipiscing elit, sed do eiusmod tempor incididunt, lorem ipsum dolor sit amet.</Text>
+              </div>
+              <div className="col col--1-1 col--1-2@md product-feature-image-container">
+                <img className="product-feature-image" src={featureImage1} alt={'placeholder product feature'} />
+              </div>
+            </div>
+            <br/>
+            <Text size={'h1'} type={'header'} horizontalRule displayBlock>Featured cause</Text>
+            <InfoBox
+              title={'Change the way the U.S. handles sexual assault'}
+              description={`In some states there are decades-long backlogs, with thousands of kits waiting to be tested. In other states, they're never tested and even destroyed after mere months.`}
+              action={{ name: 'Take Action', url: '/causes/rise' }}
+              image={'k8rugeo8v1x5ukef9prc'}
             />
           </div>
-          <CausePicker />
-          <AddressPicker style={'light'} />
-          <div className="email-sign-up">
-            <div className="row row--padded row--centered">
-              <div className="col--1-1">
-                <Text
-                  text={`Stay in the loop`}
-                  type={'header'}
-                  color={'inverse'}
-                  align={'center'}
-                  size={'lg'}
-                  displayBlock
-                  bottomMargin
-                />
-                <EmailSignUp align={'center'} color={'inverse'} />
-              </div>
+        </div>
+        <div className="sign-up-prompt tinted-image-background">
+          <div className="row row--padded">
+            <div className="col col--1-1">
+              <Text size={'xl'} displayBlock bottomMargin>Make change happen.</Text>
+              <EmailSignUp />
             </div>
           </div>
         </div>

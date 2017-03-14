@@ -13,6 +13,7 @@ interface AddressPickerProps {
   location: user.Location;
   setLocation(location: user.Location): void;
   setCongress(congress: {
+    callList: any[],
     senators: congress.CongressPerson[],
     representatives: congress.CongressPerson[],
   }): void;
@@ -53,9 +54,10 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
   public lookupDistrict = async (place: any) => {
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
-    const { district, representatives, senators, state } = await lookupDistrict(lat, lng);
+    const { callList, district, representatives, senators, state } = await lookupDistrict(lat, lng);
 
     this.props.setCongress({
+      callList,
       senators,
       representatives,
     });

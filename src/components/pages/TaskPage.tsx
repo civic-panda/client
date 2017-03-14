@@ -29,7 +29,7 @@ const NoTemplate = (props: Props & StateProps) => {
 class TaskPage extends React.Component<Props & StateProps, State> {
   public render() {
     const Template = this.props.task ? templates[this.props.task.template] : null;
-
+    console.log('template', templates, Template, this.props.task, this.props.task.template);
     return (
       <div className={'task-page'}>
         <div className={'task__header'}>
@@ -76,7 +76,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
 
 const mapStateToProps = (state: AppState, ownProps: Props) => {
   const currentTask = tasks.selectors.getTask(state, { taskId: ownProps.params.taskId });
-  const currentCause = causes.selectors.getCause(state, { causeId: currentTask.cause });
+  const currentCause = causes.selectors.getCause(state, { causeId: currentTask.causeId });
 
   return {
     task: currentTask,

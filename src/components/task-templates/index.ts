@@ -1,6 +1,4 @@
-export * from './CallCongress';
-export * from './CallCommittee';
-export * from './CallHouse';
-export * from './CallSenate';
-export * from './GenericSingle';
-export * from './GenericMultiple';
+export * from './Call';
+// export * from './GenericSingle';
+// export * from './GenericMultiple';
+export * from './Iframe';

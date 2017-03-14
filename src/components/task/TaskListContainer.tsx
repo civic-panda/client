@@ -19,7 +19,7 @@ interface OwnProps {
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
   causes: causes.selectors.getList(state),
   tasks: ownProps.causeId
-    ? tasks.selectors.getRemaining(state).filter(task => task.cause === ownProps.causeId)
+    ? tasks.selectors.getRemaining(state).filter(task => task.causeId === ownProps.causeId)
     : tasks.selectors.getRemaining(state),
   completedTasks: tasks.selectors.getCompleted(state),
 });

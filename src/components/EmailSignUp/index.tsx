@@ -66,14 +66,7 @@ class EmailSignUp extends React.Component<StateProps & DispatchProps & OwnProps,
         bottomMargin
       />
     ) : (
-      <span>
-        <Text
-          text={`Give us your email and well send you an update as new tasks become available.`}
-          color={this.props.color}
-          align={this.props.align}
-          displayBlock
-          bottomMargin
-        />
+      <div className="col col--1-1">
         <Input
           type={'text'}
           onChange={this.setEmail}
@@ -83,9 +76,8 @@ class EmailSignUp extends React.Component<StateProps & DispatchProps & OwnProps,
           text={'Get updates'}
           onClick={this.subscribe}
           loading={this.props.user.isSubscribed === 'loading'}
-          disabled={this.state.email.length === 0}
         />
-      </span>
+      </div>
     );
   }
 }

@@ -1,15 +1,20 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import { AppState, congress, tasks } from '../../modules';
 import './call.scss';
 
 import { Button, FadeIn, Icon, Link, Text, Toggle } from '../ui';
 
-interface CallProps {
-  taskName: string;
+interface OwnProps {
   taskId: string;
+};
+
+interface StateProps {
+  taskName: string;
   completeCall: (id: string) => void;
-  callList: { name: string, phoneNumbers: string[] }[];
+  callList: { name: string, number: string }[];
   requestedAction: string;
   petitionScript: string;
   thankYouScript: string;
@@ -22,8 +27,8 @@ interface CallState {
   calleeStance: Stance;
 };
 
-export class Call extends React.Component<CallProps, CallState> {
-  public constructor(props: CallProps) {
+class CallComponent extends React.Component<OwnProps & StateProps, CallState> {
+  public constructor(props: OwnProps & StateProps) {
     super(props);
     this.state = {
       currentStep: 0,
@@ -51,7 +56,7 @@ export class Call extends React.Component<CallProps, CallState> {
     this.setState(newState);
   }
 
-  public renderCallScript = (callee: { name: string, phoneNumbers: string[] }) => (
+  public renderCallScript = (callee: { name: string, number: string }) => (
     <div>
       <Text
         text={`2. Call to ${this.state.calleeStance === 'yea' ? 'thank' : 'petition'} ${callee.name}`}
@@ -69,21 +74,17 @@ export class Call extends React.Component<CallProps, CallState> {
         bottomMargin
       />
       <div className="row">
-        {
-          callee.phoneNumbers.map(phoneNumber => (
-            <div key={phoneNumber} className="col--1-2 col--1-4@md">
-              <Icon type={'phone'} color={'highlight'} inline />
-              <Text
-                text={phoneNumber}
-                color={'highlight'}
-                format={'Phone Number'}
-                align={'left'}
-                displayBlock
-                bottomMargin
-              />
-            </div>
-          ))
-        }
+        <div key={callee.number} className="col--1-2 col--1-4@md">
+          <Icon type={'phone'} color={'highlight'} inline />
+          <Text
+            text={callee.number}
+            color={'highlight'}
+            format={'Phone Number'}
+            align={'left'}
+            displayBlock
+            bottomMargin
+          />
+        </div>
       </div>
       <Text bottomMargin blockQuote displayBlock>
         <Text
@@ -178,4 +179,18 @@ export class Call extends React.Component<CallProps, CallState> {
   }
 }
 
-export default Call;
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
+  const task = tasks.selectors.getTask(state, ownProps);
+  const callList = congress.selectors.getCallList(state);
+  console.log(task.templateProps.callList, callList);
+
+  return {
+    taskName: task.name,
+    callList: (task.templateProps.callList && task.templateProps.callList.list) ? task.templateProps.callList.list : callList,
+    requestedAction: task.templateProps.requestedAction,
+    petitionScript: task.templateProps.petitionScript,
+    thankYouScript: task.templateProps.thankYouScript,
+  };
+};
+
+export const Call = connect(mapStateToProps)(CallComponent);

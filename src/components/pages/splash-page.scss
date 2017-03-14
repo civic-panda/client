@@ -1,24 +1,69 @@
 @import '../../scss/abstracts/colors';
 @import '../../scss/abstracts/variables';
+@import '../Nav/nav';
 
 .splash-page {
-  .splash-hero {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 390px;
-    background-color: $primary;
-    padding: $standard-spacing;
-    align-items: center;
-    justify-content: center;
+  .hero {
+    position: relative;
+    max-width: initial;
+    margin-top: -1 * $nav-height;
+    margin-bottom: 4 * $standard-spacing;
+    padding-top: 2 * $standard-spacing + $nav-height;
+    padding-bottom: 4 * $standard-spacing;
+
+    &:before {
+      background-image: url('./volunteers.png');
+    }
+
+    .text {
+      color: $white;
+    }
   }
 
-  .hero-text {
+  .tinted-image-background {
+    position: relative;
+    background-color: rgba(get-color($primary, 500), 0.4);
 
+    &:before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+    }
   }
 
-  .email-sign-up {
-    padding: 2 * $standard-spacing 0;
-    background: $highlight;
+  .sign-up-prompt{
+    margin-top: 4 * $standard-spacing;
+    padding-top: 6 * $standard-spacing;
+    padding-bottom: 6 * $standard-spacing;
+
+    &:before {
+      background-image: url('./capitol.png');
+    }
+
+    .text {
+      color: $white;
+    }
+  }
+
+  .product-feature {
+    margin-bottom: 2 * $standard-spacing;
+  }
+
+  .product-feature-description {
+  }
+
+  .product-feature-image-container {
+    padding: 0 2 * $standard-spacing;
+  }
+
+  .product-feature-image {
+    display: block;
+    width: 100%;
   }
 }

@@ -10,7 +10,7 @@ export type FontColor = 'primary' | 'accent' | 'highlight' | 'inverse' | 'light'
 export type FontWeight = 'normal' | 'bold';
 export type FontAlignment = 'left' | 'center' | 'right';
 
-interface TextProps {
+export interface TextProps {
   align?: FontAlignment;
   size?: FontSize;
   color?: FontColor;
@@ -24,6 +24,7 @@ interface TextProps {
   italic?: boolean;
   bottomMargin?: boolean;
   displayBlock?: boolean;
+  horizontalRule?: boolean;
   blockQuote?: boolean;
   onClick?(e: any): void;
 };
@@ -41,6 +42,7 @@ export const Text = (props: TextProps) => {
     underline,
     italic,
     bottomMargin,
+    horizontalRule,
     displayBlock,
     blockQuote,
     onClick,
@@ -57,7 +59,8 @@ export const Text = (props: TextProps) => {
     clickable: !!onClick,
     'display-block': displayBlock,
     'block-quote': blockQuote,
-    'remove-bottom-margin': !bottomMargin,
+    'horizontal-rule': horizontalRule,
+    'remove-bottom-margin': !bottomMargin && !horizontalRule,
   });
 
   const childrenIsString = typeof children === 'string';
