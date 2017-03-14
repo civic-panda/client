@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import * as Cloudinary from './cloudinaryUrl';
 import './square-image.scss';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 export const SquareImage = (props: Props) => (
   <div
-    style={{ backgroundImage: `url(${props.url})` }}
+    style={{ backgroundImage: `url(${Cloudinary.createUrl(props.url, {})})` }}
     className={`square-image ${props.size || 'large'} ${props.className}`}
   >
   </div>

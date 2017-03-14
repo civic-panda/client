@@ -9,6 +9,7 @@ import PullOutMenu from './PullOutMenu';
 
 interface Props {
   currentRoute: string;
+  backgroundColor?: string;
   routeParams: { [key: string]: any };
 };
 
@@ -19,12 +20,6 @@ interface State {
 const links = [{
   name: 'Act On This',
   url: '/',
-}, {
-  name: 'Causes',
-  url: '/causes',
-}, {
-  name: 'Tasks',
-  url: '/tasks',
 }];
 
 export class Nav extends React.Component<Props, State> {
@@ -43,7 +38,10 @@ export class Nav extends React.Component<Props, State> {
     const navClasses = classNames('nav');
 
     return (
-      <div className={navClasses}>
+      <div
+        className={navClasses}
+        style={{ backgroundColor: this.props.backgroundColor || '' }}
+      >
         <div className="u-hide@gt-sm">
           <div className="link" onClick={() => this.toggleMenu()}>
             <Icon type={'hamburger'} />

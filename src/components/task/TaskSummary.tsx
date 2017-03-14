@@ -49,7 +49,7 @@ export const TaskSummary = ({ task, cause }: Props) => (
       />
     </div>
     <SquareImage
-      url={(task.image && task.image.secure_url) || cause.image.secure_url}
+      url={task.image || cause.placeholderImage}
       size={'med'}
     />
   </div>

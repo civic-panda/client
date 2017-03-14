@@ -1,0 +1,31 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.info-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  overflow: hidden;
+  border: solid 1px $gray;
+  margin-bottom: $standard-spacing;
+
+  .info-box__description{
+    flex: 1;
+    float: left;
+    padding: 1.5 * $standard-spacing;
+  }
+
+  .info-box__title-block {
+    display: flex;
+  }
+
+  .info-box__title {
+    flex: 1;
+    padding-right: $standard-spacing;
+    margin-bottom: $standard-spacing;
+  }
+
+  .info-box__action-button {
+  }
+}
+

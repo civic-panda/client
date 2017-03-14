@@ -3,8 +3,7 @@ import { Link } from 'react-router';
 
 import { causes, tasks } from '../../modules';
 import EmailSignUp from '../EmailSignUp';
-import { Button, FadeIn, Input, Text } from '../ui';
-import TaskSummary from './TaskSummary';
+import { Button, FadeIn, Input, InfoBox, Text } from '../ui';
 import './task-list.scss';
 
 interface Props {
@@ -60,10 +59,15 @@ export class TaksList extends React.Component<Props, State> {
       <div className={'task-list'}>
         {this.props.tasks.length
           ? this.props.tasks.map(task => (
-            <TaskSummary
+            <InfoBox
               key={task.id}
-              task={task}
-              cause={this.props.causes.find(cause => cause.id === task.cause)}
+              title={task.name}
+              description={task.summary}
+              action={{
+                name: 'Take action',
+                url: `/tasks/${task.id}`,
+              }}
+              image={task.image || this.props.causes.find(cause => cause.id === task.causeId).placeholderImage}
             />
           )) : this.renderEmpty()
         }
@@ -86,10 +90,15 @@ export class TaksList extends React.Component<Props, State> {
             {
               this.props.completedTasks
                 .map(task => (
-                  <TaskSummary
+                  <InfoBox
                     key={task.id}
-                    task={task}
-                    cause={this.props.causes.find(cause => cause.id === task.cause)}
+                    title={task.name}
+                    description={task.summary}
+                    action={{
+                      name: 'Take action',
+                      url: `/tasks/${task.id}`,
+                    }}
+                    image={task.image || this.props.causes.find(cause => cause.id === task.causeId).placeholderImage}
                   />
                 ))
             }

@@ -48,7 +48,7 @@ class TaskMap extends React.Component<OwnProps & StateProps, State> {
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
   location: user.selectors.getLocation(state),
   tasks: ownProps.causeId
-    ? tasks.selectors.getRemaining(state).filter(task => task.cause === ownProps.causeId)
+    ? tasks.selectors.getRemaining(state).filter(task => task.causeId === ownProps.causeId)
     : tasks.selectors.getRemaining(state),
 });
 

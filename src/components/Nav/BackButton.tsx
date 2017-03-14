@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { AppState, user, causes } from '../../modules';
-import { Text } from '../ui';
+import { Image, Text } from '../ui';
 import NavLink from './NavLink';
 const logo = require('./act-on-this-logo.png');
 
@@ -26,8 +26,8 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
     case 'causeTasks':
       return (
         <div className="back-button">
-          {props.cause && props.cause.logo &&
-            (<img src={props.cause.logo.secure_url} alt="act on this logo" className={'logo'} />)
+          {props.cause && props.cause.logoImage &&
+            (<Image url={props.cause.logoImage} alt="act on this logo" className={'logo'} />)
           }
         </div>
       );

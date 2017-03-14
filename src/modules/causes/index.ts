@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import * as _ from 'lodash';
 
 import storeKey from '../../storeKey';
 import { Action } from '../../redux/action';
@@ -12,16 +13,12 @@ export interface Cause {
   brandColor: string;
   facts: string;
   reading: string;
-  logo: {
-    width: number;
-    height: number;
-    secure_url: string;
-  };
-  image: {
-    width: number;
-    height: number;
-    secure_url: string;
-  };
+  logoImage: string;
+  heroImage: string;
+  placeholderImage: string;
+  parent: string;
+  children: string[];
+  published: boolean;
 }
 
 export interface State {
@@ -79,16 +76,21 @@ const getCause = createSelector(
   getCauseId,
   (list, causeId) => list.find(cause => cause.id === causeId)
 );
+const getCauseById = (causeId: string) => createSelector(getList, list => list.find(cause => cause.id === causeId));
 const getCauseNameFromParam = (_state: any, { param }: { param: string }) => param.split('-').join(' ').toLowerCase();
 const getCauseByParam = createSelector(
   getList,
   getCauseNameFromParam,
   (list, causeName) => list.find(cause => cause.name.toLowerCase() === causeName)
 );
+const getChildCauses = (parentId: string) => createSelector(getList, list => list.filter(cause => cause.parent === parentId));
+
 export const selectors = {
   getState,
   getList,
   getSubscribed,
   getCause,
+  getCauseById,
   getCauseByParam,
+  getChildCauses,
 };
