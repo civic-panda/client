@@ -36,4 +36,3 @@ const mapDispatchToProps = {
 };
 
 export const GenericMultiple = connect<StateProps, ActionProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Generic);
-export default GenericMultiple;

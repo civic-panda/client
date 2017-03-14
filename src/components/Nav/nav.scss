@@ -6,15 +6,16 @@ $mobile-nav-height: 56px;
 $nav-height: 70px;
 
 .nav {
-  position: fixed;
   z-index: 10;
-  top: 0;
+  position: relative;
   height: $mobile-nav-height;
   width: 100%;
   padding: 0 $standard-spacing;
-  background-color: $top_primary;
   color: $accent;
-  opacity: 0.95;
+
+  .top-nav {
+    opacity: 0.95;
+  }
 
   .nav__bottom-border {
     width: 100%;
@@ -44,7 +45,7 @@ $nav-height: 70px;
 
     &.link--is-active {
       color: $highlight;
-      cursor: default;
+      cursor: pointer;
     }
 
     &:hover {

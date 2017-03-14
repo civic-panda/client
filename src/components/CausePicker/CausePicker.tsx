@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { AppState, causes } from '../../modules';
-import { Button, Icon, Link, Text } from '../ui';
+import { createUrl, Button, Icon, Link, Text } from '../ui';
 import './cause-picker.scss';
 
 interface Props {};
@@ -62,8 +62,8 @@ class CausePicker extends React.Component<Props & StateProps & DispatchProps, St
                 <div
                   className="background-image"
                   style={{
-                    backgroundImage: (cause.heroImage && cause.heroImage.secure_url)
-                      ? `url(${cause.heroImage.secure_url})`
+                    backgroundImage: (cause.heroImage && cause.heroImage)
+                      ? `url(${createUrl(cause.heroImage)})`
                       : undefined,
                   }}
                 >

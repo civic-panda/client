@@ -19,6 +19,8 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   return {
     isLoaded,
     cause: currentCause,
+    parentCause: causes.selectors.getCauseById(currentCause.parent)(state),
+    childCauses: causes.selectors.getChildCauses(currentCause.id)(state),
     tasks: isLoaded ? taskList.filter(task => task.causeId === currentCause.id) : [],
   };
 };

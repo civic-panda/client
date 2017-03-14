@@ -10,7 +10,7 @@ function siteRoutes(store: any) {
     path: '/',
     name: 'splash',
     component: pages.PageWrapper,
-    indexRoute: { component: pages.ActOnThis },
+    indexRoute: { component: pages.SplashPage },
     onChange: scrollToTop,
     childRoutes: [
       { name: 'demo', path: 'demo', component: FakeNewsEmbed },

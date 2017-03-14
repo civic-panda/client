@@ -99,7 +99,7 @@ const LinkButton = (props: LinkProps) => {
   };
 
   return (
-    <Link to={link} onClick={clickHandler}>
+    <Link to={link.split(' ').join('-').toLowerCase()} onClick={clickHandler}>
       <Button {...otherProps} />
     </Link>
   );

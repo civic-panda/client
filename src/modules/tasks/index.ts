@@ -4,7 +4,7 @@ import storeKey from '../../storeKey';
 import { Action } from '../../redux/action';
 import { selectors as causeSelectors } from '../causes';
 
-type Template = 'CallSenate' | 'CallHouse' | 'CallCongress';
+type Template = 'Call' | 'Iframe';
 
 // type Location = {
 //   latitude?: number;

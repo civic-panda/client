@@ -1,12 +1,11 @@
 import { congress, causes, tasks, user } from '../modules';
 
-// TODO host this somewhere better (on free heroku server)
 // LOCAL
-// const apiEndpoint = 'http://localhost:8080';
+// const apiEndpoint = 'http://localhost:8081';
 // STAGING
-const apiEndpoint = 'https://admin-staging.actonthis.org';
+// const apiEndpoint = 'https://admin-staging.actonthis.org';
 // PROD
-// const apiEndpoint = 'https://rise-launch.actonthis.org';
+const apiEndpoint = 'https://rise-launch.actonthis.org';
 
 export const lookupDistrict = async (lat: number, lng: number) => {
   const result = await fetch(`${apiEndpoint}/districts/locate?latitude=${lat}&longitude=${lng}`);
@@ -15,14 +14,16 @@ export const lookupDistrict = async (lat: number, lng: number) => {
     const body: {
       district: number;
       state: string;
-      representatives: congress.CongressPerson[],
-      senators: congress.CongressPerson[],
+      callList: any[],
+      representatives: congress.CongressPerson[];
+      senators: congress.CongressPerson[];
     } = await result.json();
     return body;
   } else {
     return {
       district: undefined,
       state: undefined,
+      callList: [],
       representatives: [],
       senators: [],
     };

@@ -29,7 +29,7 @@ const NoTemplate = (props: Props & StateProps) => {
 class TaskPage extends React.Component<Props & StateProps, State> {
   public render() {
     const Template = this.props.task ? templates[this.props.task.template] : null;
-
+    console.log('template', templates, Template, this.props.task, this.props.task.template);
     return (
       <div className={'task-page'}>
         <div className={'task__header'}>
