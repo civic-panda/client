@@ -5,7 +5,7 @@ import { congress, causes, tasks, user } from '../modules';
 // STAGING
 // const apiEndpoint = 'https://admin-staging.actonthis.org';
 // PROD
-const apiEndpoint = 'https://rise-launch.actonthis.org';
+const apiEndpoint = 'https://admin-rise-launch.actonthis.org';
 
 export const lookupDistrict = async (lat: number, lng: number) => {
   const result = await fetch(`${apiEndpoint}/districts/locate?latitude=${lat}&longitude=${lng}`);
