@@ -15,12 +15,12 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const taskList = tasks.selectors.getList(state);
   // TODO: this is a hack since loading for issues is not in the state
   const isLoaded = storage.selectors.isLoaded(state) && causeList.length > 0 && taskList.length > 0;
-
+  console.log('currentCause', currentCause);
   return {
     isLoaded,
     cause: currentCause,
-    parentCause: causes.selectors.getCauseById(currentCause.parent)(state),
-    childCauses: causes.selectors.getChildCauses(currentCause.id)(state),
+    parentCause: currentCause ? causes.selectors.getCauseById(currentCause.parent)(state) : undefined,
+    childCauses: currentCause ? causes.selectors.getChildCauses(currentCause.id)(state) : undefined,
     tasks: isLoaded ? taskList.filter(task => task.causeId === currentCause.id) : [],
   };
 };
