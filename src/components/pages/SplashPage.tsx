@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import AddressPicker from '../AddressPicker';
-import EmailSignUp from '../EmailSignUp';
+import DemoRequest from '../DemoRequest';
 import CausePicker from '../CausePicker';
 import { Button, Link, Text, InfoBox, Input } from '../ui';
 import './splash-page.scss';
@@ -23,7 +23,7 @@ export class SplashPage extends React.Component<Props, {}> {
             <div className="col col--1-1">
               <Text size={'xl'} displayBlock bottomMargin>Make change happen.</Text>
               <Text displayBlock bottomMargin>Mobilize volunteers like a big budget campaign with Act On This.</Text>
-              <EmailSignUp />
+              <DemoRequest />
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ export class SplashPage extends React.Component<Props, {}> {
           <div className="row row--padded">
             <div className="col col--1-1">
               <Text size={'xl'} displayBlock bottomMargin>Make change happen.</Text>
-              <EmailSignUp />
+              <DemoRequest />
             </div>
           </div>
         </div>
