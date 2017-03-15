@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { AppState, user, causes } from '../../modules';
+import { AppState, user, causes, tasks } from '../../modules';
 import { Image, Text } from '../ui';
 import NavLink from './NavLink';
 const logo = require('./act-on-this-logo.png');
@@ -12,6 +12,7 @@ interface OwnProps {
   routeParams: {
     [key: string]: any,
     causeName?: string,
+    taskId?: string,
   };
 }
 
@@ -37,7 +38,7 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
         <div className="back-button">
           <NavLink
             text={'All tasks'}
-            to={'/tasks'}
+            to={`/causes/${props.cause.name}/tasks`}
             icon={'left-arrow'}
           />
         </div>
@@ -65,8 +66,16 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
   }
 };
 
-const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
-  cause: ownProps.routeParams.causeName && causes.selectors.getCauseByParam(state, { param: ownProps.routeParams.causeName }),
-});
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
+  let cause;
+  if (ownProps.routeParams.causeName) {
+    cause = causes.selectors.getCauseByParam(state, { param: ownProps.routeParams.causeName });
+  } else if (ownProps.routeParams.taskId) {
+    const task = tasks.selectors.getTask(state, ownProps.routeParams);
+    cause = causes.selectors.getCauseById(task.causeId)(state);
+  }
+
+  return { cause };
+};
 
 export default connect(mapStateToProps)(BackButton);
