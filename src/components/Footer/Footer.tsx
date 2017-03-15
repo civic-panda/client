@@ -12,14 +12,8 @@ export const Footer = () => (
         <Link to={'/'}>
           <Text size={'p'} color={'light'} displayBlock bottomMargin>Home Page</Text>
         </Link>
-        <Link to={'/about'}>
-          <Text size={'p'} color={'light'} displayBlock bottomMargin>About Us</Text>
-        </Link>
-        <Link to={'/tasks'}>
-          <Text size={'p'} color={'light'} displayBlock bottomMargin>Your Tasks</Text>
-        </Link>
-        <Link to={'/causes'}>
-          <Text size={'p'} color={'light'} displayBlock bottomMargin>The Causes</Text>
+        <Link to={'/causes/rise'}>
+          <Text size={'p'} color={'light'} displayBlock bottomMargin>Rise</Text>
         </Link>
       </div>
       <div className="col--1-1 col--1-2@md col--1-3@lg">

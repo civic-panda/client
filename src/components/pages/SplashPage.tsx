@@ -32,8 +32,8 @@ export class SplashPage extends React.Component<Props, {}> {
             <Text size={'h1'} type={'header'} horizontalRule displayBlock>What we do</Text>
             <div className="col col--1-1 product-feature">
               <div className="col col--1-1 col--1-2@md product-feature-description">
-                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Feature number one</Text>
-                <Text displayBlock bottomMargin>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Consectetur adipiscing elit, sed do eiusmod tempor incididunt, lorem ipsum dolor sit amet.</Text>
+                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Onboard, organize, and mobilize your volunteers</Text>
+                <Text displayBlock bottomMargin>ActOnThis provides the tools for grassroots organizations to work with their volunteers the same way well-funded national campaigns do. Give your volunteers a quick and easy way to support the change you're making.</Text>
               </div>
               <div className="col col--1-1 col--1-2@md product-feature-image-container">
                 <img className="product-feature-image" src={featureImage3} alt={'placeholder product feature'} />
@@ -41,8 +41,8 @@ export class SplashPage extends React.Component<Props, {}> {
             </div>
             <div className="col col--1-1 product-feature">
               <div className="col col--1-1 col--1-2@md product-feature-description u-pull-right">
-                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Feature number two</Text>
-                <Text displayBlock bottomMargin>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Consectetur adipiscing elit, sed do eiusmod tempor incididunt, lorem ipsum dolor sit amet.</Text>
+                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Custom fit to your needs</Text>
+                <Text displayBlock bottomMargin>With a wide range of ready-made tasks and lots of flexibility, you can make ActOnThis fit your needs. Whether you need volunteers to call a local representative or fill out a survey, we've got you covered.</Text>
               </div>
               <div className="col col--1-1 col--1-2@md product-feature-image-container">
                 <img className="product-feature-image" src={featureImage2} alt={'placeholder product feature'} />
@@ -50,8 +50,8 @@ export class SplashPage extends React.Component<Props, {}> {
             </div>
             <div className="col col--1-1 product-feature">
               <div className="col col--1-1 col--1-2@md product-feature-description">
-                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Feature number three</Text>
-                <Text displayBlock bottomMargin>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Consectetur adipiscing elit, sed do eiusmod tempor incididunt, lorem ipsum dolor sit amet.</Text>
+                <Text size={'h2'} type={'header'} displayBlock bottomMargin>Reach volunteers wherever they are</Text>
+                <Text displayBlock bottomMargin>Our tools are built to provide a great experience whether your volunteers are at home on their desktop computer or out with their mobile devices.</Text>
               </div>
               <div className="col col--1-1 col--1-2@md product-feature-image-container">
                 <img className="product-feature-image" src={featureImage1} alt={'placeholder product feature'} />
