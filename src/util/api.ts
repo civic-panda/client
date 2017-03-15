@@ -1,11 +1,11 @@
 import { congress, causes, tasks, user } from '../modules';
 
 // LOCAL
-// const apiEndpoint = 'http://localhost:8081';
+const apiEndpoint = 'http://localhost:8081';
 // STAGING
 // const apiEndpoint = 'https://admin-staging.actonthis.org';
 // PROD
-const apiEndpoint = 'https://admin-rise-launch.actonthis.org';
+// const apiEndpoint = 'https://admin-rise-launch.actonthis.org';
 
 export const lookupDistrict = async (lat: number, lng: number) => {
   const result = await fetch(`${apiEndpoint}/districts/locate?latitude=${lat}&longitude=${lng}`);
@@ -82,6 +82,24 @@ export const subscribeEmail = async (email: string, causes: string[]) => {
 
   if (!result.ok) {
     throw new Error('unable to subscribe user');
+  }
+
+  return true;
+};
+
+export const requestDemo = async (body: { email: string; name?: string; phoneNumber?: string}) => {
+  const result = await fetch(`${apiEndpoint}/api/demo-requests`, {
+    method: 'POST',
+    headers: {
+      Origin: 'http://localhost:3001',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!result.ok) {
+    throw new Error('unable to request demo');
   }
 
   return true;

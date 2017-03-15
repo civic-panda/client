@@ -12,7 +12,7 @@
 
 // PAGE ANIMATIONS
 .page-transition-enter {
-  position: absolute;
+  position: relative;
   z-index: 1;
   top: 0;
   opacity: 0.01;
@@ -21,7 +21,7 @@
 }
 
 .page-transition-enter.page-transition-enter-active {
-  position: absolute;
+  position: relative;
   z-index: 1;
   top: 0;
   opacity: 1;
