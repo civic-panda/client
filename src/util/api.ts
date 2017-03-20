@@ -7,6 +7,21 @@ import { congress, causes, tasks, user } from '../modules';
 // PROD
 const apiEndpoint = 'https://admin.actonthis.org';
 
+export const lookupStateDistricts = async (lat: number, lng: number) => {
+  const result = await fetch(`${apiEndpoint}/openstates/api/v1/legislators/geo/?lat=${lat}&long=${lng}`);
+
+  if (result.ok) {
+    const body: {
+      callList: any[],
+    } = await result.json();
+    return body;
+  } else {
+    return {
+      callList: [],
+    };
+  }
+};
+
 export const lookupDistrict = async (lat: number, lng: number) => {
   const result = await fetch(`${apiEndpoint}/districts/locate?latitude=${lat}&longitude=${lng}`);
 

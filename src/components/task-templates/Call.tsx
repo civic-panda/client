@@ -149,8 +149,13 @@ class CallComponent extends React.Component<OwnProps & StateProps, CallState> {
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const task = tasks.selectors.getTask(state, ownProps);
-  const callList = congress.selectors.getCallList(state);
-  console.log(task.templateProps.callList, callList);
+  const nationalCallList = congress.selectors.getCallList(state);
+  const stateCallList = congress.selectors.getStateCallList(state);
+
+  const callList = task.templateProps.callList && task.templateProps.callList.type === 'state'
+    ? stateCallList
+    : nationalCallList;
+  console.log(task.templateProps.callList, callList, stateCallList);
 
   return {
     taskName: task.name,

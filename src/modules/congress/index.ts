@@ -89,6 +89,7 @@ export interface Subcommittee {
 
 export interface State {
   callList: any[];
+  stateCallList: any[];
   senators: CongressPerson[];
   representatives: CongressPerson[];
   committees: Committee[];
@@ -106,6 +107,7 @@ export const actionCreators = {
 
 const initialState: State = {
   callList: [],
+  stateCallList: [],
   senators: [],
   representatives: [],
   committees: [],
@@ -125,6 +127,7 @@ const getState = (state: any): State => state[KEY];
 const getDistrict = (_state: any, { district }: { district: number }) => district;
 const getUserState = (_state: any, { state }: { state: string }) => state;
 const getCallList = reselect.createSelector(getState, state => state.callList);
+const getStateCallList = reselect.createSelector(getState, state => state.stateCallList);
 const getSenators = reselect.createSelector(
   getState,
   userSelectors.getLocation,
@@ -141,6 +144,7 @@ const getRepresentatives = reselect.createSelector(
 );
 export const selectors = {
   getCallList,
+  getStateCallList,
   getState,
   getSenators,
   getRepresentatives,

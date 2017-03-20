@@ -13,6 +13,7 @@ function siteRoutes(store: any) {
     indexRoute: { component: pages.SplashPage },
     onChange: scrollToTop,
     childRoutes: [
+      { name: 'selectLocaton', path:'select-location', component: pages.SelectLocation },
       { name: 'demo', path: 'demo', component: FakeNewsEmbed },
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },

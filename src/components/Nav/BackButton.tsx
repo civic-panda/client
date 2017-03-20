@@ -29,7 +29,7 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
         <div className="back-button">
           {props.cause && props.cause.logoImage &&
             (
-              <Link to={`/causes/${props.cause.name}`} style={{ cursor: 'pointer' }}>
+              <Link to={`/causes/${props.cause.urlFormattedName}`} style={{ cursor: 'pointer' }}>
                 <Image
                   url={props.cause.logoImage}
                   alt="act on this logo"
