@@ -7,6 +7,7 @@ import { Action } from '../../redux/action';
 export interface Cause {
   id: string;
   name: string;
+  urlFormattedName: string;
   callToAction: string;
   blurb: string;
   summary: string;
@@ -51,7 +52,11 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
       const newIds = action.payload
         .filter((cause: Cause) => state.list.findIndex(i => i.id === cause.id) === -1)
         .map((cause: Cause) => cause.id);
-      return {...state, list: action.payload, subscribed: [...state.subscribed, ...newIds] };
+      const list = action.payload.map((cause: Cause) => ({
+        ...cause,
+        urlFormattedName: cause.name.toLowerCase().split(' ').join('-'),
+      }))
+      return {...state, list, subscribed: [...state.subscribed, ...newIds] };
     }
 
     case actions.SUBSCRIBE:

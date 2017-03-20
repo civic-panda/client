@@ -13,7 +13,7 @@ interface Props {
 export const CauseInfo = (props: Props) => (
   <div key={props.cause.id} className={'cause-info-box col--1-1'}>
     <div className="col--1-1 col--2-3@md col--5-6@lg">
-      <Link to={`/causes/${props.cause.name.toLowerCase().split(' ').join('-')}`}>
+      <Link to={`/causes/${props.cause.urlFormattedName}`}>
         <Text
           text={props.cause.name}
           type={'header'}

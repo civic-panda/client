@@ -35,7 +35,7 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              <Link to={`/causes/${this.props.cause.name.split(' ').join('-')}`}>
+              <Link to={`/causes/${this.props.cause.urlFormattedName}`}>
                 <Text
                   text={this.props.cause.name}
                   type={'label'}
