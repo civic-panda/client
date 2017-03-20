@@ -8,9 +8,14 @@
 
   .cause__header {
     background: $top_primary;
-    padding: $standard-spacing 0;
   }
 
+  // Hacky double classes do override column spacing
+  .cause__call-to-action.cause__call-to-action {
+    padding-top: 2 * $standard-spacing;
+  }
+
+  // Hacky double classes do override column spacing
   .cause__splash-image.cause__splash-image {
     padding: 0;
   }

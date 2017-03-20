@@ -108,23 +108,24 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     return (
       <div className={classes}>
         <div className="row">
-          <Input
-            type={'text'}
-            placeholder={'Your address'}
-            value={this.state.address}
-            onChange={this.setAddress}
-            customInput={AutoComplete}
-          />
-
-          <Button
-            disabled={!this.isLocationSet()}
-            text={'Act On This'}
-            disabledText={'Please select an address.'}
-            onClick={this.goToTasks}
-          />
+          <span style={{ whiteSpace: 'nowrap' }}>
+            <Input
+              type={'text'}
+              placeholder={'Your address'}
+              value={this.state.address}
+              onChange={this.setAddress}
+              customInput={AutoComplete}
+            />
+            <Button
+              disabled={!this.isLocationSet()}
+              text={'Act On This'}
+              disabledText={'Please select an address.'}
+              onClick={this.goToTasks}
+            />
+          </span>
           <br />
           <br />
-          <Text className={'col--1-1 col--1-2@md'} type={'label'} size={'small'} displayBlock>
+          <Text className={'col--1-1 col--2-3@md col--1-2@lg'} type={'label'} size={'small'} displayBlock>
             Your location helps us to localize tasks that need immediate action in your area
           </Text>
         </div>

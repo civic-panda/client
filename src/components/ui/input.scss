@@ -28,7 +28,8 @@
 
 @include media('>=sm') {
   .input-container {
-    display: block;
+    display: inline-block;
+    width: auto;
 
     .input-label {
       width: 100px;
@@ -37,12 +38,12 @@
     }
 
     .input {
-      width: 350px;
+      width: 300px;
     }
   }
 }
 
-@include media('>md') {
+@include media('>=md') {
   .input-container {
     width: auto;
     margin-bottom: 0;
@@ -51,6 +52,10 @@
     .input-label {
       width: auto;
       display: inline-block;
+    }
+
+    .input {
+      width: 350px;
     }
 
     .input--short {

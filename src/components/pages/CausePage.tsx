@@ -37,22 +37,22 @@ export default class CausePage extends React.Component<Props & StateProps, State
       <div className={'cause-page'}>
         <div className={'cause__header'}>
           <div className="row row--padded">
-            <div className="col--1-1 col--3-5@md col--2-3@lg">
+            <div className="cause__call-to-action col--1-1 col--1-2@lg col--2-3@xl">
               <Text
                 text={this.props.cause.callToAction}
                 type={'header'}
-                size={'xl'}
+                size={'lg'}
                 displayBlock
                 bottomMargin
               />
-              {this.props.cause.blurb &&
-                <Text text={this.props.cause.blurb} size={'p'} displayBlock bottomMargin />
-              }
               <AddressPicker />
             </div>
-            <div className="cause__splash-image col--1-1 col--2-5@md col--1-3@lg" style={{ textAlign: 'right' }}>
-              <SquareImage url={this.props.cause.heroImage} />
-            </div>
+            <img
+              className="u-hide@lt-lg"
+              style={{ float: 'right' }}
+              src={Cloudinary.createUrl(this.props.cause.heroImage, { height: 400, width: 400, crop: 'fill' })}
+              alt={`${this.props.cause.name} hero image`}
+            />
           </div>
         </div>
         <div className={'cause row row--padded'}>

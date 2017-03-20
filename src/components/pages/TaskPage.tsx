@@ -16,6 +16,7 @@ interface Props {
 
 interface StateProps {
   cause: causes.Cause;
+  parentCause?: causes.Cause;
   task: tasks.Task;
 }
 
@@ -35,6 +36,24 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
+              {this.props.parentCause && (
+                <span>
+                  <Link to={`/causes/${this.props.parentCause.urlFormattedName}`}>
+                    <Text
+                      text={this.props.parentCause.name}
+                      type={'label'}
+                      bottomMargin
+                      displayBlock
+                    />
+                  </Link>
+                  <Text
+                    text={'>'}
+                    type={'label'}
+                    bottomMargin
+                    displayBlock
+                  />
+                </span>
+              )}
               <Link to={`/causes/${this.props.cause.urlFormattedName}`}>
                 <Text
                   text={this.props.cause.name}
@@ -50,14 +69,6 @@ class TaskPage extends React.Component<Props & StateProps, State> {
                 bottomMargin
                 displayBlock
               />
-              <Link to={`/causes/${this.props.cause.id}`}>
-                <Icon type={'info'} encircle inline />
-                <Text
-                  text={'Why is this important?'}
-                  type={'label'}
-                  underline
-                />
-              </Link>
             </div>
             <div className="details-container u-hide@lt-lg col--1-3">
               <TaskDetails task={this.props.task} darkBackground />
@@ -77,10 +88,14 @@ class TaskPage extends React.Component<Props & StateProps, State> {
 const mapStateToProps = (state: AppState, ownProps: Props) => {
   const currentTask = tasks.selectors.getTask(state, { taskId: ownProps.params.taskId });
   const currentCause = causes.selectors.getCause(state, { causeId: currentTask.causeId });
+  const parentCause = currentCause.parent
+    ? causes.selectors.getCause(state, { causeId: currentCause.parent })
+    : undefined;
 
   return {
     task: currentTask,
     cause: currentCause,
+    parentCause,
   };
 };
 

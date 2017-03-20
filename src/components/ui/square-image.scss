@@ -10,8 +10,8 @@
 }
 
 .square-image.large {
-  max-height: 360px;
-  max-width: 360px;
+  max-height: 400px;
+  max-width: 400px;
   height: 120px;
   width: 120px;
 
@@ -24,8 +24,8 @@
     width: 25vw;
   }
   @include media('>lg') {
-    height: 25vw;
-    width: 25vw;
+    height: 400px;
+    width: 400px;
   }
 }
 
