@@ -30,6 +30,8 @@ export class TaskDetails extends React.Component<Props, State> {
       ? task.duration
       : `${task.duration} mins`;
 
+    if (!task.duration) return null;
+
     return (
       <div className={`task-details`}>
         <div className={`duration ${this.getDurationClass(task.duration)}`}>
@@ -38,13 +40,6 @@ export class TaskDetails extends React.Component<Props, State> {
             color={'inverse'}
             align={'center'}
             type={'label'}
-          />
-        </div>
-        <div className="distance">
-          <Text
-            text={'0 miles away'}
-            type={'label'}
-            align={'center'}
           />
         </div>
       </div>

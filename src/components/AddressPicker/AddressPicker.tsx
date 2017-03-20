@@ -3,7 +3,7 @@ import * as React from 'react';
 import { browserHistory } from 'react-router';
 
 import { congress, user } from '../../modules';
-import { lookupDistrict } from '../../util/api';
+import { lookupDistrict, lookupStateDistricts } from '../../util/api';
 import { Button, Input, Link, Select, Text } from '../ui';
 import './address-picker.scss';
 import AutocompleteInput from './AutocompleteInput';
@@ -14,9 +14,11 @@ interface AddressPickerProps {
   setLocation(location: user.Location): void;
   setCongress(congress: {
     callList: any[],
+    stateCallList: any[],
     senators: congress.CongressPerson[],
     representatives: congress.CongressPerson[],
   }): void;
+  onClick?(): any;
 };
 
 interface AddressPickerState {
@@ -55,9 +57,11 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
     const { callList, district, representatives, senators, state } = await lookupDistrict(lat, lng);
+    const stateLevel = await lookupStateDistricts(lat, lng);
 
     this.props.setCongress({
       callList,
+      stateCallList: stateLevel.callList,
       senators,
       representatives,
     });
@@ -108,23 +112,24 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
     return (
       <div className={classes}>
         <div className="row">
-          <Input
-            type={'text'}
-            placeholder={'Your address'}
-            value={this.state.address}
-            onChange={this.setAddress}
-            customInput={AutoComplete}
-          />
-
-          <Button
-            disabled={!this.isLocationSet()}
-            text={'Act On This'}
-            disabledText={'Please select an address.'}
-            onClick={this.goToTasks}
-          />
+          <span style={{ whiteSpace: 'nowrap' }}>
+            <Input
+              type={'text'}
+              placeholder={'Your address'}
+              value={this.state.address}
+              onChange={this.setAddress}
+              customInput={AutoComplete}
+            />
+            <Button
+              disabled={!this.isLocationSet()}
+              text={'Act On This'}
+              disabledText={'Please select an address.'}
+              onClick={() => this.props.onClick ? this.props.onClick() : this.goToTasks()}
+            />
+          </span>
           <br />
           <br />
-          <Text className={'col--1-1 col--1-2@md'} type={'label'} size={'small'} displayBlock>
+          <Text className={'col--1-1 col--2-3@md col--1-2@lg'} type={'label'} size={'small'} displayBlock>
             Your location helps us to localize tasks that need immediate action in your area
           </Text>
         </div>

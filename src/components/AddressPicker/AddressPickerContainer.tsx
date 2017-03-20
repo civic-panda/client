@@ -10,6 +10,7 @@ interface StateProps {
 
 interface OwnProps {
   style?: 'light' | 'dark';
+  onClick?(): any;
 }
 
 interface DispatchProps {

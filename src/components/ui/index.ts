@@ -1,6 +1,7 @@
 export * from './Button';
 export * from './cloudinaryUrl';
 export * from './CloudinaryImage';
+export * from './CauseInfo';
 export * from './Icon';
 export * from './FadeIn';
 export * from './Input';

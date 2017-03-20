@@ -53,7 +53,7 @@ class CausePicker extends React.Component<Props & StateProps & DispatchProps, St
                   displayBlock
                 />
                 <Link
-                  link={`/causes/${cause.name.split(' ').join('-')}`}
+                  link={`/causes/${cause.urlFormattedName}`}
                   type={'colorless'}
                   text={'View More'}
                   size={'small'}
