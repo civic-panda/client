@@ -52,19 +52,6 @@ class IframeComponent extends React.Component<Props, State> {
           >
           </iframe>
         </div>
-        <div className={'task__notes u-hide@lt-lg col--1-3'}>
-          <Text
-            size={'h4'}
-            type={'header'}
-            color={'accent'}
-            text={`Always remember...`}
-            displayBlock
-            bottomMargin
-          />
-          <div dangerouslySetInnerHTML={{
-            __html: this.props.tips
-          }}></div>
-        </div>
       </div>
     );
   }

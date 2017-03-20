@@ -35,4 +35,4 @@ const mapDispatchToProps = {
   completeTask: tasks.actionCreators.completeTask,
 };
 
-export const GenericMultiple = connect<StateProps, ActionProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Generic);
+export const Custom = connect<StateProps, ActionProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Generic);
