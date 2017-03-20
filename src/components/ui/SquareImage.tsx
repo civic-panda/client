@@ -11,7 +11,7 @@ interface Props {
 
 export const SquareImage = (props: Props) => (
   <div
-    style={{ backgroundImage: `url(${Cloudinary.createUrl(props.url, {})})` }}
+    style={{ backgroundImage: `url(${Cloudinary.createUrl(props.url, { height: 400, crop: 'fit' })})` }}
     className={`square-image ${props.size || 'large'} ${props.className}`}
   >
   </div>

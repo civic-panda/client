@@ -34,6 +34,7 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
                   url={props.cause.logoImage}
                   alt="act on this logo"
                   className={'logo'}
+                  options={{ height: 60, crop: 'fit' }}
                 />
               </Link>
             )
