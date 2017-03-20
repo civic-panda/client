@@ -7,7 +7,7 @@ import { AppState, causes, tasks } from '../../modules';
 import AddressPicker from '../AddressPicker';
 import { TaskSummary } from '../task';
 import Embed from '../Embed/Embed';
-import { SquareImage, Text, Button, InfoBox } from '../ui';
+import { CauseInfo, SquareImage, Text, Button, InfoBox } from '../ui';
 import './cause-page.scss';
 
 export interface Props {
@@ -105,26 +105,7 @@ export default class CausePage extends React.Component<Props & StateProps, State
                 displayBlock
                 bottomMargin
               />
-              <div key={this.props.parentCause.id} className={'cause-info-box col--1-1'}>
-                <div className="col--1-1 col--2-3@md col--5-6@lg">
-                  <Link to={`/causes/${this.props.parentCause.name}`}>
-                    <Text
-                      text={this.props.parentCause.name}
-                      type={'header'}
-                      size={'h2'}
-                      displayBlock
-                      bottomMargin
-                    />
-                  </Link>
-                  <Text text={this.props.parentCause.blurb} displayBlock />
-                </div>
-                <div className="col--1-1 col--1-3@md col--1-6@lg cause-logo">
-                  <img
-                    src={Cloudinary.createUrl(this.props.parentCause.logoImage, { height: 180, width: 180, crop: 'fit' })}
-                    alt={this.props.parentCause.name}
-                  />
-                </div>
-              </div>
+              <CauseInfo cause={this.props.parentCause} />
             </div>
           )}
           {this.props.childCauses.length > 0 && (
@@ -137,28 +118,9 @@ export default class CausePage extends React.Component<Props & StateProps, State
                 bottomMargin
               />
               {
-                this.props.childCauses.sort((a, b) => (a.name.localeCompare(b.name))).map(cause => (
-                  <div key={cause.id} className={'cause-info-box col--1-1'}>
-                    <div className="col--1-1 col--2-3@md col--5-6@lg">
-                      <Link to={`/causes/${cause.name}`}>
-                        <Text
-                          text={cause.name}
-                          type={'header'}
-                          size={'h2'}
-                          displayBlock
-                          bottomMargin
-                        />
-                      </Link>
-                      <Text text={cause.blurb} displayBlock />
-                    </div>
-                    <div className="col--1-1 col--1-3@md col--1-6@lg cause-logo">
-                      <img
-                        src={Cloudinary.createUrl(cause.logoImage, { height: 180, width: 180, crop: 'fit' })}
-                        alt={cause.name}
-                      />
-                    </div>
-                  </div>
-                ))
+                this.props.childCauses
+                  .sort((a, b) => (a.name.localeCompare(b.name)))
+                  .map(cause => (<CauseInfo key={cause.id} cause={cause} />))
               }
             </div>
           )}
