@@ -142,38 +142,6 @@ class CallComponent extends React.Component<OwnProps & StateProps, CallState> {
             <FadeIn>{this.renderCallScript(callee)}</FadeIn>
           }
         </div>
-        <div className={'task__notes u-hide@lt-lg col--1-3'}>
-          <Text
-            size={'h4'}
-            type={'header'}
-            color={'accent'}
-            text={`Always remember...`}
-            displayBlock
-            bottomMargin
-          />
-          <ul>
-            <li><p>
-              Always be nice. Not only is this kind to the person doing their job at the other end of the line,
-              being courteous makes you more likely to be taken seriously.
-            </p></li>
-            <li><p>
-              Leave a voicemail. If voicemail is full, press "0." This will typically connect you to a receptionist
-              who may be able to take your message or transfer you to a voicemail that isn't full.
-            </p></li>
-            <li><p>
-              Call the national office, if you can't get through. Or to see if you can get a real person.
-            </p></li>
-            <li><p>
-              Be prepared to give your name and your location. While they won’t always ask, reps will prioritize
-              calls from their constituents.
-            </p></li>
-            <li><p>
-              One call, one issue. The operator is likely using some kind of form to mark your call, the goal is to
-              generate a high volume of calls that require the operator to check off individual boxes.
-              That means it’s critical to name your issues specifically.
-            </p></li>
-          </ul>
-        </div>
       </div>
     );
   }
