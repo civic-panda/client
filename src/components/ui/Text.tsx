@@ -64,7 +64,7 @@ export const Text = (props: TextProps) => {
   });
 
   const childrenIsString = typeof children === 'string';
-  const rawText = childrenIsString ? `${text}${children}` : text;
+  const rawText = childrenIsString ? `${text ? text : ''}${children}` : text;
   const displayText = (props.format) ? formatters.format(rawText, props.format) : rawText;
 
   return (

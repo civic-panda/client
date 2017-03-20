@@ -76,7 +76,7 @@ export const reducer: Redux.Reducer<State> = (state = initialState, action: Acti
 };
 
 const getState = (state: any): State => state[KEY];
-const getList = createSelector(getState, state => state.list);
+const getList = createSelector(getState, state => state.list.filter(task => task.published));
 const getSubscribed = createSelector(
   getList,
   causeSelectors.getSubscribed,
