@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { Link } from 'react-router';
 
+import * as Cloudinary from '../ui/cloudinaryUrl';
 import AddressPicker from '../AddressPicker';
 import DemoRequest from '../DemoRequest';
 import CausePicker from '../CausePicker';
-import { Button, Link, Text, InfoBox, Input } from '../ui';
+import { Button, Text, InfoBox, Input } from '../ui';
 import './splash-page.scss';
+import './cause-page.scss';
 
 const featureImage1 = require('./feature1.png');
 const featureImage2 = require('./feature2.png');
@@ -59,12 +62,26 @@ export class SplashPage extends React.Component<Props, {}> {
             </div>
             <br/>
             <Text size={'h1'} type={'header'} horizontalRule displayBlock>Featured cause</Text>
-            <InfoBox
-              title={'Change the way the U.S. handles sexual assault'}
-              description={`In some states there are decades-long backlogs, with thousands of kits waiting to be tested. In other states, they're never tested and even destroyed after mere months.`}
-              action={{ name: 'Take Action', url: '/causes/rise' }}
-              image={'k8rugeo8v1x5ukef9prc'}
-            />
+            <div className={'cause-info-box col--1-1'}>
+              <div className="col--1-1 col--2-3@md col--5-6@lg">
+                <Link to={'/causes/rise'}>
+                  <Text
+                    text={'Rise'}
+                    type={'header'}
+                    size={'h2'}
+                    displayBlock
+                    bottomMargin
+                  />
+                </Link>
+                <Text text={'Rise is a national civil rights nonprofit spearheading the effort to enshrine the rights of survivors of sexual assault in law. The Rise movement is currently active in 30 states and 3 countries, and the movement has thus far created 6 laws for 4 states and 1 country -- the United States of America.'} displayBlock />
+              </div>
+              <div className="col--1-1 col--1-3@md col--1-6@lg cause-logo">
+                <img
+                  src={Cloudinary.createUrl('vzpv7od179vowo5mptfc', { height: 180, width: 180, crop: 'fit' })}
+                  alt={'Rise logo'}
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className="sign-up-prompt tinted-image-background">
