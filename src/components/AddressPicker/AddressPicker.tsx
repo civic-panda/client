@@ -17,6 +17,7 @@ interface AddressPickerProps {
     senators: congress.CongressPerson[],
     representatives: congress.CongressPerson[],
   }): void;
+  onClick?(): any;
 };
 
 interface AddressPickerState {
@@ -120,7 +121,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
               disabled={!this.isLocationSet()}
               text={'Act On This'}
               disabledText={'Please select an address.'}
-              onClick={this.goToTasks}
+              onClick={() => this.props.onClick ? this.props.onClick() : this.goToTasks()}
             />
           </span>
           <br />

@@ -9,3 +9,4 @@ export * from './CauseListPage';
 export * from './CausePage';
 export * from './CausePageContainer';
 export * from './CauseTasksPage';
+export * from './SelectLocationPage';
