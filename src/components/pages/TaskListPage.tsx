@@ -1,4 +1,4 @@
-import * as React from 'react';
+/*import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { AppState, user } from '../../modules';
@@ -61,4 +61,4 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 export const TaskListPage = connect<StateProps, ActionProps, OwnProps>(mapStateToProps)(TaskListP);
-export default TaskListPage;
+export default TaskListPage;*/

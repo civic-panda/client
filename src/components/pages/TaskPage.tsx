@@ -36,32 +36,31 @@ class TaskPage extends React.Component<Props & StateProps, State> {
         <div className={'task__header'}>
           <div className="row row--padded" style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div className="col--1-1 col--2-3@lg">
-              {this.props.parentCause && (
-                <span>
-                  <Link to={`/causes/${this.props.parentCause.urlFormattedName}`}>
+              <span style={{ whiteSpace: 'nowrap' }}>
+                {this.props.parentCause && (
+                  <span>
+                    <Link to={`/causes/${this.props.parentCause.urlFormattedName}`}>
+                      <Text
+                        text={this.props.parentCause.name}
+                        type={'label'}
+                        bottomMargin
+                      />
+                    </Link>
                     <Text
-                      text={this.props.parentCause.name}
+                      text={'  >  '}
                       type={'label'}
                       bottomMargin
-                      displayBlock
                     />
-                  </Link>
+                  </span>
+                )}
+                <Link to={`/causes/${this.props.cause.urlFormattedName}`}>
                   <Text
-                    text={'>'}
+                    text={this.props.cause.name}
                     type={'label'}
                     bottomMargin
-                    displayBlock
                   />
-                </span>
-              )}
-              <Link to={`/causes/${this.props.cause.urlFormattedName}`}>
-                <Text
-                  text={this.props.cause.name}
-                  type={'label'}
-                  bottomMargin
-                  displayBlock
-                />
-              </Link>
+                </Link>
+              </span>
               <Text
                 text={this.props.task.name}
                 size={'lg'}

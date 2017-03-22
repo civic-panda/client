@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link as RouterLink } from 'react-router';
 
 import { Link, FadeIn, Input, Text, SquareImage } from '../ui';
 import './info-box.scss';
@@ -6,6 +7,7 @@ import './info-box.scss';
 interface Props {
   title: string;
   description: string;
+  label?: string;
   image: string;
   action: {
     name: string;
@@ -25,6 +27,17 @@ export const InfoBox = (props: Props) => (
             type={'header'}
             bottomMargin
           />
+          {props.label && (
+            <div style={{ marginTop: '0.5rem', height: 0 }}>
+              <RouterLink to={`/causes/${props.label.split(' ').join('-').toLowerCase()}`}>
+                <Text
+                  text={props.label}
+                  type={'label'}
+                  size={'small'}
+                />
+              </RouterLink>
+            </div>
+          )}
         </div>
         <div className="info-box__action-button">
           <Link
