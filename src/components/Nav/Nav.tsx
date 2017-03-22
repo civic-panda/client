@@ -42,6 +42,7 @@ export class Nav extends React.Component<Props, State> {
         style={{ backgroundColor: this.props.backgroundColor || '' }}
       >
         <div className="row row--padded">
+          <div className="col col--1-1">
           <BackButton currentRoute={this.props.currentRoute} routeParams={this.props.routeParams} />
           <div className="links">
             { this.props.currentRoute &&
@@ -57,6 +58,7 @@ export class Nav extends React.Component<Props, State> {
             }
           </div>
           <div className="nav__bottom-border"></div>
+          </div>
         </div>
       </div>
     );
