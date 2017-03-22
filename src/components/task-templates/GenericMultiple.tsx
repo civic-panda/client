@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { AppState, congress, tasks, user } from '../../modules';
+import { AppState, congress, causes, tasks, user } from '../../modules';
 import Generic from './Generic';
 
 interface StateProps {
@@ -22,8 +22,10 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const task = tasks.selectors.getTask(state, ownProps);
   const thisUser = user.selectors.getState(state);
   const representatives = congress.selectors.getRepresentatives(state, ownProps);
+  const cause = causes.selectors.getCauseById(task.causeId)(state);
 
   return {
+    cause,
     taskName: task.name,
     taskId: task.id,
     steps: task.templateProps.steps,
