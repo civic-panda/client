@@ -34,7 +34,6 @@ export class Nav extends React.Component<Props, State> {
   }
 
   public render() {
-    console.log('nav props', this.props);
     const navClasses = classNames('nav');
 
     return (
@@ -56,7 +55,7 @@ export class Nav extends React.Component<Props, State> {
         <div className="row row--padded u-hide@sm">
           <BackButton currentRoute={this.props.currentRoute} routeParams={this.props.routeParams} />
           <div className="links">
-            {
+            { this.props.currentRoute &&
               links
                 .map(link => (
                   <NavLink
