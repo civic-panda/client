@@ -17,7 +17,7 @@ function siteRoutes(store: any) {
       { name: 'demo', path: 'demo', component: FakeNewsEmbed },
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },
-      { name: 'tasks', path: 'tasks', component: pages.TaskListPage, onEnter: requireLocation(store) },
+      // { name: 'tasks', path: 'tasks', component: pages.TaskListPage, onEnter: requireLocation(store) },
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
       { name: 'causes', path: 'causes', component: pages.CauseListPage },
       { name: 'cause', path: 'causes/:causeName', component: pages.CausePageContainer },
