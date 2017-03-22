@@ -31,7 +31,7 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
 
   const usersState = user.selectors.getLocation(state).state;
   const stateName = stateLookup.lookup[usersState];
-  const stateCause = causes.selectors.getList(state).find(thisCause => thisCause.name.indexOf(stateName) > -1);
+  const stateCause = causes.selectors.getList(state).find(thisCause => thisCause.name.toLowerCase() === `$rise ${stateName.toLowerCase()}`);
   if (stateCause.id !== cause.id) {
     const stateCauseTasks = stateCause
       ? tasks.selectors.getRemaining(state).filter(task => task.causeId === stateCause.id) : [];
