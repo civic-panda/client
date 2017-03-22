@@ -69,7 +69,7 @@
     "mixpanel-browser": "^2.9.17",
     "moment": "^2.17.0",
     "morgan": "^1.7.0",
-    "node-sass": "^3.3",
+    "node-sass": "^3.7.0",
     "object-assign": "4.1.0",
     "path": "^0.12.7",
     "path-exists": "2.1.0",
