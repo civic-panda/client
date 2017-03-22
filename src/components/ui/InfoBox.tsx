@@ -6,6 +6,7 @@ import './info-box.scss';
 interface Props {
   title: string;
   description: string;
+  label?: string;
   image: string;
   action: {
     name: string;
@@ -25,6 +26,16 @@ export const InfoBox = (props: Props) => (
             type={'header'}
             bottomMargin
           />
+          {props.label && (
+            <div style={{ marginTop: '0.5rem', height: 0 }}>
+              <Text
+                text={props.label}
+                type={'label'}
+                size={'small'}
+                color={'light'}
+              />
+            </div>
+          )}
         </div>
         <div className="info-box__action-button">
           <Link
