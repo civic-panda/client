@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   align-items: stretch;
   overflow: hidden;
-  border: solid 1px $gray;
+  border: solid 1px get-color($gray, 300);
   margin-bottom: $standard-spacing;
 
   .info-box__description{
