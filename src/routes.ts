@@ -21,7 +21,7 @@ function siteRoutes(store: any) {
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
       { name: 'causes', path: 'causes', component: pages.CauseListPage },
       { name: 'cause', path: 'causes/:causeName', component: pages.CausePageContainer },
-      { name: 'causeTasks', path: 'causes/:causeName/tasks', component: pages.CauseTasksPage },
+      { name: 'causeTasks', path: 'causes/:causeName/tasks', component: pages.CauseTasksPage, onEnter: requireLocation(store) },
       { name: 'causeTask', path: 'causes/:causeName/tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
     ],
   };
