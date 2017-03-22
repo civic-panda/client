@@ -41,18 +41,8 @@ export class Nav extends React.Component<Props, State> {
         className={navClasses}
         style={{ backgroundColor: this.props.backgroundColor || '' }}
       >
-        <div className="u-hide@gt-sm">
-          <div className="link" onClick={() => this.toggleMenu()}>
-            <Icon type={'hamburger'} />
-          </div>
-          <PullOutMenu
-            currentRoute={this.props.currentRoute}
-            isShowing={this.state.showPullOutMenu}
-            links={links}
-            hide={() => this.toggleMenu(false)}
-          />
-        </div>
-        <div className="row row--padded u-hide@sm">
+        <div className="row row--padded">
+          <div className="col col--1-1">
           <BackButton currentRoute={this.props.currentRoute} routeParams={this.props.routeParams} />
           <div className="links">
             { this.props.currentRoute &&
@@ -68,6 +58,7 @@ export class Nav extends React.Component<Props, State> {
             }
           </div>
           <div className="nav__bottom-border"></div>
+          </div>
         </div>
       </div>
     );
