@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 
-import { AppState, tasks } from '../../modules';
+import { AppState, tasks, causes } from '../../modules';
 
 import './call.scss';
 
@@ -14,7 +14,8 @@ interface Props {
   completeTask: (id: string) => void;
   steps: string[];
   tips: string;
-  task: any;
+  task: tasks.Task;
+  cause: causes.Cause;
   templateProps: {
     embedUrl: string;
   };
@@ -51,6 +52,11 @@ class IframeComponent extends React.Component<Props, State> {
             style={{ width: '100%', height: '800px' }}
           >
           </iframe>
+          <Link
+            text={'Complete Task'}
+            link={`/causes/${this.props.cause.name}/tasks`}
+            onClick={() => this.props.completeTask(this.props.taskId)}
+          />
         </div>
       </div>
     );
@@ -59,10 +65,16 @@ class IframeComponent extends React.Component<Props, State> {
 
 const mapStateToProps = (state: AppState, ownProps: Props) => {
   const task = tasks.selectors.getTask(state, ownProps);
+  const cause = causes.selectors.getCauseById(task.causeId)(state);
 
   return {
     task,
+    cause,
   };
 };
 
-export const Iframe = connect(mapStateToProps)(IframeComponent);
+const mapDispatchToProps = {
+  completeTask: tasks.actionCreators.completeTask,
+};
+
+export const Iframe = connect(mapStateToProps, mapDispatchToProps)(IframeComponent);

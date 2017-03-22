@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { AppState, congress, tasks } from '../../modules';
+import { AppState, congress, causes, tasks } from '../../modules';
 import './call.scss';
 
 import { Button, FadeIn, Icon, Link, Text, Toggle } from '../ui';
@@ -12,8 +12,9 @@ interface OwnProps {
 };
 
 interface StateProps {
+  cause: causes.Cause;
   taskName: string;
-  completeCall: (id: string) => void;
+  completeTask: (id: string) => void;
   callList: { name: string, number: string }[];
   requestedAction: string;
   petitionScript: string;
@@ -106,9 +107,13 @@ class CallComponent extends React.Component<OwnProps & StateProps, CallState> {
       {(this.state.currentStep < this.props.callList.length - 1) &&
         <Button text={'Next'} onClick={this.nextStep} />
       }
-      {(this.state.currentStep === this.props.callList.length - 1) &&
-        <Link text={'Done'} link={'/tasks'} onClick={() => this.props.completeCall(this.props.taskId)} />
-      }
+      {(this.state.currentStep === this.props.callList.length - 1) && (
+        <Link
+          text={'Complete Task'}
+          link={`/causes/${this.props.cause.name}/tasks`}
+          onClick={() => this.props.completeTask(this.props.taskId)}
+        />
+      ) }
     </div>
   )
 
@@ -151,13 +156,14 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const task = tasks.selectors.getTask(state, ownProps);
   const nationalCallList = congress.selectors.getCallList(state);
   const stateCallList = congress.selectors.getStateCallList(state);
+  const cause = causes.selectors.getCauseById(task.causeId)(state);
 
   const callList = task.templateProps.callList && task.templateProps.callList.type === 'state'
     ? stateCallList
     : nationalCallList;
-  console.log(task.templateProps.callList, callList, stateCallList);
 
   return {
+    cause,
     taskName: task.name,
     callList: (task.templateProps.callList && task.templateProps.callList.list) ? task.templateProps.callList.list : callList,
     requestedAction: task.templateProps.requestedAction,
@@ -166,4 +172,8 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   };
 };
 
-export const Call = connect(mapStateToProps)(CallComponent);
+const mapDispatchToProps = {
+  completeTask: tasks.actionCreators.completeTask,
+};
+
+export const Call = connect(mapStateToProps, mapDispatchToProps)(CallComponent);
