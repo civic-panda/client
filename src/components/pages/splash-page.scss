@@ -8,8 +8,8 @@
     max-width: initial;
     margin-top: -1 * $nav-height;
     margin-bottom: 4 * $standard-spacing;
-    padding-top: 2 * $standard-spacing + $nav-height;
-    padding-bottom: 4 * $standard-spacing;
+    padding-top: 4 * $standard-spacing + $nav-height;
+    padding-bottom: 5 * $standard-spacing;
 
     &:before {
       background-image: url('./volunteers.png');
@@ -17,6 +17,22 @@
 
     .text {
       color: $white;
+    }
+  }
+
+  .image-background {
+    position: relative;
+
+    &:before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
     }
   }
 

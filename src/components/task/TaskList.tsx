@@ -62,6 +62,7 @@ export class TaksList extends React.Component<Props, State> {
             <InfoBox
               key={task.id}
               title={task.name}
+              label={this.props.causes.find(cause => cause.id === task.causeId).name}
               description={task.summary}
               action={{
                 name: 'Take action',
@@ -93,6 +94,7 @@ export class TaksList extends React.Component<Props, State> {
                   <InfoBox
                     key={task.id}
                     title={task.name}
+                    label={this.props.causes.find(cause => cause.id === task.causeId).name}
                     description={task.summary}
                     action={{
                       name: 'Take action',

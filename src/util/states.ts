@@ -1,4 +1,8 @@
-export const lookup = {
+interface States {
+  [x: string]: string;
+}
+
+export const lookup: States = {
   AL: 'Alabama',
   AK: 'Alaska',
   AS: 'American Samoa',

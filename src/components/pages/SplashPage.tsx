@@ -20,10 +20,10 @@ export class SplashPage extends React.Component<Props, {}> {
   public render() {
     return (
       <div className="splash-page">
-        <div className="hero tinted-image-background">
+        <div className="hero image-background">
           <div className="row row--padded">
             <div className="col col--1-1">
-              <Text size={'xl'} displayBlock bottomMargin>Make change happen.</Text>
+              <Text size={'xl'} displayBlock bottomMargin>Make change<br />happen.</Text>
               <Text displayBlock bottomMargin>Mobilize volunteers like a big budget campaign with Act On This.</Text>
               <DemoRequest />
             </div>
