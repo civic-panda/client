@@ -8,6 +8,7 @@ import { Button, FadeIn, Icon, Link, Text, Toggle } from '../ui';
 interface Props {
   taskName: string;
   taskId: string;
+  cause: any;
   completeTask: (id: string) => void;
   steps: string[];
   tips: string;
@@ -48,9 +49,13 @@ export class Generic extends React.Component<Props, State> {
       {(this.state.currentStep < this.props.steps.length - 1) &&
         <Button text={'Next'} onClick={this.nextStep} />
       }
-      {(this.state.currentStep === this.props.steps.length - 1) &&
-        <Link text={'Done'} link={'/tasks'} onClick={() => this.props.completeTask(this.props.taskId)} />
-      }
+      {(this.state.currentStep === this.props.steps.length - 1) && (
+        <Link
+          text={'Complete Task'}
+          link={`/causes/${this.props.cause.name}/tasks`}
+          onClick={() => this.props.completeTask(this.props.taskId)}
+        />
+      )}
     </div>
   )
 

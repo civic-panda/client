@@ -39,7 +39,7 @@ export const InfoBox = (props: Props) => (
             </div>
           )}
         </div>
-        <div className="info-box__action-button">
+        <div className="info-box__action-button u-hide@lt-sm">
           <Link
             text={props.action.name}
             link={props.action.url}
@@ -52,7 +52,15 @@ export const InfoBox = (props: Props) => (
         displayBlock
       />
     </div>
-    <SquareImage url={props.image} size={'med'} />
+    <SquareImage url={props.image} size={'med'} className="u-hide@lt-md" />
+    <div className="row row--padded u-hide@gt-sm">
+      <div className="col--1-1">
+        <Link
+          text={props.action.name}
+          link={props.action.url}
+        />
+      </div>
+    </div>
   </div>
 );
 

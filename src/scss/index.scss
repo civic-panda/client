@@ -81,7 +81,7 @@ body {
   font-family: sans-serif;
 }
 
-.external-links a {
+.external-links a, a > .text:hover {
   color: $highlight;
   text-decoration: underline;
 }
