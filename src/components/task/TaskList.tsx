@@ -10,6 +10,7 @@ interface Props {
   tasks: tasks.Task[];
   completedTasks: tasks.Task[];
   causes: causes.Cause[];
+  causeId: string;
 };
 
 interface State {
