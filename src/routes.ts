@@ -15,7 +15,7 @@ function siteRoutes(store: any) {
     childRoutes: [
       { name: 'auth', path: 'auth', component: pages.AuthPage },
       { name: 'selectLocaton', path:'select-location', component: pages.SelectLocation },
-      { name: 'demo', path: 'demo', component: FakeNewsEmbed },
+      { name: 'dashboard', path: 'dashboard', component: pages.Dashboard },
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },

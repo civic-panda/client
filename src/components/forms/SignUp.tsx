@@ -9,6 +9,12 @@ import { Input } from './Input';
 const SignUpForm = (props: Forms.FormProps<any, any, any>) => (
   <form onSubmit={props.handleSubmit}>
     <Forms.Field
+      name={'name'}
+      label={'Name'}
+      component={Input}
+      type={'text'}
+    />
+    <Forms.Field
       name={'email'}
       label={'Email'}
       component={Input}

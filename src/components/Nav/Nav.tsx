@@ -55,6 +55,12 @@ class Nav extends React.Component<StateProps & DispatchProps & Props, State> {
           <div className="col col--1-1">
           <BackButton currentRoute={this.props.currentRoute} routeParams={this.props.routeParams} />
           <div className="links">
+              {this.props.isLoggedIn && (
+                <NavLink
+                  text={'Dashboard'}
+                  to={'dashboard'}
+                />
+              )}
             { this.props.currentRoute &&
               links
                 .map(link => (
