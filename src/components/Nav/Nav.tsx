@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 import { AppState, user } from '../../modules';
 import { Icon } from '../ui';
@@ -69,11 +70,22 @@ class Nav extends React.Component<StateProps & DispatchProps & Props, State> {
             {
               this.props.isLoggedIn
                 ? (
-                  <span onClick={this.props.logOut}>
+                  <span>
                     <NavLink
-                      text={'Log Out'}
-                      to={'/'}
+                      text={'My Dashboard'}
+                      to={'/dashboard'}
                     />
+                    <span
+                      onClick={() => {
+                        browserHistory.push('/');
+                        setTimeout(this.props.logOut, 200);
+                      }}
+                    >
+                      <NavLink
+                        text={'Log Out'}
+                        to={'/'}
+                      />
+                    </span>
                   </span>
                 ) : (
                   <NavLink
