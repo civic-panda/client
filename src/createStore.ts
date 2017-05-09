@@ -1,4 +1,6 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore, Middleware } from 'redux';
+import * as forms from 'redux-form';
+import thunk from 'redux-thunk';
 
 // Middlewares and enhancers
 import * as logger from './redux/logger';
@@ -8,7 +10,7 @@ import * as persist from './redux/persist';
 // Reducers
 import { AppState, congress, causes, storage, tasks, user } from './modules';
 
-const middleware = applyMiddleware(logger.middleware, mixpanel.middleware);
+const middleware = applyMiddleware(thunk, logger.middleware, mixpanel.middleware as Middleware);
 
 const setupStore = () => {
   const rootReducer = combineReducers<AppState>({
@@ -17,6 +19,7 @@ const setupStore = () => {
     [tasks.KEY]: tasks.reducer,
     [user.KEY]: user.reducer,
     [storage.KEY]: storage.reducer,
+    form: forms.reducer,
   });
 
   const store = createStore<AppState>(

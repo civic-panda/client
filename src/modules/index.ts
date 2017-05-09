@@ -1,3 +1,4 @@
+import * as auth from './auth';
 import * as congress from './congress';
 import * as causes from './causes';
 import * as storage from './storage';
@@ -13,6 +14,7 @@ export interface AppState {
 }
 
 export {
+  auth,
   congress,
   causes,
   tasks,

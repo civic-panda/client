@@ -17,11 +17,11 @@ interface StateProps {
 }
 
 interface Props {
-  history: any;
-  routes: any;
+  history?: any;
+  routes?: any;
 }
 
-export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
+export const loadDummyData = (WrappedComponent: React.ComponentClass<Props>) => {
   class LoadData extends React.Component<Props & ActionProps & StateProps, {}> {
     public componentDidMount() {
       this.loadData();
@@ -34,8 +34,9 @@ export const loadDummyData = (WrappedComponent: React.ComponentClass<{}>) => {
     }
 
     public render() {
+      const { history, routes } = this.props;
       return this.props.isLoaded
-        ? (<WrappedComponent {...this.props} />)
+        ? (<WrappedComponent history={history} routes={routes} />)
         : null;
     }
   }

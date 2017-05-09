@@ -1,4 +1,7 @@
-import { congress, causes, tasks, user } from '../modules';
+import { Dispatch } from 'react-redux';
+
+import { AppState, auth, congress, causes, tasks, user } from '../modules';
+import { getExpiration } from '../util/jwt';
 
 // LOCAL
 // const apiEndpoint = 'http://localhost:8081';
@@ -6,6 +9,9 @@ import { congress, causes, tasks, user } from '../modules';
 // const apiEndpoint = 'https://admin-staging.actonthis.org';
 // PROD
 const apiEndpoint = 'https://admin.actonthis.org';
+
+
+type method = 'GET' | 'PUT' | 'POST' | 'DELETE';
 
 export const lookupStateDistricts = async (lat: number, lng: number) => {
   const result = await fetch(`${apiEndpoint}/openstates/api/v1/legislators/geo/?lat=${lat}&long=${lng}`);
@@ -119,3 +125,48 @@ export const requestDemo = async (body: { email: string; name?: string; phoneNum
 
   return true;
 };
+
+export const callApi = async (resource: string, method: method, body?: any, headers?: any) => {
+  try {
+    const results = await fetch(`${apiEndpoint}/api/${resource}`, {
+      method,
+      body: body ? JSON.stringify(body) : undefined,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        ...headers,
+      }
+    });
+    if (!results.ok) throw results;
+    return await results.json();
+  } catch (err) {
+    console.warn('api error!', err);
+    if (err.status === 401) {
+      console.log('should have forced reauthentication');
+      alert('authentication error, please log out and back in');
+    } else {
+      throw err;
+    }
+  }
+}
+
+const refreshToken = async (dispatch: Dispatch<AppState>, getState: any) => {
+  const refreshToken = auth.selectors.refreshToken(getState());
+  const { token } = await callApi('tokens', 'PUT', { refreshToken });
+  dispatch(user.setToken(token));
+  return token;
+}
+
+export const callAuthenticatedApi = async (dispatch: Dispatch<AppState>, getState: any, resource: string, method: method, body?: any) => {
+  const state = getState();
+  let token = auth.selectors.token(state);
+  const expiresIn = getExpiration(token);
+
+  if (expiresIn <= 0) {
+    token = await refreshToken(dispatch, getState);
+  }
+
+  const headers = { Authorization: `Bearer ${token}` };
+  return await callApi(resource, method, body, headers);
+}
+

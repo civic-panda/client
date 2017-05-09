@@ -6,11 +6,11 @@ interface State {
 }
 
 interface Props {
-  history: any;
-  routes: any;
+  history?: any;
+  routes?: any;
 }
 
-const loadGoogle = (WrappedComponent: React.ComponentClass<{}>) => {
+const loadGoogle = (WrappedComponent: React.ComponentClass<Props>) => {
   return class LoadGoogleMaps extends React.Component<Props, State> {
     public static childContextTypes = {
       googlemaps: React.PropTypes.object,

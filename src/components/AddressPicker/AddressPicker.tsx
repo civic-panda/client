@@ -1,6 +1,5 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { browserHistory } from 'react-router';
 
 import { congress, user } from '../../modules';
 import { lookupDistrict, lookupStateDistricts } from '../../util/api';
@@ -18,7 +17,7 @@ interface AddressPickerProps {
     senators: congress.CongressPerson[],
     representatives: congress.CongressPerson[],
   }): void;
-  onClick?(): any;
+  onClick(): any;
 };
 
 interface AddressPickerState {
@@ -90,11 +89,6 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
 
   public isLocationSet = () => !!this.props.location
 
-  public goToTasks = () => {
-    const location = browserHistory.getCurrentLocation();
-    browserHistory.push(location.pathname === '/' ? '/tasks' : location.pathname + '/tasks');
-  }
-
   public render() {
     const classes = classNames('address-picker', {
       'address-picker--light': this.props.style === 'light',
@@ -124,7 +118,7 @@ export class AddressPicker extends React.Component<AddressPickerProps, AddressPi
               disabled={!this.isLocationSet()}
               text={'Act On This'}
               disabledText={'Please select an address.'}
-              onClick={() => this.props.onClick ? this.props.onClick() : this.goToTasks()}
+              onClick={() => this.props.onClick()}
             />
           </span>
           <br />
