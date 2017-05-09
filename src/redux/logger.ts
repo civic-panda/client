@@ -44,14 +44,14 @@ const actionTransformer = (action: Action) => {
   }
 
   // if (action.type === types.SET_AUTH) symbol = ' 👤';
-  if (action.type.indexOf('_REQUEST') > -1) { symbol = ' ❔'; }
-  if (action.type.indexOf('_SUCCESS') > -1) { symbol = ' ✅'; }
-  if (action.type.indexOf('_FAILURE') > -1) { symbol = ' ❌'; }
+  if (action.type && action.type.indexOf('_REQUEST') > -1) { symbol = ' ❔'; }
+  if (action.type && action.type.indexOf('_SUCCESS') > -1) { symbol = ' ✅'; }
+  if (action.type && action.type.indexOf('_FAILURE') > -1) { symbol = ' ❌'; }
 
-  return Object.assign({}, action, { type: `${action.type}${fruit}${symbol}` });
+  return { ...action, type: `${action.type}${fruit}${symbol}`};
 };
 
-export const middleware = createLogger({
+export const middleware = createLogger.createLogger({
   actionTransformer,
   colors: { title },
   collapsed: true,

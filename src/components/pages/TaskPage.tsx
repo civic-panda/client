@@ -22,7 +22,7 @@ interface StateProps {
 
 interface State {};
 
-const NoTemplate = (props: Props & StateProps) => {
+const NoTemplate = (props: Props & StateProps & { children?: any }) => {
   console.warn('no template found', props);
   return (<div>nope</div>);
 };

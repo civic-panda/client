@@ -1,11 +1,22 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
+import { AppState, user } from '../../modules';
 import { Icon } from '../ui';
 import BackButton from './BackButton';
 import './nav.scss';
 import NavLink from './NavLink';
 import PullOutMenu from './PullOutMenu';
+
+interface DispatchProps {
+  logOut(): any;
+}
+
+interface StateProps {
+  isLoggedIn: boolean;
+}
 
 interface Props {
   currentRoute: string;
@@ -22,8 +33,8 @@ const links = [{
   url: '/',
 }];
 
-export class Nav extends React.Component<Props, State> {
-  public constructor(props: Props) {
+class Nav extends React.Component<StateProps & DispatchProps & Props, State> {
+  public constructor(props: StateProps & DispatchProps & Props) {
     super(props);
     this.state = { showPullOutMenu: false };
   }
@@ -56,6 +67,33 @@ export class Nav extends React.Component<Props, State> {
                   />
               ))
             }
+            {
+              this.props.isLoggedIn
+                ? (
+                  <span>
+                    <NavLink
+                      text={'My Dashboard'}
+                      to={'/dashboard'}
+                    />
+                    <span
+                      onClick={() => {
+                        browserHistory.push('/');
+                        setTimeout(this.props.logOut, 200);
+                      }}
+                    >
+                      <NavLink
+                        text={'Log Out'}
+                        to={'/'}
+                      />
+                    </span>
+                  </span>
+                ) : (
+                  <NavLink
+                    text={'Log In'}
+                    to={'auth'}
+                  />
+                )
+            }
           </div>
           <div className="nav__bottom-border"></div>
           </div>
@@ -65,4 +103,12 @@ export class Nav extends React.Component<Props, State> {
   }
 }
 
-export default Nav;
+const mapStateToProps = (state: AppState) => ({
+  isLoggedIn: user.selectors.isLoggedIn(state)
+})
+
+const mapDispatchToProps = {
+  logOut: user.actionCreators.logOut
+}
+
+export default connect<StateProps, DispatchProps, Props>(mapStateToProps, mapDispatchToProps)(Nav);

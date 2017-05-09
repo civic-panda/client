@@ -1,5 +1,6 @@
 import * as mixpanel from 'mixpanel-browser';
 import { REHYDRATE } from 'redux-persist/constants';
+import * as redux from 'redux';
 
 import { AppState, causes, tasks, user } from '../modules';
 import { Action } from './action';

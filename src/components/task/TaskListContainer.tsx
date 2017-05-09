@@ -24,18 +24,25 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   const causeTasks = tasks.selectors.getRemaining(state).filter(task => task.causeId === cause.id);
   taskList = [...taskList, ...causeTasks];
 
-  const parentCause = causes.selectors.getCauseById(cause.parent)(state);
-  const parentTasks = parentCause
-    ? tasks.selectors.getRemaining(state).filter(task => task.causeId === parentCause.id) : [];
-  taskList = [...taskList, ...parentTasks];
+  // const parentCause = causes.selectors.getCauseById(cause.parent)(state);
+  // const parentTasks = parentCause
+  //   ? tasks.selectors.getRemaining(state).filter(task => task.causeId === parentCause.id) : [];
+  // taskList = [...taskList, ...parentTasks];
 
+  // const usersState = user.selectors.getLocation(state).state;
+  // const stateName = stateLookup.lookup[usersState];
+  // const stateCause = causes.selectors.getList(state)
+  //   .find(thisCause => thisCause.name.toLowerCase() === `${cause.name.toLowerCase()} ${stateName.toLowerCase()}`);
+  // if (stateCause && stateCause.id !== cause.id) {
+  //   const stateCauseTasks = stateCause
+  //     ? tasks.selectors.getRemaining(state).filter(task => task.causeId === stateCause.id) : [];
+  //   taskList = [...taskList, ...stateCauseTasks];
+  // }
+
+  // HACK hide LA task for Infinite Flow based on address
   const usersState = user.selectors.getLocation(state).state;
-  const stateName = stateLookup.lookup[usersState];
-  const stateCause = causes.selectors.getList(state).find(thisCause => thisCause.name.toLowerCase() === `rise ${stateName.toLowerCase()}`);
-  if (stateCause && stateCause.id !== cause.id) {
-    const stateCauseTasks = stateCause
-      ? tasks.selectors.getRemaining(state).filter(task => task.causeId === stateCause.id) : [];
-    taskList = [...taskList, ...stateCauseTasks];
+  if (cause.id === 'feac969f-66b0-46af-90c7-f05bd08c29f5' && usersState !== 'CA') {
+    taskList = taskList.filter(task => task.id !== 'a23069f3-194f-4b57-afa3-f773fd8fdec1');
   }
 
   return {

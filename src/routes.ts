@@ -13,11 +13,11 @@ function siteRoutes(store: any) {
     indexRoute: { component: pages.SplashPage },
     onChange: scrollToTop,
     childRoutes: [
+      { name: 'auth', path: 'auth', component: pages.AuthPage },
       { name: 'selectLocaton', path:'select-location', component: pages.SelectLocation },
-      { name: 'demo', path: 'demo', component: FakeNewsEmbed },
+      { name: 'dashboard', path: 'dashboard', component: pages.Dashboard, onEnter: requireLocation(store) },
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },
-      // { name: 'tasks', path: 'tasks', component: pages.TaskListPage, onEnter: requireLocation(store) },
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },
       { name: 'causes', path: 'causes', component: pages.CauseListPage },
       { name: 'cause', path: 'causes/:causeName', component: pages.CausePageContainer },
