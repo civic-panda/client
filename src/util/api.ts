@@ -14,7 +14,7 @@ const apiEndpoint = 'https://admin.actonthis.org';
 type method = 'GET' | 'PUT' | 'POST' | 'DELETE';
 
 export const lookupStateDistricts = async (lat: number, lng: number) => {
-  const result = await fetch(`${apiEndpoint}/openstates/api/v1/legislators/geo/?lat=${lat}&long=${lng}`);
+  const result = await fetch(`${apiEndpoint}/openstates/api/v1/legislators/geo/?lat=${lat}&long=${lng}&apiKey=3c3cbd0d-c3e0-48eb-ad50-0cbd096a0bdd`);
 
   if (result.ok) {
     const body: {
