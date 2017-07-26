@@ -14,8 +14,8 @@ function siteRoutes(store: any) {
     onChange: scrollToTop,
     childRoutes: [
       { name: 'auth', path: 'auth', component: pages.AuthPage },
-      { name: 'selectLocation', path:'select-location', component: pages.SelectLocation },
-      { name: 'dashboard', path: 'dashboard', component: pages.Dashboard },
+      { name: 'selectLocaton', path:'select-location', component: pages.SelectLocation },
+      { name: 'dashboard', path: 'dashboard', component: pages.Dashboard, onEnter: requireLocation(store) },
       { name: 'faq', path: 'faq', component: pages.FAQPage },
       { name: 'about', path: 'about', component: pages.AboutPage },
       { name: 'task', path: 'tasks/:taskId', component: pages.TaskPage, onEnter: requireLocation(store) },

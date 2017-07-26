@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
+import { Link, browserHistory, LocationDescriptor } from 'react-router';
 
 import * as Cloudinary from '../ui/cloudinaryUrl';
 import { AppState, causes, tasks } from '../../modules';
@@ -11,6 +11,7 @@ import { CauseInfo, SquareImage, Text, Button, InfoBox } from '../ui';
 import './cause-page.scss';
 
 export interface Props {
+  location: LocationDescriptor;
   params: {
     causeName: string;
   };
@@ -27,6 +28,10 @@ export interface StateProps {
 interface State {};
 
 export default class CausePage extends React.Component<Props & StateProps, State> {
+  public goToTasks = () => {
+    browserHistory.push(location.pathname === '/' ? '/tasks' : this.props.location.pathname + '/tasks');
+  }
+
   public render() {
     if (!this.props.isLoaded) {
       return <div>Loading {this.props.params.causeName}...</div>
@@ -44,7 +49,7 @@ export default class CausePage extends React.Component<Props & StateProps, State
                 displayBlock
                 bottomMargin
               />
-              <AddressPicker />
+              <AddressPicker onClick={this.goToTasks} />
             </div>
             <img
               className="u-hide@lt-lg"

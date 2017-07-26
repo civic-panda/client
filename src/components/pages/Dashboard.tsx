@@ -15,6 +15,8 @@ export class Dashboard extends React.Component<Props, State> {
             size={'lg'}
             type={'header'}
             text={'To do'}
+            bottomMargin
+            displayBlock
           />
           <TaskListContainer causeId={'d203396d-af7b-40cc-a44d-d51b8a5c334a'} />
         </div>
