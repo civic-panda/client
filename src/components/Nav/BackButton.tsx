@@ -21,7 +21,7 @@ interface StateProps {
 };
 
 const BackButton = (props: OwnProps & StateProps, context: any) => {
-  console.log(props);
+  console.log('props', props);
   switch (props.currentRoute) {
     case 'cause':
     case 'causeTasks':
@@ -61,6 +61,20 @@ const BackButton = (props: OwnProps & StateProps, context: any) => {
             to={`/causes/${props.routeParams.causeName}/tasks`}
             icon={'left-arrow'}
           />
+        </div>
+      );
+
+    case 'selectLocation':
+      return (
+        <div className="back-button">
+          <Link to={`/causes/rise`} style={{ cursor: 'pointer' }}>
+            <Image
+              url={'ts6oqq2ut4bm2db8zaue'}
+              alt="Rise logo"
+              className={'logo'}
+              options={{ height: 60, crop: 'fit' }}
+            />
+          </Link>
         </div>
       );
 
