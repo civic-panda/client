@@ -52,7 +52,7 @@ export class Generic extends React.Component<Props, State> {
       {(this.state.currentStep === this.props.steps.length - 1) && (
         <Link
           text={'Complete Task'}
-          link={`/causes/${this.props.cause.name}/tasks`}
+          link={`/causes/${this.props.cause.name}/tasks?modal=task-completed`}
           onClick={() => this.props.completeTask(this.props.taskId)}
         />
       )}

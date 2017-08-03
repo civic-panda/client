@@ -6,6 +6,7 @@ export * from './Icon';
 export * from './FadeIn';
 export * from './Input';
 export * from './InfoBox';
+export * from './Modal';
 export * from './Select';
 export * from './SlideIn';
 export * from './Spinner';
