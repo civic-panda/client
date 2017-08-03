@@ -1,0 +1,47 @@
+@import '../../scss/abstracts/colors';
+@import '../../scss/abstracts/variables';
+
+.modal-container {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-container.is-showing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-background {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(get-color($black, 500), 0.4);
+}
+
+.modal-body {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background: $white;
+  border: solid 1rem $primary;
+  padding: 3 * $standard-spacing 2 * $standard-spacing;
+}
+
+.modal-confetti {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
