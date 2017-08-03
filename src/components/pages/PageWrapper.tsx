@@ -1,15 +1,17 @@
 import * as mixpanel from 'mixpanel-browser';
 import * as React from 'react';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { browserHistory } from 'react-router'
 
 import Footer from '../Footer';
 import Nav from '../Nav';
+import { Modal } from '../ui';
 import './page-wrapper.scss';
 
 interface Props {
   routes: { name: string }[];
   children: React.ReactElement<any>;
-  location: { pathname: string };
+  location: { pathname: string, query: { [x: string]: any } };
   params: { [key: string]: any };
 };
 
@@ -36,6 +38,10 @@ export class PageWrapper extends React.Component<Props, State> {
     const currentRoute = this.props.routes[this.props.routes.length - 1];
     return (
       <div className="page-container">
+        <Modal
+          type={this.props.location.query.modal}
+          close={() => browserHistory.push({ pathname: this.props.location.pathname, search: '' })}
+        />
         <Nav
           currentRoute={currentRoute.name}
           routeParams={this.props.params}

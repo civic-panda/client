@@ -110,7 +110,7 @@ class CallComponent extends React.Component<OwnProps & StateProps, CallState> {
       {(this.state.currentStep === this.props.callList.length - 1) && (
         <Link
           text={'Complete Task'}
-          link={`/causes/${this.props.cause.name}/tasks`}
+          link={`/causes/${this.props.cause.name}/tasks?modal=task-completed`}
           onClick={() => this.props.completeTask(this.props.taskId)}
         />
       ) }

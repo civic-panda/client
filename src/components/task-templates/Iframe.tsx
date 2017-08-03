@@ -54,7 +54,7 @@ class IframeComponent extends React.Component<Props, State> {
           </iframe>
           <Link
             text={'Complete Task'}
-            link={`/causes/${this.props.cause.name}/tasks`}
+            link={`/causes/${this.props.cause.name}/tasks?modal=task-completed`}
             onClick={() => this.props.completeTask(this.props.taskId)}
           />
         </div>
